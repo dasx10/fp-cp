@@ -1,7 +1,7 @@
-function timeout (time) {
+function delay (time) {
     return function useTimer (executor, ...args) {
         return setTimeout(executor, time, ...args);
     }
 }
 
-module.exports = timeout;
+module.exports = delay;
