@@ -1,5 +1,5 @@
 /**
- * @param {number} firstNumber 
+ * @param {number} maximum 
  * @returns {(number: number) => number}
  */
 function max (maximum) {

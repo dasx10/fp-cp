@@ -1,11 +1,11 @@
 /**
- * @param {(...args: Params) => any} executor
- * @return {(...args: Params) => boolean}
- * @template Params 
+ * @param {Executor & ((...args: any) => any)} executor
+ * @return {(...args: Parameters<Executor>) => boolean}
+ * @template Executor
  */
 function complement (executor) {
-    return function useComplement () {
-        return executor.apply(null, arguments);
+    return function useComplement (...args) {
+        return executor(...args);
     }
 }
 

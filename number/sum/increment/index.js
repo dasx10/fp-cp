@@ -1,3 +1,3 @@
-const sum = require('..');
-const increment = sum(1);
+const add = require('..');
+const increment = add(1);
 module.exports = increment;
