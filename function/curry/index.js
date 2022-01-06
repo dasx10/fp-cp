@@ -1,15 +1,16 @@
 /**
- * @param {Executor & ((...args: any) => any)} executor 
- * @param  {StartParameter & Partial<Parameters<Executor>> & any[]} args 
- * @returns {ReturnType<Executor> | ((...args: any) => ReturnType<Executor>)}
- * @template Executor extends (...args: StartParameter) => any
+ * @param   {Executor & ((...startArguments: any[]) => any)} executor 
+ * @param   {StartParameter & Partial<Parameters<Executor>> & any[]} startArguments 
+ * @returns {ReturnType<Executor> | ((...nextArgument: any[]) => ReturnType<Executor>)}
+ * @template Executor
  * @template StartParameter
  */
-function curry (executor, ...args) {
-    if (args.length >= executor.length) return executor(...args);
-    return function curried (...nextArgs) {
-        return curry(executor, ...args, ...nextArgs);
+function curry (executor, ...startArguments) {
+    if (startArguments.length < executor.length) return function useCurry (...nextArgument) {
+        return curry(executor, ...startArguments, ...nextArgument);
     }
+
+    return executor(...startArguments);
 }
 
 module.exports = curry;

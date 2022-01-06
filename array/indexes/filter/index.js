@@ -1,0 +1,3 @@
+function indexesFilter (array) {
+    return 
+}
