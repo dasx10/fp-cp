@@ -1,0 +1,22 @@
+{
+  "name": "fpc",
+  "version": "0.0.1",
+  "description": "function programing component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasx10/fpc.git"
+  },
+  "keywords": [
+    "functional"
+  ],
+  "author": "Kleschev Yevhenii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dasx10/fpc/issues"
+  },
+  "homepage": "https://github.com/dasx10/fpc#readme"
+}

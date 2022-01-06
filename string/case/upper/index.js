@@ -1,10 +1,5 @@
 /**
- * @param {Value & string} value 
- * @returns {Uppercase<Value>}
- * @template Value
+ * @type {<Value extends string>(value: Value) => Uppercase<Value>}
  */
-function uppercase (value) {
-    return value.toUpperCase();
-}
-
+const uppercase = String.prototype.toUpperCase.call
 module.exports = uppercase;
