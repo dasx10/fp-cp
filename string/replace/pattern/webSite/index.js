@@ -1,0 +1,4 @@
+
+function webSite (string) {
+    
+}
