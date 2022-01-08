@@ -1,7 +1,7 @@
 /**
- * @param {Executor & ((...args: any) => any)} executor
+ * @param {Executor} executor
  * @return {(...args: Parameters<Executor>) => boolean}
- * @template Executor
+ * @template {(...args: any) => any} Executor
  */
 function complement (executor) {
     return function useComplement (...args) {

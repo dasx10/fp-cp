@@ -1,5 +1,5 @@
-function concat (firstArray) {
-    return function useConcat (nextArray) {
+function concat (...arrays) {
+    return function useConcat (array) {
         
     }
 }

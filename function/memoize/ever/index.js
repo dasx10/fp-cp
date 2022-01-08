@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {Executor} executor 
+ * @returns {(...args: Parameters<Executor>) => ReturnType<Executor>}
+ * @template {(...args: any[]) => any} Executor
+ */
 function ever (executor) {
     let result;
     return function useEver (...args) {

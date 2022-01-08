@@ -1,8 +1,8 @@
 /**
- * @param   {Executor & ((...startArguments: any[]) => any)} executor 
+ * @param   {Executor} executor 
  * @param   {StartParameter & Partial<Parameters<Executor>> & any[]} startArguments 
  * @returns {ReturnType<Executor> | ((...nextArgument: any[]) => ReturnType<Executor>)}
- * @template Executor
+ * @template {(...startArguments: any[]) => any} Executor
  * @template StartParameter
  */
 function curry (executor, ...startArguments) {
