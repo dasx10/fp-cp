@@ -3,7 +3,7 @@
  * @returns {(array: ArrayElement[]) => Return[]}
  * @template ArrayElement, Return
  */
-module.exports = function map(executor) {
+function map(executor) {
     return function useMap (array) {
         const { length } = array;
         const mapped = new Array(length);
@@ -15,3 +15,5 @@ module.exports = function map(executor) {
         return mapped;
     }
 }
+
+module.exports = map;
