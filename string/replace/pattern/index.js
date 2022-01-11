@@ -18,3 +18,5 @@ function pattern (searchValue) {
         return '';
     }
 }
+
+module.exports = pattern;

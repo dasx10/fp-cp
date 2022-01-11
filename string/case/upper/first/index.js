@@ -4,7 +4,11 @@
  * @template Value
  */
 function upperFirst (value) {
-    return value.substr(0, 1).toUpperCase() + value.substr(1);
+    switch (value.length) {
+        case 0 : return '';
+        case 1 : return value[0].toUpperCase();
+        default: return value[0].toUpperCase() + value.substr(1);
+    }
 }
 
 module.exports = upperFirst;

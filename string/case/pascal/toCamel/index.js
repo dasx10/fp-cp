@@ -1,9 +1,8 @@
 /**
- * @param {Value & string} value 
- * @returns {Uncapitalize<Value>}
- * @template Value
+ * @param {string} value 
+ * @returns {string}
  */
-function lowerFirst (value) {
+function pascalToCamelCase (value) {
     switch (value.length) {
         case 0 : return '';
         case 1 : return value[0].toLowerCase();
@@ -11,4 +10,4 @@ function lowerFirst (value) {
     }
 }
 
-module.exports = lowerFirst;
+module.exports = pascalToCamelCase;

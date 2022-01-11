@@ -5,7 +5,11 @@
  * @template Value 
  */
 function capitalize (string) {
-    return string.substr(0, 1).toUpperCase() + string.substr(1).toLowerCase();
+    switch (string.length) {
+        case 0 : return '';
+        case 1 : return string[0].toUpperCase();
+        default: return string[0].toUpperCase() + string.substr(1).toLowerCase()
+    }
 }
 
 module.exports = capitalize;
