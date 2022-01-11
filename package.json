@@ -1,6 +1,6 @@
 {
-  "name": "fpc",
-  "version": "0.0.1",
+  "name": "fp-cp",
+  "version": "0.0.2",
   "description": "function programing component",
   "main": "index.js",
   "scripts": {
