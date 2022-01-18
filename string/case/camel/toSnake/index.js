@@ -1,8 +1,9 @@
 /**
- * @param {string} value 
+ * @param {CamelString} value 
  * @returns {string}
+ * @template {string} CamelString
  */
- function camelToSnakeCase (value) {
+function camelToSnakeCase (value) {
     const { length } = value;
     let index = 1;
     let code, char;
