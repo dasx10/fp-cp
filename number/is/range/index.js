@@ -8,3 +8,5 @@ function isRange (minimum, maximum) {
         return minimum < value && value < maximum;
     }
 }
+
+module.exports = isRange;
