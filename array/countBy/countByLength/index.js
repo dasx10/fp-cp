@@ -13,7 +13,6 @@ function countByLength (findLength) {
             if (findLength === array[index].length) count++; 
             index++;
         }
-
         return count;
     }
 }
