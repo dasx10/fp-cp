@@ -8,3 +8,5 @@ function memoize (executor) {
         return result;
     }
 }
+
+module.exports = memoize;

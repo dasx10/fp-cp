@@ -16,8 +16,7 @@ function where (complex) {
                 index++;
                 continue loopList;
             }
-
-            filtered.push(element)
+            filtered.push(element);
             index++;
         }
 

@@ -1,9 +1,8 @@
-const averageBy = require("./array/averageBy");
-const partition = require("./array/partition");
-const where = require("./array/where");
+const limit = require("./array/limit");
+const limitMutation = require("./array/limit/mutation");
+const skip = require("./array/skip");
+const sumByProperty = require("./array/sum/by/property");
 
-const aa = where({ a: (e) => e > 10, b: (e) => e < 10 })
-
-console.log(
-    aa([{a: 1, b: 2}, {a: 11, b: 9 }, { a: 11, b: 11 }])
-);
+const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+console.log(limit(4)(a));
+console.log(a)
