@@ -1,3 +1,5 @@
-const a = <E extends ArrayLike<any>>(e: E) => e[1];
+const _ = Object.assign(function placeholder () {
 
-const b = a('')
+}, {});
+
+export default _;
