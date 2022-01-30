@@ -1,10 +1,5 @@
-/**
- * @param {(element: ArrayElement, index: number, array: ArrayElement[]) => any} executor 
- * @returns {(array: ArrayElement[]) => ArrayElement[] | []}
- * @template ArrayElement
- */
-function filter (executor) {
-    return function useFilter (array) {
+function filter <T>(executor: (element: T, index: number, array: T[]) => any) {
+    return function useFilter (array: T[]) {
         const { length } = array;
         const filtered = [];
         let index = 0;
@@ -17,4 +12,4 @@ function filter (executor) {
     }
 }
 
-module.exports = filter;
+export default filter;

@@ -18,6 +18,25 @@ import fillFull          from "./fill/full";
 import fillStart         from "./fill/start";
 import fillEnd           from "./fill/end";
 
+import filter            from "./filter";
+
+import find              from "./find";
+import findRight         from "./find/right";
+import findIndex         from "./find/index";
+import findIndexRight    from "./find/index/right";
+
+import forEach           from "./forEach";
+import forEachRight      from "./forEach/right";
+import groupBy           from "./groupBy";
+import indexOf           from "./indexOf";
+import lastIndexOf       from "./indexOf/last";
+import isEmpty           from "./is/empty";
+import join              from "./join";
+import joinUp            from "./join/up";
+import joinBy            from "./join/by";
+import keyBy             from "./keyBy";
+import limit             from "./limit";
+
 // context
 import averageByContext  from "./average/by/context";
 import countByContext    from "./count/by/context";
@@ -35,21 +54,38 @@ import mapContext        from "./map/context";
  * const days = Array.of('san', 'mon', 'wen'); // Array<string> -> ['san', 'mon', 'wen'];
  */
 class Array<T> extends global.Array<T> {
-    static readonly at        = at;
-    static readonly atRight   = atRight;
-    static readonly head      = head;
-    static readonly tail      = tail;
-    static readonly averageBy = averageBy;
-    static readonly averageOf = averageOf;
-    static readonly clone     = clone;
-    static readonly countOf   = countOf;
-    static readonly countBy   = countBy;
-    static readonly fillFull  = fillFull;
-    static readonly fillStart = fillStart;
-    static readonly fillEnd   = fillEnd;
-    static readonly fill      = fill;
-    static readonly map       = map;
-    static readonly concat    = concat;
+    static readonly at             = at;
+    static readonly atRight        = atRight;
+    static readonly head           = head;
+    static readonly tail           = tail;
+    static readonly averageBy      = averageBy;
+    static readonly averageOf      = averageOf;
+    static readonly clone          = clone;
+    static readonly countOf        = countOf;
+    static readonly countBy        = countBy;
+    static readonly fillFull       = fillFull;
+    static readonly fillStart      = fillStart;
+    static readonly fillEnd        = fillEnd;
+    static readonly fill           = fill;
+    static readonly filter         = filter;
+    static readonly find           = find;
+    static readonly findRight      = findRight;
+    static readonly findIndex      = findIndex;
+    static readonly findIndexRight = findIndexRight;
+    static readonly forEach        = forEach;
+    static readonly forEachRight   = forEachRight;
+    static readonly groupBy        = groupBy;
+    static readonly indexOf        = indexOf;
+    static readonly lastIndexOf    = lastIndexOf;
+    static readonly isEmpty        = isEmpty;
+    static readonly join           = join;
+    static readonly joinUp         = joinUp;
+    static readonly joinBy         = joinBy;
+    static readonly keyBy          = keyBy;
+    static readonly limit          = limit;
+    static readonly map            = map;
+    static readonly concat         = concat;
+
     static of <T extends any[]>(...args: T) {
         const { length } = args;
         const array = new this<T extends (infer U)[] ? U : any >(length);

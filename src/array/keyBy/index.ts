@@ -1,8 +1,7 @@
-import { FirstParameter }       from "../../function/index.D";
 import { ArrayIterateFunction } from "../index.D";
 
-function keyBy <Executor extends ArrayIterateFunction>(executor: Executor) {
-    return function useKeyBy (array: FirstParameter<Executor>[]): Record<ReturnType<Executor>, FirstParameter<Executor>> {
+function keyBy <T, Executor extends ArrayIterateFunction<T, PropertyKey>>(executor: Executor) {
+    return function useKeyBy (array: T[]): Record<ReturnType<Executor>, T> {
         const mapped = Object.create(null);
         const { length } = array;
         let index = 0;
@@ -15,4 +14,4 @@ function keyBy <Executor extends ArrayIterateFunction>(executor: Executor) {
     }
 }
 
-module.exports = keyBy;
+export default keyBy;

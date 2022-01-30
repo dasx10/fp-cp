@@ -12,3 +12,4 @@ function countByContext <T>(this: Array<T>, executor: (element: T, index: number
 }
 
 export default countByContext;
+

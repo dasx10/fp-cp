@@ -1,10 +1,4 @@
-/**
- * 
- * @param {Value & string} string 
- * @returns {Capitalize<Lowercase<Value>>}
- * @template Value 
- */
-function capitalize (string) {
+function capitalize <Value extends string>(string: Value): Capitalize<Lowercase<Value>> {
     switch (string.length) {
         // @ts-ignore
         case 0 : return '';
@@ -15,4 +9,4 @@ function capitalize (string) {
     }
 }
 
-module.exports = capitalize;
+export default capitalize;

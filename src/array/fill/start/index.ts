@@ -1,16 +1,13 @@
+import Array from "../..";
+
 /**
  * @description return a new array with a filled section
- * @param {FillValue} value placeholder value
- * @param {number} [start=0] start index fill
- * @returns {<ArrayElement>(array: ArrayElement[]) => Array<FillValue | ArrayElement>} `(value|arrayValue)[]`
- * @template FillValue
- * @see fill
  * @example
  * fillStart(1)   (['a', 'b', 'c', 'd']); // [1, 1, 1, 1];
  * fillStart(3, 2)(['a', 'b', 'c', 'd']); // ['a', 3, 3, 3];
  */
-function fillStart (value, start = 0) {
-    return function useFillStart (array) {
+function fillStart <T>(value: T, start = 0) {
+    return function useFillStart (array: T[]) {
         const { length } = array;
         const newArray = new Array(length);
         let index = 0;
@@ -29,4 +26,4 @@ function fillStart (value, start = 0) {
     }
 }
 
-module.exports = fillStart;
+export default fillStart;
