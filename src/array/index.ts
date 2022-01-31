@@ -36,6 +36,10 @@ import joinUp            from "./join/up";
 import joinBy            from "./join/by";
 import keyBy             from "./keyBy";
 import limit             from "./limit";
+import maximumBy         from "./maximum/by";
+import maximumOf         from "./maximum/of";
+import minimumBy         from "./minimum/by";
+import minimumOf         from "./minimum/of";
 
 // context
 import averageByContext  from "./average/by/context";
@@ -43,6 +47,8 @@ import countByContext    from "./count/by/context";
 import countOfContext    from "./count/of/context";
 import countOfAnyContext from "./count/of/any/context";
 import mapContext        from "./map/context";
+import maximumByContext  from "./maximum/by/context";
+import minimumByContext  from "./minimum/by/context";
 
 /**
  * @example
@@ -53,7 +59,7 @@ import mapContext        from "./map/context";
  * 
  * const days = Array.of('san', 'mon', 'wen'); // Array<string> -> ['san', 'mon', 'wen'];
  */
-class Array<T> extends global.Array<T> {
+class Array<T> extends globalThis.Array<T> {
     static readonly at             = at;
     static readonly atRight        = atRight;
     static readonly head           = head;
@@ -83,6 +89,10 @@ class Array<T> extends global.Array<T> {
     static readonly joinBy         = joinBy;
     static readonly keyBy          = keyBy;
     static readonly limit          = limit;
+    static readonly maximumBy      = maximumBy;
+    static readonly maximumOf      = maximumOf;
+    static readonly minimumBy      = minimumBy;
+    static readonly minimumOf      = minimumOf;
     static readonly map            = map;
     static readonly concat         = concat;
 
@@ -105,18 +115,23 @@ class Array<T> extends global.Array<T> {
             array[index] = fromArray[index];
             index++;
         }
-        return array;
+        return array as Array<T extends (infer U)[] ? U : any> & T;
     }
 
     constructor (length: number = 0) {
         super(length);
     }
 
+    // numbers
     public averageBy  = averageByContext;
     // TODO averageOf
     public countBy    = countByContext;
     public countOf    = countOfContext;
     public countOfAny = countOfAnyContext;
+    public maximumBy  = maximumByContext;
+    public minimumBy  = minimumByContext;
+
+    // universal
     public map        = mapContext;
 
     // getter setter

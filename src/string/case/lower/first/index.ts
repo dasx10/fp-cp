@@ -1,9 +1,4 @@
-/**
- * @param {Value & string} value 
- * @returns {Uncapitalize<Value>}
- * @template Value
- */
-function lowerFirst (value) {
+function toLowerCaseFirst <Value extends string>(value: Value | String): Uncapitalize<Value> {
     switch (value.length) {
         // @ts-ignore
         case 0 : return '';
@@ -14,4 +9,4 @@ function lowerFirst (value) {
     }
 }
 
-module.exports = lowerFirst;
+export default toLowerCaseFirst;
