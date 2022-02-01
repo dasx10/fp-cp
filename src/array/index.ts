@@ -40,6 +40,9 @@ import maximumBy         from "./maximum/by";
 import maximumOf         from "./maximum/of";
 import minimumBy         from "./minimum/by";
 import minimumOf         from "./minimum/of";
+import partition         from "./partition";
+import reduce            from "./reduce";
+import reduceRight       from "./reduce/right";
 
 // context
 import averageByContext  from "./average/by/context";
@@ -49,6 +52,7 @@ import countOfAnyContext from "./count/of/any/context";
 import mapContext        from "./map/context";
 import maximumByContext  from "./maximum/by/context";
 import minimumByContext  from "./minimum/by/context";
+import { ArrayFirstElement, ArraySecondElement } from "./index.D";
 
 /**
  * @example
@@ -59,7 +63,16 @@ import minimumByContext  from "./minimum/by/context";
  * 
  * const days = Array.of('san', 'mon', 'wen'); // Array<string> -> ['san', 'mon', 'wen'];
  */
-class Array<T> extends globalThis.Array<T> {
+
+interface Array<T, Predicate extends T[] = T[]> {
+    get length (): Predicate['length'];
+    at<Value extends number>(index: Value): Predicate extends [infer F, ...infer N] ? Predicate[Value] : (T | void);
+}
+
+
+export type ExtractPredicate<T extends Array<any, any[]>> = T extends Array<infer T, infer P> ? P : T extends Array<infer T> ? T[] : never;
+
+class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implements ReadonlyArray<T> {
     static readonly at             = at;
     static readonly atRight        = atRight;
     static readonly head           = head;
@@ -67,6 +80,7 @@ class Array<T> extends globalThis.Array<T> {
     static readonly averageBy      = averageBy;
     static readonly averageOf      = averageOf;
     static readonly clone          = clone;
+    static readonly concat         = concat;
     static readonly countOf        = countOf;
     static readonly countBy        = countBy;
     static readonly fillFull       = fillFull;
@@ -93,29 +107,31 @@ class Array<T> extends globalThis.Array<T> {
     static readonly maximumOf      = maximumOf;
     static readonly minimumBy      = minimumBy;
     static readonly minimumOf      = minimumOf;
+    static readonly partition      = partition;
     static readonly map            = map;
-    static readonly concat         = concat;
+    static readonly reduce         = reduce;
+    static readonly reduceRight    = reduceRight;
 
     static of <T extends any[]>(...args: T) {
         const { length } = args;
-        const array = new this<T extends (infer U)[] ? U : any >(length);
+        const array = new this<T extends (infer U)[] ? U : any, T>(length);
         let index = 0;
         while (index < length) {
             array[index] = args[index];
             index++;
         }
-        return array as Array<T extends (infer U)[] ? U : any> & T;
+        return array;
     }
 
     static from <T extends any[]>(fromArray: T) {
         const { length } = fromArray;
-        const array = new this<T>(length);
+        const array = new this<T extends (infer U)[] ? U : any, T>(length);
         let index = 0;
         while (index < length) {
             array[index] = fromArray[index];
             index++;
         }
-        return array as Array<T extends (infer U)[] ? U : any> & T;
+        return array;
     }
 
     constructor (length: number = 0) {
@@ -136,23 +152,27 @@ class Array<T> extends globalThis.Array<T> {
 
     // getter setter
     public get head () {
-        return head(this) as T;
-    }
-
-    public set head (value) {
-        if (this.length) this[0] = value;
+        return head(this) as ArrayFirstElement<Predicate>;
     }
 
     public get tail () {
-        return tail(this) as T;
+        return tail(this) as ArraySecondElement<Predicate>;
     }
 
-    public set tail (value) {
-        if (this.length) this[length - 1] = value;
-    }
-
-    public get isEmpty () {
+    public get isEmpty (): boolean {
         return this.length === 0;
+    }
+
+    public get isNoEmpty (): boolean {
+        return this.length > 0;
+    }
+
+    public get isUniq (): boolean {
+        return new Set(this).size === this.length; 
+    }
+
+    public get uniq (): Array<T, T[]> {
+        return Array.of(...new Set<T>(this));
     }
 }
 

@@ -1,3 +1,6 @@
+import Array from ".";
+import { ArrayReverse } from "./reverse/index.D";
+
 export type ArrayIterateFunction<ArrayElement = any, Return = any> = (element: ArrayElement, index: number, array: ArrayElement[]) => Return;
 
 export type TupleConsistentEvery<Tuple extends any[]> = Tuple extends [infer First, ...infer Next] ? [First] | [First, ...TupleConsistentEvery<Next>] : [];
@@ -13,5 +16,14 @@ Difference extends any[]
 : Difference
 : [];
 
+export type ArrayTypes<Tuple extends any[]> = Tuple extends Array<infer T, infer Predicate>
+    ? Predicate
+    : Tuple;
+
+
+// export type LastElement<Tuple extends any[]>   = FirstElement<Reverse<Tuple>>;
+
+export type ArrayType<Tuple extends any[]> = Tuple extends Array<infer T, infer P> ? T : Tuple extends (infer Type)[] ? Type : never;
 export type ArrayFirstElement<InputArray extends any[]>  = InputArray extends [infer FirstElement, ...infer NextElements] ? FirstElement : never;
 export type ArraySecondElement<InputArray extends any[]> = InputArray extends [infer FirstElement, infer SecondElement, ...infer NextElements] ? SecondElement : never;
+export type ArrayLastElement<Tuple extends any[]> = ArrayFirstElement<ArrayReverse<Tuple>>;

@@ -1,14 +1,16 @@
+import Array from "..";
+import { ArrayIterateFunction } from "../index.D";
+
 /**
- * 
  * @param {(element: ArrayElement, index: number, array: ArrayElement[]) => any} executor 
  * @returns {(array: Array<ArrayElement>) => [ArrayElement[], ArrayElement[]]}
  * @template ArrayElement
  */
-function partition (executor) {
-    return function usePartition (array) {
+function partition <T>(executor: ArrayIterateFunction<T>) {
+    return function usePartition (array: T[]): [Array<T>, Array<T>] {
         const { length } = array;
-        const accept = new Array();
-        const reject = new Array();
+        const accept = new Array<T>();
+        const reject = new Array<T>();
         let index = 0;
         while (index < length) {
             const element = array[index];
@@ -19,4 +21,4 @@ function partition (executor) {
     }
 }
 
-module.exports = partition;
+export default partition;
