@@ -38,7 +38,6 @@ import averageByContext from "./average/by/context";
 import countByContext from "./count/by/context";
 import countOfContext from "./count/of/context";
 import countOfAnyContext from "./count/of/any/context";
-import mapContext from "./map/context";
 import maximumByContext from "./maximum/by/context";
 import minimumByContext from "./minimum/by/context";
 import { ArraySecondElement } from "./index.D";
@@ -53,7 +52,6 @@ import { ArraySecondElement } from "./index.D";
  */
 export declare type ExtractPredicate<T extends Array<any, any[]>> = T extends Array<infer T, infer P> ? P : T extends Array<infer T> ? T[] : never;
 declare class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implements ReadonlyArray<T> {
-    get length(): Predicate['length'];
     at<Value extends number>(index: Value): Predicate extends [infer F, ...infer N] ? Predicate[Value] : (T | void);
     static readonly at: typeof at;
     static readonly atRight: typeof atRight;
@@ -95,13 +93,13 @@ declare class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> 
     static of<T extends any[]>(...args: T): Array<T extends (infer U)[] ? U : any, T>;
     static from<T extends any[]>(fromArray: T): Array<T extends (infer U)[] ? U : any, T>;
     constructor(length?: number);
-    averageBy: typeof averageByContext;
-    countBy: typeof countByContext;
-    countOf: typeof countOfContext;
-    countOfAny: typeof countOfAnyContext;
-    maximumBy: typeof maximumByContext;
-    minimumBy: typeof minimumByContext;
-    map: typeof mapContext;
+    get averageBy(): typeof averageByContext;
+    get countBy(): typeof countByContext;
+    get countOf(): typeof countOfContext;
+    get countOfAny(): typeof countOfAnyContext;
+    get maximumBy(): typeof maximumByContext;
+    get minimumBy(): typeof minimumByContext;
+    get length(): Predicate['length'];
     get head(): ArraySecondElement<Predicate>;
     get tail(): ArraySecondElement<Predicate>;
     get isEmpty(): boolean;

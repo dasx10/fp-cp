@@ -9,6 +9,7 @@ import { AnyFunction } from "../index.D";
 function compose <
     FirstFunction  extends AnyFunction,
     SecondFunction extends AnyFunction<ReturnType<FirstFunction>>,
+    // @ts-ignore
     Functions extends [...(AnyFunction)[], SecondFunction, FirstFunction]
 >(...executors: Functions) {
     return function useCompose (...lastExecutorArguments: Parameters<FirstFunction>) {

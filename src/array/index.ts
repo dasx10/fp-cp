@@ -68,11 +68,21 @@ import { ArrayFirstElement, ArraySecondElement } from "./index.D";
 
 export type ExtractPredicate<T extends Array<any, any[]>> = T extends Array<infer T, infer P> ? P : T extends Array<infer T> ? T[] : never;
 
-class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implements ReadonlyArray<T> {
-    get length (): Predicate['length'] {
-        return this.length;
-    }
+// Array.a
+//     // numbers
+//     public averageBy  = averageByContext;
+//     // TODO averageOf
+//     public countBy    = countByContext;
+//     public countOf    = countOfContext;
+//     public countOfAny = countOfAnyContext;
+//     public maximumBy  = maximumByContext;
+//     public minimumBy  = minimumByContext;
 
+//     // universal
+//     // @ts-ignore
+//     public map        = mapContext;
+
+class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implements ReadonlyArray<T> {
     // @ts-ignore
     public at<Value extends number>(index: Value): Predicate extends [infer F, ...infer N] ? Predicate[Value] : (T | void);
 
@@ -141,20 +151,19 @@ class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implemen
         super(length);
     }
 
-    // numbers
-    public averageBy  = averageByContext;
-    // TODO averageOf
-    public countBy    = countByContext;
-    public countOf    = countOfContext;
-    public countOfAny = countOfAnyContext;
-    public maximumBy  = maximumByContext;
-    public minimumBy  = minimumByContext;
-
-    // universal
-    // @ts-ignore
-    public map        = mapContext;
+    public get averageBy  () { return averageByContext; }
+    public get countBy    () { return countByContext; }
+    public get countOf    () { return countOfContext; }
+    public get countOfAny () { return countOfAnyContext; }
+    public get maximumBy  () { return maximumByContext; }
+    public get minimumBy  () { return minimumByContext; }
 
     // getter setter
+
+    get length (): Predicate['length'] {
+        return this.length;
+    }
+
     public get head (): ArraySecondElement<Predicate> {
         // @ts-ignore
         return head(this) as ArrayFirstElement<Predicate>;
