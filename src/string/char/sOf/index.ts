@@ -3,7 +3,9 @@ import { CharOf }  from "../at/index.D";
 import { CharsOf } from "./index.D";
 
 function charsOf <Value extends string>(value: Value | String) {
-    return Array.of(...value) as Array<CharOf<Value>, CharsOf<Value>>;
+    // @ts-ignore
+    return Array.of<CharOf<Value>, CharsOf<Value>>(...value) as Array<CharOf<Value>, CharsOf<Value>>;
 }
+
 
 export default charsOf;

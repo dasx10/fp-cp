@@ -12,4 +12,4 @@ function partialRight <
     }
 }
 
-module.exports = partialRight;
+export default partialRight;

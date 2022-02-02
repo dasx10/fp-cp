@@ -1,1 +1,1 @@
-module.exports = String.prototype.trimRight.call;
+// module.exports = String.prototype.trimRight.call;

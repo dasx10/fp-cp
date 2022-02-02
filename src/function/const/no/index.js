@@ -1,8 +1,8 @@
-/**
- * @returns {false}
- */
-function no () {
-    return false;
-}
+// /**
+//  * @returns {false}
+//  */
+// function no () {
+//     return false;
+// }
 
-module.exports = no;
+// module.exports = no;

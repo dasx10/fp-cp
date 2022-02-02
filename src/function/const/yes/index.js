@@ -1,8 +1,8 @@
-/**
- * @returns {true}
- */
-function yes () {
-    return true;
-}
+// /**
+//  * @returns {true}
+//  */
+// function yes () {
+//     return true;
+// }
 
-module.exports = yes;
+// module.exports = yes;

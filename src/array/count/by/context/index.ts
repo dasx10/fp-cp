@@ -1,6 +1,6 @@
 import Array from "../../..";
 
-function countByContext <T>(this: Array<T>, executor: (element: T, index: number, array: T[]) => number) {
+function countByContext <T>(this: Array<T>, executor: (element: T, index: number, array: Array<T>) => number) {
     let count = 0;
     let index = 0;
     const { length } = this;

@@ -7,7 +7,7 @@ import atRight           from "./at/right";
 import averageBy         from "./average/by";
 import averageOf         from "./average/of";
 
-import clone             from "./clone";
+// import clone             from "./clone";
 import concat            from "./concat";
 import countOf           from "./count/of";
 import countBy           from "./count/by";
@@ -64,22 +64,25 @@ import { ArrayFirstElement, ArraySecondElement } from "./index.D";
  * const days = Array.of('san', 'mon', 'wen'); // Array<string> -> ['san', 'mon', 'wen'];
  */
 
-interface Array<T, Predicate extends T[] = T[]> {
-    get length (): Predicate['length'];
-    at<Value extends number>(index: Value): Predicate extends [infer F, ...infer N] ? Predicate[Value] : (T | void);
-}
-
+// @ts-ignore
 
 export type ExtractPredicate<T extends Array<any, any[]>> = T extends Array<infer T, infer P> ? P : T extends Array<infer T> ? T[] : never;
 
 class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implements ReadonlyArray<T> {
+    get length (): Predicate['length'] {
+        return this.length;
+    }
+
+    // @ts-ignore
+    public at<Value extends number>(index: Value): Predicate extends [infer F, ...infer N] ? Predicate[Value] : (T | void);
+
     static readonly at             = at;
     static readonly atRight        = atRight;
     static readonly head           = head;
     static readonly tail           = tail;
     static readonly averageBy      = averageBy;
     static readonly averageOf      = averageOf;
-    static readonly clone          = clone;
+    // static readonly clone          = clone;
     static readonly concat         = concat;
     static readonly countOf        = countOf;
     static readonly countBy        = countBy;
@@ -148,14 +151,17 @@ class Array<T, Predicate extends T[] = T[]> extends globalThis.Array<T> implemen
     public minimumBy  = minimumByContext;
 
     // universal
+    // @ts-ignore
     public map        = mapContext;
 
     // getter setter
-    public get head () {
+    public get head (): ArraySecondElement<Predicate> {
+        // @ts-ignore
         return head(this) as ArrayFirstElement<Predicate>;
     }
 
-    public get tail () {
+    public get tail (): ArraySecondElement<Predicate> {
+        // @ts-ignore
         return tail(this) as ArraySecondElement<Predicate>;
     }
 
@@ -181,7 +187,7 @@ export default Array;
 export { default as at }        from "./at";
 export { default as averageBy } from "./average/by";
 export { default as averageOf } from "./average/of";
-export { default as clone }     from "./clone";
+// export { default as clone }     from "./clone";
 export { default as concat }    from "./concat";
 export { default as countBy }   from "./count/by";
 export { default as countOf }   from "./count/of";

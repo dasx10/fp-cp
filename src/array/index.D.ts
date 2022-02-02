@@ -23,7 +23,7 @@ export type ArrayTypes<Tuple extends any[]> = Tuple extends Array<infer T, infer
 
 // export type LastElement<Tuple extends any[]>   = FirstElement<Reverse<Tuple>>;
 
-export type ArrayType<Tuple extends any[]> = Tuple extends Array<infer T, infer P> ? T : Tuple extends (infer Type)[] ? Type : never;
-export type ArrayFirstElement<InputArray extends any[]>  = InputArray extends [infer FirstElement, ...infer NextElements] ? FirstElement : never;
-export type ArraySecondElement<InputArray extends any[]> = InputArray extends [infer FirstElement, infer SecondElement, ...infer NextElements] ? SecondElement : never;
-export type ArrayLastElement<Tuple extends any[]> = ArrayFirstElement<ArrayReverse<Tuple>>;
+export type ArrayType<Tuple extends any[] | Array<any>> = Tuple extends Array<infer T, infer P> ? T : Tuple extends (infer Type)[] ? Type : never;
+export type ArrayFirstElement<InputArray extends any[] | Array<any>>  = InputArray extends [infer FirstElement, ...infer NextElements] ? FirstElement : never;
+export type ArraySecondElement<InputArray extends any[] | Array<any>> = InputArray extends [infer FirstElement, infer SecondElement, ...infer NextElements] ? SecondElement : never;
+export type ArrayLastElement<Tuple extends any[] | Array<any>> = ArrayFirstElement<ArrayReverse<Tuple>>;

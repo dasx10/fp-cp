@@ -1,4 +1,3 @@
-import pipe from "../../../function/pipe";
 import { ExcludeNumber } from "../../index.D";
 
 /**

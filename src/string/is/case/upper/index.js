@@ -1,9 +1,9 @@
-/**
- * @param {string} string 
- * @returns {boolean}
- */
-function isUpper (string) {
-    return string.toLowerCase() !== string && string.toUpperCase() === string; 
-}
+// /**
+//  * @param {string} string 
+//  * @returns {boolean}
+//  */
+// function isUpper (string) {
+//     return string.toLowerCase() !== string && string.toUpperCase() === string; 
+// }
 
-module.exports = isUpper;
+// module.exports = isUpper;

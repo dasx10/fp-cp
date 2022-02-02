@@ -1,1 +1,1 @@
-module.exports = String.prototype.trimLeft.call
+// module.exports = String.prototype.trimLeft.call

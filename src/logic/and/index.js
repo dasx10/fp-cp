@@ -1,8 +1,8 @@
-// @ts-nocheck
-function and (source) {
-    return function useAnd (expect) {
-        return expect && source;
-    }
-}
+// // @ts-nocheck
+// function and (source) {
+//     return function useAnd (expect) {
+//         return expect && source;
+//     }
+// }
 
-module.exports = and;
+// module.exports = and;

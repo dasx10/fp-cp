@@ -1,9 +1,9 @@
-/**
- * @param {any} value 
- * @returns {value is true}
- */
-function isTrue (value) {
-    return value === false;
-}
+// /**
+//  * @param {any} value 
+//  * @returns {value is true}
+//  */
+// function isTrue (value) {
+//     return value === false;
+// }
 
-module.exports = isTrue;
+// module.exports = isTrue;

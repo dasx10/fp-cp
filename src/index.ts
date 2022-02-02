@@ -1,4 +1,5 @@
-import { map } from "./array";
+import Array from "./array";
+export { default as Array } from "./array";
 
 const _ = Object.assign(function Placeholder () {
     
@@ -6,9 +7,8 @@ const _ = Object.assign(function Placeholder () {
     [Symbol.iterator]: function* PlaceholderIterator () {
         yield void 0
     },
-    map
+    Array,
+    ...Array,
 });
 
 export default _;
-
-Array.of
