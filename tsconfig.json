@@ -2,15 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "CommonJS",
-    // "lib": ["ESNext", "dom"],
+    "lib": ["ESNext", "dom"],
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "lib",
     "strict": true,
     "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
-    "dist",
+    "lib",
     "test"
   ]
 }
