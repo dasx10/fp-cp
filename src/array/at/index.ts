@@ -1,14 +1,62 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { CharsOf } from '../../string/char/sOf/index.D';
+import type Array from '../index';
+
 /**
- * @example 
+ * @example
  * const at3 = at(3);
  * at3([1, 2, 3, 4]); // 4
  * at3('test') // 't'
 */
-function at <Index extends number>(index: Index) {
-    const isLtZero = index < 0;
-    return function useAt <Value extends any[] | string>(arrayOrString: Value): (Value extends (infer ArrayElement)[] ? Value[Index] : string) | void {
-        return arrayOrString[isLtZero ? arrayOrString.length - index : index];
-    }
+
+function at <
+  Index extends number,
+  InputArray extends Array<any, any[]>,
+>(index: Index): InputArray extends Array<infer _, infer U>
+  ? U extends [infer F, ...infer N] ? U[Index] : (U[Index] | void)
+  : InputArray extends Array<infer U>
+    ? (U | undefined) : never;
+
+function at <Index extends number>(index: Index): <
+  From extends string | any[],
+>(from: From) => From extends string
+  ? CharsOf<From>[Index]
+  : From[Index];
+
+function at <
+  Index extends number,
+  InputArray extends any[],
+>(index: Index, array: InputArray): InputArray extends [infer _F, ...infer _N]
+  ? InputArray[Index]
+  : InputArray extends (infer ArrayElement)[]
+    ? ArrayElement | void
+    : never;
+
+function at <
+    Index extends number,
+    Value extends string,
+  >(index: Index, string: Value): CharsOf<Value>[Index];
+
+function at <
+  Key extends keyof InputRecord,
+  InputRecord extends Record<PropertyKey, any>,
+>(key: Key, record: InputRecord): InputRecord[Key];
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function at <
+  Index extends number,
+  From extends string | Record<PropertyKey, any>,
+>(index: Index, from ?: From) {
+  const isLtZero = index < 0;
+  if (arguments.length === 1) {
+    return function useAt <From2 extends string | any[]>(
+      from2: From2,
+    ) {
+      return from2[isLtZero ? from2.length - index : index];
+    };
+  }
+
+  return (from as From)[isLtZero ? (from as From).length - index : index];
 }
 
 export default at;
