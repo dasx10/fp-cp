@@ -1,5 +1,4 @@
 // /**
-//  * 
 //  * @param {Record<PropertyKey, (el: any) => any>} complex 
 //  * @returns {(array: ArrayElement[]) => ArrayElement[]}
 //  * @template ArrayElement

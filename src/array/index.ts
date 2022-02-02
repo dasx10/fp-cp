@@ -2,59 +2,60 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // static
-import at from './at';
-import head from './at/head';
-import tail from './at/tail';
-import atRight from './at/right';
+import at from './at/index';
+import head from './at/head/index';
+import tail from './at/tail/index';
+import atRight from './at/right/index';
 
-import averageBy from './average/by';
-import averageOf from './average/of';
+import averageBy from './average/by/index';
+import averageOf from './average/of/index';
 
 // import clone             from "./clone";
-import concat from './concat';
-import countOf from './count/of';
-import countBy from './count/by';
-import map from './map';
+import concat from './concat/index';
+import countOf from './count/of/index';
+import countBy from './count/by/index';
+import map from './map/index';
 
-import fill from './fill';
-import fillFull from './fill/full';
-import fillStart from './fill/start';
-import fillEnd from './fill/end';
+import fill from './fill/index';
+import fillFull from './fill/full/index';
+import fillStart from './fill/start/index';
+import fillEnd from './fill/end/index';
 
-import filter from './filter';
+import filter from './filter/index';
 
-import find from './find';
-import findRight from './find/right';
-import findIndex from './find/index';
-import findIndexRight from './find/index/right';
+import find from './find/index';
+import findRight from './find/right/index';
+import findIndex from './find/index/index';
+import findIndexRight from './find/index/right/index';
 
-import forEach from './forEach';
-import forEachRight from './forEach/right';
-import groupBy from './groupBy';
-import indexOf from './indexOf';
-import lastIndexOf from './indexOf/last';
-import isEmpty from './is/empty';
-import join from './join';
-import joinUp from './join/up';
-import joinBy from './join/by';
-import keyBy from './keyBy';
-import limit from './limit';
-import maximumBy from './maximum/by';
-import maximumOf from './maximum/of';
-import minimumBy from './minimum/by';
-import minimumOf from './minimum/of';
-import partition from './partition';
-import reduce from './reduce';
-import reduceRight from './reduce/right';
+import forEach from './forEach/index';
+import forEachRight from './forEach/right/index';
+import groupBy from './groupBy/index';
+import indexOf from './indexOf/index';
+import lastIndexOf from './indexOf/last/index';
+import isEmpty from './is/empty/index';
+import join from './join/index';
+import joinUp from './join/up/index';
+import joinBy from './join/by/index';
+import keyBy from './keyBy/index';
+import limit from './limit/index';
+import maximumBy from './maximum/by/index';
+import maximumOf from './maximum/of/index';
+import minimumBy from './minimum/by/index';
+import minimumOf from './minimum/of/index';
+import partition from './partition/index';
+import reduce from './reduce/index';
+import reduceRight from './reduce/right/index';
 
 // context
-import averageByContext from './average/by/context';
-import countByContext from './count/by/context';
-import countOfContext from './count/of/context';
-import countOfAnyContext from './count/of/any/context';
-import mapContext from './map/context';
-import maximumByContext from './maximum/by/context';
-import minimumByContext from './minimum/by/context';
+import averageByContext from './average/by/context/index';
+import countByContext from './count/by/context/index';
+import countOfContext from './count/of/context/index';
+import countOfAnyContext from './count/of/any/context/index';
+import mapContext from './map/context/index';
+import maximumByContext from './maximum/by/context/index';
+import minimumByContext from './minimum/by/context/index';
+
 import { ArrayFirstElement, ArraySecondElement } from './index.D';
 
 /**
@@ -205,14 +206,12 @@ class Array<
     return this.length;
   }
 
-  public get head(): ArraySecondElement<Predicate> {
-    // @ts-ignore
-    return head(this) as ArrayFirstElement<Predicate>;
+  public get head(): Predicate[0] {
+    return this[0];
   }
 
   public get tail(): ArraySecondElement<Predicate> {
-    // @ts-ignore
-    return tail(this) as ArraySecondElement<Predicate>;
+    return this[this.length - 1] as ArraySecondElement<Predicate>;
   }
 
   public get isEmpty(): boolean {
