@@ -29,32 +29,26 @@ Difference extends any[],
     : Difference
   : [];
 
-export type ArrayTypes<Tuple extends any[]> = Tuple extends Array<infer T, infer Predicate>
-  ? Predicate
-  : Tuple;
-
 // export type LastElement<Tuple extends any[]>   = FirstElement<Reverse<Tuple>>;
 
 export type ArrayType<
-  Tuple extends any[] | Array<any>,
-> = Tuple extends Array<infer T, infer _>
-  ? T
-  : Tuple extends (infer Type)[]
+  Tuple extends any[],
+> = Tuple extends (infer Type)[]
     ? Type
     : never;
 
 export type ArrayFirstElement<
-  InputArray extends any[] | Array<any>,
+  InputArray extends any[],
 > = InputArray extends [infer FirstElement, ...infer _]
   ? FirstElement
   : never;
 
 export type ArraySecondElement<
-  InputArray extends any[] | Array<any>,
+  InputArray extends any[],
 > = InputArray extends [infer _, infer SecondElement, ...infer _]
   ? SecondElement
   : never;
 
 export type ArrayLastElement<
-  Tuple extends any[] | Array<any>,
+  Tuple extends any[],
 > = ArrayFirstElement<ArrayReverse<Tuple>>;

@@ -1,20 +1,16 @@
 /* eslint-disable no-plusplus */
-import Array from '../index';
-import type { ArrayType } from '../index.D';
 import type { ArrayMaybeReverse } from './index.D';
 
-function reverse <
-  T extends any[] | Array<any, any[]>,
->(array: T): Array<ArrayType<T>, ArrayMaybeReverse<T>> {
+function reverse <T extends any[]>(array: T): ArrayMaybeReverse<T> {
   let { length } = array;
-  const reversed = new Array<ArrayType<T>, ArrayMaybeReverse<T>>(length);
+  const reversed = new Array(length);
   let index = 0;
   while (index < length) {
     reversed[index] = array[length];
     index++;
     length--;
   }
-  return reversed;
+  return reversed as ArrayMaybeReverse<T>;
 }
 
 export default reverse;

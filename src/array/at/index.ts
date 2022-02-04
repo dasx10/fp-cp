@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CharsOf } from '../../string/char/sOf/index.D';
 import type Array from '../index';
+import type { Chars } from '../../string/chars/index.D';
 
 /**
  * @example
@@ -9,18 +9,10 @@ import type Array from '../index';
  * at3('test') // 't'
 */
 
-function at <
-  Index extends number,
-  InputArray extends Array<any, any[]>,
->(index: Index): InputArray extends Array<infer _, infer U>
-  ? U extends [infer F, ...infer N] ? U[Index] : (U[Index] | void)
-  : InputArray extends Array<infer U>
-    ? (U | undefined) : never;
-
 function at <Index extends number>(index: Index): <
   From extends string | any[],
 >(from: From) => From extends string
-  ? CharsOf<From>[Index]
+  ? Chars<From>[Index]
   : From[Index];
 
 function at <
@@ -35,7 +27,7 @@ function at <
 function at <
     Index extends number,
     Value extends string,
-  >(index: Index, string: Value): CharsOf<Value>[Index];
+  >(index: Index, string: Value): Chars<Value>[Index];
 
 function at <
   Key extends keyof InputRecord,

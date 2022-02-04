@@ -1,4 +1,4 @@
-import curry3            from "../../function/curry/3";
+import curry3 from "../../function/curry/3/index";
 import { ExcludeNumber } from "../index.D";
 
 // @ts-ignore

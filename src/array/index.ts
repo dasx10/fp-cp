@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -47,188 +48,49 @@ import partition from './partition/index';
 import reduce from './reduce/index';
 import reduceRight from './reduce/right/index';
 
-// context
-import averageByContext from './average/by/context/index';
-import countByContext from './count/by/context/index';
-import countOfContext from './count/of/context/index';
-import countOfAnyContext from './count/of/any/context/index';
-import mapContext from './map/context/index';
-import maximumByContext from './maximum/by/context/index';
-import minimumByContext from './minimum/by/context/index';
+const array = Object.assign(Array, {
+  at,
+  head,
+  tail,
+  atRight,
 
-import { ArrayFirstElement, ArraySecondElement } from './index.D';
+  averageBy,
+  averageOf,
+  concat,
+  countOf,
+  countBy,
+  map,
 
-/**
- * @example
- * const myNumberArray = new Array(2); // Array<number> -> [empty, empty];
- * myNumberArray.push(2);
- * myNumberArray.push(3);
- * myNumberArray; // [2, 3];
- *
- * const days = Array.of('san', 'mon', 'wen'); // Array<string> -> ['san', 'mon', 'wen'];
- */
+  fill,
+  fillFull,
+  fillStart,
+  fillEnd,
 
-// @ts-ignore
+  filter,
 
-export type ExtractPredicate<
-  InputArray extends Array<any, any[]>,
-> = InputArray extends Array<infer _, infer P>
-  ? P
-  : InputArray extends Array<infer ArrayElement>
-    ? ArrayElement[]
-    : never;
+  find,
+  findRight,
+  findIndex,
+  findIndexRight,
 
-class Array<
-  T,
-  Predicate extends T[] = T[],
-> extends globalThis.Array<T> implements ReadonlyArray<T> {
-  // @ts-ignore
-  public at<
-    Value extends number,
-  >(index: Value): Predicate extends [infer _, ...infer __] ? Predicate[Value] : (T | void);
+  forEach,
+  forEachRight,
+  groupBy,
+  indexOf,
+  lastIndexOf,
+  isEmpty,
+  join,
+  joinUp,
+  joinBy,
+  keyBy,
+  limit,
+  maximumBy,
+  maximumOf,
+  minimumBy,
+  minimumOf,
+  partition,
+  reduce,
+  reduceRight,
+});
 
-  static readonly at = at;
-
-  static readonly atRight = atRight;
-
-  static readonly head = head;
-
-  static readonly tail = tail;
-
-  static readonly averageBy = averageBy;
-
-  static readonly averageOf = averageOf;
-
-  // static readonly clone          = clone;
-  static readonly concat = concat;
-
-  static readonly countOf = countOf;
-
-  static readonly countBy = countBy;
-
-  static readonly fillFull = fillFull;
-
-  static readonly fillStart = fillStart;
-
-  static readonly fillEnd = fillEnd;
-
-  static readonly fill = fill;
-
-  static readonly filter = filter;
-
-  static readonly find = find;
-
-  static readonly findRight = findRight;
-
-  static readonly findIndex = findIndex;
-
-  static readonly findIndexRight = findIndexRight;
-
-  static readonly forEach = forEach;
-
-  static readonly forEachRight = forEachRight;
-
-  static readonly groupBy = groupBy;
-
-  static readonly indexOf = indexOf;
-
-  static readonly lastIndexOf = lastIndexOf;
-
-  static readonly isEmpty = isEmpty;
-
-  static readonly join = join;
-
-  static readonly joinUp = joinUp;
-
-  static readonly joinBy = joinBy;
-
-  static readonly keyBy = keyBy;
-
-  static readonly limit = limit;
-
-  static readonly maximumBy = maximumBy;
-
-  static readonly maximumOf = maximumOf;
-
-  static readonly minimumBy = minimumBy;
-
-  static readonly minimumOf = minimumOf;
-
-  static readonly partition = partition;
-
-  static readonly map = map;
-
-  static readonly reduce = reduce;
-
-  static readonly reduceRight = reduceRight;
-
-  static of <T extends any[]>(...args: T) {
-    const { length } = args;
-    const array = new this<T extends(infer U)[] ? U : any, T>(length);
-    let index = 0;
-    while (index < length) {
-      array[index] = args[index];
-      index++;
-    }
-    return array;
-  }
-
-  static from <T extends any[]>(fromArray: T) {
-    const { length } = fromArray;
-    const array = new this<T extends(infer U)[] ? U : any, T>(length);
-    let index = 0;
-    while (index < length) {
-      array[index] = fromArray[index];
-      index++;
-    }
-    return array;
-  }
-
-  constructor(length = 0) {
-    super(length);
-  }
-
-  public get averageBy() { return averageByContext; }
-
-  public get countBy() { return countByContext; }
-
-  public get countOf() { return countOfContext; }
-
-  public get countOfAny() { return countOfAnyContext; }
-
-  public get maximumBy() { return maximumByContext; }
-
-  public get minimumBy() { return minimumByContext; }
-
-  // getter setter
-
-  get length(): Predicate['length'] {
-    return this.length;
-  }
-
-  public get head(): Predicate[0] {
-    return this[0];
-  }
-
-  public get tail(): ArraySecondElement<Predicate> {
-    return this[this.length - 1] as ArraySecondElement<Predicate>;
-  }
-
-  public get isEmpty(): boolean {
-    return this.length === 0;
-  }
-
-  public get isNoEmpty(): boolean {
-    return this.length > 0;
-  }
-
-  public get isUniq(): boolean {
-    return new Set(this).size === this.length;
-  }
-
-  public get uniq(): Array<T, T[]> {
-    return Array.of(...new Set<T>(this));
-  }
-}
-
-export default Array;
+export default array;
