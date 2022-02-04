@@ -1,4 +1,4 @@
-import { ParametersConsistent } from "../../index.D";
+import { ParametersConsistent, ParametersConsistentEver } from "../../index.D";
 import { ReturnTypeCurry } from "../index.D";
 
 /** 
@@ -16,21 +16,20 @@ function curry2 <FirstArgument, SecondArgument, Result>(executor: (firstArgument
 function curry2 <FirstArgument, SecondArgument, Result>(executor: (firstArgument: FirstArgument, secondArgument: SecondArgument) => Result, firstArgument: FirstArgument): (secondArgument: SecondArgument, ...ignore: any[]) => Result;
 
 function curry2 <
-    Executor       extends (...args: [any, any]) => any,
-    StartArguments extends ParametersConsistent<Executor>
-> (executor: Executor, ...startArguments: StartArguments): ReturnTypeCurry<Executor, StartArguments>;
+    Executor extends (a: any, b: any) => any,
+> (executor: Executor): <Args extends ParametersConsistentEver<Executor>>(...args: Args) => ReturnTypeCurry<Executor, Args>;
 
 // function curry2 <FirstArgument, SecondArgument, Result>(executor: (firstArgument: FirstArgument, secondArgument: SecondArgument) => Result): (firstArgument: FirstArgument, secondArgument ?: SecondArgument) => Result | ((secondArgument: SecondArgument) => Result);
-function curry2 <FirstArgument, SecondArgument, Result>(executor: (firstArgument: FirstArgument, secondArgument: SecondArgument) => Result, firstArgument?: FirstArgument, secondArgument?: SecondArgument, ...ignore: any[]) {
+function curry2 <A, B, R>(executor: (a: A, b: B) => R, a?: A, b?: B, ...ignore: any[]) {
 		switch (arguments.length) {
-				case 1: return function useCurry2 (firstArgument: FirstArgument, secondArgument?: SecondArgument) {
+				case 1: return function useCurry2 (a: A, b?: B) {
 						switch (arguments.length) {
-								case 1 : return (secondArgument: SecondArgument) => executor(firstArgument, secondArgument);
-								default: return executor(firstArgument, secondArgument as SecondArgument);
+								case 1 : return (b: B) => executor(a, b);
+								default: return executor(a, b as B);
 						}
 				};
-				case 2 : return (secondArgument: SecondArgument) => executor(firstArgument as FirstArgument, secondArgument);
-				default: return executor(firstArgument as FirstArgument, secondArgument as SecondArgument);
+				case 2 : return (b: B) => executor(a as A, b);
+				default: return executor(a as A, b as B);
 		}
 }
 
