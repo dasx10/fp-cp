@@ -1,8 +1,5 @@
-// const complement = require("../../../function/compliment");
+import complement from "../../../function/compliment/index";
+import isFinite from "../finite/index";
 
-// /**
-//  * @type {(value: any) => value is Infinity}
-//  */
-// // @ts-ignore
-// const isInfinity = complement(isFinite)
-// module.exports = isInfinity;
+const isInfinity = complement(isFinite);
+export default isInfinity;

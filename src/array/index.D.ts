@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type Array from './index';
 import type { ArrayReverse } from './reverse/index.D';
 
 export type ArrayIterateFunction<
@@ -29,17 +28,11 @@ Difference extends any[],
     : Difference
   : [];
 
-export type ArrayTypes<Tuple extends any[]> = Tuple extends Array<infer T, infer Predicate>
-  ? Predicate
-  : Tuple;
-
 // export type LastElement<Tuple extends any[]>   = FirstElement<Reverse<Tuple>>;
 
 export type ArrayType<
   Tuple extends any[],
-> = Tuple extends Array<infer T, infer _>
-  ? T
-  : Tuple extends (infer Type)[]
+> = Tuple extends (infer Type)[]
     ? Type
     : never;
 
@@ -58,11 +51,3 @@ export type ArraySecondElement<
 export type ArrayLastElement<
   Tuple extends any[],
 > = ArrayFirstElement<ArrayReverse<Tuple>>;
-
-export type ExtractPredicate<
-  InputArray extends Array<any, any[]>,
-> = InputArray extends Array<infer _, infer P>
-  ? P
-  : InputArray extends Array<infer ArrayElement>
-    ? ArrayElement[]
-    : never;

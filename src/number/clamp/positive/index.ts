@@ -16,8 +16,5 @@ export type Positive<X extends number = number> = number extends X
  * const a = positive(-3); // 0
  * const b = positive(3); // 3
  */
-function positive <X extends number>(x: X): Positive<X> {
-    return (x >= 0 ? x : 0) as Positive<X>;
-}
-
+const positive = <X extends number>(x: X) => (x > 0 ? x : 0) as Positive<X>;
 export default positive;

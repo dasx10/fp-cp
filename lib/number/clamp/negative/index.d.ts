@@ -10,5 +10,5 @@ export declare type Negative<X extends number = number> = number extends X ? num
  * const a = negative(-3); // -3
  * const b = negative(3); // 0
  */
-declare function negative<Value extends number>(value: Value): Negative<Value>;
+declare const negative: <X extends number>(x: X) => Negative<X>;
 export default negative;

@@ -1,5 +1,4 @@
-import Array from "..";
-import { ArrayIterateFunction } from "../index.D";
+import type { ArrayIterateFunction } from '../index.D';
 /**
  * @param {(element: ArrayElement, index: number, array: ArrayElement[]) => any} executor
  * @returns {(array: Array<ArrayElement>) => [ArrayElement[], ArrayElement[]]}

@@ -11,5 +11,5 @@ export declare type Positive<X extends number = number> = number extends X ? num
  * const a = positive(-3); // 0
  * const b = positive(3); // 3
  */
-declare function positive<X extends number>(x: X): Positive<X>;
+declare const positive: <X extends number>(x: X) => Positive<X>;
 export default positive;

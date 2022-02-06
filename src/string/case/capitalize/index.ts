@@ -3,7 +3,7 @@ function capitalize <Value extends string>(string: Value): Capitalize<Lowercase<
         // @ts-ignore
         case 0 : return '';
         // @ts-ignore
-        case 1 : return string[0].toUpperCase();
+        case 1 : return string.toUpperCase();
         // @ts-ignore
         default: return string[0].toUpperCase() + string.substr(1).toLowerCase()
     }

@@ -1,7 +1,8 @@
-import { AnyFunction, ParametersConsistent } from "../index.D";
-import { ReturnTypeCurry } from "./index.D";
+import type { AnyFunction, ParametersConsistent } from '../index.D';
+import type { ReturnTypeCurry } from './index.D';
 /**
- * @description returns a series of `functions` or `result`. depends on the number of input parameters
+ * @description returns a series of `functions` or `result`.
+ * depends on the number of input parameters
  * @example
  * const add = (a: number, b: number): number => a + b; // function (a: number, b: number) => number
  * const addCurry = curry(add); // (a: number, b?: number) => ((b: number) => number) | number

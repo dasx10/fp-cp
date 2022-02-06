@@ -1,6 +1,5 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/no-cycle */
-import Array from '../index';
 import type { ArrayIterateFunction } from '../index.D';
 
 /**
