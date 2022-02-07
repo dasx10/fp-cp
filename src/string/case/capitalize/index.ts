@@ -1,11 +1,13 @@
-function capitalize <Value extends string>(string: Value): Capitalize<Lowercase<Value>> {
-    switch (string.length) {
+export type ToCapitalize<X extends string> = string extends X ? string : Capitalize<Lowercase<X>>;
+
+function capitalize <X extends string>(x: X): ToCapitalize<X> {
+    switch (x.length) {
         // @ts-ignore
         case 0 : return '';
         // @ts-ignore
-        case 1 : return string.toUpperCase();
+        case 1 : return x.toUpperCase();
         // @ts-ignore
-        default: return string[0].toUpperCase() + string.substr(1).toLowerCase()
+        default: return x[0].toUpperCase() + x.substr(1).toLowerCase()
     }
 }
 

@@ -3,6 +3,7 @@ import type { TupleConsistent, TupleDifference } from "../../array/index.D";
 import type { ArrayReverse } from "../../array/reverse/index.D";
 import type { AnyFunction } from "../index.D";
 import curry2 from "../curry/2/index";
+import add from "../../number/calc/add/index";
 
 type LastOmit<Tuple extends any[]> = ArrayReverse<Tuple> extends [infer F, ...infer P]
   ? ArrayReverse<P> : Tuple;
