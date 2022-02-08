@@ -1,6 +1,5 @@
 import _curry2 from "../../../function/curry/_2/index";
-import type { FirstParameter } from "../../../../dist/function/index.D";
-import type { SecondParameter } from "../../../function/index.D";
+import type { FirstParameter, SecondParameter } from "../../../function/index.D";
 
 // @ts-ignore
 function mapKeys <

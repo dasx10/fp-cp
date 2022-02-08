@@ -22,6 +22,19 @@ declare const _: typeof wrap & {
     parseFloat(string: string): number;
     parseInt(string: string, radix?: number | undefined): number;
     add: typeof import("./number/calc/add/index").default;
+    difference: {
+        (y: number): (x: number) => number;
+        (y: number, x: number): number;
+    };
+    multiple: {
+        (y: number): (x: number) => number;
+        (y: number, x: number): number;
+    };
+    divide: {
+        (y: number): (x: number) => number;
+        (y: number, x: number): number;
+    };
+    average: typeof import("./number/calc/average/index").default;
     fromCharCode(...codes: number[]): string;
     fromCodePoint(...codePoints: number[]): string;
     raw(template: {
@@ -30,6 +43,7 @@ declare const _: typeof wrap & {
     chars: typeof import("./string/chars/index").default;
     charAt: typeof import("./string/char/at/index").default;
     toLowerCase: <Value extends string>(value: String | Value) => Lowercase<Value>;
+    numeric: typeof import("./string/replace/pattern/numeric/index").default;
     apply: {
         <T, R>(this: (this: T) => R, thisArg: T): R;
         <T_1, A extends any[], R_1>(this: (this: T_1, ...args: A) => R_1, thisArg: T_1, args: A): R_1;

@@ -1,4 +1,7 @@
 import { FirstParameter, SecondParameter } from "../../index.D";
-declare type F2<A = any, B = any, R = any> = (a: A, b: B) => R;
-declare function _curry2<Executor extends F2>(executor: Executor): <A extends FirstParameter<Executor>, B extends (SecondParameter<Executor> | undefined)>(a: A, b?: B) => SecondParameter<Executor> extends B ? <B extends SecondParameter<Executor>>(b: B) => ReturnType<Executor> : ReturnType<Executor>;
+declare type F2<Y = any, X = any, R = any> = (y: Y, x: X) => R;
+declare function _curry2<Y extends FirstParameter<Executor>, X extends SecondParameter<Executor>, R extends ReturnType<Executor>, Executor extends F2>(executor: Executor | F2<Y, X, R>): {
+    (y: Y): (x: X) => R;
+    (y: Y, x: X): R;
+};
 export default _curry2;

@@ -1,4 +1,4 @@
-import { ArrayMaybeReverse } from "../../../../dist/array/reverse/index.D";
+import { ArrayMaybeReverse } from "../../reverse/index.D";
 
 type Inverse <Index extends number> = `${Index}` extends `-${infer Positive}`
   ? Positive
