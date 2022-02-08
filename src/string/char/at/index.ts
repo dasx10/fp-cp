@@ -1,7 +1,7 @@
-import { CharOf } from "./index.D";
+import { CharAt } from "./index.D";
 
-function charAt <Value extends string>(index: number, value: Value | String): CharOf<Value>;
-function charAt <Index extends number>(index: Index): <Value extends string>(value: string) => CharOf<Value>;
+function charAt <Index extends number, Value extends string>(index: Index, value: Value): CharAt<Value, Index>;
+function charAt <Index extends number>(index: Index): <Value extends string>(value: Value) => CharAt<Value, Index>;
 function charAt (index: number, value?: string) {
     const isGteZero = index >= 0;
     return arguments.length === 1
@@ -11,3 +11,6 @@ function charAt (index: number, value?: string) {
 }
 
 export default charAt;
+
+
+const a = charAt(1, '  ');

@@ -3,7 +3,7 @@ export type ToCapitalize<X extends string> = string extends X ? string : Capital
 function capitalize <X extends string>(x: X): ToCapitalize<X> {
     switch (x.length) {
         // @ts-ignore
-        case 0 : return '';
+        case 0 : return x;
         // @ts-ignore
         case 1 : return x.toUpperCase();
         // @ts-ignore

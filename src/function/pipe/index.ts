@@ -306,3 +306,4 @@ function pipe <
 }
 
 export default pipe;
+

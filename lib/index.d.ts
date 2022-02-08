@@ -1,9 +1,12 @@
+import wrap from './function/wrap/index';
 /**
  * ### Multiline placeholder
  */
 export declare type __ = symbol | '…_ ← ƒ(…_, ← …×s) ⇒ ∏ ≡ ƒ(…×s): ∏';
-declare const _: (() => undefined) & {
-    prototype: Number;
+declare const _: typeof wrap & {
+    queryJson: <Url_1 extends string>(url: Url_1) => Record<string, string | true | (string | true)[]>;
+    createObjectURL(obj: Blob | MediaSource): string;
+    revokeObjectURL(url: string): void;
     MAX_VALUE: number;
     MIN_VALUE: number;
     NaN: number;
@@ -18,7 +21,7 @@ declare const _: (() => undefined) & {
     MIN_SAFE_INTEGER: number;
     parseFloat(string: string): number;
     parseInt(string: string, radix?: number | undefined): number;
-    add: <A extends number, B extends number | undefined>(a: A, b?: B | undefined) => number extends B ? <B_1 extends B & number>(b: B_1) => number : number;
+    add: typeof import("./number/calc/add/index").default;
     fromCharCode(...codes: number[]): string;
     fromCodePoint(...codePoints: number[]): string;
     raw(template: {
@@ -29,7 +32,7 @@ declare const _: (() => undefined) & {
     toLowerCase: <Value extends string>(value: String | Value) => Lowercase<Value>;
     apply: {
         <T, R>(this: (this: T) => R, thisArg: T): R;
-        <T_1, A_1 extends any[], R_1>(this: (this: T_1, ...args: A_1) => R_1, thisArg: T_1, args: A_1): R_1;
+        <T_1, A extends any[], R_1>(this: (this: T_1, ...args: A) => R_1, thisArg: T_1, args: A): R_1;
     } & typeof import("./function/apply/index").default;
     compose: typeof import("./function/compose/index").default;
     constanta: typeof import("./function/const/index").default;

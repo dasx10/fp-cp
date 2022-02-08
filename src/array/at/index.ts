@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type Array from '../index';
 import type { Chars } from '../../string/chars/index.D';
 
 /**

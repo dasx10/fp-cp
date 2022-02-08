@@ -5,6 +5,8 @@ import def    from './function/index';
 import array  from './array/index';
 import string from './string/index';
 import number from './number/index';
+import Url from './url/index';
+import wrap from './function/wrap/index';
 /**
  * ### Multiline placeholder
  */
@@ -19,7 +21,7 @@ export type __ = symbol | '…_ ← ƒ(…_, ← …×s) ⇒ ∏ ≡ ƒ(…×s):
  */
 const ___ = Symbol.for('__') as __;
 
-const _ = Object.assign(() => undefined, {
+const _ = Object.assign(wrap, {
   [Symbol.iterator]: function* PlaceholderIterator(): Generator<__, void, void> {
     yield ___;
   },
@@ -27,10 +29,13 @@ const _ = Object.assign(() => undefined, {
   ...def,
   ...string,
   ...number,
+  ...Url
 });
 
 export default _;
 
-
-
-Math.PI
+const f = _.divide(3)
+const a = 
+_(_.add(2))
+._(_.add(2))
+._(_.divide, 3)

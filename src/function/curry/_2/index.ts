@@ -1,18 +1,22 @@
 import { FirstParameter, SecondParameter } from "../../index.D";
 
-type F2 <A = any, B = any, R = any> = (a: A, b: B) => R;
+type F2 <Y = any, X = any, R = any> = (y: Y, x: X) => R;
 
-function _curry2 <Executor extends F2>(executor: Executor): <
-  A extends FirstParameter<Executor>,
-  B extends (SecondParameter<Executor> | undefined)
-> (a: A, b?: B) => SecondParameter<Executor> extends B
-? <B extends SecondParameter<Executor>>(b: B) => ReturnType<Executor>
-: ReturnType<Executor>;
+function _curry2 <
+  Y extends FirstParameter<Executor>,
+  X extends SecondParameter<Executor>,
+  R extends ReturnType<Executor>,
+  Executor extends F2,
+>(executor: Executor | F2<Y, X, R>) {
+  function useCurry2 (y: Y): (x: X) => R;
+  function useCurry2 (y: Y, x: X): R;
 
-function _curry2 <Executor extends F2>(executor: Executor) {
-  return function (a: FirstParameter<Executor>, b?: SecondParameter<Executor>) {
-    return arguments.length === 1 ? (b: SecondParameter<Executor>) => executor(a, b) : executor(a, b as SecondParameter<Executor>);
+  function useCurry2 (y: Y, x?: X): R | ((x: X) => R) {
+    return arguments.length === 1 
+      ? (x: X) => executor(y, x)
+      : executor(y, x as X);
   }
+  return useCurry2;
 }
 
 export default _curry2;

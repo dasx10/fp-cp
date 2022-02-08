@@ -1,2 +1,2 @@
-declare const capitalizeOf: <Value extends string>(array: Value[]) => Capitalize<Lowercase<Value>>[];
+declare const capitalizeOf: <X extends string>(array: X[]) => import("../../../string/case/capitalize/index").ToCapitalize<X>[];
 export default capitalizeOf;
