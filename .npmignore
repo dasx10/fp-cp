@@ -1,0 +1,10 @@
+/node_modules
+/src
+webpack.config.js
+tsconfig.json
+README.hbs
+jsdoc2md.json
+.eslintrc
+.eslintignore
+.editorconfig
+.babelrc

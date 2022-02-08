@@ -1,10 +1,14 @@
 {
   "name": "fp-cp",
-  "version": "0.0.2",
+  "version": "0.0.19",
   "description": "function programing component",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "f": "npm run build & node index.js",
+    "test": "jest",
+    "build": "webpack --env production && npm run docs",
+    "docs": "jsdoc2md --template ./README.hbs --files ./lib/*.ts --configure ./jsdoc2md.json > ./README.md"
   },
   "repository": {
     "type": "git",
@@ -18,5 +22,22 @@
   "bugs": {
     "url": "https://github.com/dasx10/fpc/issues"
   },
-  "homepage": "https://github.com/dasx10/fpc#readme"
+  "homepage": "https://github.com/dasx10/fpc#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.0",
+    "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.7.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "jest": "^27.4.7",
+    "jsdoc-babel": "^0.5.0",
+    "jsdoc-to-markdown": "^7.1.1",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
+  }
 }
