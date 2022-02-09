@@ -33,9 +33,3 @@ const _ = Object.assign(wrap, {
 });
 
 export default _;
-
-const f = _.divide(3)
-const a = 
-_(_.add(2))
-._(_.add(2))
-._(_.divide, 3)

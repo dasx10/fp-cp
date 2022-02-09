@@ -1,7 +1,5 @@
-import { All } from "../../../is/index.D";
-
 // @ts-ignore
-function isFinite (arg: unknown): boolean;
+function isFinite (x: unknown): x is number;
 
 // @ts-ignore
 const isFinite = globalThis.isFinite;

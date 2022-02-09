@@ -6,4 +6,4 @@
 //     return typeof value === 'number' && !isNaN(value);
 // }
 
-// module.exports = isNumber;
+// // module.exports = isNumber;

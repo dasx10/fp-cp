@@ -1,4 +1,5 @@
 import curry3 from "../../function/curry/3/index";
+import _curry3 from "../../function/curry/3/_/index";
 import { ExcludeNumber } from "../index.D";
 
 // @ts-ignore
@@ -30,7 +31,8 @@ function clamp <
     Args extends [] | [ExcludeNumber<X, MAX | MIN>]
 >(maximum: ExcludeNumber<MAX, MIN>, ...x: Args) => Args extends [X] ? MAX | MIN | X : <X>(x: X) => MAX | MIN | X;
 // @ts-ignore
-const clamp = curry3(function clamp <
+
+const clamp = _curry3(function clamp <
     MIN extends number,
     MAX extends number,
     X   extends number

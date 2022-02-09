@@ -1,6 +1,6 @@
 {
   "name": "fp-cp",
-  "version": "0.0.19",
+  "version": "0.0.21",
   "description": "function programing component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
