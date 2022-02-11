@@ -1,8 +1,6 @@
-import { TupleConsistentEvery } from "../../../array/index.D";
-import { FirstParameter, ParametersConsistent, ParametersConsistentEver, SecondParameter } from "../../index.D";
-import { ReturnTypeCurry } from "../index.D";
+import _, { placeholder } from "../../../index";
+import { Def2, FirstParameter, SecondParameter } from "../../index.D";
 
-type F2 <A = any, B = any, R = any> = (a: A, b: B) => R;
 
 /** 
  * optimization curry 2 arguments
@@ -16,24 +14,26 @@ type F2 <A = any, B = any, R = any> = (a: A, b: B) => R;
  * const sumAdd2 = add2(3, 2);                                 // 5
  * */
 
-function curry2 <
-  E extends F2,
-> (executor: E): <
-  A extends FirstParameter<E>,
-  B extends SecondParameter<E> | undefined
->(a: A, b?: B) => [A, B] extends Parameters<E> ? ReturnType<E> : <B extends SecondParameter<E>>(b: B) => ReturnType<E>;
+function curry2 <Def extends Def2, Y extends Parameters<Def>[0]>(executor: Def, y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
+function curry2 <Def extends Def2, X extends Parameters<Def>[1]>(executor: Def, _: placeholder, x: X): <Y extends Parameters<Def>[0]>(y: Y) => ReturnType<Def>;
 
-function curry2 <A, B, R>(executor: F2<A, B, R>, a: A): (b: B) => R;
-function curry2 <A, B, R>(executor: F2<A, B, R>, a?: A, b?: B) {
+function curry2 <Def extends Def2>(executor: Def): {
+  <Y extends Parameters<Def>[0], X extends Parameters<Def>[1]>(y: Y, x: X): ReturnType<Def>;
+  <Y extends Parameters<Def>[0]>(y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
+  <X extends Parameters<Def>[1]>(_:placeholder ,x: X): <Y extends Parameters<Def>[0]>(y: Y) => ReturnType<Def>;
+};
+
+
+function curry2 <Y, X, R>(executor: Def2<Y, X, R>, y?: Y | X | placeholder, x?: X) {
 		switch (arguments.length) {
-				case 1: return function useCurry2 (a: A, b?: B) {
+				case 1: return function useCurry2 (y: Y | X | placeholder, x?: X) {
 						switch (arguments.length) {
-								case 1 : return (b: B) => executor(a, b);
-								default: return executor(a, b as B);
+								case 1 : return (x: X) => executor(<Y>y, x);
+								default: return arguments[0] === _ ? (x: Y) => executor(x, <X>y) : executor(<Y>y, <X>x);
 						}
 				};
-				case 2 : return (b: B) => executor(a as A, b);
-				default: return executor(a as A, b as B);
+				case 2 : return (x: X) => executor(<Y>y, x);
+				default: return arguments[1] === _ ? (x: Y) => executor(x, <X>y) : executor(<Y>y, <X>x);
 		}
 }
 

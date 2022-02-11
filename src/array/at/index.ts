@@ -8,17 +8,14 @@ import { At } from './index.D';
  * at3([1, 2, 3, 4]); // 4
  * at3('test') // 't'
 */
-type InA = any[] | readonly any[]
+// type InA = any[] | readonly any[]
 
-function at <Index extends number, X extends InA>(index: Index, array: X): At<Index, X>;
+function at <Index extends number, X extends readonly any[]>(index: Index, array: X): At<Index, X>;
 function at <Index extends number, X extends string>(index: Index, string: X): At<Index, Chars<X>>;
 function at <Index extends number>(index: Index): {
-  <X extends InA>(array: X): At<Index, X>;
+  <X extends readonly any[]>(array: X): At<Index, X>;
   <X extends string>(string: X): At<Index, Chars<X>>;
 };
-
-function at <Key extends keyof X, X extends Partial<Record<Key, any>>> (key: Key, record: X): X[Key];
-function at <Key extends PropertyKey>(key: Key): <X extends Partial<Record<Key, any>>>(record: X) => X[Key] 
 
 function at <
   Index extends number,
@@ -37,3 +34,6 @@ function at <
 }
 
 export default at;
+
+
+const a = at(2, [1, 2, 3, 4, 5] as const);
