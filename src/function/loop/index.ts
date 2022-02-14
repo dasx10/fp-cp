@@ -1,7 +1,7 @@
-import type { AnyFunction } from "../index.D";
+import type { AnyDef } from "../index.D";
 
 function loop (count = 2) {
-    return function useLoop <Executor extends AnyFunction>(executor: Executor, ...args: Parameters<Executor>) {
+    return function useLoop <Executor extends AnyDef>(executor: Executor, ...args: Parameters<Executor>) {
         let index = 0;
         const results = new Array(count);
         while (index < count) {

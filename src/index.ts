@@ -5,8 +5,8 @@ import def    from './function/index';
 import array  from './array/index';
 import string from './string/index';
 import number from './number/index';
-import Url from './url/index';
-import wrap from './function/wrap/index';
+import Url    from './url/index';
+import wrap   from './function/wrap/index';
 /**
  * ### Multiline placeholder
  */

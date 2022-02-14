@@ -1,53 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { ArrayReverse } from './reverse/index.D';
 
-export type ArrayIterateFunction<
-  ArrayElement = any,
-  Return = any,
-> = (element: ArrayElement, index: number, array: ArrayElement[]) => Return;
+export type ArrayIterateFunction<X = any, R = any> = (element: X, index: number, array: readonly X[]) => R;
 
-export type TupleConsistentEvery<
-  Tuple extends any[],
-> = Tuple extends [infer First, ...infer Next]
-  ? [First] | [First, ...TupleConsistentEvery<Next>]
-  : [];
-
-export type TupleConsistent<
-  Tuple extends any[],
-> = Tuple extends [infer First, ...infer Next]
-  ? [] | [First] | [First, ...TupleConsistentEvery<Next>]
-  : [];
-
+export type TupleConsistentEvery<T extends readonly any[]> = T extends readonly [infer X, ...infer N] ? [X] | [X, ...TupleConsistentEvery<N>] : [];
+export type TupleConsistent<T extends readonly any[]> = TupleConsistentEvery<T> | [];
 export type TupleDifference<
-Tuple extends any[],
-Difference extends any[],
-> = Difference extends [infer DifferenceFirst, ...infer DifferenceNext]
-  ? Tuple extends [infer First, ...infer Next]
-    ? First extends DifferenceFirst ? TupleDifference<Next, DifferenceNext>
-      : DifferenceNext
-    : Difference
-  : [];
+  T extends readonly any[],
+  D extends readonly any[],
+> = D extends readonly [infer DX, ...infer DN]
+  ? T extends readonly [infer X, ...infer N]
+    ? X extends DX ? TupleDifference<N, DN> : DN
+  : D
+: [];
 
 // export type LastElement<Tuple extends any[]>   = FirstElement<Reverse<Tuple>>;
 
-export type ArrayType<
-  Tuple extends any[],
-> = Tuple extends (infer Type)[]
-    ? Type
-    : never;
-
-export type ArrayFirstElement<
-  InputArray extends any[],
-> = InputArray extends [infer FirstElement, ...infer _]
-  ? FirstElement
-  : never;
-
-export type ArraySecondElement<
-  InputArray extends any[],
-> = InputArray extends [infer _, infer SecondElement, ...infer _]
-  ? SecondElement
-  : never;
-
-export type ArrayLastElement<
-  Tuple extends any[],
-> = ArrayFirstElement<ArrayReverse<Tuple>>;
+export type ArrayType<T extends readonly any[]> = T extends readonly (infer X)[] ? X : never;

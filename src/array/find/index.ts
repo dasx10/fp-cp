@@ -4,8 +4,8 @@
  * findZero([1, 2, 6, 0, 7]); // 0
  * findZero(['a', 'b', 'c']); // undefined
  */
-function find <T>(executor: (element: T, index: number, array: T[]) => any) {
-    return function useFind (array: T[]) {
+function find <T>(executor: (element: T, index: number, array: readonly T[]) => any) {
+    return function useFind (array: readonly T[]) {
         const { length } = array;
         let index = 0;
         while (index < length) {

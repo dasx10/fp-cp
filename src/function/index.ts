@@ -2,7 +2,7 @@ import apply from './apply/index';
 import compose from './compose/index';
 import constanta from './const/index';
 import curry from './curry/index';
-import { AnyFunction } from './index.D';
+import { AnyDef } from './index.D';
 import loop from './loop/index';
 import once from './once/index';
 import partial from './partial/index';

@@ -1,4 +1,4 @@
-import { AnyFunction, Def0, Def1, Def2, Def3, Def4 } from "../index.D";
+import { AnyDef, Def0, Def1, Def2, Def3, Def4 } from "../index.D";
 
 type FS <AR extends any[]> = AR extends [infer A, infer R, ...infer N] ? [Def1<A, R>, ...FS<[R, ...N]>] : [];
 
@@ -238,7 +238,7 @@ function pipe <A, A2, A3, A4, R, R1, R2, R3, R4, R5, R6, R7, R8, R9, R0> (
 // Four
 
 function pipe <
-    F1 extends AnyFunction,
+    F1 extends AnyDef,
     F2 extends Def1<ReturnType<F1>>,
     FS extends Def1[]
 > (f: F1, f2: F2, ...functions: FS) {

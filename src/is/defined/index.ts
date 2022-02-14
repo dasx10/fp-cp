@@ -1,11 +1,10 @@
 import { All } from "../index.D";
+import { IS_DEFINED } from "./index.D";
 
 export type Defined = Exclude<All, undefined>;
 
 // @ts-ignore
-function isDefined (x: Defined): true;
-// @ts-ignore
-function isDefined (x: undefined): false;
+function isDefined <X>(x: X): IS_DEFINED<X>;
 // @ts-ignore
 function isDefined (x: unknown): x is Defined;
 

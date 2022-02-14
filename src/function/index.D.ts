@@ -1,14 +1,17 @@
-import { ArrayFirstElement, TupleConsistent, TupleConsistentEvery } from "../array/index.D";
+import { Head }                                  from "../array/at/head/index.D";
+import { TupleConsistent, TupleConsistentEvery } from "../array/index.D";
 
-export type AnyFunction<Args extends any[] = any[], Return = any> = (...args: Args) => Return;
 
-export type ParametersConsistent     <Executor extends AnyFunction> = TupleConsistent<Parameters<Executor>>;
-export type ParametersConsistentEver <Executor extends AnyFunction> = TupleConsistentEvery<Parameters<Executor>>;
+// Use Parameter
+export type ParametersConsistent     <Def extends AnyDef> = TupleConsistent<Parameters<Def>>;
+export type ParametersConsistentEver <Def extends AnyDef> = TupleConsistentEvery<Parameters<Def>>;
 
-export type FirstParameter <Executor extends AnyFunction> = ArrayFirstElement<Parameters<Executor>>;
-export type SecondParameter<Executor extends AnyFunction> = Executor extends (first: infer First, second: infer Second, ...args: infer Next) => any ? Second : never;
-export type ThirdParameter <Executor extends AnyFunction> = Executor extends (first: infer First, second: infer Second, third: infer Third, ...args: infer Next) => any ? Third : never;
+export type FirstParameter <Def extends AnyDef> = Head<Parameters<Def>>;
+export type SecondParameter<Def extends AnyDef> = Def extends ((x: any, y: infer Y, ...args: any[]) => any) ? Y : never;
+export type ThirdParameter <Def extends AnyDef> = Def extends ((x: any, y: any, z: infer Z, ...args: any[]) => any) ? Z : never;
 
+// Defs
+export type AnyDef<Args extends any[] = any[], R = any> = (...args: Args) => R;
 export type Def0<R> = () => R;
 export type Def1<X = any, R = any> = (x: X) => R;
 export type Def2<Y = any, X = any, R = any> = (y: Y, x: X) => R;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { AnyFunction, ParametersConsistent } from '../index.D';
+import type { AnyDef, ParametersConsistent } from '../index.D';
 import type { ReturnTypeCurry } from './index.D';
 
 /**
@@ -15,7 +15,7 @@ import type { ReturnTypeCurry } from './index.D';
  * const sum = addCurry(1, 2); // 3
  */
 function curry <
-    Executor extends AnyFunction,
+    Executor extends AnyDef,
     StartArguments extends ParametersConsistent<Executor>,
 >(
   executor: Executor,

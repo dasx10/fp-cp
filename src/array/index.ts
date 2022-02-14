@@ -1,7 +1,3 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable no-plusplus */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // static
 import at      from './at/index';
 import head    from './at/head/index';
@@ -9,7 +5,7 @@ import tail    from './at/tail/index';
 import atRight from './at/right/index';
 
 import averageBy from './average/by/index';
-import averageOf from './average/of/index';
+import averageFrom from './average/from/index';
 
 // import clone             from "./clone";
 import concat  from './concat/index';
@@ -57,7 +53,7 @@ const array = Object.assign(Array, {
   atRight,
 
   averageBy,
-  averageOf,
+  averageFrom,
   concat,
   countOf,
   countBy,

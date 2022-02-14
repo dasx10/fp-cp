@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-function averageOf(array: number[]) {
+function averageFrom(array: number[]) {
   const { length } = array;
   if (length) {
     let index = 0;
@@ -14,4 +14,4 @@ function averageOf(array: number[]) {
   return 0;
 }
 
-export default averageOf;
+export default averageFrom;

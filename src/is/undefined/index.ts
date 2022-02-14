@@ -1,9 +1,7 @@
-import { Defined } from "../defined/index";
+import { IS_UNDEFINED } from "./index.D";
 
 // @ts-ignore
-function isUndefined (x: undefined): true;
-// @ts-ignore
-function isUndefined (x: Defined): false;
+function isUndefined <X>(x: X): IS_UNDEFINED<X>;
 // @ts-ignore
 function isUndefined (x: unknown): x is undefined;
 

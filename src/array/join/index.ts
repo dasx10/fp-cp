@@ -1,4 +1,4 @@
-function join (separator = ', ') {
+function join (separator: string) {
     return function useJoin (array: string[]) {
         const { length } = array;
         if (length) {

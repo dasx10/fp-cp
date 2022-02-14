@@ -1,25 +1,25 @@
 import curry from "../curry/index";
-import type { ArrayLastElement, TupleConsistent, TupleDifference } from "../../array/index.D";
-import type { ArrayReverse } from "../../array/reverse/index.D";
-import type { AnyFunction } from "../index.D";
 
-type LastOmit<Tuple extends any[]> = ArrayReverse<Tuple> extends [infer F, ...infer P]
-  ? ArrayReverse<P> : Tuple;
+// interfaces
+import type { TupleConsistent, TupleDifference } from "../../array/index.D";
+import type { AnyDef }  from "../index.D";
+import type { Tail }    from "../../array/at/tail/index.D";
+import type { DropEnd } from "../../array/drop/end/index.D";
 
 function wrap <
   Result = any,
   OriginalArgs extends any[] = any[],
   Args extends TupleConsistent<OriginalArgs> = TupleConsistent<OriginalArgs>,
->(executor: AnyFunction<OriginalArgs, Result>, ...argsExecutor: Args) {
+>(executor: AnyDef<OriginalArgs, Result>, ...argsExecutor: Args) {
   // @ts-ignore
   return Object.assign(curry(executor, ...argsExecutor), {
     _ <
       WrapResult,
       WrapArguments extends [Result] | [...any[], Result],
-      Input extends LastOmit<WrapArguments>
+      Input extends DropEnd<WrapArguments>
     >(wrapper: 
-      AnyFunction<WrapArguments, WrapResult>
-      | (<A extends ArrayLastElement<Args>>(x: A) => WrapResult),
+      AnyDef<WrapArguments, WrapResult>
+      | (<A extends Tail<Args>>(x: A) => WrapResult),
       ...argsWrapper: Input
     ) {
       // @ts-ignore
