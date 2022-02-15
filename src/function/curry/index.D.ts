@@ -1,8 +1,8 @@
 import { TupleConsistentEvery, TupleDifference } from "../../array/index.D";
-import { AnyFunction, ParametersConsistent } from "../index.D";
+import { DefAny, ParametersConsistent } from "../index.D";
 
 export type ReturnTypeCurry<
-    Executor        extends AnyFunction,
+    Executor        extends DefAny,
     InputParameters extends ParametersConsistent<Executor>
 > = InputParameters extends Parameters<Executor>
     ? ReturnType<Executor>

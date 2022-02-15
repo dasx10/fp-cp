@@ -2,10 +2,10 @@
 import reverse from "../../../array/reverse/index";
 
 // interfaces
-import type { AnyFunction } from "../../index.D";
+import type { DefAny } from "../../index.D";
 
 function partialRight <
-    Executor extends AnyFunction
+    Executor extends DefAny
 >(executor: Executor, ...startArguments: Parameters<Executor>) {
     return function usePartialRight (...nextArguments: any) {
       // @ts-ignore

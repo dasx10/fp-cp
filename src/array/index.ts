@@ -50,6 +50,8 @@ import partition   from './partition/index';
 import reduce      from './reduce/index';
 import reduceRight from './reduce/right/index';
 
+import sort        from './sort/index';
+
 const array = Object.assign(Array, {
   at,
   head,
@@ -93,6 +95,8 @@ const array = Object.assign(Array, {
   partition,
   reduce,
   reduceRight,
+
+  sort
 });
 
 export default array;
