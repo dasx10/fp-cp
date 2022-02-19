@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { AnyFunction } from '../index.D';
+import { DefAny } from '../index.D';
 
 function compose <
-    FirstFunction extends AnyFunction,
-    SecondFunction extends AnyFunction<ReturnType<FirstFunction>>,
+    FirstFunction extends DefAny,
+    SecondFunction extends DefAny<ReturnType<FirstFunction>>,
     // @ts-ignore
-    Functions extends [...(AnyFunction)[], SecondFunction, FirstFunction],
+    Functions extends [...(DefAny)[], SecondFunction, FirstFunction],
 >(...executors: Functions) {
   return function useCompose(...lastExecutorArguments: Parameters<FirstFunction>) {
     let result = (executors.pop() as FirstFunction)(...lastExecutorArguments);

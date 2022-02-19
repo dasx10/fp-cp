@@ -1,5 +1,7 @@
+import { IS_BOOLEAN } from "./index.D";
+
 // @ts-ignore
-function isBoolean (x: boolean): true;
+function isBoolean <X>(x: X): IS_BOOLEAN<X>;
 
 // @ts-ignore
 function isBoolean (x: unknown): x is boolean;

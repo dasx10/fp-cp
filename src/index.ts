@@ -33,3 +33,8 @@ const _ = Object.assign(wrap, {
 });
 
 export default _;
+
+
+type Inc <Value extends number, T extends any[] = []> = Value extends T['length'] 
+? [...T, Value]['length']
+: Inc<Value, [...T, Value]>
