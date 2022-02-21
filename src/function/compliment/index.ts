@@ -1,16 +1,8 @@
-// /**
-//  * @param {Executor} executor
-//  * @return {(...args: Parameters<Executor>) => boolean}
-//  * @template {(...args: any) => any} Executor
-//  */
-// function complement (executor) {
-//     return function useComplement (...args) {
-//         // @ts-ignore
-//         return !executor(...args);
-//     }
-// }
-
-// module.exports = complement;
+/**
+ * @param {Executor} executor
+ * @return {(...args: Parameters<Executor>) => boolean}
+ * @template {(...args: any) => any} Executor
+ */
 // @ts-ignore
 function complement <T extends any[]>(executor: (...args: T) => false): (...args: T) => true;
 // @ts-ignore

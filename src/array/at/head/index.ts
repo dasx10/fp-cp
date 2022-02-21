@@ -1,10 +1,10 @@
-import type { ArrayFirstElement } from '../../index.D';
+import { Chars } from '../../../string/chars/index.D';
+import { Head } from './index.D';
 
-function head <
-  Value extends any[] | string,
->(arrayOrString: Value): (Value extends any[]
-  ? ArrayFirstElement<Value> : string) | void {
-  return arrayOrString[0];
+function head <X extends any[]>(x: X): Head<X>;
+function head <X extends string>(x: X): Head<Chars<X>>;
+function head (x: string | any[]) {
+  return x[0];
 }
 
 export default head;

@@ -8,13 +8,10 @@
  * eq4(2); // false
  */
 
-import { ExcludeNumberType } from "../../index.D";
 
 function isEq <Y extends number, X extends number>(y: Y, x: X): IS_EQUALS_NUMBERS<Y, X>;
-
 function isEq <Y extends number> (y: Y): {
   <X extends number>(x: X): IS_EQUALS_NUMBERS<Y, X>;
-  (x: ExcludeNumberType): false;
   (x: unknown): x is Y
 }
 

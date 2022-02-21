@@ -1,6 +1,8 @@
+import { All } from "../../../is/index.D";
 import { IS_NUMBER } from "./index.D";
 
-function isNumber <X>(x: X): IS_NUMBER<X>;
+function isNumber <X extends number>(x: X): true;
+function isNumber <X extends Exclude<All, number>>(x: X): false;
 function isNumber (x: unknown): x is number;
 function isNumber (x: any) {
   return typeof x === 'number';

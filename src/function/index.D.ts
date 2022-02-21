@@ -4,7 +4,7 @@ import { ArrayFirstElement, TupleConsistent, TupleConsistentEvery } from "../arr
 export type ParametersConsistent     <Executor extends DefAny> = TupleConsistent<Parameters<Executor>>;
 export type ParametersConsistentEver <Executor extends DefAny> = TupleConsistentEvery<Parameters<Executor>>;
 
-export type FirstParameter <Executor extends DefAny> = ArrayFirstElement<Parameters<Executor>>;
+export type FirstParameter <Executor extends DefAny> = Executor extends ((f: infer F, ...arg: any[]) => any) ? F : never;
 export type SecondParameter<Executor extends DefAny> = Executor extends (first: infer First, second: infer Second, ...args: infer Next) => any ? Second : never;
 export type ThirdParameter <Executor extends DefAny> = Executor extends (first: infer First, second: infer Second, third: infer Third, ...args: infer Next) => any ? Third : never;
 
