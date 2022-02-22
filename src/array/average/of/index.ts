@@ -1,3 +1,4 @@
+import unApply from "../../../function/apply/un/index";
 import averageIn from "../in/index";
-const averageOf = (...numbers: number[]) => averageIn(numbers)
+const averageOf = unApply(averageIn);
 export default averageOf;
