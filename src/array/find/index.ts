@@ -1,19 +1,16 @@
+import _curry2 from "../../function/curry/2/_/index";
+import _find from "./_/index";
+import type { IterateDef } from "../index.D";
+
 /**
  * @example
  * const findZero = find((element) => element === 0);
  * findZero([1, 2, 6, 0, 7]); // 0
  * findZero(['a', 'b', 'c']); // undefined
  */
-function find <T>(executor: (element: T, index: number, array: T[]) => any) {
-    return function useFind (array: T[]) {
-        const { length } = array;
-        let index = 0;
-        while (index < length) {
-            const element = array[index];
-            if (executor(element, index, array)) return element;
-            index++;
-        }
-    }
-}
+const find: {
+  <X>(def: IterateDef<X>, array: X[]): X | void;
+  <X>(def: IterateDef<X>): (array: X[]) => X | void;
+} = _curry2(_find)
 
 export default find;

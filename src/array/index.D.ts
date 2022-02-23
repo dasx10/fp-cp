@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { ArrayReverse } from './reverse/index.D';
 
-export type ArrayIterateFunction<
+export type IterateDef<
   ArrayElement = any,
   Return = any,
 > = (element: ArrayElement, index: number, array: readonly ArrayElement[]) => Return;

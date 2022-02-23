@@ -1,5 +1,6 @@
 import _curry2 from "../../../function/curry/2/_/index";
-import { ExcludeNumber } from "../../index.D";
+import _min from "./_/index";
+import type { MIN } from "./_/index.D";
 
 /**
  * @param {number} minimum
@@ -12,11 +13,9 @@ import { ExcludeNumber } from "../../index.D";
  * min3(8); // 8
  * min3(1); // 1
  */
-// @ts-ignore
-function min <X extends number>(x: X): <Y extends number>(y: ExcludeNumber<Y, X>) => X | Y;
-// @ts-ignore
-function min <X extends number, Y extends number>(x: X, y: ExcludeNumber<Y, X>): X | Y;
-// @ts-ignore
-const min = _curry2((y: number, x: number) => x < y ? x : y);
+const min: {
+  <Y extends number, X extends number>(y: Y, x: X): MIN<Y, X>
+  <Y extends number, X extends number>(y: Y, x: X): MIN<Y, X>
+} = _curry2(_min);
 
 export default min;

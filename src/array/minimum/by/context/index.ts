@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../../../index.D";
+import { IterateDef } from "../../../index.D";
 
-function minimumByContext <T>(this: T[], executor: ArrayIterateFunction<T, number>) {
+function minimumByContext <T>(this: T[], executor: IterateDef<T, number>) {
     const { length } = this;
     let minimum = executor(this[0], 0, this);
     let index = 1;

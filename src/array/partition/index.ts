@@ -1,13 +1,13 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/no-cycle */
-import type { ArrayIterateFunction } from '../index.D';
+import type { IterateDef } from '../index.D';
 
 /**
  * @param {(element: ArrayElement, index: number, array: ArrayElement[]) => any} executor
  * @returns {(array: Array<ArrayElement>) => [ArrayElement[], ArrayElement[]]}
  * @template ArrayElement
  */
-function partition <T>(executor: ArrayIterateFunction<T>) {
+function partition <T>(executor: IterateDef<T>) {
   return function usePartition(array: T[]): [Array<T>, Array<T>] {
     const { length } = array;
     const accept = new Array<T>();

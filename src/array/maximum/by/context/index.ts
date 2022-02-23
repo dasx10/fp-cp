@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../../../index.D";
+import { IterateDef } from "../../../index.D";
 
-function maximumByContext <T>(this: T[], executor: ArrayIterateFunction<T, number>) {
+function maximumByContext <T>(this: T[], executor: IterateDef<T, number>) {
     const { length } = this;
     if (length) {
         let index = 1;

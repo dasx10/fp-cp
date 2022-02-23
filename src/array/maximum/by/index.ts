@@ -1,7 +1,7 @@
 import { FirstParameter } from "../../../function/index.D";
-import { ArrayIterateFunction } from "../../index.D";
+import { IterateDef } from "../../index.D";
 
-function maximumBy <Executor extends ArrayIterateFunction<any, number>>(executor: Executor) {
+function maximumBy <Executor extends IterateDef<any, number>>(executor: Executor) {
     return function useMaximumBy (array: FirstParameter<Executor>[]) {
         const { length } = array;
         if (length) {

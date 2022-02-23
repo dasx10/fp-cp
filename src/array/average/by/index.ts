@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-plusplus */
-import { ArrayIterateFunction } from '../../index.D';
+import { IterateDef } from '../../index.D';
 
 function averageBy <ArrayElement>(
-  executor: ArrayIterateFunction<ArrayElement, number>,
+  executor: IterateDef<ArrayElement, number>,
   array: ArrayElement[]): number;
 
 function averageBy <ArrayElement>(
-  executor: ArrayIterateFunction<ArrayElement, number>
+  executor: IterateDef<ArrayElement, number>
 ): (array: ArrayElement[]) => number;
 
 function averageBy <ArrayElement>(
@@ -16,7 +16,7 @@ function averageBy <ArrayElement>(
   ) => number, array: ArrayElement[]): number;
 
 function averageBy <ArrayElement>(
-  executor: ArrayIterateFunction<ArrayElement, number>,
+  executor: IterateDef<ArrayElement, number>,
   array?: ArrayElement[],
 ) {
   if (arguments.length === 1) {

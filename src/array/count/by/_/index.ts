@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../../../index.D";
+import { IterateDef } from "../../../index.D";
 
-function _countBy <ArrayElement>(executor: ArrayIterateFunction<ArrayElement>, array: ArrayElement[]) {
+function _countBy <ArrayElement>(executor: IterateDef<ArrayElement>, array: ArrayElement[]) {
   const { length } = array;
   if (length > 0) {
     let index = 0;
