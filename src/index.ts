@@ -7,6 +7,7 @@ import string from './string/index';
 import number from './number/index';
 import Url from './url/index';
 import wrap from './function/wrap/index';
+import is from './is/index';
 /**
  * ### Multiline placeholder
  */
@@ -25,6 +26,7 @@ const _ = Object.assign(wrap, {
   [Symbol.iterator]: function* PlaceholderIterator(): Generator<__, void, void> {
     yield ___;
   },
+  is,
   ...array,
   ...def,
   ...string,
@@ -33,8 +35,3 @@ const _ = Object.assign(wrap, {
 });
 
 export default _;
-
-
-type Inc <Value extends number, T extends any[] = []> = Value extends T['length'] 
-? [...T, Value]['length']
-: Inc<Value, [...T, Value]>
