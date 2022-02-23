@@ -11,5 +11,6 @@
 //  * value = decrement(value); // -1
 //  * value = decrement(value); // -2
 //  */
-// const decrement = value => value - 1;
-// module.exports   = decrement;
+import difference from "../index";
+const decrement = difference(1);
+export default decrement;

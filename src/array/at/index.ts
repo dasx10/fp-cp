@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Chars } from '../../string/chars/index.D';
+import head from './head/index';
 import type { At } from './index.D';
+import atRight from './right/index';
+import tail from './tail/index';
 
 /**
  * @example
@@ -22,4 +25,8 @@ function at (index: number, x?: any) {
     : x[isGTZero ? index : x.length - index];
 }
 
-export default at;
+export default Object.assign(at, {
+  right : atRight,
+  first : head,
+  last  : tail,
+});

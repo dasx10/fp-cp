@@ -1,43 +1,15 @@
-import curry3 from "../../function/curry/3/index";
 import _curry3 from "../../function/curry/3/_/index";
 import { ExcludeNumber } from "../index.D";
+import _clamp from "./_/index";
+import { Clamp } from "./_/index.D";
 
-// @ts-ignore
-function clamp <
-    MIN extends number,
-    MAX extends number,
-    X   extends number
->(
-    minimum : MIN,
-    maximum : ExcludeNumber<MAX, MIN>,
-    x       : ExcludeNumber<X, MAX | MIN>
-): MAX | MIN | X;
-
-// @ts-ignore
-function clamp <
-    MIN extends number,
-    MAX extends number,
->(
-    minimum: MIN,
-    maximum: ExcludeNumber<MAX, MIN>,
-): <X extends number>(x: ExcludeNumber<X, MAX | MIN>) => MAX | MIN | X;
-
-// @ts-ignore
-function clamp <
-    MIN extends number,
->(minimum: MIN): <
-    MAX  extends number,
-    X    extends number,
-    Args extends [] | [ExcludeNumber<X, MAX | MIN>]
->(maximum: ExcludeNumber<MAX, MIN>, ...x: Args) => Args extends [X] ? MAX | MIN | X : <X>(x: X) => MAX | MIN | X;
-// @ts-ignore
-
-const clamp = _curry3(function clamp <
-    MIN extends number,
-    MAX extends number,
-    X   extends number
->(minimum: MIN, maximum: MAX, x: X) {
-    return x < minimum ? minimum : x > maximum ? maximum : x;
-});
+const clamp: {
+  <MIN extends number>(min: MIN): {
+    <MAX extends number, X extends number>(max: MAX, x: number): Clamp<MIN, MAX, X>;
+    <MAX extends number>(max: MAX): <X extends number>(x: number) => Clamp<MIN, MAX, X>;
+  }
+  <MIN extends number, MAX extends number>(min: MIN, max: MAX): <X extends number>(x: X) => Clamp<MIN, MAX, X>
+  <MIN extends number, MAX extends number, X extends number> (min: MIN, max: MAX, x: X): Clamp<MIN, MAX, X>;
+} = _curry3(_clamp);
 
 export default clamp;

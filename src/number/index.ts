@@ -1,9 +1,11 @@
-import add        from "./calc/add/index"
+// calculate
+import sum        from "./calc/sum/index"
 import difference from "./calc/difference/index"
 import multiple   from "./calc/multiple/index"
 import divide     from "./calc/divide/index"
 import average    from "./calc/average/index"
 
+// test
 import isFinite   from "./is/finite/index"
 import isInfinity from "./is/infinity/index"
 import isInteger  from "./is/integer/index"
@@ -12,7 +14,7 @@ import isNegative from "./is/negative/index"
 import isPositive from "./is/positive/index"
 
 const lib = {
-  add,
+  sum,
   difference,
   multiple,
   divide,

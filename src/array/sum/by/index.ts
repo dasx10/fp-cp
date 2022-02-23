@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../../index.D";
+import { IterateDef } from "../../index.D";
 
-function sumBy <ArrayElement>(executor: ArrayIterateFunction<ArrayElement, number>, array: readonly ArrayElement[]) {
+function sumBy <ArrayElement>(executor: IterateDef<ArrayElement, number>, array: readonly ArrayElement[]) {
   const { length } = array;
   if (length) {
     let sum = 0;

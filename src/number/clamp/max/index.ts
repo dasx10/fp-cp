@@ -1,5 +1,7 @@
 import _curry2 from "../../../function/curry/2/_/index";
 import type { ExcludeNumber } from "../../index.D";
+import _max from "./_/index";
+import { MAX } from "./_/index.D";
 
 /**
  * @param {number} maximum
@@ -10,10 +12,10 @@ import type { ExcludeNumber } from "../../index.D";
  * max2(5) // 5
  * max2(1) // 2
  */
-// @ts-ignore
-function max <Y extends number, X extends number>(y: Y, x: ExcludeNumber<X, Y>): X | Y;
-// @ts-ignore
-function max <Y extends number>(y: Y): <X extends number>(x: ExcludeNumber<X, Y>) => X | Y;
-// @ts-ignore
-const max = _curry2((y: number, x: number) => x > y ? x : y);
+
+const max: {
+  <Y extends number, X extends number>(y: Y, x: X): MAX<Y, X>;
+  <Y extends number>(y: Y): <X extends number>(x: X) => MAX<Y, X>;
+} = _curry2(_max);
+
 export default max;

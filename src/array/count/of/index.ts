@@ -1,22 +1,20 @@
-import pipe from "../../../function/pipe/index";
-import { Tail } from "../../at/tail/index.D";
 import _countFrom from "../from/_/index";
+import type { Tail } from "../../at/tail/index.D";
 
-type CountOfDef <Args extends any[], T = any> = Tail<Args> extends readonly any[]
+type CountOfDef <Args extends T[], T = any> = Tail<Args> extends readonly any[]
 ? number
 : {
-  // (array: T[]): number;
-  (...args: [...T[], T[]]): number;
-  // (...args: T[]): CountOfDef<T[], T>
+  (array: T[]): number;
+  <N extends T[]>(...next: N): CountOfDef<N, T>;
+  <N extends T[]>(...next: [...N, T[]]): number;
 };
 
-function countOf <T>(...args: [...T[], T[]]): number;
-// @ts-ignore
+function countOf <T>(...args: [T, ...T[], T[]]): number;
 function countOf <T>(...args: T[]): {
   (array: T[]): number;
-  (...args: [T, ...T[], T[]] | [T, T[]] | [T[]]): number;
-  (...args: [T, ...T[]]): CountOfDef<T[], T>;
-}
+  <N extends T[]>(...next: N): CountOfDef<N, T>;
+  <N extends T[]>(...next: [...N, T[]]): number;
+};
 function countOf (...args: any[]) {
   const last = args.pop();
   if (Array.isArray(last)) return _countFrom(args, last);
@@ -24,10 +22,3 @@ function countOf (...args: any[]) {
 }
 
 export default countOf;
-const tt = countOf(1, 2);
-tt(1, 3, 4, [1])
-
-const a = pipe(
-  countOf(1, 2),
-  (a: number) => a + 1,
-)
