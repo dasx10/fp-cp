@@ -1,14 +1,14 @@
 function averageIn (array: number[]) {
   const { length } = array;
   if (length) {
-    let result = 0;
+    let sum = 0;
     let index = 0;
     while (index < length) {
-      result += array[index];
+      sum += array[index];
       index++;
     }
   
-    return result / length;
+    return sum / length;
   }
 
   return 0;

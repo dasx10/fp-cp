@@ -17,5 +17,3 @@ function sumBy <ArrayElement>(executor: ArrayIterateFunction<ArrayElement, numbe
 }
 
 export default sumBy;
-
-const a = sumBy((e: {a: number}) => e.a, [{a: 10} ])
