@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../index.D";
+import { IterateDef } from "../index.D";
 
-function keyBy <T, Executor extends ArrayIterateFunction<T, PropertyKey>>(executor: Executor) {
+function keyBy <T, Executor extends IterateDef<T, PropertyKey>>(executor: Executor) {
     return function useKeyBy (array: T[]): Record<ReturnType<Executor>, T> {
         const mapped = Object.create(null);
         const { length } = array;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Chars } from '../../../string/chars/index.D';
 import type { Head }  from './index.D';
 
@@ -22,6 +23,14 @@ function head <X extends any[]> (x: X): Head<X>;
 function head <X extends string>(x: X): Head<Chars<X>>;
 
 function head (x: any[] | string) {
+=======
+import { Chars } from '../../../string/chars/index.D';
+import { Head } from './index.D';
+
+function head <X extends any[]>(x: X): Head<X>;
+function head <X extends string>(x: X): Head<Chars<X>>;
+function head (x: string | any[]) {
+>>>>>>> 4bb63769e5dbc2d27c8ab0f3e6f3629910d82340
   return x[0];
 }
 

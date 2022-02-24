@@ -1,12 +1,7 @@
-// @ts-ignore
-function toggle (x: false): true;
-// @ts-ignore
-function toggle (x: true): false;
-// @ts-ignore
-function toggle (x: boolean): boolean;
+import { TOGGLE } from "./index.D";
 
+// @ts-ignore
+function toggle <X>(x: X): TOGGLE<X>;
 // @ts-ignore
 const toggle = <X extends boolean>(x: X) => !x;
 export default toggle;
-
-const a = toggle(!false as boolean)

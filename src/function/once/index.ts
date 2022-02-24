@@ -1,6 +1,6 @@
-import type { AnyFunction } from '../index.D';
+import type { DefAny } from '../index.D';
 
-function once <Executor extends AnyFunction> (executor: Executor) {
+function once <Executor extends DefAny> (executor: Executor) {
     let isNoRun = true;
     return function useOnce (...args: Parameters<Executor>) {
         if (isNoRun) return isNoRun = false, executor(...args);

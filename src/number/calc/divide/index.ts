@@ -1,3 +1,9 @@
 import _curry2 from "../../../function/curry/2/_/index";
-const divide = _curry2((y: number, x: number) => x / y);
+import _divide from "./_/index";
+
+const divide: {
+  <Y extends number, X extends number>(y: Y, x: X): number;
+  <Y extends number>(y: Y): <X extends number>(x: X) => number;
+} = _curry2(_divide);
+
 export default divide;

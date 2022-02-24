@@ -1,4 +1,7 @@
+import _curry2 from "../../../function/curry/2/_/index";
 import { FirstParameter } from "../../../function/index.D";
+import { IterateDef } from "../../index.D";
+import _countBy from "./_/index";
 
 /**
  * @example
@@ -7,17 +10,9 @@ import { FirstParameter } from "../../../function/index.D";
  * countIsGt2([0, 1, 2, 3, 4]); // 2
  * countIsGt2([3, 4, 9]);       // 2
  */
-function countBy <Executor extends <ArrayElement>(element: ArrayElement, index: number, array: ArrayElement[]) => any>(executor: Executor) {
-    return function useCountBy (array: FirstParameter<Executor>[]) {
-        let count = 0;
-        let index = 0;
-        const { length } = array;
-        while (index < length) {
-            if (executor(array[index], index, array)) count++;
-            index++;
-        }
-        return count;
-    }
-}
+const countBy: {
+  <X>(executor: IterateDef<X>): (array: X[]) => number;
+  <X>(executor: IterateDef<X>, array: X[]): number;
+} = _curry2(_countBy);
 
 export default countBy;

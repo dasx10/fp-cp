@@ -1,7 +1,7 @@
 import { FirstParameter } from '../../function/index.D';
-import { ArrayIterateFunction } from './../index.D';
+import { IterateDef } from './../index.D';
 
-function groupBy <Executor extends ArrayIterateFunction<any, PropertyKey>>(executor: Executor) {
+function groupBy <Executor extends IterateDef<any, PropertyKey>>(executor: Executor) {
     return function useGroupBy (array: FirstParameter<Executor>[]) {
         const groups = Object.create(null);
         let index = 0;

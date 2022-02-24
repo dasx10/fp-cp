@@ -1,2 +1,2 @@
-const half = (x: number) => x / 2;
+const half = <X extends number>(x: X) => x / 2;
 export default half;

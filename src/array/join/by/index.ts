@@ -1,6 +1,6 @@
-import { ArrayIterateFunction } from "../../index.D";
+import { IterateDef } from "../../index.D";
 
-function joinBy <T>(executor: ArrayIterateFunction<T, string>) {
+function joinBy <T>(executor: IterateDef<T, string>) {
     return function useJoinBy (array: T[]) {
         const { length } = array;
         if (length) {

@@ -1,7 +1,7 @@
 import { FirstParameter } from "../../../function/index.D";
-import { ArrayIterateFunction } from "../../index.D";
+import { IterateDef } from "../../index.D";
 
-function minimumBy <Executor extends ArrayIterateFunction<any, number>>(executor: Executor) {
+function minimumBy <Executor extends IterateDef<any, number>>(executor: Executor) {
     return function useMinimumBy (array: FirstParameter<Executor>[]) {
         const { length } = array;
         let minimum = executor(array[0], 0, array);

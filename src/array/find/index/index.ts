@@ -1,15 +1,9 @@
-import { FirstParameter } from './../../../function/index.D';
+import _curry2 from '../../../function/curry/2/_/index';
+import _findIndex from './_/index';
+import type { IterateDef } from '../../index.D';
 
-function findIndex <Executor extends <ArrayElement>(element: ArrayElement, index: number, array: ArrayElement[]) => any>(executor: Executor) {
-    return function useFindIndex (array: FirstParameter<Executor>[]) {
-        let index = 0;
-        const { length } = array;
-        while (index < length) {
-            if (executor(array[index], index, array)) return index;
-            index++;
-        }
-        return -1;
-    }
-}
-
+const findIndex: {
+  <X>(def: IterateDef<X>, array: X[]): number;
+  <X>(def: IterateDef<X>): (array: X[]) => number;
+} = _curry2(_findIndex)
 export default findIndex;

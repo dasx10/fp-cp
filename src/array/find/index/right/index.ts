@@ -1,12 +1,10 @@
-import { FirstParameter } from "../../../../function/index.D";
-import { ArrayIterateFunction } from "../../../index.D";
+import _curry2 from "../../../../function/curry/2/_/index";
+import _findIndexRight from "./_/index";
+import type { IterateDef } from "../../../index.D";
 
-function findIndexRight <Executor extends ArrayIterateFunction>(executor: Executor) {
-    return function useFindIndexRight (array: FirstParameter<Executor>[]) {
-        let { length } = array;
-        while (--length < 0) if (executor(array[length], length, array)) return length;
-        return -1;
-    }
-}
+const findIndexRight: {
+  <X>(def: IterateDef<X>, array: X[]): number;
+  <X>(def: IterateDef<X>): (array: X[]) => number;
+} = _curry2(_findIndexRight)
 
 export default findIndexRight;

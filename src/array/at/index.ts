@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Chars } from '../../string/chars/index.D';
-import { At } from './index.D';
+import head from './head/index';
+import type { At } from './index.D';
+import atRight from './right/index';
+import tail from './tail/index';
 
 /**
  * @example
@@ -8,6 +11,7 @@ import { At } from './index.D';
  * at3([1, 2, 3, 4]); // 4
  * at3('test') // 't'
 */
+<<<<<<< HEAD
 // type InA = any[] | readonly any[]
 
 function at <Index extends number, X extends readonly any[]>(index: Index, array: X): At<Index, X>;
@@ -29,11 +33,31 @@ function at <
       return from2[isLtZero ? from2.length - index : index];
     };
   }
+=======
+function at <Index extends number, X extends readonly any[]>(index: Index, x: X): At<Index, X>;
+function at <Index extends number, X extends string>(index: Index, x: X): At<Index, Chars<X>>;
+function at <Index extends number> (index: Index): {
+  <X extends readonly any[]>(x: X): At<Index, X>;
+  <X extends string>(x: X): At<Index, Chars<X>>;
+}
+>>>>>>> 4bb63769e5dbc2d27c8ab0f3e6f3629910d82340
 
-  return (from as From)[isLtZero ? (from as From).length - index : index];
+function at (index: number, x?: any) {
+  const isGTZero = index > 0;
+  return arguments.length === 1
+    ? (x: string | any[]) => x[isGTZero ? index : x.length - index]
+    : x[isGTZero ? index : x.length - index];
 }
 
+<<<<<<< HEAD
 export default at;
 
 
 const a = at(2, [1, 2, 3, 4, 5] as const);
+=======
+export default Object.assign(at, {
+  right : atRight,
+  first : head,
+  last  : tail,
+});
+>>>>>>> 4bb63769e5dbc2d27c8ab0f3e6f3629910d82340

@@ -1,9 +1,8 @@
+import { IS_FALSE } from "./index.D";
+
 // @ts-ignore
-function isFalse (x: true): false;
-// @ts-ignore
-function isFalse (x: false): true;
-// @ts-ignore
-function isFalse (x: boolean): boolean;
+function isFalse <X>(x: X): IS_FALSE<X>;
+
 // @ts-ignore
 function isFalse (x: unknown): x is false;
 
