@@ -6,4 +6,5 @@ type IS_NAN <Value extends number | Number> = number extends Value
             ? false
             : true : boolean;
 
+
 export default isNaN as <Value extends number>(number: Value) => IS_NAN<Value>;

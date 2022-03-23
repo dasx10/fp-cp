@@ -1,7 +1,7 @@
 import curry from "../curry/index";
-import type { ArrayLastElement, TupleConsistent, TupleDifference } from "../../array/index.D";
-import type { ArrayReverse } from "../../array/reverse/index.D";
+import type { TupleConsistent } from "../../array/index.D";
 import type { DefAny } from "../index.D";
+import type { ArrayReverse } from "../../_array/reverse/index.D";
 
 type LastOmit<Tuple extends any[]> = ArrayReverse<Tuple> extends [infer F, ...infer P]
   ? ArrayReverse<P> : Tuple;
@@ -19,7 +19,7 @@ function wrap <
       Input extends LastOmit<WrapArguments>
     >(wrapper: 
       DefAny<WrapArguments, WrapResult>
-      | (<A extends ArrayLastElement<Args>>(x: A) => WrapResult),
+      | (<A extends Tail<Args>>(x: A) => WrapResult),
       ...argsWrapper: Input
     ) {
       // @ts-ignore

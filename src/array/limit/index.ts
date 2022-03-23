@@ -1,17 +1,21 @@
-function limit (limitIndex: number) {
-    const isLtZero = limitIndex < 0;
-    return function useLimit <InputArray extends any[]>(array: InputArray): InputArray {
-        const { length } = array;
-        const finish = isLtZero ? limitIndex + length : limitIndex;
-        const limited = <InputArray>new Array(finish);
-        let index = 0;
-        while (index < finish) {
-            limited[index] = array[index];
-            index++;
-        }
-        
-        return limited;
-    }
+import _limitLeft  from "./left/_/index";
+import _limitRight from "./right/_/index";
+import _limit      from "./_/index";
+import limitLeft   from "./left/index";
+import limitRight  from "./right/index";
+
+import type { ArrayLimit } from "./_/index.D";
+
+function limit <Finish extends number, X extends any[]>(finish: Finish, array: X): ArrayLimit<Finish, X>;
+function limit <Finish extends number>(finish: Finish): <X extends any[]>(array: X) => ArrayLimit<Finish, X>
+function limit <Finish extends number, X extends any[]>(finish: Finish, array?: X) {
+  const executor = finish < 0 ? _limitRight : _limitLeft;
+  if (arguments.length > 1) return executor(finish, <X>array);
+  return <X extends any[]>(array: X) => executor(finish, array);
 }
 
-export default limit;
+export default Object.assign(limit, {
+  core  : _limit,
+  right : limitRight,
+  left  : limitLeft,
+});

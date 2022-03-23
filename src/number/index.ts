@@ -6,27 +6,22 @@ import divide     from "./calc/divide/index"
 import average    from "./calc/average/index"
 
 // test
-import isFinite   from "./is/finite/index"
-import isInfinity from "./is/infinity/index"
-import isInteger  from "./is/integer/index"
-import isNaN      from "./is/NaN/index"
-import isNegative from "./is/negative/index"
-import isPositive from "./is/positive/index"
+import is from "./is/index";
 
-const lib = {
+function number (): 0;
+function number (x: false | '' | []): 0;
+function number (x: true) : 1;
+function number <X extends number>(x: X): X;
+function number (x?: unknown) {
+  return x ? +<any>x : 0;
+}
+
+export default Object.assign(number, {
   sum,
   difference,
   multiple,
   divide,
   average,
 
-  isFinite,
-  isInfinity,
-  isInteger,
-  isNaN,
-  isNegative,
-  isPositive,
-}
-
-const number = Object.assign(Number, lib);
-export default number;
+  is,
+});

@@ -1,23 +1,19 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* eslint-disable @typescript-eslint/naming-convention */
-import def    from './function/index';
-import array  from './array/index';
-import string from './string/index';
-import number from './number/index';
-<<<<<<< HEAD
-import Url    from './url/index';
-import wrap   from './function/wrap/index';
+import def        from './function/index';
+import array      from './array/index';
+import string     from './string/index';
+import number     from './number/index';
+import wrap       from './function/wrap/index';
 
-=======
-import Url from './url/index';
-import wrap from './function/wrap/index';
-import is from './is/index';
->>>>>>> 4bb63769e5dbc2d27c8ab0f3e6f3629910d82340
+// Namespaces
+import arrayLike  from './arrayLike/index';
+import is         from './is/index';
 /**
  * #### Multiline placeholder
  */
-export type ___ = symbol | '…_ ← ƒ(…_, ← …×s) ⇒ ∏ ≡ ƒ(…×s): ∏';
+export type  ___ = symbol | '…_ ← ƒ(…_, ← …×s) ⇒ ∏ ≡ ƒ(…×s): ∏';
 export const ___ = Symbol.for('ƒ(…, ') as ___;
 
 /**
@@ -29,15 +25,13 @@ const _ = Object.assign(wrap, {
   [Symbol.iterator]: function* PlaceholderIterator(): Generator<___, void, void> {
     yield ___;
   },
+  array,
+  string,
+  number,
+  def,
+
   is,
-  ...array,
-  ...def,
-  ...string,
-  ...number,
-  ...Url
+  arrayLike,
 });
 
 export default _;
-
-
-const a = _.add(_, 2)

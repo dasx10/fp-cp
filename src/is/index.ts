@@ -8,7 +8,7 @@ import isString     from "../string/is/string/index";
 
 import isBoolean    from "../boolean/is/boolean/index";
 
-import isNumber     from "../number/is/number/index";
+import isNumber     from "../number/is/_/index";
 import isInteger    from "../number/is/integer/index";
 import isFinite     from "../number/is/finite/index";
 import isInfinity   from "../number/is/infinity/index";

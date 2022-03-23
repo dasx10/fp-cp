@@ -1,6 +1,6 @@
 import { Def1 } from "../../function/index.D"
 import { All } from "../../is/index.D";
-import isNumber from "../../number/is/number/index";
+import isNumber from "../../number/is/_/index";
 
 function when <
   Right,
