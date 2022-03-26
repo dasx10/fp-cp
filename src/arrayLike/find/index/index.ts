@@ -12,5 +12,6 @@ const findIndex: {
 } = _curry2(_findIndex);
 
 export default Object.assign(findIndex, {
+  core : _findIndex,
   right: findIndexRight
 });

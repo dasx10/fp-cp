@@ -4,7 +4,7 @@ import isUndefined  from "./undefined/index";
 import isNull       from "./null/index";
 import isNotNothing from "./nothing/index";
 
-import isString     from "../string/is/string/index";
+// import isString     from "../string/is/string/index";
 
 import isBoolean    from "../boolean/is/boolean/index";
 
@@ -17,14 +17,19 @@ import isPositive   from "../number/is/positive/index";
 import isZero       from "../number/is/zero/index";
 
 // Object type
-import isArray      from "../array/is/array/index";
+// import isArray    from "../array/is/array/index";
 import isFunction from "../function/is/function/index";
 
-const is = {
+
+function is (x: unknown) {
+  return typeof x;
+}
+
+export default Object.assign(is, {
   defined   : isDefined,
   undefined : isUndefined,
   null      : isNull,
-  string    : isString,
+  // string    : isString,
   boolean   : isBoolean,
 
   // number
@@ -36,7 +41,7 @@ const is = {
   positive  : isPositive,
   zero      : isZero,
 
-  array     : isArray,
+  // array     : isArray,
   function  : isFunction,
 
   not: {
@@ -44,6 +49,4 @@ const is = {
     defined : isUndefined,
     // null    : isNotNull,
   }
-}
-
-export default is;
+});

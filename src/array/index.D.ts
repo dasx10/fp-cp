@@ -10,8 +10,7 @@ type _Index<X extends readonly any[]> = X extends readonly [any, ...infer X]
     : (0 | 1)
   : 0;
 
-export type Index<X extends readonly any[]> = X extends readonly [any, ...infer X] ? _Index<X> : number;
-
+export type Index <X extends readonly any[]> = X extends readonly [any, ...infer X] ? _Index<X> : number;
 
 export type TupleConsistentEvery<
   Tuple extends any[],

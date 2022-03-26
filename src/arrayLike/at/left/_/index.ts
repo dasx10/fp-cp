@@ -1,5 +1,8 @@
-function _atRight <Index extends number, X>(index: Index, array: ArrayLike<X>): X | undefined {
-  return array[index < 0 ? ~index : array.length - index];
+import type { ToIndexLeft } from "../../../index.D";
+import type { AtLeft } from "./index.D";
+
+function _atLeft <Key extends number, X extends ArrayLike<any>>(index: ToIndexLeft<Key>, x: X): AtLeft<Key, X> {
+  return x[index];
 }
 
-export default _atRight;
+export default _atLeft;

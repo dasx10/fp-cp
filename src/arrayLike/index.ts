@@ -36,10 +36,10 @@ const arrayLike = Object.assign(<X extends any[]>(...args: X) => args,
   every,
   some,
 
+  size,
   count,
   sum,
   average,
-  size,
   max,
   min,
 

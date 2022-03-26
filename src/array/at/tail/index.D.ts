@@ -1,4 +1,4 @@
-export type Tail <Tuple extends readonly any[]> = Tuple extends [...infer N, infer L]
+export type Tail <Tuple extends readonly any[]> = Tuple extends [...any, infer L]
 ? L
 : Tuple extends (infer T)[]
   ? (T | undefined)
