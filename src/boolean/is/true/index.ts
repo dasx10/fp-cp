@@ -1,13 +1,11 @@
-import { All } from "../../../is/index.D";
+import type { All } from "../../../is/index.D";
+import type { IS_TRUE } from "./index.D";
 
-// @ts-ignore
-function isTrue <X extends Exclude<All, true>>(x: X): false;
-// @ts-ignore
 function isTrue (x: true): true;
-// @ts-ignore
+function isTrue <X extends All>(x: X): IS_TRUE<X>;
 function isTrue (x: unknown): x is true;
-
-// @ts-ignore
-const isTrue = <X extends boolean>(x: X) => x === true;
+function isTrue (x: unknown): x is true {
+  return x === true;
+}
 
 export default isTrue;

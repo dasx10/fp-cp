@@ -1,14 +1,15 @@
-import { Index, Unboxing }  from "../../index.D";
-import { FilterMapIterate } from "../index.D";
+import type { Index, Unboxing }  from "../../index.D";
+import type { FilterMapIterate } from "../index.D";
+import type { FilterCore }       from "./index.D";
 
-const _filter = <X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
+const _filter: FilterCore = <X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
   const { length } = array;
   if (length > 0) {
-    let index = 0;
-    const filtered = [] as Unboxing<X>[];
+    let index: Index<X> = 0;
+    const filtered = new Array<Unboxing<X>>();
     while (index < length) {
       const value = array[index];
-      if (def(value, index as Index<X>, array)) filtered.push(value);
+      if (def(value, index, array)) filtered.push(value);
       index++;
     }
 

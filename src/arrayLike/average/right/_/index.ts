@@ -5,7 +5,7 @@ const _averageRight = <X>(def: ArrayLikeIDef<X, number>, x: ArrayLike<X>) => {
   if (length > 0) {
     let index = length;
     let sum = 0;
-    while (--index > 0) sum += def(x[index], index, x);
+    while (--index > -1) sum += def(x[index], index, x);
     return sum / length;
   }
 

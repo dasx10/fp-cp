@@ -1,10 +1,13 @@
+// core
 import _limitLeft  from "./left/_/index";
 import _limitRight from "./right/_/index";
 import _limit      from "./_/index";
 
+// dependencies
 import limitLeft   from "./left/index";
 import limitRight  from "./right/index";
 
+// interfaces 
 import type { ArrayLimit } from "./_/index.D";
 
 function limit <Finish extends number, X extends any[]>(finish: Finish, array: X): ArrayLimit<Finish, X>;

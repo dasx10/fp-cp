@@ -1,11 +1,11 @@
+import { All } from "../../../is/index.D";
 import { IS_FALSE } from "./index.D";
 
-// @ts-ignore
-function isFalse <X>(x: X): IS_FALSE<X>;
-
-// @ts-ignore
+function isFalse (x: false): true;
+function isFalse <X extends All>(x: X): IS_FALSE<X>;
 function isFalse (x: unknown): x is false;
+function isFalse (x: unknown): x is false {
+  return x === false;
+}
 
-// @ts-ignore
-const isFalse = <X extends boolean>(x: X) => x === false;
 export default isFalse;

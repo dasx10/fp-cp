@@ -5,7 +5,7 @@ const _sumRight = <X>(def: ArrayLikeIDef<X, number>, x: ArrayLike<X>): number =>
   if (length > 0) {
     let index = length;
     let result = 0;
-    while (--index > 0) result += def(x[index], index, x);
+    while (--index > -1) result += def(x[index], index, x);
     return result;
   }
 

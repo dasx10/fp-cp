@@ -9,7 +9,7 @@ const _reduceRight = <INITIAL_VALUE, X extends ArrayLike<any>>(
   if (length > 0) {
     let currentValue = initialValue;
     let index = length;
-    while (--index > 0) currentValue = def(currentValue, x[index], index, x);
+    while (--index > -1) currentValue = def(currentValue, x[index], index, x);
     return currentValue;
   }
 

@@ -5,10 +5,9 @@ import def        from './function/index';
 import array      from './array/index';
 import string     from './string/index';
 import number     from './number/index';
-import wrap       from './function/wrap/index';
+import boolean    from './boolean/index';
 
 // Namespaces
-import arrayLike  from './arrayLike/index';
 import is         from './is/index';
 /**
  * #### Multiline placeholder
@@ -21,17 +20,17 @@ export const ___ = Symbol.for('ƒ(…, ') as ___;
  */
 export type placeholder = typeof _;
 
-const _ = Object.assign(wrap, {
+const _ = Object.assign(def, {
   [Symbol.iterator]: function* PlaceholderIterator(): Generator<___, void, void> {
     yield ___;
   },
+
   array,
   string,
   number,
-  def,
-
+  boolean,
+  
   is,
-  arrayLike,
 });
 
 export default _;

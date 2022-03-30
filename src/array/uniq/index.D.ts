@@ -11,3 +11,15 @@ type _Uniq<X extends readonly any[], Preset> = X extends readonly [infer First, 
 export type Uniq <X extends readonly any[]> = X extends readonly [...infer Next, infer Last] 
   ? [..._Uniq<Next, Last>, Last]
   : Unboxing<X>[];
+
+
+type _InputUniq <X extends readonly any[], Preset, Result = X> = X extends readonly [infer First, ...infer Next]
+  ? First extends Preset
+    ? never
+    : _InputUniq<Next, Preset | First, Result>
+  : Result;
+
+export type InputUniq <X extends readonly any[]> = X extends readonly [infer First, ...infer Next]
+  ? _InputUniq<Next, First, X>
+  : X;
+

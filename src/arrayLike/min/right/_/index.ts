@@ -4,11 +4,9 @@ const _minRight = <X extends ArrayLike<any>>(def: (value: ArrayLikeUnboxing<X>, 
   const { length } = x;
   if (length > 0) {
     let index = length - 1;
-    let flag = def(x[index], index, x);
-    while (--index > 0) {
-      const value = def(x[index], index, x);
-      if (value < flag) flag = value;
-    }
+    let value = def(x[index], index, x);
+    let flag = value;
+    while (--index > -1) if ((value = def(x[index], index, x)) < flag) flag = value;
     return flag;
   }
 

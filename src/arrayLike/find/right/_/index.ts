@@ -4,10 +4,8 @@ const _findRight = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = length;
-    while (--index > 0) {
-      const element = x[index];
-      if (def(element, index, x)) return element;
-    }
+    let value;
+    while (--index > -1) if (def(value = x[index], index, x)) return value;
   }
 }
 

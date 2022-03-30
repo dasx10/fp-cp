@@ -1,14 +1,15 @@
+import wrap from './wrap/index';
+
 import apply from './apply/index';
 import compose from './compose/index';
 import constanta from './const/index';
 import curry from './curry/index';
-import { DefAny } from './index.D';
 import loop from './loop/index';
 import once from './once/index';
 import partial from './partial/index';
 import pipe from './pipe/index';
 
-const libs = {
+const def = Object.assign(wrap, {
   apply,
   compose,
   constanta,
@@ -17,8 +18,6 @@ const libs = {
   once,
   partial,
   pipe,
-};
-
-const def = Object.assign(Function, libs);
+});
 
 export default def;

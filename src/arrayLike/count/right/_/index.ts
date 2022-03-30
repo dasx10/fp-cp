@@ -5,7 +5,7 @@ const _countRight = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>) => {
   if (length > 0) {
     let index = length;
     let sum = 0;
-    while (--index > 0) if (def(x[index], index, x)) sum++;
+    while (--index > -1) if (def(x[index], index, x)) sum++;
     return sum;
   }
 
