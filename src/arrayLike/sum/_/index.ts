@@ -1,6 +1,6 @@
-import { ArrayLikeIDef } from "../../index.D";
+import { ALI } from "../../index.D";
 
-const _sum = <X>(def: ArrayLikeIDef<X, number>, x: ArrayLike<X>): number => {
+const _sum = <X>(def: ALI<X, number>, x: ArrayLike<X>): number => {
   const { length } = x;
   if (length > 0) {
     let index = 0;

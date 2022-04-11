@@ -1,6 +1,6 @@
-import { ArrayLikeIDef } from "../../../index.D";
+import { ALI } from "../../../index.D";
 
-const _everyRight = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>) => {
+const _everyRight = <X>(def: ALI<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = length;

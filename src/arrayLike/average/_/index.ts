@@ -1,5 +1,5 @@
-import { ArrayLikeIDef } from './../../index.D';
-const _average = <X>(def: ArrayLikeIDef<X, number>, x: ArrayLike<X>) => {
+import { ALI } from './../../index.D';
+const _average = <X>(def: ALI<X, number>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = 0;

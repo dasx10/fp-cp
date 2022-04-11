@@ -1,5 +1,5 @@
 import type { placeholder } from "../../../index";
-import type { ToIndexRight } from "../../index.D";
+import type { ToIndexRight } from "../../index/index.D";
 import type { AtRight } from "./_/index.D";
 
 export type AtRightDef = {

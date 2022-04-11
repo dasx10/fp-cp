@@ -9,12 +9,12 @@ import findIndexRight from "./index/right/index";
 
 // interfaces
 import type { placeholder }   from "../../index";
-import type { ArrayLikeIDef } from "../index.D";
+import type { ALI } from "../index.D";
 
 const find: {
-  <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>): X | undefined,
-  <X>(def: ArrayLikeIDef<X>): (x: ArrayLike<X>) => X | undefined,
-  <X>(_: placeholder, x: X): (def: ArrayLikeIDef<X>) => X | undefined,
+  <X>(def: ALI<X>, x: ArrayLike<X>): X | undefined,
+  <X>(def: ALI<X>): (x: ArrayLike<X>) => X | undefined,
+  <X>(_: placeholder, x: X): (def: ALI<X>) => X | undefined,
 } = _curry2(_find);
 
 export default Object.assign(find, {

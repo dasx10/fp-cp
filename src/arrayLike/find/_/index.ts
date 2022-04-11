@@ -1,6 +1,6 @@
-import type { ArrayLikeIDef } from "../../index.D";
+import type { ALI } from "../../index.D";
 
-const _find = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>) => {
+const _find = <X>(def: ALI<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = 0;

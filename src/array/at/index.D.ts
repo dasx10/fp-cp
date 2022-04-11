@@ -1,11 +1,11 @@
-import { ToIndex } from '../../arrayLike/index.D';
-import { placeholder }  from '../../index';
-import { Unboxing }     from '../index.D';
-import { HeadDef } from './head/index.D';
-import { AtLeft, AtLeftDef }       from './left/index.D';
-import { AtRandomDef } from './random/index.D';
-import { AtRight, AtRightDef }      from './right/index.D';
-import { TailDef } from './tail/index.D';
+import type { ToIndex }             from '../../arrayLike/index/index.D';
+import type { placeholder }         from '../../index';
+import type { Unboxing }            from '../index.D';
+import type { HeadDef }             from './head/index.D';
+import type { AtLeft, AtLeftDef }   from './left/index.D';
+import type { AtRandomDef }         from './random/index.D';
+import type { AtRight, AtRightDef } from './right/index.D';
+import type { TailDef }             from './tail/index.D';
 
 export type At <
   Index extends number,

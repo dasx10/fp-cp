@@ -1,6 +1,6 @@
-import type { ToIndexLeft } from './../../index.D';
 import type { AtLeft } from './_/index.D';
 import type { placeholder } from "../../../index";
+import type { ToIndexLeft } from '../../index/index.D';
 
 export type AtLeftDef = {
   <Index extends number, X extends ArrayLike<any>>(index: ToIndexLeft<Index>, x: X): AtLeft<Index, X>;

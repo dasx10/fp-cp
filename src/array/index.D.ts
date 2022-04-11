@@ -12,14 +12,5 @@ type _Index<X extends readonly any[]> = X extends readonly [any, ...infer X]
 
 export type Index <X extends readonly any[]> = X extends readonly [any, ...infer X] ? _Index<X> : number;
 
-export type TupleConsistentEvery<
-  Tuple extends any[],
-> = Tuple extends [infer First, ...infer Next]
-  ? [First] | [First, ...TupleConsistentEvery<Next>]
-  : [];
-
-export type TupleConsistent<
-  Tuple extends any[],
-> = Tuple extends [infer First, ...infer Next]
-  ? [] | [First] | [First, ...TupleConsistentEvery<Next>]
-  : [];
+export type TupleConsistentEvery <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : [];
+export type TupleConsistent      <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : [];

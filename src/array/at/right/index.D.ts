@@ -1,8 +1,8 @@
-import { ToIndexRight } from "../../../arrayLike/index.D";
-import { placeholder } from "../../../index";
-import { Unboxing } from "../../index.D";
-import { TupleReverse } from "../../reverse/index.D";
-import { At } from "../index.D";
+import type { ToIndexRight } from "../../../arrayLike/index/index.D";
+import type { placeholder } from "../../../index";
+import type { Unboxing } from "../../index.D";
+import type { TupleReverse } from "../../reverse/index.D";
+import type { At } from "../index.D";
 
 export type AtRight <Index extends number, X extends readonly any[]> = number extends Index 
 ? Unboxing<X> | undefined

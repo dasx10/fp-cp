@@ -1,6 +1,6 @@
-import { ToIndexLeft } from "../../../arrayLike/index.D";
-import { placeholder } from "../../../index";
-import { Unboxing } from "../../index.D";
+import type { ToIndexLeft } from "../../../arrayLike/index/index.D";
+import type { placeholder } from "../../../index";
+import type { Unboxing }    from "../../index.D";
 
 export type AtLeft <Index extends number, X extends readonly any[]> = number extends Index 
 ? Unboxing<X> | undefined

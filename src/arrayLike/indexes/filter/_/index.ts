@@ -1,6 +1,6 @@
-import { ArrayLikeIDef } from "../../../index.D";
+import { ALI } from "../../../index.D";
 
-const _indexesFilter = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>) => {
+const _indexesFilter = <X>(def: ALI<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = 0;

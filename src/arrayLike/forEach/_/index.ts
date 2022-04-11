@@ -1,6 +1,6 @@
-import { ArrayLikeIDef } from './../../index.D';
+import { ALI } from './../../index.D';
 
-const _forEach = <X>(def: ArrayLikeIDef<X>, x: ArrayLike<X>): void => {
+const _forEach = <X>(def: ALI<X>, x: ArrayLike<X>): void => {
   const { length } = x;
   let index = 0;
   while (index < length) {

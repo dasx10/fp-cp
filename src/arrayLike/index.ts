@@ -2,6 +2,8 @@
 import at      from "./at/index";
 import head    from "./at/head/index";
 import tail    from "./at/tail/index";
+import index   from "./index/index";
+
 import find    from "./find/index";
 import forEach from "./forEach/index";
 
@@ -24,9 +26,13 @@ import is      from "./is/index";
 
 const arrayLike = Object.assign(<X extends any[]>(...args: X) => args,
 {
-  at,
+  size,
   head,
   tail,
+  index,
+  indexes,
+
+  at,
 
   find,
   forEach,
@@ -36,14 +42,11 @@ const arrayLike = Object.assign(<X extends any[]>(...args: X) => args,
   every,
   some,
 
-  size,
   count,
   sum,
   average,
   max,
   min,
-
-  indexes,
 
   is,
 });

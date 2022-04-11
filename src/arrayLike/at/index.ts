@@ -14,7 +14,7 @@ import tail     from "./tail/index";
 // interfaces
 import type { placeholder } from '../../index';
 import type { At }          from "./index.D";
-import type { ToIndex }     from "../index.D";
+import type { ToIndex } from "../index/index.D";
 
 function at <Key extends number, X extends ArrayLike<any>>(index: ToIndex<Key>, x: X): At<Key, X>;
 function at <Key extends number>(index: ToIndex<Key>): <X extends ArrayLike<any>>(x: X) => At<Key, X>;
