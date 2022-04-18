@@ -1,6 +1,6 @@
-import { placeholder } from "../../index";
-import { ForEachIterate } from "../forEach/index.D";
-import { Index, Unboxing } from "../index.D";
+import type { placeholder }     from "../../index";
+import type { ForEachIterate }  from "../forEach/index.D";
+import type { Index, Unboxing } from "../index.D";
 
 export type FilterMapIterate <X extends readonly any[]> = ForEachIterate<X>;
 

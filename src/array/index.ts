@@ -2,6 +2,7 @@
 import array     from './_/index';
 import arrayTry  from './try/index';
 import arrayLike from '../arrayLike/index';
+import range     from './range/index';
 import is        from './is/index';
 
 import reverse   from './reverse/index';
@@ -29,11 +30,11 @@ import find      from './find/index';
 
 import average   from './average/index';
 
-
 export default Object.assign(array, {
   right: <Values extends any[]>(...args: Values) => reverse(args),
   try  : arrayTry,
   like : arrayLike,
+  range,
   is,
 
   reverse,

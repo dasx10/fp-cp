@@ -1,4 +1,4 @@
-import { Index, Unboxing } from "../../index.D";
+import type { Index, Unboxing } from "../../index.D";
 
 type Result <Value, Def> = Def extends (value: Value, index: number, x: Value[]) => infer R ? R : never;
 

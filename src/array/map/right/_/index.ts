@@ -1,4 +1,4 @@
-import { Index, Unboxing } from "../../../index.D";
+import type { Index, Unboxing } from "../../../index.D";
 
 function _mapRight <X extends readonly any[], Return>(def: (value: Unboxing<X>, index: Index<X>, array: X) => Return, x: X) {
   const { length } = x;

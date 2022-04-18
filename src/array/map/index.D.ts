@@ -1,5 +1,5 @@
-import { placeholder } from "../../index";
-import { Index, Unboxing } from "../index.D";
+import type { placeholder } from "../../index";
+import type { Index, Unboxing } from "../index.D";
 
 export type ArrayMapDef = {
   <Value, Return>(def: (value: Value, index: number, array: Value[]) => Return): <X extends Value[]>(x: X) => Return[];

@@ -1,9 +1,13 @@
 import { All } from "../../is/index.D";
 
-function array <Values extends (All)[]>(...args: Values): Values;
-function array <Values extends (any)[]>(...args: Values)  : Values;
-function array <Values extends (any)[]>(...args: Values)  : Values {
+/**
+ * Array constructor
+ * @example
+ * const myArray = array(1, 2, 3); // [1, 2, 3];
+ */
+function array <Values extends (unknown | All)[]>(...args: Values): Values {
   return args;
 }
 
 export default array;
+
