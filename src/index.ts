@@ -35,4 +35,3 @@ const _ = Object.assign(def, {
 
 export default _;
 
-const rangeFrom1 = _.array.range.increment(1)
