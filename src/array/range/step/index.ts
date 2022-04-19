@@ -6,7 +6,6 @@ const rangeStep = (step: number, start: number, end: number) => {
     stepped[index] = start + index;
     index += step;
   }
-
   return stepped;
 }
 
