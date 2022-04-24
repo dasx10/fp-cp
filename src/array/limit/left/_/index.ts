@@ -9,7 +9,7 @@ import type { ArrayLimitLeft } from "./index.D";
  * @example
  * _limitLeft(3, [1, 2, 3, 4, 5, 6]); // [1, 2, 3];
  */
-function _limitLeft <Finish extends number, X extends readonly any[]>(finish: Finish, array: X): ArrayLimitLeft<Finish, X> {
+function _arrayLimitLeft <Finish extends number, X extends readonly any[]>(finish: Finish, array: X): ArrayLimitLeft<Finish, X> {
   const { length } = array;
   if (length > 0) {
     const stop = length + finish;
@@ -28,4 +28,4 @@ function _limitLeft <Finish extends number, X extends readonly any[]>(finish: Fi
   return [] as ArrayLimitLeft<Finish, X>;
 }
 
-export default _limitLeft;
+export default _arrayLimitLeft;

@@ -1,23 +1,23 @@
 // core
-import array     from './_/index';
-import arrayTry  from './try/index';
-import arrayLike from '../arrayLike/index';
-import range     from './range/index';
-import is        from './is/index';
+import array      from './_/index';
+import arrayTry   from './try/index';
+import arrayLike  from '../arrayLike/index';
+import arrayRange from './range/index';
+import arrayIs    from './is/index';
 
-import reverse   from './reverse/index';
-import uniq      from './uniq/index';
-import size      from './size/index';
-import indexes   from './indexes/index';
+import arrayReverse from './reverse/index';
+import arrayUniq    from './uniq/index';
+import arraySize    from './size/index';
+import arrayIndexes from './indexes/index';
 
 import at        from './at/index';
 import tail      from './at/tail/index';
 import head      from './at/head/index';
 import index     from './index/index';
 
-import limit     from './limit/index';
-import skip      from './skip/index';
-import add       from './add/index';
+import arrayLimit from './limit/index';
+import skip       from './skip/index';
+import add        from './add/index';
 
 import select    from './select/index';
 import concat    from './concat/index';
@@ -31,23 +31,23 @@ import find      from './find/index';
 import average   from './average/index';
 
 export default Object.assign(array, {
-  right: <Values extends any[]>(...args: Values) => reverse(args),
-  try  : arrayTry,
-  like : arrayLike,
-  range,
-  is,
+  right   : <Values extends any[]>(...args: Values) => arrayReverse(args),
+  try     : arrayTry,
+  like    : arrayLike,
+  range   : arrayRange,
+  is      : arrayIs,
 
-  reverse,
-  uniq,
-  size,
-  indexes,
+  reverse : arrayReverse,
+  uniq    : arrayUniq,
+  size    : arraySize,
+  indexes : arrayIndexes,
   index,
   
   at,
   tail,
   head,
 
-  limit,
+  limit: arrayLimit,
   skip,
   add,
 
