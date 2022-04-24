@@ -1,5 +1,15 @@
+import type { OnlyNegative }    from "../../../../number/index.D";
+import type { ArrayLimitRight } from "./index.D";
 
-function _limitRight <Finish extends number, X extends any[]>(finish: Finish, array: X) {
+/**
+ * @param {number} finish 
+ * @param {Value[]} array 
+ * @returns {Value[]}
+ * @template Value
+ * @example
+ * _limitRight(-3, [1, 2, 3, 4, 5, 6]); // [4, 5, 6];
+ */
+function _limitRight <Finish extends number, X extends readonly any[]>(finish: OnlyNegative<Finish>, array: X): ArrayLimitRight<Finish, X> {
   const { length } = array;
   if (length > 0) {
     const calcStart = finish + length;
@@ -14,10 +24,10 @@ function _limitRight <Finish extends number, X extends any[]>(finish: Finish, ar
       index++;
     }
 
-    return filtered;
+    return filtered as ArrayLimitRight<Finish, X>;
   }
 
-  return [];
+  return [] as ArrayLimitRight<Finish, X>;
 }
 
 export default _limitRight;

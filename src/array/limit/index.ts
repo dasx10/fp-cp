@@ -10,12 +10,12 @@ import limitRight  from "./right/index";
 // interfaces 
 import type { ArrayLimit } from "./_/index.D";
 
-function limit <Finish extends number, X extends any[]>(finish: Finish, array: X): ArrayLimit<Finish, X>;
-function limit <Finish extends number>(finish: Finish): <X extends any[]>(array: X) => ArrayLimit<Finish, X>
-function limit <Finish extends number, X extends any[]>(finish: Finish, array?: X) {
+function limit <Finish extends number, X extends readonly any[]>(finish: Finish, array: X): ArrayLimit<Finish, X>;
+function limit <Finish extends number>(finish: Finish): <X extends readonly any[]>(array: X) => ArrayLimit<Finish, X>
+function limit <Finish extends number, X extends readonly any[]>(finish: Finish, array?: X) {
   const executor = finish < 0 ? _limitRight : _limitLeft;
   if (arguments.length > 1) return executor(finish, <X>array);
-  return <X extends any[]>(array: X) => executor(finish, array);
+  return <X extends readonly any[]>(array: X) => executor(finish, array);
 }
 
 export default Object.assign(limit, {

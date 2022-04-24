@@ -4,6 +4,7 @@ export type ExcludeNumber<X extends number, Y extends number = number> = number 
     ? number
     : X extends Y ? never : X;
 
+export type OnlyNegative <X extends number> = `${X}` extends `-${number}` ? X : never;
 
 export type ExcludeNegative<X extends number> = number extends X 
   ? X 

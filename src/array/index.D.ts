@@ -14,3 +14,9 @@ export type Index <X extends readonly any[]> = X extends readonly [any, ...infer
 
 export type TupleConsistentEvery <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : [];
 export type TupleConsistent      <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : [];
+
+export type ArrayConsistentEvery <Array extends readonly any[]> = Array extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : Array;
+export type ArrayConsistent      <Array extends readonly any[]> = Array extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : Array;
+
+export type UnTypeTuple          <Type, Tuple extends readonly any[]> = Tuple extends readonly [any, ...infer Next] ? [Type, ...UnTypeTuple<Type, Next>] : [];
+export type UnTypeArray          <Type, Array extends readonly any[]> = Array extends readonly [any, ...infer Next] ? [Type, ...UnTypeTuple<Type, Next>] : Type[];

@@ -1,7 +1,15 @@
 import type { Unboxing }       from "../../../index.D";
 import type { ArrayLimitLeft } from "./index.D";
 
-function _limitLeft <Finish extends number, X extends any[]>(finish: Finish, array: X): ArrayLimitLeft<Finish, X> {
+/**
+ * @param {number} finish 
+ * @param {Value[]} array 
+ * @returns {Value[]}
+ * @template Value
+ * @example
+ * _limitLeft(3, [1, 2, 3, 4, 5, 6]); // [1, 2, 3];
+ */
+function _limitLeft <Finish extends number, X extends readonly any[]>(finish: Finish, array: X): ArrayLimitLeft<Finish, X> {
   const { length } = array;
   if (length > 0) {
     const stop = length + finish;

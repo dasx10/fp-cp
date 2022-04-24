@@ -1,4 +1,4 @@
-import { ArrayFirstElement, TupleConsistent, TupleConsistentEvery } from "../array/index.D";
+import { TupleConsistent, TupleConsistentEvery } from "../array/index.D";
 
 
 export type ParametersConsistent     <Executor extends DefAny> = TupleConsistent<Parameters<Executor>>;
