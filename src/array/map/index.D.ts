@@ -6,7 +6,7 @@ type DefMap <
 	Return = any,
 	Values extends readonly Value[] = Value[]
 > = 
-	((value: Unboxing<Values>, index: Index<Values>, array: Values) => Return) |
+	((value: Value, index: Index<Values>, array: Values) => Return) |
 	((value: Value, index: number) => Return) |
 	((value: Value) => Return);
 

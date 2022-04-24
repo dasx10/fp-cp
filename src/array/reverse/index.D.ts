@@ -1,10 +1,10 @@
-type _TupleReverse<
+export type TupleReverse<
   Tuple     extends readonly any[],
   Recursive extends readonly any[] = []
-> = Tuple extends [infer F, ...infer L]
-  ? _TupleReverse<L, [F, ...Recursive]>
+> = Tuple extends readonly [infer F, ...infer L]
+  ? TupleReverse<L, [F, ...Recursive]>
   : Recursive;
 
-export type TupleReverse<Tuple extends readonly any[]> = Tuple extends readonly [infer F, ...infer L]
-  ? _TupleReverse<L, [F]>
+export type ArrayReverse<Tuple extends readonly any[]> = Tuple extends readonly [infer F, ...infer L]
+  ? TupleReverse<L, [F]>
   : Tuple;

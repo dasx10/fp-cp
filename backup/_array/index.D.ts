@@ -19,8 +19,8 @@ export type TupleConsistent<
   : [];
 
 export type TupleDifference<
-Tuple extends any[],
-Difference extends any[],
+	Tuple      extends any[],
+	Difference extends any[],
 > = Difference extends [infer DifferenceFirst, ...infer DifferenceNext]
   ? Tuple extends [infer First, ...infer Next]
     ? First extends DifferenceFirst ? TupleDifference<Next, DifferenceNext>

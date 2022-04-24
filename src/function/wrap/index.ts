@@ -1,7 +1,8 @@
 import curry from "../curry/index";
+import type { DefAny }          from "../index.D";
 import type { TupleConsistent } from "../../array/index.D";
-import type { DefAny } from "../index.D";
-import type { ArrayReverse } from "../../_array/reverse/index.D";
+import type { ArrayReverse }    from "../../array/reverse/index.D";
+import type { Tail }            from "../../array/at/tail/index.D";
 
 type LastOmit<Tuple extends any[]> = ArrayReverse<Tuple> extends [infer F, ...infer P]
   ? ArrayReverse<P> : Tuple;

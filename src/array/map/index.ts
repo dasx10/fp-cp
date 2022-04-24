@@ -7,6 +7,7 @@ import type { ArrayMapDef } from "./index.D";
 // dependencies
 import mapRight from "./right/index";
 
+//@ts-ignore
 const map: ArrayMapDef = _curry2(_map);
 
 export default Object.assign(map, {

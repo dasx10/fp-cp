@@ -1,6 +1,6 @@
-import type { TupleReverse } from './index.D';
+import type { ArrayReverse } from './index.D';
 
-function reverse <X extends readonly any[]>(array: X): TupleReverse<X> {
+function reverse <X extends readonly any[]>(array: X): ArrayReverse<X> {
   const { length } = array;
   if (length) {
     const reversed = new Array(length);
@@ -10,10 +10,10 @@ function reverse <X extends readonly any[]>(array: X): TupleReverse<X> {
       reversed[index] = array[--invert];
       index++;
     }
-    return reversed as TupleReverse<X>;
+    return reversed as ArrayReverse<X>;
   }
 
-  return [] as unknown as TupleReverse<X>;
+  return [] as unknown as ArrayReverse<X>;
 }
 
 export default reverse;

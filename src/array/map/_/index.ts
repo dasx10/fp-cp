@@ -1,23 +1,23 @@
-import type { Index, Unboxing } from "../../index.D";
+import type { Index, Unboxing, UnTypeArray } from "../../index.D";
 import type { Mapped } from "./index.D";
 
 const _map = <
-  X   extends readonly any[],
-  Def extends (value: Unboxing<X>, index: Index<X>, array: X) => any,
->(def: Def, x: X): Mapped<X, Def> => {
+	Return,
+  X extends readonly any[],
+>(def: (value: Unboxing<X>, index: Index<X>, array: X) => Return, x: X): UnTypeArray<Return, X> => {
   const { length } = x;
   if (length > 0) {
-    const mapped = new Array<ReturnType<Def>>(length);
-    let index: Index<X> = 0;
+    const mapped = new Array<Return>(length);
+    let index = 0 as Index<X>;
     while (index < length) {
       mapped[index] = def(x[index], index, x);
       index++;
     }
 
-    return mapped as Mapped<X, Def>;
+    return mapped as UnTypeArray<Return, X>;
   }
   
-  return [] as Mapped<X, Def>;
+  return [] as unknown as UnTypeArray<Return, X>;
 }
 
 export default _map;

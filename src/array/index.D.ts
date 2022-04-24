@@ -20,3 +20,14 @@ export type ArrayConsistent      <Array extends readonly any[]> = Array extends 
 
 export type UnTypeTuple          <Type, Tuple extends readonly any[]> = Tuple extends readonly [any, ...infer Next] ? [Type, ...UnTypeTuple<Type, Next>] : [];
 export type UnTypeArray          <Type, Array extends readonly any[]> = Array extends readonly [any, ...infer Next] ? [Type, ...UnTypeTuple<Type, Next>] : Type[];
+
+
+export type TupleDifference<
+	Tuple      extends readonly any[],
+	Difference extends readonly any[],
+> = Difference extends readonly [infer DifferenceFirst, ...infer DifferenceNext]
+  ? Tuple extends readonly [infer First, ...infer Next]
+    ? First extends DifferenceFirst ? TupleDifference<Next, DifferenceNext>
+      : DifferenceNext
+    : Difference
+  : [];
