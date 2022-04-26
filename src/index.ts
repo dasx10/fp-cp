@@ -7,6 +7,7 @@ import boolean    from './boolean/index';
 // Namespaces
 import is         from "./is/index";
 import logic from './logic/index';
+import { Unboxing, UnTypeArray } from './array/index.D';
 /**
  * #### Multiline placeholder
  */
@@ -29,7 +30,7 @@ const _ = Object.assign(def, {
   boolean,
 
   is,
-	logic: logic,
+	logic,
 });
 
 export default _;

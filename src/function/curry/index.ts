@@ -15,11 +15,11 @@ import type { ReturnTypeCurry } from './index.D';
  * const sum = addCurry(1, 2); // 3
  */
 function curry <
-    Executor extends DefAny,
+    Executor       extends (y: any, x: any, ...next: any[]) => any,
     StartArguments extends ParametersConsistent<Executor>,
 >(
-  executor: Executor,
-  ...startArguments: StartArguments
+  executor          : Executor,
+  ...startArguments : StartArguments
 ): ReturnTypeCurry<Executor, StartArguments> {
   if (startArguments.length < executor.length) {
     // @ts-ignore
@@ -28,8 +28,11 @@ function curry <
       return curry(executor, ...startArguments, ...nextArgument);
     };
   }
-
+	// @ts-ignore
   return executor(...startArguments);
 }
 
 export default curry;
+
+
+const a = curry(() => 1)

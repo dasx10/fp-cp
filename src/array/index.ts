@@ -30,6 +30,8 @@ import find      from './find/index';
 
 import average   from './average/index';
 
+import sort      from './sort/index';
+
 export default Object.assign(array, {
   right   : <Values extends any[]>(...args: Values) => arrayReverse(args),
   try     : arrayTry,
@@ -61,4 +63,6 @@ export default Object.assign(array, {
   find,
 
   average,
+
+	sort
 });

@@ -1,13 +1,13 @@
 import { TupleConsistentEvery, TupleDifference } from "../../array/index.D";
-import { DefAny, ParametersConsistent } from "../index.D";
+import { ParametersConsistent } from "../index.D";
 
 export type ReturnTypeCurry<
-    Executor        extends DefAny,
-    InputParameters extends ParametersConsistent<Executor>
+	Executor        extends (y : any, x: any, ...args: any[]) => any,
+	InputParameters extends ParametersConsistent<Executor>
 > = InputParameters extends Parameters<Executor>
-    ? ReturnType<Executor>
-    : <NextParameters extends TupleConsistentEvery<TupleDifference<InputParameters, Parameters<Executor>>>>(...next: NextParameters) => ReturnTypeCurry<
-        Executor,
-        // @ts-ignore
-        [...InputParameters, ...NextParameters]
-    >;
+	? ReturnType<Executor>
+	: <NextParameters extends TupleConsistentEvery<TupleDifference<InputParameters, Parameters<Executor>>>>(...next: NextParameters) => ReturnTypeCurry<
+		Executor,
+		// @ts-ignore
+		[...InputParameters, ...NextParameters]
+>;

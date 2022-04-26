@@ -5,7 +5,7 @@ import _arrayLimit      from "./_/index";
 
 // dependencies
 import arrayLimitLeft   from "./left/index";
-import limitRight  from "./right/index";
+import arrayLimitRight  from "./right/index";
 
 // interfaces 
 import type { ArrayLimit } from "./_/index.D";
@@ -22,6 +22,6 @@ function arrayLimit <Finish extends number, X extends readonly any[]>(finish: Fi
 
 export default Object.assign(arrayLimit, {
   core  : _arrayLimit,
-  right : limitRight,
+  right : arrayLimitRight,
   left  : arrayLimitLeft,
 });

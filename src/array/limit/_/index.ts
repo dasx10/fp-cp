@@ -3,7 +3,7 @@ import _arrayLimitRight      from "../right/_/index";
 import type { ArrayLimit }   from "./index.D";
 import type { OnlyNegative } from "../../../number/index.D";
 
-function _limit <Finish extends number, X extends any[]>(finish: Finish, array: X): ArrayLimit<Finish, X> {
+function _arrayLimit <Finish extends number, X extends readonly any[]>(finish: Finish, array: X): ArrayLimit<Finish, X> {
   return (finish 
     ? finish > 0 
 			? _arrayLimitLeft(finish, array)
@@ -11,4 +11,4 @@ function _limit <Finish extends number, X extends any[]>(finish: Finish, array: 
     : []) as ArrayLimit<Finish, X>;
 }
 
-export default _limit;
+export default _arrayLimit;
