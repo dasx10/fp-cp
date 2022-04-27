@@ -1,8 +1,8 @@
 import _curry2 from "../../../function/curry/2/_/index";
 import _averageRight from "./_/index";
-import { AverageDef } from "../index.D";
+import type { AverageDef } from "../index.D";
 
-const averageRight: AverageDef = _curry2(_averageRight);
+const averageRight = _curry2(_averageRight) as AverageDef;
 
 export default Object.assign(averageRight, {
   core: _averageRight,

@@ -1,6 +1,6 @@
 import type { ToIndexLeft } from "../../../arrayLike/index/index.D";
 import type { placeholder } from "../../../index";
-import type { CheckIndex, Index as GetIndex, Unboxing }    from "../../index.D";
+import type { Index as GetIndex, Unboxing }    from "../../index.D";
 
 export type AtLeft <Index extends number, X extends readonly any[]> = number extends Index 
 ? Unboxing<X> | undefined
