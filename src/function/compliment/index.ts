@@ -1,7 +1,7 @@
 /**
- * @param {Executor} executor
- * @return {(...args: Parameters<Executor>) => boolean}
- * @template {(...args: any) => any} Executor
+ * @param {(...args: Args) => any} executor
+ * @return {(...args: Args) => boolean}
+ * @template {any[]} Args
  */
 // @ts-ignore
 function complement <T extends any[]>(executor: (...args: T) => false): (...args: T) => true;

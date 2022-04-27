@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { DefAny, ParametersConsistent } from '../index.D';
+import curryCount from './count/index';
+import type { ParametersConsistent } from '../index.D';
 import type { ReturnTypeCurry } from './index.D';
 
 /**
@@ -32,7 +33,6 @@ function curry <
   return executor(...startArguments);
 }
 
-export default curry;
-
-
-const a = curry(() => 1)
+export default Object.assign(curry, {
+	count: curryCount,
+});

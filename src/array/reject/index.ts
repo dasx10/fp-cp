@@ -5,6 +5,6 @@ import _reject from "./_/index";
 // interfaces
 import type { RejectDef } from "./index.D";
 
-const reject: RejectDef = _curry2(_reject);
+const reject = _curry2(_reject) as RejectDef;
 
 export default reject;

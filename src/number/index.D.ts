@@ -23,3 +23,5 @@ export type ExcludeFloat<X extends number> = number extends X
   : `${X}` extends `${number}.${number}`
     ? never
     : X;
+
+export type UINT <X extends number> = ExcludeNegative<ExcludeFloat<X>>;

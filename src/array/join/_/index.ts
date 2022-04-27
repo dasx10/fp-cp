@@ -1,7 +1,6 @@
-import type { AcceptString } from "../../../string/index.D";
-import type { Join } from "./index.D";
+import type { JoinCore } from "./index.D";
 
-const _join = <SEPARATOR extends AcceptString, X extends readonly any[]>(separator: SEPARATOR, array: X): Join<X, SEPARATOR> => {
+const _join = ((separator: string, array: any[]): string => {
   const { length } = array;
   if (length > 0) {
     let joined = '' + array[0];
@@ -11,10 +10,10 @@ const _join = <SEPARATOR extends AcceptString, X extends readonly any[]>(separat
       index++;
     }
 
-    return joined as Join<X, SEPARATOR>;
+    return joined;
   }
 
-  return '' as Join<X, SEPARATOR>;
-}
+  return '';
+}) as JoinCore;
 
 export default _join;

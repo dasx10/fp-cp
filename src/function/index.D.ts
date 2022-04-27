@@ -1,12 +1,12 @@
-import { TupleConsistent, TupleConsistentEvery } from "../array/index.D";
+import { ArrayConsistent, ArrayConsistentEvery } from "../array/index.D";
 
 
-export type ParametersConsistent     <Executor extends DefAny> = TupleConsistent<Parameters<Executor>>;
-export type ParametersConsistentEver <Executor extends DefAny> = TupleConsistentEvery<Parameters<Executor>>;
+export type ParametersConsistent     <Def extends DefAny> = ArrayConsistent<Parameters<Def>>;
+export type ParametersConsistentEver <Def extends DefAny> = ArrayConsistentEvery<Parameters<Def>>;
 
-export type FirstParameter <Executor extends DefAny> = Executor extends ((f: infer F, ...arg: any[]) => any) ? F : never;
-export type SecondParameter<Executor extends DefAny> = Executor extends (first: infer First, second: infer Second, ...args: infer Next) => any ? Second : never;
-export type ThirdParameter <Executor extends DefAny> = Executor extends (first: infer First, second: infer Second, third: infer Third, ...args: infer Next) => any ? Third : never;
+export type FirstParameter <Executor extends DefAny> = Executor extends (x: infer X, ...arg: any[]) => any ? X : never;
+export type SecondParameter<Executor extends DefAny> = Executor extends (y: any, x: infer X, ...args: any[]) => any ? X : never;
+export type ThirdParameter <Executor extends DefAny> = Executor extends (z: any, y: any, x: infer X, ...args: any[]) => any ? X : never;
 
 export type Def0<R> = () => R;
 export type Def1<X = any, R = any> = (x: X) => R;

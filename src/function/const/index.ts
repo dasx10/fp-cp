@@ -3,10 +3,8 @@
  * @returns {() => Value}
  * @template Value
  */
-function constanta <Value>(value: Value): () => Value {
-  return function (): Value {
-    return value;
-  };
-}
-
-export default constanta;
+const constanta = <Value>(value: Value) => () => value;
+export default Object.assign(constanta, {
+	yes: constanta(true  as const),
+	no : constanta(false as const),
+});

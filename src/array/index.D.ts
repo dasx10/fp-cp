@@ -1,3 +1,5 @@
+import type { ToIndexLeft } from "../arrayLike/index/index.D";
+
 export type Unboxing <X extends readonly any[]> = X extends readonly (infer T)[] ? T : never;
 
 type _Index<X extends readonly any[]> = X extends readonly [any, ...infer X]
@@ -11,6 +13,7 @@ type _Index<X extends readonly any[]> = X extends readonly [any, ...infer X]
   : 0;
 
 export type Index <X extends readonly any[]> = X extends readonly [any, ...infer X] ? _Index<X> : number;
+export type IndexFilter <I extends Index<X>, X extends readonly any[]> = Index<X> & ToIndexLeft<I>;
 
 export type TupleConsistentEvery <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : [];
 export type TupleConsistent      <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : [];
@@ -31,3 +34,10 @@ export type TupleDifference<
       : DifferenceNext
     : Difference
   : [];
+
+
+export type BreakArrayRight <Tuple extends readonly any[], Break extends readonly any[]> = Break['length'] extends 0
+	? Tuple
+	: Tuple extends readonly [any, ...infer Next]
+		? Break extends readonly [any, ...infer NextBreak] ? BreakArrayRight<Next, NextBreak> : Next
+		: [];

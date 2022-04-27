@@ -15,3 +15,5 @@ export type Join <X extends readonly any[], SEPARATOR extends AcceptString = ''>
     ? `${ToString<F>}${SEPARATOR}${_Join<Strings, ToString<SEPARATOR>>}`
     : ToString<F>
   : string;
+
+export type JoinCore = <SEPARATOR extends AcceptString, X extends readonly any[]>(separator: SEPARATOR, array: X) => Join<X, SEPARATOR>
