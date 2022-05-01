@@ -2,7 +2,7 @@ import type { Index, Unboxing }  from "../../index.D";
 import type { FilterMapIterate } from "../index.D";
 import type { FilterCore }       from "./index.D";
 
-const _filter: FilterCore = <X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
+const _filter = (<X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
   const { length } = array;
   if (length > 0) {
     let index = 0 as Index<X>;
@@ -17,6 +17,6 @@ const _filter: FilterCore = <X extends readonly any[]>(def: FilterMapIterate<X>,
   }
 
   return [];
-}
+}) as FilterCore;
 
 export default _filter;

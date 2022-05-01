@@ -32,7 +32,7 @@ import average   from './average/index';
 
 import sort      from './sort/index';
 import join      from './join/index';
-import _ from '../index';
+import arrayFit from './fit/index';
 
 export default Object.assign(array, {
   right   : <Values extends any[]>(...args: Values) => arrayReverse(args),
@@ -51,8 +51,10 @@ export default Object.assign(array, {
   tail,
   head,
 
-  limit: arrayLimit,
+  limit   : arrayLimit,
   skip,
+	fit     : arrayFit,
+
   add,
 
   select,

@@ -18,13 +18,17 @@ export type Uniq <X extends readonly any[]> = X extends readonly [...infer First
 : X;
 
 
-type _InputUniq <X extends readonly any[], Preset, Result = X> = X extends readonly [infer First, ...infer Next]
-  ? First extends Preset
+type _InputUniq <X extends readonly any[], Present = X> = X extends readonly [infer First, ...infer Next]
+  ? Unboxing<Next> extends First
     ? never
-    : _InputUniq<Next, Preset | First, Result>
-  : Result;
+    : _InputUniq<Next, Present>
+  : Present;
 
 export type InputUniq <X extends readonly any[]> = X extends readonly [infer First, ...infer Next]
-  ? _InputUniq<Next, First, X>
+	? Unboxing<Next> extends First
+		? never
+		: _InputUniq<Next, X>
   : X;
 
+
+const a: InputUniq<['', 's']>
