@@ -1,8 +1,8 @@
-import isArray from "./array/index";
+import arrayIsArray from "./array/index";
 import arrayIsEmpty from "./empty/index";
 
-const is = Object.assign(isArray, {
+const arrayIs = Object.assign(arrayIsArray, {
   empty: arrayIsEmpty
 });
 
-export default is;
+export default arrayIs;

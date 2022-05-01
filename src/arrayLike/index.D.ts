@@ -1,6 +1,6 @@
 import type { ToIndexRight } from './index/index.D';
 
-export type ArrayLikeUnboxing <X extends ArrayLike<any>> = X extends ArrayLike<infer T> ? T : unknown;
+export type ArrayLikeValue <X extends ArrayLike<any>> = X extends ArrayLike<infer T> ? T : unknown;
 
 export type ArrayLikeIterator <X, R = any> = (value: X, index: ToIndexRight<number>, arrayLike: ArrayLike<X>) => R;
 

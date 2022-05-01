@@ -1,8 +1,8 @@
-import { ArrayLikeUnboxing } from "../../../index.D";
+import { ArrayLikeValue } from "../../../index.D";
 
 const _reduceRight = <INITIAL_VALUE, X extends ArrayLike<any>>(
   initialValue : INITIAL_VALUE,
-  def          : (currentValue: INITIAL_VALUE, Value: ArrayLikeUnboxing<X>, index: number, x: X) => INITIAL_VALUE,
+  def          : (currentValue: INITIAL_VALUE, Value: ArrayLikeValue<X>, index: number, x: X) => INITIAL_VALUE,
   x            : X
 ) => {
   const { length } = x;

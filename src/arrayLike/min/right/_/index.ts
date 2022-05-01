@@ -1,6 +1,6 @@
-import type { ArrayLikeUnboxing } from "../../../index.D";
+import type { ArrayLikeValue } from "../../../index.D";
 
-const _minRight = <X extends ArrayLike<any>>(def: (value: ArrayLikeUnboxing<X>, index: number, x: X) => number, x: X) => {
+const _minRight = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: number, x: X) => number, x: X) => {
   const { length } = x;
   if (length > 0) {
     let index = length - 1;

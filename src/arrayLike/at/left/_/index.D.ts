@@ -1,7 +1,7 @@
-import { ArrayLikeUnboxing } from "../../../index.D";
+import { ArrayLikeValue } from "../../../index.D";
 
 export type AtLeft <Index extends number, X extends ArrayLike<any>> = number extends Index
-  ? ArrayLikeUnboxing<X> | undefined
+  ? ArrayLikeValue<X> | undefined
   : X extends [...infer Values]
     ? Values[Index]
-    : ArrayLikeUnboxing<X> | undefined;
+    : ArrayLikeValue<X> | undefined;

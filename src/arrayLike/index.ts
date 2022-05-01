@@ -19,7 +19,7 @@ import arrayLikeCount   from "./count/index";
 import arrayLikeSum     from "./sum/index";
 import arrayLikeAverage from "./average/index";
 import arrayLikeSize    from "./size/index";
-import arrayLikeMaximum from "./max/index";
+import arrayLikeMaximum from "./maximum/index";
 import arrayLikeMinimum from "./min/index";
 
 import arrayLikeIndexes from "./indexes/index";
@@ -29,8 +29,7 @@ import arrayLikeKeys    from "./keys/index";
 import arrayLikeGroup   from "./group/index";
 
 
-const arrayLike = Object.assign(arrayLikeCore,
-{
+const arrayLike = Object.assign(arrayLikeCore, {
   at      : arrayLikeAt,
 
   size    : arrayLikeSize,
