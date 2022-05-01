@@ -16,23 +16,24 @@ import head      from './at/head/index';
 import index     from './index/index';
 
 import arrayLimit from './limit/index';
-import skip       from './skip/index';
+import arraySkip  from './skip/index';
 import add        from './add/index';
 
-import select    from './select/index';
-import concat    from './concat/index';
+import select     from './select/index';
+import concat     from './concat/index';
 
-import forEach   from './forEach/index';
-import map       from './map/index';
-import filter    from './filter/index';
-import reject    from './reject/index';
-import find      from './find/index';
+import forEach    from './forEach/index';
+import map        from './map/index';
+import filter     from './filter/index';
+import reject     from './reject/index';
+import find       from './find/index';
 
-import average   from './average/index';
+import average    from './average/index';
 
-import sort      from './sort/index';
-import join      from './join/index';
-import arrayFit from './fit/index';
+import sort       from './sort/index';
+import join       from './join/index';
+import arrayFit   from './fit/index';
+import arrayCount from './count/index';
 
 export default Object.assign(array, {
   right   : <Values extends any[]>(...args: Values) => arrayReverse(args),
@@ -52,7 +53,7 @@ export default Object.assign(array, {
   head,
 
   limit   : arrayLimit,
-  skip,
+  skip    : arraySkip,
 	fit     : arrayFit,
 
   add,
@@ -64,6 +65,7 @@ export default Object.assign(array, {
   map,
   filter,
   reject,
+	count  : arrayCount,
   find,
 
   average,

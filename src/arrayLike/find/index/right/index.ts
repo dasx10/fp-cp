@@ -1,10 +1,14 @@
+// core
 import _curry2         from "../../../../function/curry/2/_/index";
-import _findIndexRight from "./_/index";
-import type { ALI } from "../../../index.D";
+import arrayLikeFindIndexRightCore from "./core/index";
 
-const findIndexRight: {
-  <X>(def: ALI<X>, x: ArrayLike<X>): number;
-  <X>(def: ALI<X>):(x: ArrayLike<X>) => number;
-} = _curry2(_findIndexRight);
+// interfaces
+import type { ArrayLikeFindIndexRightDef } from "./index.D";
 
-export default findIndexRight;
+const arrayLikeFindIndexRightDef: ArrayLikeFindIndexRightDef = _curry2(arrayLikeFindIndexRightCore);
+
+const arrayLikeFindIndexRight = Object.assign(arrayLikeFindIndexRightDef, {
+	core: arrayLikeFindIndexRightCore,
+});
+
+export default arrayLikeFindIndexRight;

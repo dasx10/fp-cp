@@ -1,6 +1,6 @@
 import type { ToIndex }             from '../../arrayLike/index/index.D';
 import type { placeholder }         from '../../index';
-import type { Unboxing }            from '../index.D';
+import type { ArrayValue }          from '../index.D';
 import type { HeadDef }             from './head/index.D';
 import type { AtLeft, AtLeftDef }   from './left/index.D';
 import type { AtRandomDef }         from './random/index.D';
@@ -11,7 +11,7 @@ export type At <
   Index extends number,
   X extends readonly any[]
 > = number extends Index
-? Unboxing<X> | undefined
+? ArrayValue<X> | undefined
 : `${Index}` extends `-${number}`
   ? AtRight<Index, X>
   : AtLeft <Index, X>

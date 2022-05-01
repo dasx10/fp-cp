@@ -1,3 +1,3 @@
-import { Unboxing } from "../../index.D";
+import { ArrayValue } from "../../index.D";
 
-export type AtRandomDef = <X extends any[]> (x: X) => X extends [] ? undefined : Unboxing<X>;
+export type AtRandomDef = <X extends any[]> (x: X) => X extends [] ? undefined : ArrayValue<X>;

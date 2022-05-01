@@ -1,10 +1,18 @@
-import _curry2    from "../../../function/curry/2/_/index";
-import _findRight from "./_/index";
-import type { ALI } from "../../index.D";
+// core
+import _curry2                 from "../../../function/curry/2/_/index";
+import arrayLikeFindRightCore  from "./core/index";
 
-const findRight: {
-  <X>(def: ALI<X>, x: ArrayLike<X>): X | undefined,
-  <X>(def: ALI<X>): (x: ArrayLike<X>) => X | undefined
-} = _curry2(_findRight);
+// dependencies
+import arrayLikeFindIndexRight from "../index/right/index";
 
-export default findRight;
+// interfaces
+import type { ArrayLikeFindRightDef } from "./index.D";
+
+const arrayLikeFindRightDef: ArrayLikeFindRightDef = _curry2(arrayLikeFindRightCore);
+
+const arrayLikeFindRight = Object.assign(arrayLikeFindRightDef, {
+	core  : arrayLikeFindRightCore,
+	index : arrayLikeFindIndexRight,
+});
+
+export default arrayLikeFindRight;

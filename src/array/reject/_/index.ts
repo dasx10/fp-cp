@@ -1,11 +1,11 @@
-import type { Index, Unboxing } from "../../index.D";
+import type { ArrayIndex, ArrayValue } from "../../index.D";
 import type { RejectCore }      from "./index.D";
 
-const _reject: RejectCore = <X extends readonly any[]>(def: (value: Unboxing<X>, Index: Index<X>, array: X) => any, array: X) => {
+const _reject: RejectCore = <X extends readonly any[]>(def: (value: ArrayValue<X>, Index: ArrayIndex<X>, array: X) => any, array: X) => {
   const { length } = array;
   if (length > 0) {
-    let index: Index<X> = 0 as Index<X>;
-    const filtered = new Array<Unboxing<X>>();
+    let index: ArrayIndex<X> = 0 as ArrayIndex<X>;
+    const filtered = new Array<ArrayValue<X>>();
     while (index < length) {
       const value = array[index];
       const condition = def(value, index, array);

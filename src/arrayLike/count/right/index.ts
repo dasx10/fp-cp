@@ -1,6 +1,9 @@
 import _curry2 from "../../../function/curry/2/_/index";
-import _countRight from "./_/index";
-import type { CountCurryDef } from "../index.D";
+import arrayLikeCountRightCore from "./core/index";
 
-const countRight: CountCurryDef = _curry2(_countRight);
-export default countRight;
+const arrayLikeCountRightDef = _curry2(arrayLikeCountRightCore);
+const arrayLikeCountRight = Object.assign(arrayLikeCountRightDef, {
+	core: arrayLikeCountRightCore,
+});
+
+export default arrayLikeCountRight;

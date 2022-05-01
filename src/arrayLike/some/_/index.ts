@@ -1,6 +1,6 @@
-import { ALI } from "../../index.D";
+import { ArrayLikeIterator } from "../../index.D";
 
-const _some = <X>(def: ALI<X>, x: ArrayLike<X>) => {
+const _some = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = 0;

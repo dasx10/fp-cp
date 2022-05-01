@@ -1,11 +1,11 @@
 import type { ToIndexRight } from "../../../arrayLike/index/index.D";
 import type { placeholder } from "../../../index";
-import type { Unboxing } from "../../index.D";
+import type { ArrayValue } from "../../index.D";
 import type { ArrayReverse } from "../../reverse/index.D";
 import type { At } from "../index.D";
 
 export type AtRight <Index extends number, X extends readonly any[]> = number extends Index 
-? Unboxing<X> | undefined
+? ArrayValue<X> | undefined
 : X extends readonly [...any]
   ? `${Index}` extends `-${infer Invert}`
     ? Invert extends keyof X
@@ -13,8 +13,8 @@ export type AtRight <Index extends number, X extends readonly any[]> = number ex
       ? [undefined, ...ArrayReverse<X>][Invert]
       // @ts-ignore
       : [undefined, ...ArrayReverse<X>][Invert] | undefined
-    : Unboxing<X> | undefined
-  : Unboxing<X> | undefined;
+    : ArrayValue<X> | undefined
+  : ArrayValue<X> | undefined;
 
 export type AtRightDef = {
   <Index extends number, X extends readonly any[]>(index: ToIndexRight<Index>, x: X): AtRight<Index, X>;

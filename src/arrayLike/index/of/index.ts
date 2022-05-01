@@ -1,18 +1,18 @@
 // core
 import _curry2  from "../../../function/curry/2/_/index";
-import _indexOf from "./_/index";
+import arrayLikeIndexOfCore from "./core/index";
 
 // dependencies
-import indexOfRight from "./right/index";
+import arrayLikeIndexOfLast from "./last/index";
 
 // interfaces
-import type { IndexOfDef } from "./index.D";
+import type { ArrayLikeIndexOfDef } from "./index.D";
 
-const indexOfDef: IndexOfDef = _curry2(_indexOf);
+const arrayLikeIndexOfDef: ArrayLikeIndexOfDef = _curry2(arrayLikeIndexOfCore);
 
-const indexOf = Object.assign(indexOfDef, {
-  core  : _indexOf,
-  right : indexOfRight
+const arrayLikeIndexOf = Object.assign(arrayLikeIndexOfDef, {
+  core  : arrayLikeIndexOfCore,
+  last  : arrayLikeIndexOfLast
 });
 
-export default indexOf;
+export default arrayLikeIndexOf;

@@ -5,9 +5,13 @@ import number     from './number/index';
 import boolean    from './boolean/index';
 
 // Namespaces
-import is         from "./is/index";
-import logic from './logic/index';
-import { Unboxing, UnTypeArray } from './array/index.D';
+import is      from "./is/index";
+import logic   from './logic/index';
+
+// Advanced
+import hashMap from './hash/map/index';
+import hashSet from './hash/set/core/index';
+
 /**
  * #### Multiline placeholder
  */
@@ -31,6 +35,9 @@ const _ = Object.assign(def, {
 
   is,
 	logic,
+
+	hashMap,
+	hashSet,
 });
 
 export default _;

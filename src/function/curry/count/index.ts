@@ -1,4 +1,4 @@
-import type { Index }                    from "../../../array/index.D";
+import type { ArrayIndex }                    from "../../../array/index.D";
 import type { UINT }                     from "../../../number/index.D";
 import type { ParametersConsistent }     from "../../index.D";
 import type { NextConsistentParameters } from "../index.D";
@@ -6,13 +6,13 @@ import type { ReturnTypeCurryCount }     from './index.D';
 
 
 type MinCount   <Count extends number> = Exclude<UINT<Count>, 0 | 1>;
-type FixCount   <Def extends (...args: any[]) => any> = Exclude<Index<[any, ...Parameters<Def>]>, 0 | 1>;
+type FixCount   <Def extends (...args: any[]) => any> = Exclude<ArrayIndex<[any, ...Parameters<Def>]>, 0 | 1>;
 type LimitCount <Count extends number, Def extends (...args: any[]) => any> = number extends Count 
 ? Count
 : Def extends ((...args: [...infer Args]) => any) 
 	? number extends Args['length']
 		? Count
-	: Count extends Index<[any, ...Args]>
+	: Count extends ArrayIndex<[any, ...Args]>
 		? Count
 		: never
 : Count;

@@ -1,6 +1,6 @@
-import { ALI } from "../../../index.D";
+import { ArrayLikeIterator } from "../../../index.D";
 
-const _indexesFilter = <X>(def: ALI<X>, x: ArrayLike<X>) => {
+const arrayLikeIndexesFilterCore = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = 0;
@@ -16,4 +16,4 @@ const _indexesFilter = <X>(def: ALI<X>, x: ArrayLike<X>) => {
   return [];
 }
 
-export default _indexesFilter;
+export default arrayLikeIndexesFilterCore;

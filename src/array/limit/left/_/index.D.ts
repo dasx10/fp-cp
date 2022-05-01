@@ -1,4 +1,4 @@
-import type { ArrayConsistent, TupleConsistent, Unboxing } from "../../../index.D";
+import type { ArrayConsistent, TupleConsistent, ArrayValue } from "../../../index.D";
 
 export type TupleLimitLeft <Finish extends number, Tuple extends readonly any[], Break = Tuple> = Tuple['length'] extends Finish
 ? Tuple

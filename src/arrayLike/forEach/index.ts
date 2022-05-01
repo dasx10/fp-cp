@@ -1,15 +1,16 @@
-import _curry2  from "../../function/curry/2/_/index";
-import _forEach from "./_/index";
-import type { ALI } from "../index.D";
+import _curry2              from "../../function/curry/2/_/index";
+import arrayLikeForEachCore from "./core/index";
 
 // dependencies
-import forEachRight from "./right/index";
+import arrayLikeForEachRight from "./right/index";
 
-const forEach: {
-  <X>(def: ALI<X>, x: ArrayLike<X>): void;
-  <X>(def: ALI<X>):(x: ArrayLike<X>) => void;
-} = _curry2(_forEach);
+// interfaces
+import type { ArrayLikeForEachDef } from "./index.D";
 
-export default Object.assign(forEach, {
-  right: forEachRight
+const arrayLikeForEachDef: ArrayLikeForEachDef = _curry2(arrayLikeForEachCore);
+const arrayLikeForEach = Object.assign(arrayLikeForEachDef, {
+	core : arrayLikeForEachCore,
+  right: arrayLikeForEachRight
 });
+
+export default arrayLikeForEach;

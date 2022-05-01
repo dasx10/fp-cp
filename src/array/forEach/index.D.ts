@@ -1,5 +1,5 @@
-import type { Index, Unboxing } from "../index.D";
-export type ForEachIterate <X extends readonly any[] = any[], Return = any> = (value: Unboxing<X>, index: Index<X>, array: X) => Return;
+import type { ArrayIndex, ArrayValue } from "../index.D";
+export type ForEachIterate <X extends readonly any[] = any[], Return = any> = (value: ArrayValue<X>, index: ArrayIndex<X>, array: X) => Return;
 
 export type ForEachDef = {
   <X extends readonly any[]>(def: ForEachIterate<X>, x: X): void;

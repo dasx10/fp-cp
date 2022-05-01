@@ -1,9 +1,9 @@
 import type { ToIndexLeft } from "../../../arrayLike/index/index.D";
 import type { placeholder } from "../../../index";
-import type { Index as GetIndex, Unboxing }    from "../../index.D";
+import type { ArrayIndex as GetIndex, ArrayValue }    from "../../index.D";
 
 export type AtLeft <Index extends number, X extends readonly any[]> = number extends Index 
-? Unboxing<X> | undefined
+? ArrayValue<X> | undefined
 : X extends readonly [...any]
   ? `${Index}` extends keyof X 
     ? X[Index]

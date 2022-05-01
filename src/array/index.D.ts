@@ -1,19 +1,23 @@
 import type { ToIndexLeft } from "../arrayLike/index/index.D";
 
-export type Unboxing <X extends readonly any[]> = X extends readonly (infer T)[] ? T : never;
+export type ArrayValue <X extends readonly any[]> = X extends readonly (infer T)[] ? T : never;
 
-type _Index<X extends readonly any[]> = X extends readonly [any, ...infer X]
-  ? X extends readonly [any, ...infer X1]
+export type TupleIndex<X extends readonly any[]> = X extends readonly [any, ...infer X0]
+  ? X0 extends readonly [any, ...infer X1]
     ? X1 extends readonly [any, ...infer X2]
       ? X2 extends readonly [any, ...infer X3]
-        ? (X['length'] | X1['length'] | X2['length'] | X3['length'] | _Index<X2>)
-        : (0 | 1 | 2 | 3)
-      : (0 | 1 | 2)
-    : (0 | 1)
-  : 0;
+        ? (X0['length'] | X1['length'] | X2['length'] | X3['length'] | TupleIndex<X3>)
+        : (0 | 1 | 2)
+      : (0 | 1)
+    : (0)
+  : never;
 
-export type Index <X extends readonly any[]> = X extends readonly [any, ...infer X] ? _Index<X> : number;
-export type IndexFilter <I extends Index<X>, X extends readonly any[]> = Index<X> & ToIndexLeft<I>;
+export type ArrayIndex <X extends readonly any[]> = X extends readonly [any, ...infer Next] 
+	? Next['length'] | TupleIndex<Next> 
+	: X extends readonly [] ? never : number;
+
+
+export type IndexFilter <I extends ArrayIndex<X>, X extends readonly any[]> = ArrayIndex<X> & ToIndexLeft<I>;
 
 export type TupleConsistentEvery <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : [];
 export type TupleConsistent      <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : [];

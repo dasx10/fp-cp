@@ -1,54 +1,59 @@
 // core
-import at      from "./at/index";
-import head    from "./at/head/index";
-import tail    from "./at/tail/index";
-import index   from "./index/index";
+import arrayLikeCore    from "./at/core/index";
 
-import find    from "./find/index";
-import forEach from "./forEach/index";
+// dependencies
+import arrayLikeAt      from "./at/index";
+import arrayLikeHead    from "./at/head/index";
+import arrayLikeTail    from "./at/tail/index";
+import arrayLikeIndex   from "./index/index";
 
-import reduce  from "./reduce/index";
+import arrayLikeFind    from "./find/index";
+import arrayLikeForEach from "./forEach/index";
 
-import every   from "./every/index";
-import some    from "./some/index";
+import arrayLikeReduce  from "./reduce/index";
 
-import count   from "./count/index";
-import sum     from "./sum/index";
-import average from "./average/index";
-import size    from "./size/index";
-import max     from "./max/index";
-import min     from "./min/index";
+import arrayLikeEvery   from "./every/index";
+import arrayLikeSome    from "./some/index";
 
-import indexes from "./indexes/index";
+import arrayLikeCount   from "./count/index";
+import arrayLikeSum     from "./sum/index";
+import arrayLikeAverage from "./average/index";
+import arrayLikeSize    from "./size/index";
+import arrayLikeMaximum from "./max/index";
+import arrayLikeMinimum from "./min/index";
 
-import is      from "./is/index";
+import arrayLikeIndexes from "./indexes/index";
+
+import arrayLikeIs      from "./is/index";
+import arrayLikeKeys    from "./keys/index";
+import arrayLikeGroup   from "./group/index";
 
 
-const arrayLike = Object.assign(<X extends any[]>(...args: X) => args,
+const arrayLike = Object.assign(arrayLikeCore,
 {
-  size,
-  head,
-  tail,
-  index,
-  indexes,
+  at      : arrayLikeAt,
 
-  at,
+  size    : arrayLikeSize,
+  head    : arrayLikeHead,
+  tail    : arrayLikeTail,
+	keys    : arrayLikeKeys,
+  index   : arrayLikeIndex,
+  indexes : arrayLikeIndexes,
 
-  find,
-  forEach,
+  find    : arrayLikeFind,
+  forEach : arrayLikeForEach,
+  reduce  : arrayLikeReduce,
+  every   : arrayLikeEvery,
+  some    : arrayLikeSome,
+	group   : arrayLikeGroup,
 
-  reduce,
+  count   : arrayLikeCount,
+  sum     : arrayLikeSum,
+  average : arrayLikeAverage,
+  maximum : arrayLikeMaximum,
+  minimum : arrayLikeMinimum,
 
-  every,
-  some,
-
-  count,
-  sum,
-  average,
-  max,
-  min,
-
-  is,
+  is      : arrayLikeIs,
 });
 
 export default arrayLike;

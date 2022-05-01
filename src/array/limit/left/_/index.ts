@@ -1,4 +1,4 @@
-import type { Unboxing }       from "../../../index.D";
+import type { ArrayValue }       from "../../../index.D";
 import type { ArrayLimitLeft } from "./index.D";
 
 /**
@@ -14,7 +14,7 @@ function _arrayLimitLeft <Finish extends number, X extends readonly any[]>(finis
   if (length > 0) {
     const stop = length + finish;
     if (stop > 0) {
-      const filtered = new Array<Unboxing<X>>(stop);
+      const filtered = new Array<ArrayValue<X>>(stop);
       let index = 0;
       while (index < stop) {
         filtered[index] = array[index];

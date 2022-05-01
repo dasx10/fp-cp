@@ -1,5 +1,5 @@
 import type { At } from '../../at/index.D';
-import type { Unboxing } from './../../index.D';
+import type { ArrayValue } from './../../index.D';
 
 type _Select<Indexes extends readonly number[], X extends readonly any[]> = Indexes extends readonly [infer Index, ...infer NextIndexes]
   ? Index extends number 
@@ -14,4 +14,4 @@ type UnMap <Tuple extends readonly any[], T> = Tuple extends readonly [any, ...i
 export type Select <Indexes extends readonly number[], X extends readonly any[]> = Indexes extends readonly [infer Index, ...infer NextIndexes] 
   // @ts-ignore
 	? [At<Index, X>, ...Select<NextIndexes, X>]
-	: Indexes extends readonly [] ? [] : Unboxing<X>[];
+	: Indexes extends readonly [] ? [] : ArrayValue<X>[];

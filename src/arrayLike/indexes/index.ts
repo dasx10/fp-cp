@@ -1,11 +1,10 @@
-import indexesFilter from "./filter/index";
+import arrayLikeIndexesCore from "./core/index";
+import arrayLikeIndexesFilter        from "./filter/index";
 
-const indexes = (x: ArrayLike<any>) => {
-  const { length } = x;
-  if (length > 0) return Array.from({ length: x.length }, (_, index) => index);
-  return [];
-}
 
-export default Object.assign(indexes, {
-  filter: indexesFilter
+const arrayLikeIndexes = Object.assign(arrayLikeIndexesCore, {
+  filter: arrayLikeIndexesFilter
 });
+
+
+export default arrayLikeIndexes;

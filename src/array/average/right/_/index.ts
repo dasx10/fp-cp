@@ -1,11 +1,11 @@
-import type { Index, Unboxing } from "../../../index.D";
+import type { ArrayIndex, ArrayValue } from "../../../index.D";
 
-const _averageRight = <X extends readonly any[]>(def: (value: Unboxing<X>, index: Index<X>, array: X) => number, array: X) => {
+const _averageRight = <X extends readonly any[]>(def: (value: ArrayValue<X>, index: ArrayIndex<X>, array: X) => number, array: X) => {
   const { length } = array;
   if (length > 0) {
     let index = length;
     let sum = 0;
-    while (--index > -1) sum += def(array[index], index as Index<X>, array);
+    while (--index > -1) sum += def(array[index], index as ArrayIndex<X>, array);
     return sum / length;
   }
 

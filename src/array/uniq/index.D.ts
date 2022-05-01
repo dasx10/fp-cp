@@ -1,8 +1,8 @@
 import { Primitive } from "../../is/index.D";
-import type { Unboxing } from "../index.D";
+import type { ArrayValue } from "../index.D";
 
 type UniqTuple<X extends readonly any[]> = X extends readonly [...infer First, infer Last]
-  ? Last extends Unboxing<First>
+  ? Last extends ArrayValue<First>
 		? Last extends Primitive 
 			? UniqTuple<First>
 			: [...UniqTuple<First>, Last] | UniqTuple<First>
@@ -10,7 +10,7 @@ type UniqTuple<X extends readonly any[]> = X extends readonly [...infer First, i
 	: [];
 
 export type Uniq <X extends readonly any[]> = X extends readonly [...infer First, infer Last] 
-? Last extends Unboxing<First>
+? Last extends ArrayValue<First>
 	? Last extends Primitive
 		? UniqTuple<First>
 		: [...UniqTuple<First>, Last] | UniqTuple<First>
@@ -19,16 +19,13 @@ export type Uniq <X extends readonly any[]> = X extends readonly [...infer First
 
 
 type _InputUniq <X extends readonly any[], Present = X> = X extends readonly [infer First, ...infer Next]
-  ? Unboxing<Next> extends First
+  ? ArrayValue<Next> extends First
     ? never
     : _InputUniq<Next, Present>
   : Present;
 
 export type InputUniq <X extends readonly any[]> = X extends readonly [infer First, ...infer Next]
-	? Unboxing<Next> extends First
+	? ArrayValue<Next> extends First
 		? never
 		: _InputUniq<Next, X>
   : X;
-
-
-const a: InputUniq<['', 's']>

@@ -1,6 +1,10 @@
 import _curry2 from "../../../function/curry/2/_/index";
-import _everyRight from "./_/index";
+import arrayLikeEveryRightCore from "./core/index";
 import type { EveryCurryDef } from "../index.D";
 
-const everyRight: EveryCurryDef = _curry2(_everyRight);
-export default everyRight;
+const arrayLikeEveryRightDef: EveryCurryDef = _curry2(arrayLikeEveryRightCore);
+const arrayLikeEveryRight = Object.assign(arrayLikeEveryRightDef, {
+	core: arrayLikeEveryRightCore,
+});
+
+export default arrayLikeEveryRight;

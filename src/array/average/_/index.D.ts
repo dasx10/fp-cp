@@ -1,2 +1,2 @@
-import type { Index, Unboxing } from "../../index.D";
-export type AverageCore = <X extends readonly any[]>(def: (value: Unboxing<X>, index: Index<X>, array: X) => number, array: X) => number;
+import type { ArrayIndex, ArrayValue } from "../../index.D";
+export type AverageCore = <X extends readonly any[]>(def: (value: ArrayValue<X>, index: ArrayIndex<X>, array: X) => number, array: X) => number;

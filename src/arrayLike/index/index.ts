@@ -1,10 +1,14 @@
-import indexDef  from "./_/index";
-import indexOf   from "./of/index";
-import indexLeft from "./left/index";
+import arrayLikeIndexLast  from "./last/index";
+import arrayLikeIndexFirst from "./first/index";
+import arrayLikeIndexHas   from "./has/index";
+import arrayLikeIndexOf    from "./of/index";
+import arrayLikeFindIndex  from "../find/index/index";
 
-const index = Object.assign(indexDef, {
-  of   : indexOf,
-  left : indexLeft,
+const arrayLikeIndex = Object.assign(arrayLikeIndexLast, {
+  first : arrayLikeIndexFirst,
+	has   : arrayLikeIndexHas,
+	find  : arrayLikeFindIndex,
+  of    : arrayLikeIndexOf,
 });
 
-export default index;
+export default arrayLikeIndex;
