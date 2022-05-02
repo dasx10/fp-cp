@@ -27,6 +27,7 @@ import arrayLikeIndexes from "./indexes/index";
 import arrayLikeIs      from "./is/index";
 import arrayLikeKeys    from "./keys/index";
 import arrayLikeGroup   from "./group/index";
+import arrayLikeJoin    from "./join/index";
 
 
 const arrayLike = Object.assign(arrayLikeCore, {
@@ -51,6 +52,8 @@ const arrayLike = Object.assign(arrayLikeCore, {
   average : arrayLikeAverage,
   maximum : arrayLikeMaximum,
   minimum : arrayLikeMinimum,
+
+	join    : arrayLikeJoin,
 
   is      : arrayLikeIs,
 });
