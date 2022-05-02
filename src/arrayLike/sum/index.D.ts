@@ -1,2 +1,3 @@
 import type { ArrayLikeEachCurryDef } from './../index.D';
-export type SumArrayLikeDef = ArrayLikeEachCurryDef<number>;
+import type { ArrayLikeSumCore } from './core/index.D';
+export type ArrayLikeSumLikeDef = ArrayLikeSumCore & ArrayLikeEachCurryDef<number>;

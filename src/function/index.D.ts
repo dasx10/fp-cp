@@ -1,8 +1,13 @@
 import { ArrayConsistent, ArrayConsistentEvery } from "../array/index.D";
+import { TupleReverse } from "../array/reverse/index.D";
 
 
-export type ParametersConsistent     <Def extends DefAny> = ArrayConsistent<Parameters<Def>>;
-export type ParametersConsistentEver <Def extends DefAny> = ArrayConsistentEvery<Parameters<Def>>;
+export type ParametersConsistent            <Def extends DefAny> = ArrayConsistent<Parameters<Def>>;
+export type ParametersConsistentEver        <Def extends DefAny> = ArrayConsistentEvery<Parameters<Def>>;
+export type ParametersConsistentReverse     <Def extends DefAny> = ArrayConsistent<ParametersReverse<Def>>;
+export type ParametersConsistentReversEvery <Def extends DefAny> = ArrayConsistentEvery<ParametersReverse<Def>>;
+
+export type ParametersReverse<Def extends DefAny> = TupleReverse<Parameters<Def>>;
 
 export type FirstParameter <Executor extends DefAny> = Executor extends (x: infer X, ...arg: any[]) => any ? X : never;
 export type SecondParameter<Executor extends DefAny> = Executor extends (y: any, x: infer X, ...args: any[]) => any ? X : never;

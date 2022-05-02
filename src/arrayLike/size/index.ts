@@ -1,2 +1,2 @@
-const size = (x: ArrayLike<any>) => x.length;
+const size = <X extends ArrayLike<any>>(x: X): X['length'] => x.length;
 export default size;

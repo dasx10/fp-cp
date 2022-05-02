@@ -15,7 +15,7 @@ export type ReturnTypeCurry<
 	Def  extends (y : any, x: any, ...args: any[]) => any,
 	StartArgsArgs extends ParametersConsistent<Def>
 > = StartArgsArgs extends Parameters<Def>
-	? ReturnType<Def>
+	? ReturnType<Def> : StartArgsArgs['length'] extends Parameters<Def>['length'] ? ReturnType<Def>
 	: <NextArgsParameters extends NextConsistentParameters<Def, StartArgsArgs>>(...nextArgs: NextArgsParameters) => ReturnTypeCurry<
 		Def,
 		// @ts-ignore

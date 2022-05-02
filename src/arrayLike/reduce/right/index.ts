@@ -1,6 +1,9 @@
 import _curry3 from "../../../function/curry/3/_/index";
-import _reduceRight from "./_/index";
-import type { ReduceArrayLikeDef } from "../index.D";
+import arrayLikeReduceRightCore from "./core/index";
+import type { ReduceArrayLikeRightDef } from "./index.D";
 
-const reduceRight: ReduceArrayLikeDef = _curry3(_reduceRight);
-export default reduceRight;
+const arrayLikeReduceRightDef: ReduceArrayLikeRightDef = _curry3(arrayLikeReduceRightCore);
+const arrayLikeReduceRight = Object.assign(arrayLikeReduceRightDef, {
+	core: arrayLikeReduceRightCore,
+});
+export default arrayLikeReduceRight;

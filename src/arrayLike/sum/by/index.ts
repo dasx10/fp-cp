@@ -1,9 +1,14 @@
+// core
 import _curry2 from "../../../function/curry/2/_/index";
-import _sumBy  from "./_/index";
+import arrayLikeSumByCore  from "./core/index";
 
-const sumBy:{
-  <Key extends PropertyKey>(key: Key): <X extends Record<Key, number>>(x: ArrayLike<X>) => number;
-  <Key extends keyof X, X extends Record<Key, number>>(key: Key, x: ArrayLike<X>): number;
-} = _curry2(_sumBy);
+// interfaces
+import type { ArrayLikeSumByDef } from "./index.D";
 
-export default sumBy;
+const arrayLikeSumByDef: ArrayLikeSumByDef = _curry2(arrayLikeSumByCore);
+
+const arrayLikeSumBy = Object.assign(arrayLikeSumByDef, {
+	core: arrayLikeSumByCore,
+});
+
+export default arrayLikeSumBy;

@@ -1,6 +1,6 @@
 import type { ArrayReverse } from './index.D';
 
-function reverse <X extends readonly any[]>(array: X): ArrayReverse<X> {
+function arrayReverse <X extends readonly any[]>(array: X): ArrayReverse<X> {
   const { length } = array;
   if (length) {
     const reversed = new Array(length);
@@ -16,4 +16,4 @@ function reverse <X extends readonly any[]>(array: X): ArrayReverse<X> {
   return [] as unknown as ArrayReverse<X>;
 }
 
-export default reverse;
+export default arrayReverse;

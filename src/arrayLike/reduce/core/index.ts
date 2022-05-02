@@ -1,6 +1,7 @@
-import { ArrayLikeValue } from "../../index.D";
+import type { ArrayLikeValue } from "../../index.D";
+import type { ArrayLikeReduceCore } from "./index.D";
 
-const _reduce = <INITIAL_VALUE, X extends ArrayLike<any>>(
+const arrayLikeReduceCore: ArrayLikeReduceCore = <INITIAL_VALUE, X extends ArrayLike<any>>(
   initialValue : INITIAL_VALUE,
   def          : (currentValue: INITIAL_VALUE, Value: ArrayLikeValue<X>, index: number, x: X) => INITIAL_VALUE,
   x            : X
@@ -20,5 +21,5 @@ const _reduce = <INITIAL_VALUE, X extends ArrayLike<any>>(
   return initialValue;
 }
 
-export default _reduce;
+export default arrayLikeReduceCore;
 

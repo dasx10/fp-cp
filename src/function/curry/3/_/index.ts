@@ -1,4 +1,4 @@
-import { Def3 } from "../../../index.D";
+import type { Def3 } from "../../../index.D";
 
 function _curry3 <Executor extends Def3>(executor: Executor): {
   <

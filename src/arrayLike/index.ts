@@ -20,7 +20,7 @@ import arrayLikeSum     from "./sum/index";
 import arrayLikeAverage from "./average/index";
 import arrayLikeSize    from "./size/index";
 import arrayLikeMaximum from "./maximum/index";
-import arrayLikeMinimum from "./min/index";
+import arrayLikeMinimum from "./minimum/index";
 
 import arrayLikeIndexes from "./indexes/index";
 

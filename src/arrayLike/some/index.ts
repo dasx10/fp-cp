@@ -1,10 +1,13 @@
 import _curry2 from "../../function/curry/2/_/index";
-import _some   from "./_/index";
+import arrayLikeSomeCore   from "./core/index";
+import arrayLikeSomeRight  from "./right/index";
+
+// interfaces
 import type { SomeCurryDef } from "./index.D";
-import someRight from "./right/index";
 
-const some: SomeCurryDef = _curry2(_some);
-
-export default Object.assign(some, {
-  right: someRight,
+const arrayLikeSomeDef: SomeCurryDef = _curry2(arrayLikeSomeCore);
+const arrayLikeSome = Object.assign(arrayLikeSomeDef, {
+  right: arrayLikeSomeRight,
 });
+
+export default arrayLikeSome;

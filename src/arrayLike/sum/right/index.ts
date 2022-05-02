@@ -1,6 +1,10 @@
 import _curry2 from "../../../function/curry/2/_/index";
-import _sumRight from "./_/index";
-import type { SumArrayLikeDef } from "../index.D";
+import arrayLikeSumRightCore from "./core/index";
+import type { ArrayLikeSumLikeDef } from "../index.D";
 
-const sumRight: SumArrayLikeDef = _curry2(_sumRight)
-export default sumRight;
+const arrayLikeSumRightDef: ArrayLikeSumLikeDef = _curry2(arrayLikeSumRightCore);
+const arrayLikeSumRight = Object.assign(arrayLikeSumRightDef, {
+	core: arrayLikeSumRightCore,
+});
+
+export default arrayLikeSumRight;

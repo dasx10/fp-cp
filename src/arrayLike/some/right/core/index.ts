@@ -1,6 +1,6 @@
 import { ArrayLikeIterator } from "../../../index.D";
 
-const _someRight = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => {
+const arrayLikeSomeRightCore = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => {
   const { length } = x;
   if (length > 0) {
     let index = length;
@@ -13,4 +13,4 @@ const _someRight = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => {
   return false;
 }
 
-export default _someRight;
+export default arrayLikeSomeRightCore;

@@ -1,6 +1,6 @@
-import { ArrayLikeValue } from '../../index.D';
+import type { ArrayLikeValue } from '../../index.D';
 
-const _min = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: number, x: X) => number, x: X) => {
+const arrayLikeMinimumCore = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: number, x: X) => number, x: X) => {
   const { length } = x;
   if (length > 0) {
     let flag = def(x[0], 0, x);
@@ -15,4 +15,4 @@ const _min = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: n
   return Infinity;
 }
 
-export default _min;
+export default arrayLikeMinimumCore;

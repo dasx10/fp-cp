@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import curryCount from './count/index';
 import type { ParametersConsistent } from '../index.D';
-import type { ReturnTypeCurry } from './index.D';
+import type { ReturnTypeCurry }      from './index.D';
+import curryRight from './right/index';
 
 /**
  * @description returns a series of `functions` or `result`.
@@ -35,4 +36,5 @@ function curry <
 
 export default Object.assign(curry, {
 	count: curryCount,
+	right: curryRight,
 });
