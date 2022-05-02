@@ -19,3 +19,7 @@ export type Def2<Y = any, X = any, R = any> = (y: Y, x: X) => R;
 export type Def3<Z = any, Y = any, X = any, R = any> = (z: Z, y: Y, x: X) => R;
 export type Def4<M = any, Z = any, Y = any, X = any, R = any> = (m: M, z: Z, y: Y, x: X) => R;
 export type DefAny<Args extends any[] = any[], Return = any> = (...args: Args) => Return;
+
+// @ts-ignore
+export type ErrorArgument <X, ErrorText extends string> = `Error argument: You try input ${X}, but must be ${ErrorText}!`;
+

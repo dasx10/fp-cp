@@ -24,10 +24,13 @@ import arrayLikeMinimum from "./minimum/index";
 
 import arrayLikeIndexes from "./indexes/index";
 
-import arrayLikeIs      from "./is/index";
 import arrayLikeKeys    from "./keys/index";
 import arrayLikeGroup   from "./group/index";
 import arrayLikeJoin    from "./join/index";
+
+import arrayLikeInclude from "./include/index";
+import arrayLikeIs      from "./is/index";
+import arrayLikeExclude from "./exclude/index";
 
 
 const arrayLike = Object.assign(arrayLikeCore, {
@@ -56,6 +59,8 @@ const arrayLike = Object.assign(arrayLikeCore, {
 	join    : arrayLikeJoin,
 
   is      : arrayLikeIs,
+	include : arrayLikeInclude,
+	exclude : arrayLikeExclude,
 });
 
 export default arrayLike;

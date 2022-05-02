@@ -1,8 +1,8 @@
-import def        from './function/index';
-import array      from './array/index';
-import string     from './string/index';
-import number     from './number/index';
-import boolean    from './boolean/index';
+import def     from './function/index';
+import array   from './array/index';
+import string  from './string/index';
+import number  from './number/index';
+import boolean from './boolean/index';
 
 // Namespaces
 import is      from "./is/index";
