@@ -1,11 +1,12 @@
 import type { ArrayValue } from "../../array/index.D";
+import type { ArrayLikeCore } from "./index.D";
 
-const arrayLikeCore = <Values extends readonly any[]>(...args: Values): ArrayLike<ArrayValue<Values>> => {
+const arrayLikeCore: ArrayLikeCore = <Values extends readonly any[]>(...args: Values): ArrayLike<ArrayValue<Values>> => {
 	const arrayLike = Object.create(null)
 	const { length } = args;
 
 	Object.defineProperty(arrayLike, 'length', {
-		enumerable   : false,
+		enumerable : false,
 		get () {
 			let length = 0;
 			for (const _ in this) length++;

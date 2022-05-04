@@ -1,3 +1,4 @@
+import type { ArrayLikeAtLib } from './at/index.D';
 import type { ToIndexRight } from './index/index.D';
 
 export type ArrayLikeValue <X extends ArrayLike<any>> = X extends ArrayLike<infer T> ? T : unknown;

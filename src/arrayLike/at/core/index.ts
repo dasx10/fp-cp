@@ -1,5 +1,6 @@
-import arrayLikeAtLeftCore  from "../left/_/index";
-import arrayLikeAtRightCore from "../right/_/index";
+// core
+import arrayLikeAtLeftCore  from "../left/core/index";
+import arrayLikeAtRightCore from "../right/core/index";
 
 import type {
 	ToIndex,
@@ -7,10 +8,10 @@ import type {
 	ToIndexRight
 } from "../../index/index.D";
 
-function arrayLikeCore <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index>, x: X) {
-  return index < 0 
+import type { ArrayLikeAtCore } from "./index.D";
+
+const arrayLikeAtCore: ArrayLikeAtCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index>, x: X) => index < 0 
 		? arrayLikeAtRightCore (<ToIndexRight<Index>> index, x)
 		: arrayLikeAtLeftCore  (<ToIndexLeft <Index>> index, x);
-}
 
-export default arrayLikeCore;
+export default arrayLikeAtCore;

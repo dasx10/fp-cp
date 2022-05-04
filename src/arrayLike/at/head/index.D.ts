@@ -1,7 +1,4 @@
-export type Head <X extends ArrayLike<any>> = X extends readonly [infer F, ...any[]]
-  ? F
-  : X extends `${infer F}${string}` 
-    ? F
-    : X extends ArrayLike<infer T>
-      ? T | undefined
-      : undefined;
+import { ArrayLikeAt } from './../core/index.D';
+
+export type ArrayLikeHead <X extends ArrayLike<any>> = ArrayLikeAt<X>;
+export type ArrayLikeHeadCore = <X extends ArrayLike<any>>(x: X) => ArrayLikeAt<X>;

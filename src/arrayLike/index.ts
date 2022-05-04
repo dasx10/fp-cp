@@ -1,5 +1,5 @@
 // core
-import arrayLikeCore    from "./at/core/index";
+import arrayLikeCore    from "./core/index";
 
 // dependencies
 import arrayLikeAt      from "./at/index";
@@ -32,8 +32,7 @@ import arrayLikeInclude from "./include/index";
 import arrayLikeIs      from "./is/index";
 import arrayLikeExclude from "./exclude/index";
 
-
-const arrayLike = Object.assign(arrayLikeCore, {
+const arrayLikeLibs = {
   at      : arrayLikeAt,
 
   size    : arrayLikeSize,
@@ -61,6 +60,7 @@ const arrayLike = Object.assign(arrayLikeCore, {
   is      : arrayLikeIs,
 	include : arrayLikeInclude,
 	exclude : arrayLikeExclude,
-});
+} as const;
 
+const arrayLike = Object.assign(arrayLikeCore, arrayLikeLibs);
 export default arrayLike;

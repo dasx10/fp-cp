@@ -8,11 +8,11 @@ import arrayLikeAverageRight from "./right/index";
 // interfaces
 import type { AverageArrayLikeDef } from "./index.D";
 
-
 const arrayLikeAverageDef: AverageArrayLikeDef = _curry2(arrayLikeAverageCore);
 
 const arrayLikeAverage = Object.assign(arrayLikeAverageDef, {
-  right: arrayLikeAverageRight,
+	core  : arrayLikeAverageCore,
+  right : arrayLikeAverageRight,
 });
 
 export default arrayLikeAverage;

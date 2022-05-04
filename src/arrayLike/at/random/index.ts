@@ -1,5 +1,4 @@
-function atRandom <X>(x: ArrayLike<X>): X | undefined {
-  return x[~~(Math.random() * x.length)];
-}
+import type { ArrayLikeAtRandomCore } from "./index.D";
 
-export default atRandom;
+const arrayLikeAtRandom: ArrayLikeAtRandomCore = <X>(x: ArrayLike<X>) => x[~~(Math.random() * x.length)];
+export default arrayLikeAtRandom;

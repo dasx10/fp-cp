@@ -1,9 +1,8 @@
-import type { AtLeft } from './_/index.D';
+import type { ArrayLikeAtLeft, ArrayLikeAtLeftCore } from './core/index.D';
 import type { placeholder } from "../../../index";
 import type { ToIndexLeft } from '../../index/index.D';
 
-export type AtLeftDef = {
-  <Index extends number, X extends ArrayLike<any>>(index: ToIndexLeft<Index>, x: X): AtLeft<Index, X>;
-  <Index extends number>(index: ToIndexLeft<Index>): <X extends ArrayLike<any>>(x: X) => AtLeft<Index, X>;
-  <X extends ArrayLike<any>>(_: placeholder, x: X) : <Index extends number>(index: ToIndexLeft<Index>) => AtLeft<Index, X>;
+export type ArrayLikeAtLeftDef = ArrayLikeAtLeftCore & {
+  <Index extends number>(index: ToIndexLeft<Index>): <X extends ArrayLike<any>>(x: X) => ArrayLikeAtLeft<X, Index>;
+  <X extends ArrayLike<any>>(_: placeholder, x: X) : <Index extends number>(index: ToIndexLeft<Index>) => ArrayLikeAtLeft<X, Index>;
 }
