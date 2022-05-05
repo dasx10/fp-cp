@@ -1,4 +1,4 @@
-import type { ToIndexLeft } from "../arrayLike/index/index.D";
+import type { ToIndexDirect } from "../arrayLike/index/index.D";
 
 export type ArrayValue <X extends readonly any[]> = X extends readonly (infer T)[] ? T : never;
 
@@ -17,7 +17,7 @@ export type ArrayIndex <X extends readonly any[]> = X extends readonly [any, ...
 	: X extends readonly [] ? never : number;
 
 
-export type IndexFilter <I extends ArrayIndex<X>, X extends readonly any[]> = ArrayIndex<X> & ToIndexLeft<I>;
+export type IndexFilter <I extends ArrayIndex<X>, X extends readonly any[]> = ArrayIndex<X> & ToIndexDirect<I>;
 
 export type TupleConsistentEvery <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ?      [First] | [First, ...TupleConsistentEvery<Next>] : [];
 export type TupleConsistent      <Tuple extends readonly any[]> = Tuple extends readonly [infer First, ...infer Next] ? [] | [First] | [First, ...TupleConsistentEvery<Next>] : [];

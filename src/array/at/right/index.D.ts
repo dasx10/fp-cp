@@ -1,4 +1,4 @@
-import type { ToIndexRight } from "../../../arrayLike/index/index.D";
+import type { ToIndexInvert } from "../../../arrayLike/index/index.D";
 import type { placeholder } from "../../../index";
 import type { TupleReverse } from "../../reverse/index.D";
 import type { ArrayAtResult } from "../core/index.D";
@@ -13,7 +13,7 @@ export type ArrayAtRight <Index extends number, X extends readonly any[]> = X ex
 	: ArrayAtResult<X>;
 
 export type AtRightDef = {
-  <Index extends number, X extends readonly any[]>(index: ToIndexRight<Index>, x: X): ArrayAtRight<Index, X>;
-  <Index extends number>(index: ToIndexRight<Index>): <X extends readonly any[]>(x: X) => ArrayAtRight<Index, X>;
-  <X extends readonly any[]>(_: placeholder, x: X): <Index extends number>(index: ToIndexRight<Index>) => ArrayAtRight<Index, X>;
+  <Index extends number, X extends readonly any[]>(index: ToIndexInvert<Index>, x: X): ArrayAtRight<Index, X>;
+  <Index extends number>(index: ToIndexInvert<Index>): <X extends readonly any[]>(x: X) => ArrayAtRight<Index, X>;
+  <X extends readonly any[]>(_: placeholder, x: X): <Index extends number>(index: ToIndexInvert<Index>) => ArrayAtRight<Index, X>;
 }

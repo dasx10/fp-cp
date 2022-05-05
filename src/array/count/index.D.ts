@@ -1,4 +1,4 @@
-import { ToIndexLeft } from "../../arrayLike/index/index.D";
+import { ToIndexDirect } from "../../arrayLike/index/index.D";
 import type { placeholder } from "../../index";
 
 import type {
@@ -17,7 +17,7 @@ export type TupleCount <X extends readonly any[]> = X extends readonly [...infer
 
 export type ArrayCount <X extends readonly any[]> = X extends readonly [...infer X0]
 	? X0['length'] | TupleIndex<X0>
-	: X extends readonly [] ? 0 : ToIndexLeft<number>;
+	: X extends readonly [] ? 0 : ToIndexDirect<number>;
 
 
 // Defined

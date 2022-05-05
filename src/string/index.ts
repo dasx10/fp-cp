@@ -7,7 +7,7 @@ import chars      from './chars/index';
 
 import numeric    from './numeric/index';
 
-import size       from './size/index';
+import arrayLikeSize       from './size/index';
 import stringCore from './core/index';
 
 const string = Object.assign(stringCore, {
@@ -20,7 +20,7 @@ const string = Object.assign(stringCore, {
 
   numeric,
 
-  size,
+  size: arrayLikeSize,
   // right: true,
 });
 
