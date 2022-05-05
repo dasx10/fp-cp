@@ -18,9 +18,9 @@ function curry2 <Def extends Def2, Y extends Parameters<Def>[0]>(executor: Def, 
 function curry2 <Def extends Def2, X extends Parameters<Def>[1]>(executor: Def, _: placeholder, x: X): <Y extends Parameters<Def>[0]>(y: Y) => ReturnType<Def>;
 
 function curry2 <Def extends Def2>(executor: Def): {
-  <Y extends Parameters<Def>[0], X extends Parameters<Def>[1]>(y: Y, x: X): ReturnType<Def>;
-  <Y extends Parameters<Def>[0]>(y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
-  <X extends Parameters<Def>[1]>(_:placeholder ,x: X): <Y extends Parameters<Def>[0]>(y: Y) => ReturnType<Def>;
+  <Y extends FirstParameter<Def>, X extends Parameters<Def>[1]>(y: Y, x: X): ReturnType<Def>;
+  <Y extends FirstParameter<Def>>(y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
+  <X extends Parameters<Def>[1]>(_:placeholder ,x: X): <Y extends FirstParameter<Def>>(y: Y) => ReturnType<Def>;
 };
 
 
