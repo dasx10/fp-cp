@@ -14,13 +14,13 @@ import { Def2, FirstParameter, SecondParameter } from "../../index.D";
  * const sumAdd2 = add2(3, 2);                                 // 5
  * */
 
-function curry2 <Def extends Def2, Y extends Parameters<Def>[0]>(executor: Def, y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
-function curry2 <Def extends Def2, X extends Parameters<Def>[1]>(executor: Def, _: placeholder, x: X): <Y extends Parameters<Def>[0]>(y: Y) => ReturnType<Def>;
+function curry2 <Def extends Def2, Y extends FirstParameter<Def>>(executor: Def, y: Y): <X extends SecondParameter<Def>>(x: X) => ReturnType<Def>;
+function curry2 <Def extends Def2, X extends SecondParameter<Def>>(executor: Def, _: placeholder, x: X): <Y extends FirstParameter<Def>>(y: Y) => ReturnType<Def>;
 
 function curry2 <Def extends Def2>(executor: Def): {
-  <Y extends FirstParameter<Def>, X extends Parameters<Def>[1]>(y: Y, x: X): ReturnType<Def>;
-  <Y extends FirstParameter<Def>>(y: Y): <X extends Parameters<Def>[1]>(x: X) => ReturnType<Def>;
-  <X extends Parameters<Def>[1]>(_:placeholder ,x: X): <Y extends FirstParameter<Def>>(y: Y) => ReturnType<Def>;
+  <Y extends FirstParameter<Def>, X extends SecondParameter<Def>>(y: Y, x: X): ReturnType<Def>;
+  <Y extends FirstParameter<Def>>(y: Y): <X extends SecondParameter<Def>>(x: X) => ReturnType<Def>;
+  <X extends SecondParameter<Def>>(_:placeholder ,x: X): <Y extends FirstParameter<Def>>(y: Y) => ReturnType<Def>;
 };
 
 
