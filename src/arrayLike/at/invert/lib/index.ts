@@ -1,7 +1,7 @@
-import arrayLikeAtRightCore from "../core/index";
+import arrayLikeAtInvertCore from "../core/index";
 
-const arrayLikeAtRightLib = {
-	core: arrayLikeAtRightCore,
+const arrayLikeAtInvertLib = {
+	core: arrayLikeAtInvertCore,
 }
 
-export default arrayLikeAtRightLib;
+export default arrayLikeAtInvertLib;

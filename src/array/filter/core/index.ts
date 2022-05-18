@@ -1,8 +1,8 @@
 import type { ArrayIndex, ArrayValue }  from "../../index.D";
-import type { FilterMapIterate } from "../index.D";
-import type { FilterCore }       from "./index.D";
+import type { FilterMapIterate }        from "../index.D";
+import type { FilterCore }              from "./index.D";
 
-const _filter = (<X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
+const arrayFilterCore = (<X extends readonly any[]>(def: FilterMapIterate<X>, array: X) => {
   const { length } = array;
   if (length > 0) {
     let index = 0 as ArrayIndex<X>;
@@ -19,4 +19,4 @@ const _filter = (<X extends readonly any[]>(def: FilterMapIterate<X>, array: X) 
   return [];
 }) as FilterCore;
 
-export default _filter;
+export default arrayFilterCore;

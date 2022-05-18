@@ -1,5 +1,5 @@
 import def     from './function/index';
-import array   from './array/index';
+import arrayCore   from './array/index';
 import string  from './string/index';
 import number  from './number/index';
 import boolean from './boolean/index';
@@ -28,7 +28,7 @@ const _ = Object.assign(def, {
     yield ___;
   },
 
-  array,
+  array: arrayCore,
   string,
   number,
   boolean,

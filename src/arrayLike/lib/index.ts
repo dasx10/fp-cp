@@ -20,7 +20,8 @@ import arrayLikeReduce  from "../reduce/index";
 import arrayLikeSize    from "../size/index";
 import arrayLikeSome    from "../some/index";
 import arrayLikeSum     from "../sum/index";
-import { ArrayLikeLib } from "./index.D";
+
+import type { ArrayLikeLib } from "./index.D";
 
 const arrayLikeLib: ArrayLikeLib = {
 	at      : arrayLikeAt,

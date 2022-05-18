@@ -4,7 +4,7 @@ import arrayLikeAtDirectDef from "./contract/index";
 import arrayLikeAtDirectLib from "./lib/index";
 
 // interfaces
-import type { ArrayLikeAtLeftMain } from './index.D';
+import type { ArrayLikeAtDirectMain } from './index.D';
 
-const arrayLikeAtDirect: ArrayLikeAtLeftMain = Object.assign(arrayLikeAtDirectDef, arrayLikeAtDirectLib);
+const arrayLikeAtDirect: ArrayLikeAtDirectMain = Object.assign(arrayLikeAtDirectDef, arrayLikeAtDirectLib);
 export default arrayLikeAtDirect;

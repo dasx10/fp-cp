@@ -1,5 +1,5 @@
 // core
-import array      from './_/index';
+import arrayCore      from './core/index';
 import arrayTry   from './try/index';
 import arrayLike  from '../arrayLike/index';
 import arrayRange from './range/index';
@@ -10,10 +10,10 @@ import arrayUniq    from './uniq/index';
 import arraySize    from './size/index';
 import arrayIndexes from './indexes/index';
 
-import at        from './at/index';
-import arrayLikeTail      from './at/tail/index';
-import arrayLikeHead      from './at/head/index';
-import index     from './index/index';
+import arrayAt        from './at/index';
+import arrayLikeTail  from './at/tail/index';
+import arrayLikeHead  from './at/head/index';
+import index          from './index/index';
 
 import arrayLimit from './limit/index';
 import arraySkip  from './skip/index';
@@ -35,7 +35,7 @@ import join       from './join/index';
 import arrayFit   from './fit/index';
 import arrayCount from './count/index';
 
-export default Object.assign(array, {
+export default Object.assign(arrayCore, {
   right   : <Values extends any[]>(...args: Values) => arrayReverse(args),
   try     : arrayTry,
   like    : arrayLike,
@@ -48,7 +48,7 @@ export default Object.assign(array, {
   indexes : arrayIndexes,
   index,
   
-  at,
+  at: arrayAt,
   tail: arrayLikeTail,
   head: arrayLikeHead,
 
