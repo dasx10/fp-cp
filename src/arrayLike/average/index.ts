@@ -1,13 +1,10 @@
 // core
 import arrayLikeAverageDef from "./contract/index";
-import arrayLikeAverageCore from "./core/index";
+import arrayLikeAverageLib from "./lib/index";
 
-// dependencies
-import arrayLikeAverageRight from "./right/index";
+// interfaces
+import type { ArrayLikeAverageMain } from "./index.D";
 
-const arrayLikeAverage = Object.assign(arrayLikeAverageDef, {
-	core  : arrayLikeAverageCore,
-  right : arrayLikeAverageRight,
-});
+const arrayLikeAverage: ArrayLikeAverageMain = Object.assign(arrayLikeAverageDef, arrayLikeAverageLib);
 
 export default arrayLikeAverage;

@@ -1,19 +1,22 @@
-import { ArrayLikeIterator } from '../../index.D';
+import type { ArrayLikeIndex, ArrayLikeValue } from './../../index.D';
+import type { ArrayLikeAverageCore }           from './index.D';
 
-const arrayLikeAverageCore = <X>(def: ArrayLikeIterator<X, number>, x: ArrayLike<X>) => {
+const arrayLikeAverageCore: ArrayLikeAverageCore = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => number, x: X): number => {
   const { length } = x;
-  if (length > 0) {
-    let index = 0;
-    let sum = 0;
-    while (index < length) {
-      sum += def(x[index], index, x);
-      index++;
-    }
-
-    return sum / length;
-  }
-
-  return 0;
+  switch (length) {
+		case 0  : return 0;
+		case 1  : return def(x[0], 0, x);
+		default : {
+			let index = 0 as ArrayLikeIndex<X>;
+			let sum   = 0;
+			while (index < length) {
+				sum += def(x[index], index, x);
+				index++;
+			}
+	
+			return sum / length;
+		}
+	}
 }
 
 export default arrayLikeAverageCore;

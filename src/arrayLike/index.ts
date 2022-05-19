@@ -1,9 +1,9 @@
 // core
-import arrayLikeCore from "./core/index";
+import arrayCore     from "../array/core/index";
 
 // dependencies
 import arrayLikeLib  from "./lib/index";
 
-const arrayLike = Object.assign(arrayLikeCore, arrayLikeLib);
+const arrayLike = Object.assign(arrayCore, arrayLikeLib);
 
 export default arrayLike;
