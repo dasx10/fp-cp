@@ -1,8 +1,8 @@
 // core
-import arrayLikeAtDef      from "./contract/index";
+import arrayLikeAtDef           from "./contract/index";
 
 // dependencies
-import arrayLikeAtLib      from "./lib/index";
+import arrayLikeAtLib           from "./lib/index";
 
 // interfaces
 import type { ArrayLikeAtMain } from "./index.D";

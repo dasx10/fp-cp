@@ -1,8 +1,13 @@
-import arrayLikeAtDirectCore from "../core/index";
+// dependencies
+import arrayLikeAtDirectCore         from "../core/index";
+import arrayLikeAtDirectIndex        from "../index/index";
+
+// interfaces
 import type { ArrayLikeAtDirectLib } from "./index.D";
 
 const arrayLikeAtDirectLib: ArrayLikeAtDirectLib = {
-	core: arrayLikeAtDirectCore,
+	core  : arrayLikeAtDirectCore,
+	index : arrayLikeAtDirectIndex,
 }
 
 export default arrayLikeAtDirectLib;

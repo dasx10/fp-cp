@@ -11,4 +11,6 @@ export type ArrayLikeAt<X extends ArrayLike<any>, Index extends number> = number
 		? ArrayLikeAtInvert<X, Index> 
 		: ArrayLikeAtDirect<X, Index>;
 
+
+/** Returns the item located at the specified index */
 export type ArrayLikeAtCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index>, x: X) => ArrayLikeAt<X, Index>;

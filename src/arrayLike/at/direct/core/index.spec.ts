@@ -5,7 +5,7 @@ const testArrayLike = {
 	1      : 2,
 	2      : 3,
 	length : 3,
-};
+} as const;
 
 describe('arrayLikeAtLeftCore', () => {
 	describe('correct index', () => {

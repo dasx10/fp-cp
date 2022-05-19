@@ -1,5 +1,5 @@
 // core
-import _curry2 from "../../../function/curry/2/_/index";
+import _curry2              from "../../../function/curry/2/_/index";
 import arrayLikeAtDirectDef from "./contract/index";
 import arrayLikeAtDirectLib from "./lib/index";
 
