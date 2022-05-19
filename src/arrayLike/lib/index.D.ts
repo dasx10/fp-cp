@@ -1,7 +1,6 @@
 
 import arrayLikeHead from "../at/head/index";
 import arrayLikeTail from "../at/tail/index";
-import arrayLikeCount from "../count/index";
 import arrayLikeEvery from "../every/index";
 import arrayLikeExclude from "../exclude/index";
 import arrayLikeFind from "../find/index";
@@ -22,9 +21,12 @@ import arrayLikeIndex from "../index/index";
 
 import type { ArrayLikeAtMain }      from "../at/index.D";
 import type { ArrayLikeAverageMain } from "../average/index.D";
+import type { ArrayLikeCountMain }   from "../count/index.D";
 
 export interface ArrayLikeLib {
 	at      : ArrayLikeAtMain,
+  average : ArrayLikeAverageMain,
+  count   : ArrayLikeCountMain,
 	size    : typeof arrayLikeSize,
   head    : typeof arrayLikeHead,
   tail    : typeof arrayLikeTail,
@@ -39,9 +41,7 @@ export interface ArrayLikeLib {
   some    : typeof arrayLikeSome,
 	group   : typeof arrayLikeGroup,
 
-  count   : typeof arrayLikeCount,
   sum     : typeof arrayLikeSum,
-  average : ArrayLikeAverageMain,
   maximum : typeof arrayLikeMaximum,
   minimum : typeof arrayLikeMinimum,
 
