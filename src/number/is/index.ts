@@ -1,4 +1,5 @@
 import isFinite   from "./finite/index";
+import numberIsIndex from "./index/index";
 import isInfinity from "./infinity/index";
 import isInteger  from "./integer/index";
 import isNaN      from "./NaN/index";
@@ -14,6 +15,7 @@ export default Object.assign(isNumber, {
   NaN      : isNaN,
   negative : isNegative,
   positive : isPositive,
-  zero     : isZero
+  zero     : isZero,
+	index    : numberIsIndex,
   // float : isFloat
 });

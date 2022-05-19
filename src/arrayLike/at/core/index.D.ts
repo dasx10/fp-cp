@@ -1,7 +1,7 @@
-import type { ArrayLikeValue } from "../../index.D";
-import type { ToIndex } from "../../index/index.D";
+import type { ArrayLikeValue }    from "../../index.D";
 import type { ArrayLikeAtDirect } from "../direct/core/index.D";
 import type { ArrayLikeAtInvert } from "../invert/core/index.D";
+import type { ToIndex }           from "../../index/index.D";
 
 export type ArrayLikeAtResult<X extends ArrayLike<any>> = ArrayLikeValue<X> | undefined;
 
