@@ -1,6 +1,6 @@
 // core
-import arrayLikeAtDirectCore  from "../direct/core/index";
-import arrayLikeAtRightCore from "../invert/core/index";
+import arrayLikeAtDirectCore from "../direct/core/index";
+import arrayLikeAtInvertCore from "../invert/core/index";
 
 import type {
 	ToIndex,
@@ -11,7 +11,7 @@ import type {
 import type { ArrayLikeAtCore } from "./index.D";
 
 const arrayLikeAtCore: ArrayLikeAtCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index>, x: X) => index < 0 
-		? arrayLikeAtRightCore (<ToIndexInvert<Index>> index, x)
-		: arrayLikeAtDirectCore  (<ToIndexDirect <Index>> index, x);
+		? arrayLikeAtInvertCore (<ToIndexInvert<Index>> index, x)
+		: arrayLikeAtDirectCore (<ToIndexDirect <Index>> index, x);
 
 export default arrayLikeAtCore;
