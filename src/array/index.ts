@@ -11,8 +11,8 @@ import arraySize    from './size/index';
 import arrayIndexes from './indexes/index';
 
 import arrayAt        from './at/index';
-import arrayLikeTail  from './at/tail/index';
-import arrayLikeHead  from './at/head/index';
+import arrayLikeAtLast  from './at/tail/index';
+import arrayLikeAtFirst  from './at/head/index';
 import index          from './index/index';
 
 import arrayLimit from './limit/index';
@@ -49,8 +49,8 @@ export default Object.assign(arrayCore, {
   index,
   
   at: arrayAt,
-  tail: arrayLikeTail,
-  head: arrayLikeHead,
+  tail: arrayLikeAtLast,
+  head: arrayLikeAtFirst,
 
   limit   : arrayLimit,
   skip    : arraySkip,

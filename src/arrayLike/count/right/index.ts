@@ -1,9 +1,10 @@
-import _curry2 from "../../../function/curry/2/_/index";
-import arrayLikeCountRightCore from "./core/index";
+// core
+import arrayLikeCountRightDef           from "./contract/index";
+import arrayLikeCountRightLib           from "./lib/index";
 
-const arrayLikeCountRightDef = _curry2(arrayLikeCountRightCore);
-const arrayLikeCountRight = Object.assign(arrayLikeCountRightDef, {
-	core: arrayLikeCountRightCore,
-});
+// interfaces
+import type { ArrayLikeCountRightMain } from "./index.D";
+
+const arrayLikeCountRight: ArrayLikeCountRightMain = Object.assign(arrayLikeCountRightDef, arrayLikeCountRightLib);
 
 export default arrayLikeCountRight;

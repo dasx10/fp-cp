@@ -1,3 +1,3 @@
-import arrayLikeTail from '../../../arrayLike/at/tail/index';
+import arrayLikeAtLast from '../../../arrayLike/at/last/index';
 import type { ArrayTailDef } from './index.D';
-export default arrayLikeTail as ArrayTailDef;
+export default arrayLikeAtLast as ArrayTailDef;

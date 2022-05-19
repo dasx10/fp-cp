@@ -1,3 +1,3 @@
-import arrayLikeHead from '../../../arrayLike/at/head/index';
+import arrayLikeAtFirst from '../../../arrayLike/at/first/index';
 import type { ArrayHeadDef } from './index.D';
-export default arrayLikeHead as ArrayHeadDef;
+export default arrayLikeAtFirst as ArrayHeadDef;

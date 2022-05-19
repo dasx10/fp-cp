@@ -1,6 +1,6 @@
-import arrayLikeHead    from "../at/head/index";
+import arrayLikeAtFirst from "../at/first/index";
 import arrayLikeAt      from "../at/index";
-import arrayLikeTail    from "../at/tail/index";
+import arrayLikeAtLast  from "../at/last/index";
 import arrayLikeAverage from "../average/index";
 import arrayLikeCount   from "../count/index";
 import arrayLikeEvery   from "../every/index";
@@ -27,8 +27,8 @@ const arrayLikeLib: ArrayLikeLib = {
 	at      : arrayLikeAt,
 
   size    : arrayLikeSize,
-  head    : arrayLikeHead,
-  tail    : arrayLikeTail,
+  head    : arrayLikeAtFirst,
+  tail    : arrayLikeAtLast,
 	keys    : arrayLikeKeys,
   index   : arrayLikeIndex,
   indexes : arrayLikeIndexes,

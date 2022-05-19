@@ -1,7 +1,7 @@
 // core
-import _                    from "../../../index";
-import arrayLikeAtCore      from "../core/index";
-import arrayLikeAtDirectCore  from "../direct/core/index";
+import _                     from "../../../index";
+import arrayLikeAtCore       from "../core/index";
+import arrayLikeAtDirectCore from "../direct/core/index";
 import arrayLikeAtInvertCore from "../invert/core/index";
 
 // interfaces

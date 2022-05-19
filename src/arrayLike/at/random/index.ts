@@ -1,4 +1,9 @@
-import type { ArrayLikeAtRandomCore } from "./index.D";
+// core
+import arrayLikeAtRandomCore from "./core/index";
+import arrayLikeAtRandomLib from "./lib/index";
 
-const arrayLikeAtRandom: ArrayLikeAtRandomCore = <X>(x: ArrayLike<X>) => x[~~(Math.random() * x.length)];
+// interfaces
+import type { ArrayLikeAtRandomMain } from "./index.D";
+
+const arrayLikeAtRandom: ArrayLikeAtRandomMain = Object.assign(arrayLikeAtRandomCore, arrayLikeAtRandomLib);
 export default arrayLikeAtRandom;
