@@ -1,4 +1,4 @@
-import type { ArrayIndex } from "../array/index.D";
+import type { ArrayIndex } from "../../backup/array/index.D";
 import type { Char }  from "./char/index.D";
 import type { Chars } from "./chars/index.D";
 

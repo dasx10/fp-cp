@@ -1,4 +1,4 @@
-import { BreakArrayRight, TupleConsistentEvery } from "../../array/index.D";
+import { BreakArrayRight, TupleConsistentEvery } from "../../../backup/array/index.D";
 import { ParametersConsistent } from "../index.D";
 
 export type MaybeReturnTypeCurry <

@@ -5,5 +5,5 @@ import arrayLikeAtDirectCore         from "../core/index";
 // interfaces
 import type { ArrayLikeAtDirectDef } from "./index.D";
 
-const arrayLikeAtDirectDef: ArrayLikeAtDirectDef = _curry2(arrayLikeAtDirectCore);
+const arrayLikeAtDirectDef = _curry2(arrayLikeAtDirectCore) as ArrayLikeAtDirectDef; 
 export default arrayLikeAtDirectDef;

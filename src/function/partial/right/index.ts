@@ -1,5 +1,5 @@
 // helpers
-import arrayReverse from "../../../array/reverse/index";
+import arrayReverse from "../../../../backup/array/reverse/index";
 
 // interfaces
 import type { DefAny } from "../../index.D";

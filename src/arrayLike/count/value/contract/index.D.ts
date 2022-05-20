@@ -4,7 +4,7 @@ import type { ArrayLikeValue }          from '../../../index.D';
 
 export type ArrayLikeCountValueDef = ArrayLikeCountValueCore & {
 	<FindValue>(findValue: FindValue): <X extends ArrayLike<FindValue>>(x: X) => number;
-	<X extends ArrayLike<any>>(_: placeholder, x: X): <Value extends ArrayLikeValue<X>> (value: Value) => number;
+	<X extends ArrayLike<unknown>>(_: placeholder, x: X): <Value extends ArrayLikeValue<X>> (value: Value) => number;
 };
 
 

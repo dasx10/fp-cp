@@ -1,6 +1,6 @@
 import type { ArrayLikeValue } from "../../../index.D";
 
-const arrayLikeCountValueCore = <FindValue extends ArrayLikeValue<X>, X extends ArrayLike<any>>(findValue: FindValue, x: X): number => {
+const arrayLikeCountValueCore = <FindValue extends ArrayLikeValue<X>, X extends ArrayLike<unknown>>(findValue: FindValue, x: X): number => {
 	const { length } = x;
   switch (length) {
 		case 0  : return 0;

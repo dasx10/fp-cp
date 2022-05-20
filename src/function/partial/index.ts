@@ -1,4 +1,4 @@
-import { TupleDifference } from "../../array/index.D";
+import { TupleDifference } from "../../../backup/array/index.D";
 import { DefAny, ParametersConsistentEver } from "../index.D";
 
 function partial <

@@ -1,4 +1,4 @@
-import type { At as AtElement } from "../../array/at/index.D";
+import type { ArrayAt } from "../../../src/array/at/core/index.D";
 import type { Chars } from "../chars/index.D";
 
-export type At <Index extends number, X extends string> = AtElement<Index, Chars<X>>
+export type At <Index extends number, X extends string> = ArrayAt<Index, Chars<X>>

@@ -1,7 +1,7 @@
 import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
 import type { ArrayLikeAverageRightCore } from "./index.D";
 
-const arrayLikeAverageRightCore: ArrayLikeAverageRightCore = <X extends ArrayLike<any>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => number, x: X) => {
+const arrayLikeAverageRightCore: ArrayLikeAverageRightCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => number, x: X) => {
   const { length } = x;
   switch (length) {
 		case 0  : return 0;

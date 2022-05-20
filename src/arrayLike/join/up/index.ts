@@ -1,6 +1,6 @@
 import type { ArrayLikeJoinUpCore } from "./index.D";
 
-const arrayLikeJoinUp: ArrayLikeJoinUpCore = (<X extends ArrayLike<any>>(array: X) => {
+const arrayLikeJoinUp: ArrayLikeJoinUpCore = (<X extends ArrayLike<unknown>>(array: X) => {
   const { length } = array;
   if (length > 0) {
     let joined = '' + array[0];

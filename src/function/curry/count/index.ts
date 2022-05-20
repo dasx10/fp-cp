@@ -1,4 +1,4 @@
-import type { ArrayIndex }                    from "../../../array/index.D";
+import type { ArrayIndex }                    from "../../../../backup/array/index.D";
 import type { UINT }                     from "../../../number/index.D";
 import type { ParametersConsistent }     from "../../index.D";
 import type { NextConsistentParameters } from "../index.D";

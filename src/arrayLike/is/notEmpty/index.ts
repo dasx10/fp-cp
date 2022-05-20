@@ -1,2 +1,2 @@
-const arrayLikeIsNotEmpty = (x: ArrayLike<any>) => x.length > 0;
+const arrayLikeIsNotEmpty = (x: ArrayLike<unknown>) => x.length > 0;
 export default arrayLikeIsNotEmpty;

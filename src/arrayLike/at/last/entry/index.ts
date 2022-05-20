@@ -1,7 +1,6 @@
-import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
-import { ArrayLikeAtLastEntry } from "./index.D";
+import type { ArrayLikeAtLastEntry, ArrayLikeAtLastEntryCore } from "./index.D";
 
-const arrayLikeAtLastEntry: ArrayLikeAtLastEntry = <X extends ArrayLike<any>>(x: X): [ArrayLikeIndex<X>, ArrayLikeValue<X>] | void => {
+const arrayLikeAtLastEntry: ArrayLikeAtLastEntryCore = <X extends ArrayLike<unknown>>(x: X): ArrayLikeAtLastEntry<X> => {
 	const { length } = x;
 	if (length > 0) {
 		const lastIndex = length - 1;

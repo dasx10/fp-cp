@@ -1,1 +1,1 @@
-export type ArrayLikeAtFirstIndexCore = <X extends ArrayLike<any>>(x: X) => 0 | void;
+export type ArrayLikeAtFirstIndexCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(x: X) => 0 | void;

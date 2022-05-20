@@ -1,2 +1,4 @@
-const arrayLikeSize = <X extends ArrayLike<any>>(x: X): X['length'] => x.length;
+import type { ArrayLikeSize, ArrayLikeSizeCore } from "./index.D";
+
+const arrayLikeSize: ArrayLikeSizeCore = <X extends ArrayLike<unknown>>(x: X) => x.length as ArrayLikeSize<X>;
 export default arrayLikeSize;

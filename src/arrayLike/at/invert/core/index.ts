@@ -13,5 +13,5 @@ import type { ArrayLikeAtInvertCore } from './index.D';
  * arrayLikeAtInvertCore(-3, [1, 2, 3]); // 1;
  * arrayLikeAtInvertCore(-4, [1, 2, 3]); // undefined;
  */
-const arrayLikeAtInvertCore: ArrayLikeAtInvertCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndexInvert<Index>, arrayLike: X) => arrayLike[arrayLike.length + index];
+const arrayLikeAtInvertCore: ArrayLikeAtInvertCore = <Index extends number, X extends ArrayLike<unknown>>(index: ToIndexInvert<Index>, arrayLike: X) => arrayLike[arrayLike.length + index];
 export default arrayLikeAtInvertCore;

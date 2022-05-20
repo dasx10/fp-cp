@@ -10,5 +10,10 @@ export type ArrayLikeEachCurryDef<Result, Return = any> = {
   <X>(def: ArrayLikeIterator<X, Return>): (x: ArrayLike<X>) => Result;
 }
 
-export type ArrayLikeValue <X extends ArrayLike<any>> = X extends ArrayLike<infer T> ? T : unknown;
-export type ArrayLikeIndex <X extends ArrayLike<any>> = number;
+
+export type DirectiveValue <X extends Record<number, unknown>> = X extends Record<number, infer T> ? T : never;
+export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends ArrayLike<infer T> ? T : never;
+
+export type ArrayLikeIndex    <X extends Record<number, unknown>> = number & keyof X;
+
+export type ArrayLikeExecutor <X extends ArrayLike<unknown>, Return = any> = (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => Return;

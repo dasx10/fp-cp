@@ -1,7 +1,7 @@
 import type { ArrayLikeIterator, ArrayLikeValue } from '../../index.D';
 import type { ArrayLikeMaximumCore } from './index.D';
 
-const arrayLikeMaximumCore: ArrayLikeMaximumCore = <X extends ArrayLike<any>>(def: ArrayLikeIterator<ArrayLikeValue<X>, number>, x: X) => {
+const arrayLikeMaximumCore: ArrayLikeMaximumCore = <X extends ArrayLike<unknown>>(def: ArrayLikeIterator<ArrayLikeValue<X>, number>, x: X) => {
   const { length } = x;
   if (length > 0) {
     let flag = def(x[0], 0, x);

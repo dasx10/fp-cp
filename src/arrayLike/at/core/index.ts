@@ -27,8 +27,8 @@ import type { ArrayLikeAtCore } from "./index.D";
  * arrayLikeAtCore(-3, [1, 2, 3]); // 1;
  * arrayLikeAtCore(-4, [1, 2, 3]); // undefined;
  */
-const arrayLikeAtCore: ArrayLikeAtCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index>, x: X) => index < 0 
+const arrayLikeAtCore = (<Index extends number, X extends ArrayLike<unknown>>(index: ToIndex<Index>, x: X) => index < 0 
 	? arrayLikeAtInvertCore (<ToIndexInvert<Index>>index, x)
-	: arrayLikeAtDirectCore (<ToIndexDirect<Index>>index, x);
+	: arrayLikeAtDirectCore (<ToIndexDirect<Index>>index, x)) as ArrayLikeAtCore;
 
 export default arrayLikeAtCore;

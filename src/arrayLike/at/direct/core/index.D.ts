@@ -1,10 +1,17 @@
 import type { ToIndexDirect } from "../../../index/index.D";
-import type { ArrayLikeAtResult } from "../../core/index.D";
+import type { DirectiveAtResult } from "../../core/index.D";
+import type { ArrayLikeAtResult } from './../../core/index.D';
 
-export type ArrayLikeAtDirect <X extends ArrayLike<any>, Index extends number> = number extends Index
-? ArrayLikeAtResult<X>
-: `${Index}` extends `-${number}`
-	? undefined
-	: ArrayLikeAtResult<X>;
+type AtResult <X extends Record<number, any>> = X extends ArrayLike<unknown>
+	? ArrayLikeAtResult<X>
+	: X extends Record<number, any>
+		? DirectiveAtResult<X>
+		: never;
+
+export type ArrayLikeAtDirect <X extends Record<number, any>, Index extends number> = number extends Index
+	? AtResult<X>
+	: `${Index}` extends `-${number}`
+		? undefined
+		: AtResult<X>;
 	
-export type ArrayLikeAtDirectCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndexDirect<Index>, x: X) => ArrayLikeAtDirect<X, Index>;
+export type ArrayLikeAtDirectCore <Type extends Record<number, unknown> = Record<number, unknown>> = <Index extends keyof X & number, X extends Type>(index: ToIndexDirect<Index>, x: X) => ArrayLikeAtDirect<X, Index>;

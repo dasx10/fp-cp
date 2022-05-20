@@ -14,7 +14,7 @@ import type { placeholder }    from "../../../index";
  * @param {number} index The zero-based index of the desired code unit. A negative index will count back from the last item
  * @param {X} x - Array, String, Arguments 
  * @returns {X extends ArrayLike<infer Value> ? (Value | undefined) : undefined} item located at the specified index
- * @template {ArrayLike<any>} X
+ * @template {ArrayLike<unknown>} X
  * @example
  * const arrayLikeAtFirst = arrayLikeAtDef(0); // <Value>(x: ArrayLike<Value>) => Value | void;
  * arrayLikeAtFirst([1, 2, 3]); // 1;
@@ -30,10 +30,11 @@ import type { placeholder }    from "../../../index";
  * arrayLikeAtDef(-3, [1, 2, 3]); // 1;
  * arrayLikeAtDef(-4, [1, 2, 3]); // undefined;
  */
-const arrayLikeAtDef = (function arrayLikeAtDef <Index extends number, X extends ArrayLike<any>>(index: ToIndex<Index> | placeholder, x?: X | ToIndex<Index>) {
+const arrayLikeAtDef = (function arrayLikeAtDef <Index extends number, X extends ArrayLike<unknown>>(index: ToIndex<Index> | placeholder, x?: X | ToIndex<Index>) {
   if (arguments.length === 1) {
     const arrayLikeAt = index < 0 ? arrayLikeAtInvertCore : arrayLikeAtDirectCore;
-    return (x: ArrayLike<any>) => arrayLikeAt(<ToIndex<number>>index, <X>x);
+		// @ts-ignore
+    return (x: ArrayLike<unknown>) => arrayLikeAt(<number>index, <X>x);
   }
 
   else if (index === _) return <Index extends number>(index: ToIndex<Index>) => arrayLikeAtCore(index, <X>x);

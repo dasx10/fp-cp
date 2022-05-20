@@ -2,7 +2,7 @@ import arrayLikeIsArrayLike from "./arrayLike/index";
 import arrayLikeIsEmpty     from "./empty/index";
 import arrayLikeIsNotEmpty  from "./notEmpty/index";
 
-import arrayIs from "../../array/is/index";
+import arrayIs from "../../../backup/array/is/index";
 
 
 const arrayLikeIs = Object.assign(arrayLikeIsArrayLike, {

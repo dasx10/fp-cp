@@ -1,7 +1,7 @@
 import type { ArrayLikeValue } from "../../../index.D";
 import type { ArrayLikeReduceRightCore } from "./index.D";
 
-const arrayLikeReduceRightCore: ArrayLikeReduceRightCore = <INITIAL_VALUE, X extends ArrayLike<any>>(
+const arrayLikeReduceRightCore: ArrayLikeReduceRightCore = <INITIAL_VALUE, X extends ArrayLike<unknown>>(
   initialValue : INITIAL_VALUE,
   def          : (currentValue: INITIAL_VALUE, Value: ArrayLikeValue<X>, index: number, x: X) => INITIAL_VALUE,
   x            : X

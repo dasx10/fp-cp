@@ -13,5 +13,5 @@ import type { ArrayLikeAtDirect, ArrayLikeAtDirectCore } from "./index.D";
  * arrayLikeAtDirectCore(2, [1, 2, 3]); // 3;
  * arrayLikeAtDirectCore(3, [1, 2, 3]); // undefined;
  */
-const arrayLikeAtDirectCore: ArrayLikeAtDirectCore = <Index extends number, X extends ArrayLike<any>>(index: ToIndexDirect<Index>, x: X): ArrayLikeAtDirect<X, Index> => x[index];
+const arrayLikeAtDirectCore: ArrayLikeAtDirectCore = <Index extends keyof X & number, X extends Record<number, unknown>>(index: ToIndexDirect<Index>, x: X) => x[index] as ArrayLikeAtDirect<X, Index>;
 export default arrayLikeAtDirectCore;

@@ -8,14 +8,14 @@ import type { ArrayLikeAtLastMain }   from "../last/index.D";
 import type { ArrayLikeAtDirectMain } from "../direct/index.D";
 import type { ArrayLikeAtInvertMain } from "../invert/index.D";
 
-export type ArrayLikeAtLib = {
-	core    : ArrayLikeAtCore,
+export type ArrayLikeAtLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = {
+	readonly core    : ArrayLikeAtCore       <Type>,
 
-	right   : ArrayLikeAtRightMain,
+	readonly right   : ArrayLikeAtRightMain  <Type>,
 
-	random  : ArrayLikeAtRandomMain,
-	first   : ArrayLikeAtFirstMain,
-	last    : ArrayLikeAtLastMain,
-	direct  : ArrayLikeAtDirectMain,
-	invert  : ArrayLikeAtInvertMain,
+	readonly random  : ArrayLikeAtRandomMain <Type>,
+	readonly first   : ArrayLikeAtFirstMain  <Type>,
+	readonly last    : ArrayLikeAtLastMain   <Type>,
+	readonly direct  : ArrayLikeAtDirectMain <Type>,
+	readonly invert  : ArrayLikeAtInvertMain <Type>,
 }

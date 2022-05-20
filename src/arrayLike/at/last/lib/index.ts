@@ -2,8 +2,8 @@ import arrayLikeAtLastEntry from "../entry/index";
 import arrayLikeAtLastIndex from "../index/index";
 
 const arrayLikeAtLastLib = {
-	index: arrayLikeAtLastIndex,
 	entry: arrayLikeAtLastEntry,
+	index: arrayLikeAtLastIndex,
 }
 
 export default arrayLikeAtLastLib;

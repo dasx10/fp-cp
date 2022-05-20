@@ -1,53 +1,53 @@
-
-import arrayLikeAtFirst from "../at/first/index";
-import arrayLikeAtLast from "../at/last/index";
-import arrayLikeEvery from "../every/index";
 import arrayLikeExclude from "../exclude/index";
-import arrayLikeFind from "../find/index";
+import arrayLikeFind    from "../find/index";
 import arrayLikeForEach from "../forEach/index";
-import arrayLikeGroup from "../group/index";
+import arrayLikeGroup   from "../group/index";
 import arrayLikeInclude from "../include/index";
 import arrayLikeIndexes from "../indexes/index";
-import arrayLikeIs from "../is/index";
-import arrayLikeJoin from "../join/index";
-import arrayLikeKeys from "../keys/index";
+import arrayLikeIs      from "../is/index";
+import arrayLikeJoin    from "../join/index";
+import arrayLikeKeys    from "../keys/index";
 import arrayLikeMaximum from "../maximum/index";
 import arrayLikeMinimum from "../minimum/index";
-import arrayLikeReduce from "../reduce/index";
-import arrayLikeSize from "../size/index";
-import arrayLikeSome from "../some/index";
-import arrayLikeSum from "../sum/index";
-import arrayLikeIndex from "../index/index";
+import arrayLikeReduce  from "../reduce/index";
+import arrayLikeSome    from "../some/index";
+import arrayLikeSum     from "../sum/index";
+import arrayLikeIndex   from "../index/index";
 
 import type { ArrayLikeAtMain }      from "../at/index.D";
 import type { ArrayLikeAverageMain } from "../average/index.D";
 import type { ArrayLikeCountMain }   from "../count/index.D";
+import type { ArrayLikeEveryMain }   from "../every/index.D";
+import type { ArrayLikeSizeCore }    from "../size/index.D";
+import type { ArrayLikeAtFirstMain } from './../at/first/index.D';
+import type { ArrayLikeLastMain }    from "../last/index.D";
 
-export interface ArrayLikeLib {
-	at      : ArrayLikeAtMain,
-  average : ArrayLikeAverageMain,
-  count   : ArrayLikeCountMain,
-	size    : typeof arrayLikeSize,
-  head    : typeof arrayLikeAtFirst,
-  tail    : typeof arrayLikeAtLast,
-	keys    : typeof arrayLikeKeys,
-  index   : typeof arrayLikeIndex,
-  indexes : typeof arrayLikeIndexes,
+export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
+	readonly at      : ArrayLikeAtMain      <Type>,
+	readonly size    : ArrayLikeSizeCore    <Type>,
+  readonly first   : ArrayLikeAtFirstMain,
+  readonly last    : ArrayLikeLastMain,
+	readonly keys    : typeof arrayLikeKeys,
+  readonly index   : typeof arrayLikeIndex,
+  readonly indexes : typeof arrayLikeIndexes,
+	
+  readonly find    : typeof arrayLikeFind,
+  readonly forEach : typeof arrayLikeForEach,
+  readonly reduce  : typeof arrayLikeReduce,
+  readonly every   : ArrayLikeEveryMain,
+  readonly some    : typeof arrayLikeSome,
+	readonly group   : typeof arrayLikeGroup,
+	
+  readonly sum     : typeof arrayLikeSum,
+  readonly count   : ArrayLikeCountMain,
+  readonly average : ArrayLikeAverageMain,
+  readonly maximum : typeof arrayLikeMaximum,
+  readonly minimum : typeof arrayLikeMinimum,
 
-  find    : typeof arrayLikeFind,
-  forEach : typeof arrayLikeForEach,
-  reduce  : typeof arrayLikeReduce,
-  every   : typeof arrayLikeEvery,
-  some    : typeof arrayLikeSome,
-	group   : typeof arrayLikeGroup,
+	readonly join    : typeof arrayLikeJoin,
 
-  sum     : typeof arrayLikeSum,
-  maximum : typeof arrayLikeMaximum,
-  minimum : typeof arrayLikeMinimum,
+  readonly is      : typeof arrayLikeIs,
 
-	join    : typeof arrayLikeJoin,
-
-  is      : typeof arrayLikeIs,
-	include : typeof arrayLikeInclude,
-	exclude : typeof arrayLikeExclude,
+	readonly include : typeof arrayLikeInclude,
+	readonly exclude : typeof arrayLikeExclude,
 }

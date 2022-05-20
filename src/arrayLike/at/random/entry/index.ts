@@ -1,7 +1,7 @@
 import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
 import type { ArrayLikeAtRandomEntryCore }     from "./index.D";
 
-const arrayLikeAtRandomEntryCore: ArrayLikeAtRandomEntryCore = <X extends ArrayLike<any>>(x: X): [ArrayLikeIndex<X>, ArrayLikeValue<X>] | void => {
+const arrayLikeAtRandomEntryCore: ArrayLikeAtRandomEntryCore = <X extends ArrayLike<unknown>>(x: X): [ArrayLikeIndex<X>, ArrayLikeValue<X>] | void => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return;

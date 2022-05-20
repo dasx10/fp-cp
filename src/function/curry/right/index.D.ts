@@ -1,4 +1,4 @@
-import type { BreakArrayRight, TupleConsistentEvery } from "../../../array/index.D";
+import type { BreakArrayRight, TupleConsistentEvery } from "../../../../backup/array/index.D";
 import type { DefAny, ParametersConsistentReverse, ParametersReverse } from "../../index.D";
 
 export type ReturnTypeCurryRight <
