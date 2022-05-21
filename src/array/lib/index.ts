@@ -1,11 +1,11 @@
 // libraries
+import arrayLikeLib from "../../arrayLike/lib/index";
 
 // interfaces
-import arrayLikeLib from "../../arrayLike/lib/index";
 import type { ArrayLib } from "./index.D";
 
-const arrayLib: ArrayLib = Object.assign(arrayLikeLib, {
+const arrayLib = Object.assign(arrayLikeLib, {
 	like: arrayLikeLib,
-});
+}) as ArrayLib;
 
 export default arrayLib;

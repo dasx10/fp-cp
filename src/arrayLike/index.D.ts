@@ -16,4 +16,4 @@ export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends Array
 
 export type ArrayLikeIndex    <X extends Record<number, unknown>> = number & keyof X;
 
-export type ArrayLikeExecutor <X extends ArrayLike<unknown>, Return = any> = (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => Return;
+export type ArrayLikeExecutor <ArrayLikeType extends ArrayLike<unknown>, Return = any> = (value: ArrayLikeValue<ArrayLikeType>, index: ArrayLikeIndex<ArrayLikeType>, x: ArrayLikeType) => Return;

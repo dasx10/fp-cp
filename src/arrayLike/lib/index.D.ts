@@ -25,8 +25,8 @@ import type { ArrayLikeLastMain }    from "../last/index.D";
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>,
 	readonly size    : ArrayLikeSizeCore    <Type>,
-  readonly first   : ArrayLikeAtFirstMain,
-  readonly last    : ArrayLikeLastMain,
+  readonly first   : ArrayLikeAtFirstMain <Type>,
+  readonly last    : ArrayLikeLastMain    <Type>,
 	readonly keys    : typeof arrayLikeKeys,
   readonly index   : typeof arrayLikeIndex,
   readonly indexes : typeof arrayLikeIndexes,
@@ -39,8 +39,8 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 	readonly group   : typeof arrayLikeGroup,
 	
   readonly sum     : typeof arrayLikeSum,
-  readonly count   : ArrayLikeCountMain,
-  readonly average : ArrayLikeAverageMain,
+  readonly count   : ArrayLikeCountMain   <Type>,
+  readonly average : ArrayLikeAverageMain <Type>,
   readonly maximum : typeof arrayLikeMaximum,
   readonly minimum : typeof arrayLikeMinimum,
 
