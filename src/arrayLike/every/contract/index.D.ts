@@ -1,8 +1,12 @@
-import type { ArrayLikeExecutor }  from './../../index.D';
-import type { placeholder }        from "../../../index";
-import type { ArrayLikeEveryCore } from "../core/index.D";
+import type { ArrayLikeIndex, ArrayLikeValue }  from './../../index.D';
+import type { placeholder }                     from "../../../index";
+import type { ArrayLikeEveryCore }              from "../core/index.D";
 
-export type ArrayLikeEveryDef = ArrayLikeEveryCore & {
-	<Value>(def: (value: Value, index: number, arrayLike: ArrayLike<Value>) => any): <X extends ArrayLike<Value>>(x: X) => boolean;
-	<X extends ArrayLike<unknown>>(_: placeholder, x: X): (def: ArrayLikeExecutor<X>) => boolean;
+export type ArrayLikeEveryDef<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeEveryCore<Type> & {
+	<
+		Value             extends ArrayLikeValue<Type>,
+		WaitArrayLikeType extends Type & ArrayLike<Value> = Type & ArrayLike<Value>,
+	>(def: (value: Value & ArrayLikeValue<WaitArrayLikeType>, index: ArrayLikeIndex<WaitArrayLikeType>, x: WaitArrayLikeType & ArrayLike<Value>) => any): <X extends WaitArrayLikeType>(x: X) => boolean;
+	
+	<X extends Type>(_: placeholder, x: X): (def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => any) => boolean;
 };

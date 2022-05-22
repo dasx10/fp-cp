@@ -1,8 +1,6 @@
-import arrayLikeExclude from "../exclude/index";
 import arrayLikeFind    from "../find/index";
 import arrayLikeForEach from "../forEach/index";
 import arrayLikeGroup   from "../group/index";
-import arrayLikeInclude from "../include/index";
 import arrayLikeIndexes from "../indexes/index";
 import arrayLikeIs      from "../is/index";
 import arrayLikeJoin    from "../join/index";
@@ -34,7 +32,7 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
   readonly find    : typeof arrayLikeFind,
   readonly forEach : typeof arrayLikeForEach,
   readonly reduce  : typeof arrayLikeReduce,
-  readonly every   : ArrayLikeEveryMain,
+  readonly every   : ArrayLikeEveryMain   <Type>,
   readonly some    : typeof arrayLikeSome,
 	readonly group   : typeof arrayLikeGroup,
 	
@@ -47,7 +45,4 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 	readonly join    : typeof arrayLikeJoin,
 
   readonly is      : typeof arrayLikeIs,
-
-	readonly include : typeof arrayLikeInclude,
-	readonly exclude : typeof arrayLikeExclude,
 }

@@ -5,12 +5,12 @@ const arrayLikeCountValuesCore = <FindValues extends readonly [ArrayLikeValue<X>
 	const { length } = x;
 	switch (length) {
 		case 0  : return 0;
-		case 1  : return arrayLikeCountValueBase(x[0], findValues);
+		case 1  : return arrayLikeCountValueBase(<ArrayLikeValue<FindValues>>x[0], findValues);
 		default : {
-			let count = arrayLikeCountValueBase(x[0], findValues);
+			let count = arrayLikeCountValueBase(<ArrayLikeValue<FindValues>>x[0], findValues);
 			let index = 1;
 			while (index < length) {
-				count += arrayLikeCountValueBase(x[index], findValues);
+				count += arrayLikeCountValueBase(<ArrayLikeValue<FindValues>>x[index], findValues);
 				index++;
 			}
 			return count;

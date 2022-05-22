@@ -1,17 +1,10 @@
-import _curry2                from "../../../function/curry/2/_/index";
-import arrayLikeFindIndexCore from "./core/index";
-
-// dependencies
-import arrayLikeFindIndexRightDef from "./right/index";
+// core
+import arrayLikeFindIndexLib from "./lib/index";
+import arrayLikeFindIndexDef from "./contract/index";
 
 // interfaces
-import type { ArrayLikeFindIndexDef } from "./index.D";
+import { ArrayLikeFindIndexMain } from "./index.D";
 
-const arrayLikeFindIndexDef: ArrayLikeFindIndexDef = _curry2(arrayLikeFindIndexCore);
-
-const arrayLikeFindIndex = Object.assign(arrayLikeFindIndexDef, {
-  core : arrayLikeFindIndexCore,
-  right: arrayLikeFindIndexRightDef
-});
+const arrayLikeFindIndex: ArrayLikeFindIndexMain = Object.assign(arrayLikeFindIndexDef, arrayLikeFindIndexLib);
 
 export default arrayLikeFindIndex;

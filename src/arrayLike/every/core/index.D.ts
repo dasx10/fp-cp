@@ -1,2 +1,2 @@
 import type { ArrayLikeExecutor } from "../../index.D";
-export type ArrayLikeEveryCore = <X extends ArrayLike<unknown>>(def: ArrayLikeExecutor<X>, x: X) => boolean;
+export type ArrayLikeEveryCore<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(def: ArrayLikeExecutor<X>, x: X) => boolean;

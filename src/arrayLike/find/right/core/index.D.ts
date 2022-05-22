@@ -1,2 +1,2 @@
-import type { ArrayLikeIterator } from "../../../index.D";
-export type ArrayLikeFindRightCore = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>) => X | undefined;
+import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
+export type ArrayLikeFindRightCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => any, x: X) => X | undefined;

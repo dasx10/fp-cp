@@ -1,5 +1,5 @@
 import type { ArrayLikeEveryRightCore } from "../core/index.D";
 
-export interface ArrayLikeEveryRightLib {
-	core: ArrayLikeEveryRightCore;
+export interface ArrayLikeEveryRightLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
+	core: ArrayLikeEveryRightCore <Type>;
 }

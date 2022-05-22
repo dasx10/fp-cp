@@ -1,7 +1,6 @@
-import { arrayLikeLib } from "../../arrayLike/index";
+import arrayLikeLib from "../../arrayLike/lib/index";
+import type { StringLib } from "./index.D";
 
-const stringLib = Object.assign(arrayLikeLib, {
-
-});
+const stringLib: StringLib = Object.assign(arrayLikeLib, {});
 
 export default stringLib;

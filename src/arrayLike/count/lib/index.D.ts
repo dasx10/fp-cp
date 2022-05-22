@@ -3,7 +3,7 @@ import type { ArrayLikeCountRightMain } from './../right/index.D';
 import type { ArrayLikeCountValueMain } from "../value/index.D";
 
 export interface ArrayLikeCountLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
-	core  : ArrayLikeCountCore      <Type>;
-	right : ArrayLikeCountRightMain <Type>;
-	value : ArrayLikeCountValueMain <Type>;
+	readonly core  : ArrayLikeCountCore      <Type>;
+	readonly right : ArrayLikeCountRightMain <Type>;
+	readonly value : ArrayLikeCountValueMain <Type>;
 }

@@ -1,7 +1,4 @@
-import type { ArrayLikeIterator }      from "../../index.D";
-import type { ArrayLikeFindRightCore } from "./core/index.D";
+import type { ArrayLikeFindRightDef } from './contract/index.D';
+import type { ArrayLikeFindRightLib } from './lib/index.D';
 
-export type ArrayLikeFindRightDef = ArrayLikeFindRightCore & {
-	<X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>): X | undefined,
-  <X>(def: ArrayLikeIterator<X>): (x: ArrayLike<X>) => X | undefined
-};
+export type ArrayLikeFindRightMain <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeFindRightDef<Type> & ArrayLikeFindRightLib<Type>;

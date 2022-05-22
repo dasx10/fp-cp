@@ -3,7 +3,7 @@ import type { ArrayLikeAtLastCore } from "../../last/core/index.D";
 import type { ArrayLikeAtRightCore } from "../core/index.D";
 
 export interface ArrayLikeAtRightLib {
-	core  : ArrayLikeAtRightCore;
-	last  : ArrayLikeAtFirstCore;
-	first : ArrayLikeAtLastCore;
+	readonly core  : ArrayLikeAtRightCore;
+	readonly last  : ArrayLikeAtFirstCore;
+	readonly first : ArrayLikeAtLastCore;
 }

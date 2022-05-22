@@ -1,8 +1,4 @@
-import type { placeholder }            from "../../../index";
-import type { ArrayLikeIterator }      from "../../index.D";
-import type { ArrayLikeFindIndexCore } from "./core/index.D";
+import type { ArrayLikeFindIndexLib } from './lib/index.D';
+import type { ArrayLikeFindIndexDef } from './contract/index.D';
 
-export type ArrayLikeFindIndexDef = ArrayLikeFindIndexCore & {
-	<X>(def: ArrayLikeIterator<X>):(x: ArrayLike<X>) => number;
-	<X>(_: placeholder, x: ArrayLike<X>): (def: ArrayLikeIterator<X>) => number;
-}
+export type ArrayLikeFindIndexMain <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeFindIndexDef<Type> & ArrayLikeFindIndexLib<Type>;

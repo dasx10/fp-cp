@@ -1,14 +1,11 @@
 import arrayLikeAtFirst from "../at/first/index";
 import arrayLikeAt      from "../at/index";
-import arrayLikeAtLast  from "../at/last/index";
 import arrayLikeAverage from "../average/index";
 import arrayLikeCount   from "../count/index";
 import arrayLikeEvery   from "../every/index";
-import arrayLikeExclude from "../exclude/index";
 import arrayLikeFind    from "../find/index";
 import arrayLikeForEach from "../forEach/index";
 import arrayLikeGroup   from "../group/index";
-import arrayLikeInclude from "../include/index";
 import arrayLikeIndex   from "../index/index";
 import arrayLikeIndexes from "../indexes/index";
 import arrayLikeIs      from "../is/index";
@@ -50,8 +47,6 @@ const arrayLikeLib: ArrayLikeLib = {
 	join    : arrayLikeJoin,
 
   is      : arrayLikeIs,
-	include : arrayLikeInclude,
-	exclude : arrayLikeExclude,
 }
 
 export default arrayLikeLib;
