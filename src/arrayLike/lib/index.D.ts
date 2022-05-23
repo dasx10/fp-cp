@@ -1,4 +1,3 @@
-import arrayLikeFind    from "../find/index";
 import arrayLikeForEach from "../forEach/index";
 import arrayLikeGroup   from "../group/index";
 import arrayLikeIndexes from "../indexes/index";
@@ -19,6 +18,7 @@ import type { ArrayLikeEveryMain }   from "../every/index.D";
 import type { ArrayLikeSizeCore }    from "../size/index.D";
 import type { ArrayLikeAtFirstMain } from './../at/first/index.D';
 import type { ArrayLikeLastMain }    from "../last/index.D";
+import type { ArrayLikeFindMain }    from './../find/index.D';
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>,
@@ -29,7 +29,7 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
   readonly index   : typeof arrayLikeIndex,
   readonly indexes : typeof arrayLikeIndexes,
 	
-  readonly find    : typeof arrayLikeFind,
+  readonly find    : ArrayLikeFindMain    <Type>,
   readonly forEach : typeof arrayLikeForEach,
   readonly reduce  : typeof arrayLikeReduce,
   readonly every   : ArrayLikeEveryMain   <Type>,

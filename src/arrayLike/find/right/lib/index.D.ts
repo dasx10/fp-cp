@@ -1,7 +1,9 @@
-import type { ArrayLikeFindIndexRightDef } from '../../index/right/contract/index.D';
-import type { ArrayLikeFindRightCore } from './../core/index.D';
+import type { ArrayLikeFindRightCore }      from './../core/index.D';
+import type { ArrayLikeFindEntryRightMain } from '../../entry/right/index.D';
+import type { ArrayLikeFindIndexRightMain } from '../../index/right/index.D';
 
 export interface ArrayLikeFindRightLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
-	core  : ArrayLikeFindRightCore    <Type>;
-	index : ArrayLikeFindIndexRightDef<Type>;
+	readonly core  : ArrayLikeFindRightCore     <Type>;
+	readonly index : ArrayLikeFindIndexRightMain<Type>;
+	readonly entry : ArrayLikeFindEntryRightMain<Type>
 }
