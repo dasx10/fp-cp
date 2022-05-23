@@ -1,6 +1,7 @@
 // core
 import _curry2                       from "../../../../function/curry/2/_/index";
-import arrayLikeAtDirectCore         from "../core/index";
+import { ToIndexDirect } from "../../../index/index.D";
+import arrayLikeAtDirectCore         from '../core/index';
 
 // interfaces
 import type { ArrayLikeAtDirectDef } from "./index.D";

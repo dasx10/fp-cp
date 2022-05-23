@@ -1,5 +1,5 @@
 /**
- * @param {any} value 
+ * @param {unknown} value 
  * @returns {number}
  */
 

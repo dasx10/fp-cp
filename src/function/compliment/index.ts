@@ -4,12 +4,12 @@
  * @template {any[]} Args
  */
 // @ts-ignore
-function complement <T extends any[]>(executor: (...args: T) => false): (...args: T) => true;
+function complement <T extends unknown[]>(executor: (...args: T) => false): (...args: T) => true;
 // @ts-ignore
-function complement <T extends any[]>(executor: (...args: T) => true): (...args: T) => false;
+function complement <T extends unknown[]>(executor: (...args: T) => true): (...args: T) => false;
 // @ts-ignore
-function complement <T extends any[]>(executor: (...args: T) => any): (...args: T) => boolean;
+function complement <T extends unknown[]>(executor: (...args: T) => unknown): (...args: T) => boolean;
 
 // @ts-ignore
-const complement = <T extends any[]>(executor: (...args: T) => boolean) => (...args: T) => executor(...args);
+const complement = <T extends unknown[]>(executor: (...args: T) => boolean) => (...args: T) => executor(...args);
 export default complement;

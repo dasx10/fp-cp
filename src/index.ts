@@ -21,7 +21,7 @@ export const ___ = Symbol.for('ƒ(…, ') as ___;
 /**
  * #### Placeholder
  */
-export type placeholder = typeof _;
+export type __ = typeof _;
 
 const _ = Object.assign(def, {
   [Symbol.iterator]: function* PlaceholderIterator(): Generator<___, void, void> {

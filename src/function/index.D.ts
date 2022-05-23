@@ -9,16 +9,16 @@ export type ParametersConsistentReversEvery <Def extends DefAny> = ArrayConsiste
 
 export type ParametersReverse<Def extends DefAny> = TupleReverse<Parameters<Def>>;
 
-export type FirstParameter <Executor extends DefAny> = Executor extends (x: infer X, ...arg: any[]) => any ? X : never;
-export type SecondParameter<Executor extends DefAny> = Executor extends (y: any, x: infer X, ...args: any[]) => any ? X : never;
-export type ThirdParameter <Executor extends DefAny> = Executor extends (z: any, y: any, x: infer X, ...args: any[]) => any ? X : never;
+export type FirstParameter <Executor extends DefAny> = Executor extends (x: infer X, ...arg: unknown[]) => unknown ? X : never;
+export type SecondParameter<Executor extends DefAny> = Executor extends (y: unknown, x: infer X, ...args: unknown[]) => unknown ? X : never;
+export type ThirdParameter <Executor extends DefAny> = Executor extends (z: unknown, y: unknown, x: infer X, ...args: unknown[]) => unknown ? X : never;
 
 export type Def0<R> = () => R;
-export type Def1<X = any, R = any> = (x: X) => R;
-export type Def2<Y = any, X = any, R = any> = (y: Y, x: X) => R;
-export type Def3<Z = any, Y = any, X = any, R = any> = (z: Z, y: Y, x: X) => R;
-export type Def4<M = any, Z = any, Y = any, X = any, R = any> = (m: M, z: Z, y: Y, x: X) => R;
-export type DefAny<Args extends any[] = any[], Return = any> = (...args: Args) => Return;
+export type Def1<X = unknown, R = unknown> = (x: X) => R;
+export type Def2<Y = unknown, X = unknown, R = unknown> = (y: Y, x: X) => R;
+export type Def3<Z = unknown, Y = unknown, X = unknown, R = unknown> = (z: Z, y: Y, x: X) => R;
+export type Def4<M = unknown, Z = unknown, Y = unknown, X = unknown, R = unknown> = (m: M, z: Z, y: Y, x: X) => R;
+export type DefAny<Args extends unknown[] = unknown[], Return = unknown> = (...args: Args) => Return;
 
 // @ts-ignore
 export type ErrorArgument <X, ErrorText extends string> = `Error argument: You try input ${X}, but must be ${ErrorText}!`;

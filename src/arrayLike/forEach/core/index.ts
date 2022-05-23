@@ -1,11 +1,14 @@
-import type { ArrayLikeIterator } from '../../index.D';
+import type { ArrayLikeIndex, ArrayLikeValue } from '../../index.D';
 import type { ArrayLikeForEachCore } from './index.D';
 
-const arrayLikeForEachCore: ArrayLikeForEachCore = <X>(def: ArrayLikeIterator<X>, x: ArrayLike<X>): void => {
+const arrayLikeForEachCore: ArrayLikeForEachCore = <X extends ArrayLike<unknown>>(
+	def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown,
+	x: X
+): void => {
   const { length } = x;
   let index = 0;
   while (index < length) {
-    def(x[index], index, x);
+    def(<ArrayLikeValue<X>>x[index], index, x);
     index++
   }
 }

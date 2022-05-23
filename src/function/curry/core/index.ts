@@ -14,7 +14,7 @@ import type { ReturnTypeCurry } from "../index.D";
  * const sum = addCurry(1, 2); // 3
  */
 const curryCore = <
-    Executor       extends (y: any, x: any, ...next: any[]) => any,
+    Executor       extends (y: unknown, x: unknown, ...next: unknown[]) => unknown,
     StartArguments extends ParametersConsistent<Executor>,
 > (
   executor          : Executor,
@@ -22,7 +22,7 @@ const curryCore = <
 ): ReturnTypeCurry<Executor, StartArguments> => {
   if (startArguments.length < executor.length) {
     // @ts-ignore
-    return function useCurry(...nextArgument) {
+    return function (...nextArgument) {
       // @ts-ignore
       return curry(executor, ...startArguments, ...nextArgument);
     };

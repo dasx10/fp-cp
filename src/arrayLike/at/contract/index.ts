@@ -7,7 +7,7 @@ import arrayLikeAtInvertCore from "../invert/core/index";
 // interfaces
 import type { ArrayLikeAtDef } from "./index.D";
 import type { ToIndex }        from "../../index/index.D";
-import type { placeholder }    from "../../../index";
+import type { __ }    from "../../../index";
 
 /**
  * @description Returns the item located at the specified index
@@ -30,7 +30,7 @@ import type { placeholder }    from "../../../index";
  * arrayLikeAtDef(-3, [1, 2, 3]); // 1;
  * arrayLikeAtDef(-4, [1, 2, 3]); // undefined;
  */
-const arrayLikeAtDef = (function arrayLikeAtDef <Index extends number, X extends ArrayLike<unknown>>(index: ToIndex<Index> | placeholder, x?: X | ToIndex<Index>) {
+const arrayLikeAtDef = (function arrayLikeAtDef <Index extends number, X extends ArrayLike<unknown>>(index: ToIndex<Index> | __, x?: X | ToIndex<Index>) {
   if (arguments.length === 1) {
     const arrayLikeAt = index < 0 ? arrayLikeAtInvertCore : arrayLikeAtDirectCore;
 		// @ts-ignore

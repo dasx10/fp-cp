@@ -11,5 +11,5 @@ function isDefined <X extends All>(x: X): x is Exclude<X, undefined>;
 function isDefined (x: unknown): x is Defined;
 
 // @ts-ignore
-const isDefined = (x: any) => x !== void 0;
+const isDefined = (x: unknown) => x !== void 0;
 export default isDefined;

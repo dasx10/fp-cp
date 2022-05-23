@@ -9,7 +9,7 @@ export type Negative<X extends number = number> = number extends X
 
 /**
  * Returned negative number
- * @param {any} value 
+ * @param {unknown} value 
  * @returns {number} `value < 0 ? value : -0`
  * @example
  * const a = negative(-3); // -3

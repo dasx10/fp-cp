@@ -4,11 +4,11 @@ import type { ArrayLikeAtResult } from './../../core/index.D';
 
 type AtResult <X extends Record<number, any>> = X extends ArrayLike<unknown>
 	? ArrayLikeAtResult<X>
-	: X extends Record<number, any>
+	: X extends Record<number, unknown>
 		? DirectiveAtResult<X>
 		: never;
 
-export type ArrayLikeAtDirect <X extends Record<number, any>, Index extends number> = number extends Index
+export type ArrayLikeAtDirect <X extends Record<number, unknown>, Index extends number> = number extends Index
 	? AtResult<X>
 	: `${Index}` extends `-${number}`
 		? undefined

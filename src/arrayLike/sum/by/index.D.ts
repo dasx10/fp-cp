@@ -1,4 +1,4 @@
-import type { placeholder } from "../../../index";
+import type { __ } from "../../../index";
 import type { ArrayLikeSumByCore } from "./core/index.D";
 
 type ArrayLikeSumByClosure    = <Key extends PropertyKey>(key: Key) => <X extends Record<Key, number>>(x: ArrayLike<X>) => number;

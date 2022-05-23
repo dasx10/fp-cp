@@ -21,8 +21,8 @@ function isEq <Y extends string, X extends string>(y: Y, x: X): string extends Y
   ? boolean
   : Y extends X ? true : false;
 
-function isEq (y: any, x?: any) {
-  if (arguments.length === 1) return (x: any) => x === y;
+function isEq (y: unknown, x?: unknown) {
+  if (arguments.length === 1) return (x: unknown) => x === y;
   return x === y;
 }
 

@@ -3,13 +3,13 @@ import type { FirstParameter, SecondParameter } from "../../../function/index.D"
 
 // @ts-ignore
 function mapKeys <
-  Executor extends <K extends string, V>(key: K, value: V, record: Record<K, V>) => any,
+  Executor    extends <K extends string, V>(key: K, value: V, record: Record<K, V>) => unknown,
   InputRecord extends Record<FirstParameter<Executor>, SecondParameter<Executor>>
 >(executor: Executor, record: InputRecord): Record<ReturnType<Executor>, InputRecord[keyof InputRecord]>
 
 // @ts-ignore
 function mapKeys <
-  Executor extends <K extends string, V>(key: K, value: V, record: Record<K, V>) => any,
+  Executor extends <K extends string, V>(key: K, value: V, record: Record<K, V>) => unknown,
 >(executor: Executor): <
   InputRecord extends Record<FirstParameter<Executor>, SecondParameter<Executor>>
 >(record: InputRecord) => Record<ReturnType<Executor>, InputRecord[keyof InputRecord]>

@@ -2,7 +2,7 @@ import { BreakArrayRight, TupleConsistentEvery } from "../../../backup/array/ind
 import { ParametersConsistent } from "../index.D";
 
 export type MaybeReturnTypeCurry <
-	Def   extends (...args: any[]) => any,
+	Def   extends (...args: unknown[]) => unknown,
 	StartArgs extends ParametersConsistent<Def>
 > = ReturnType<Def>
 	| (<NextArgs extends NextConsistentParameters<Def, StartArgs>>(...nextArgs: NextArgs) => MaybeReturnTypeCurry<
@@ -12,7 +12,7 @@ export type MaybeReturnTypeCurry <
 	>);
 
 export type ReturnTypeCurry<
-	Def  extends (y : any, x: any, ...args: any[]) => any,
+	Def  extends (y : unknown, x: unknown, ...args: unknown[]) => unknown,
 	StartArgsArgs extends ParametersConsistent<Def>
 > = StartArgsArgs extends Parameters<Def>
 	? ReturnType<Def> : StartArgsArgs['length'] extends Parameters<Def>['length'] ? ReturnType<Def>
@@ -22,4 +22,4 @@ export type ReturnTypeCurry<
 		[...StartArgsArgs, ...NextArgsParameters]
 >;
 
-export type NextConsistentParameters <Def extends (...args: any[]) => any, Args extends ParametersConsistent<Def>> = TupleConsistentEvery<BreakArrayRight<Parameters<Def>, Args>>;
+export type NextConsistentParameters <Def extends (...args: unknown[]) => unknown, Args extends ParametersConsistent<Def>> = TupleConsistentEvery<BreakArrayRight<Parameters<Def>, Args>>;

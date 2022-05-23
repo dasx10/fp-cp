@@ -2,7 +2,7 @@ import type { BreakArrayRight, TupleConsistentEvery } from "../../../../backup/a
 import type { DefAny, ParametersConsistentReverse, ParametersReverse } from "../../index.D";
 
 export type ReturnTypeCurryRight <
-	Def            extends (y: any, x: any, ...next: any[]) => any,
+	Def            extends (y: unknown, x: unknown, ...next: unknown[]) => unknown,
 	StartArguments extends ParametersConsistentReverse<Def>
 > = ParametersReverse<Def> extends StartArguments
 	? ReturnType<Def> : StartArguments['length'] extends Parameters<Def>['length'] ? ReturnType<Def>
@@ -11,4 +11,4 @@ export type ReturnTypeCurryRight <
 		[...StartArguments, ...NextParameters]
 	>;
 
-export type NextConsistentParametersReverse <Def extends (...args: any[]) => any, Args extends ParametersConsistentReverse<Def>> = TupleConsistentEvery<BreakArrayRight<ParametersReverse<Def>, Args>>;
+export type NextConsistentParametersReverse <Def extends (...args: unknown[]) => unknown, Args extends ParametersConsistentReverse<Def>> = TupleConsistentEvery<BreakArrayRight<ParametersReverse<Def>, Args>>;
