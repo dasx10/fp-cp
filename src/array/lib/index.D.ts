@@ -1,5 +1,7 @@
-import type { ArrayLikeLib } from "../../arrayLike/lib/index.D";
+import type { ArrayFilterMain } from './../filter/index.D';
+import type { ArrayLikeLib }    from "../../arrayLike/lib/index.D";
 
-export interface ArrayLib extends ArrayLikeLib<readonly unknown[]> {
-	readonly like: ArrayLikeLib;
+export interface ArrayLib<Type = unknown> extends ArrayLikeLib<readonly Type[]> {
+	readonly like   : ArrayLikeLib;
+	readonly filter : ArrayFilterMain<Type>
 }

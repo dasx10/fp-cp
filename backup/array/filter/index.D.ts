@@ -1,4 +1,3 @@
-import type { placeholder }     from "../../index";
 import type { ForEachIterate }  from "../forEach/index.D";
 import type { ArrayIndex }      from "../index.D";
 import type { FilterArray, FilterCore } from "./core/index.D";
