@@ -3,7 +3,6 @@ import arrayLikeIs      from "../is/index";
 import arrayLikeJoin    from "../join/index";
 import arrayLikeMaximum from "../maximum/index";
 import arrayLikeMinimum from "../minimum/index";
-import arrayLikeReduce  from "../reduce/index";
 import arrayLikeSome    from "../some/index";
 import arrayLikeSum     from "../sum/index";
 
@@ -19,6 +18,7 @@ import type { ArrayLikeForEachMain } from "../forEach/index.D";
 import type { ArrayLikeKeysCore }    from "../keys/index.D";
 import type { ArrayLikeIndexMain }   from './../index/index.D';
 import type { ArrayLikeIndexesMain } from "../indexes/index.D";
+import type { ArrayLikeReduceMain }  from './../reduce/index.D';
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>,
@@ -31,7 +31,7 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 	
   readonly find    : ArrayLikeFindMain    <Type>,
   readonly forEach : ArrayLikeForEachMain <Type>,
-  readonly reduce  : typeof arrayLikeReduce,
+  readonly reduce  : ArrayLikeReduceMain  <Type>,
   readonly every   : ArrayLikeEveryMain   <Type>,
   readonly some    : typeof arrayLikeSome,
 	readonly group   : typeof arrayLikeGroup,

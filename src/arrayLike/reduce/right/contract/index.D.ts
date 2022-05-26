@@ -1,8 +1,9 @@
-import type { __ }                             from './../../../index';
-import type { ArrayLikeIndex, ArrayLikeValue } from '../../index.D';
-import type { ArrayLikeReduceCore }            from './../core/index.D';
+import type { ArrayLikeReduceRightCore } from './../core/index.D';
+import type { __ } from './../../../../index';
+import type { ArrayLikeValue, ArrayLikeIndex } from './../../../index.D';
 
-export type ArrayLikeReduceDef <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeReduceCore<Type> & {
+
+export type ArrayLikeReduceRightDef <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeReduceRightCore<Type> & {
 	<
 		CURRENT_VALUE,
 		Value             extends ArrayLikeValue<Type>,

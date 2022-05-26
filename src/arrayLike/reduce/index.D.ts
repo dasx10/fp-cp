@@ -1,11 +1,3 @@
-import type { ArrayLikeReduceCore } from "./core/index.D";
-
-type ReduceDef <INITIAL_VALUE, Value, X extends ArrayLike<Value>> = (currentValue: INITIAL_VALUE, value: Value, index: number, x: X) => INITIAL_VALUE;
-
-export type ReduceArrayLikeDef = ArrayLikeReduceCore & {
-  <INITIAL_VALUE, Value, X extends ArrayLike<Value>>(initialValue: INITIAL_VALUE, def: ReduceDef<INITIAL_VALUE, Value, X>): (x: X) => INITIAL_VALUE;
-  <INITIAL_VALUE>(initialValue: INITIAL_VALUE): {
-    <Value, X extends ArrayLike<Value>>(def: ReduceDef<INITIAL_VALUE, Value, X>, x: X): INITIAL_VALUE;
-    <Value, X extends ArrayLike<Value>>(def: ReduceDef<INITIAL_VALUE, Value, X>): (x: X) => INITIAL_VALUE;
-  }
-}
+import type { ArrayLikeReduceLib } from './lib/index.D';
+import type { ArrayLikeReduceDef } from './contract/index.D';
+export type ArrayLikeReduceMain <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeReduceDef<Type> & ArrayLikeReduceLib<Type>;

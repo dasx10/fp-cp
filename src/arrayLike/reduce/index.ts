@@ -1,16 +1,10 @@
-import _curry3 from "../../function/curry/3/_/index";
-import arrayLikeReduceCore from "./core/index";
+// dependencies
+import arrayLikeReduceDef from "./contract/index";
+import arrayLikeReduceLib from "./lib/index";
 
 // interfaces
-import type { ReduceArrayLikeDef } from "./index.D";
+import type { ArrayLikeReduceMain } from "./index.D";
 
-// dependencies
-import arrayLikeReduceRight from "./right/index";
-
-const arrayLikeReduceDef: ReduceArrayLikeDef = _curry3(arrayLikeReduceCore);
-const arrayLikeReduce = Object.assign(arrayLikeReduceDef, {
-	core : arrayLikeReduceCore,
-  right: arrayLikeReduceRight
-});
+const arrayLikeReduce: ArrayLikeReduceMain = Object.assign(arrayLikeReduceDef, arrayLikeReduceLib);
 
 export default arrayLikeReduce;
