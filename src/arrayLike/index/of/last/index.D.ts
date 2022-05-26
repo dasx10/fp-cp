@@ -1,8 +1,4 @@
-import type { __ } from '../../../../index';
-import type { ToIndexInvert } from "../../index.D";
-import type { ArrayLikeIndexOfLastCore } from "./core/index.D";
+import type { ArrayLikeIndexOfLastDef } from './contract/index.D';
+import type { ArrayLikeIndexOfLastLib } from './lib/index.D';
 
-export type ArrayLikeIndexOfLastDef = ArrayLikeIndexOfLastCore & {
-  <Value>(value: Value): (x: ArrayLike<Value>) => ToIndexInvert<number> | -1;
-  <Value>(_: __, x: ArrayLike<Value>): (value: Value) => ToIndexInvert<number> | -1;
-}
+export type ArrayLikeIndexOfLastMain<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeIndexOfLastDef<Type> & ArrayLikeIndexOfLastLib<Type>;

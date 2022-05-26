@@ -1,6 +1,7 @@
 import objectForEachCore from "../core/index";
+import type { ObjectForEachLib } from "./index.D";
 
-const objectForEachLib = {
+const objectForEachLib: ObjectForEachLib = {
 	core: objectForEachCore
 }
 

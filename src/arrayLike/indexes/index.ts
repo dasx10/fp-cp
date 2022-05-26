@@ -1,10 +1,9 @@
 import arrayLikeIndexesCore from "./core/index";
-import arrayLikeIndexesFilter        from "./filter/index";
+import arrayLikeIndexesLib  from "./lib/index";
 
+// interface
+import type { ArrayLikeIndexesMain } from "./index.D";
 
-const arrayLikeIndexes = Object.assign(arrayLikeIndexesCore, {
-  filter: arrayLikeIndexesFilter
-});
-
+const arrayLikeIndexes: ArrayLikeIndexesMain = Object.assign(arrayLikeIndexesCore, arrayLikeIndexesLib);
 
 export default arrayLikeIndexes;

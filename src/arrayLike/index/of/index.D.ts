@@ -1,8 +1,4 @@
-import type { __ } from "../../../index";
-import type { ArrayLikeValue } from "../../index.D";
-import type { ArrayLikeIndexOfCore } from "./core/index.D";
+import type { ArrayLikeIndexOfDef } from './contract/index.D';
+import type { ArrayLikeIndexOfLib } from './lib/index.D';
 
-export type ArrayLikeIndexOfDef <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeIndexOfCore<Type> & {
-  <Value extends ArrayLikeValue<Type>>(value: Value): (x: ArrayLike<Value>) => number;
-  <X extends Type>(_: __, x: X): <Value extends ArrayLikeValue<X>>(value: Value) => number;
-}
+export type ArrayLikeIndexOfMain <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeIndexOfDef<Type> & ArrayLikeIndexOfLib<Type>;

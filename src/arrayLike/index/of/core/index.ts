@@ -5,8 +5,8 @@ const arrayLikeIndexOfCore: ArrayLikeIndexOfCore = <Value>(value: Value, x: Arra
   if (length > 0) {
     let index = 0;
     while (index < length) {
-        if (value === x[index]) return index;
-        index++;
+      if (value === x[index]) return index;
+      index++;
     }
   }
   return -1;

@@ -1,2 +1,5 @@
-import type { ArrayLikeIndexOfCore } from "../../core/index.D";
-export type ArrayLikeIndexOfLastCore = ArrayLikeIndexOfCore;
+import type { ArrayLikeValue } from "../../../../index.D";
+
+export type ArrayLikeIndexOfLastCore <
+	Type extends ArrayLike<unknown> = ArrayLike<unknown>
+> = <X extends Type>(value: ArrayLikeValue<X>, x: X) => number;

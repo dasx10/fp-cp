@@ -1,0 +1,1 @@
+export type ObjectForEachCore <Type extends Record<PropertyKey, unknown> = Record<PropertyKey, unknown>> = <X extends Type>(executor: (value: X[keyof X], key: keyof X, object: X) => unknown, object: X) => void;
