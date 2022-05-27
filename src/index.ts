@@ -15,8 +15,8 @@ import hashSet from './hash/set/core/index';
 /**
  * #### Multiline placeholder
  */
-export type  ___ = symbol | '…_ ← ƒ(…_, ← …×s) ⇒ ∏ ≡ ƒ(…×s): ∏';
-export const ___ = Symbol.for('ƒ(…, ') as ___;
+export type  ___     = symbol | '…_ ← ƒ(…_, ← …×) ⇒ ∏ ≡ ƒ(…×): ∏';
+export const ___:___ = Symbol.for('ƒ(…, ') as ___;
 
 /**
  * #### Placeholder

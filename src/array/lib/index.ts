@@ -1,11 +1,11 @@
 // libraries
-import arrayLikeLib from "../../arrayLike/lib/index";
+import arrayLikeLib from '../like/lib/index';
 
 // dependencies
-import arrayFilter from '../filter/index';
+import arrayFilter  from '../filter/index';
 
 // interfaces
-import type { ArrayLikeLib } from './../../arrayLike/lib/index.D';
+import type { ArrayLikeLib } from '../like/lib/index.D';
 import type { ArrayLib }     from "./index.D";
 
 const arrayLib: ArrayLib = Object.assign(arrayLikeLib as ArrayLikeLib<readonly unknown[]>, {

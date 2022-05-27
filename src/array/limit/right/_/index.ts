@@ -9,7 +9,7 @@ import type { ArrayLimitRight } from "./index.D";
  * @example
  * _limitRight(-3, [1, 2, 3, 4, 5, 6]); // [4, 5, 6];
  */
-function _limitRight <Finish extends number, X extends readonly any[]>(finish: OnlyNegative<Finish>, array: X): ArrayLimitRight<Finish, X> {
+function _limitRight <Finish extends number, X extends readonly unknown[]>(finish: OnlyNegative<Finish>, array: X): ArrayLimitRight<Finish, X> {
   const { length } = array;
   if (length > 0) {
     const calcStart = finish + length;

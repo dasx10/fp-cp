@@ -1,4 +1,4 @@
-import type { ArrayLikeLib } from './../../arrayLike/lib/index.D';
+import { ArrayLikeLib } from "../../array/like/lib/index.D";
 
 export interface StringLib extends ArrayLikeLib<string> {
 	

@@ -14,8 +14,8 @@ function when <
   right    : Def1<RX, Right>,
   left     : Def1<LX, Left>,
 ): {
-  (x: X): X extends RX ? Right : RX extends X ? Right : (Right | Left);
-  (x: X): R extends true ? Right : R extends false ? Left : (Right | Left);
+  (x: X): X extends RX   ? Right : RX extends X    ? Right : (Right | Left);
+  (x: X): R extends true ? Right : R extends false ? Left  : (Right | Left);
   (x: unknown): (Right | Left);
 }
 

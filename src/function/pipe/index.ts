@@ -89,16 +89,20 @@ function pipe <
   A extends unknown[]
 > (f: DefAny<A>, f2: Def1, ...functions: Def1[]) {
   return (...args: A) => {
-    let result = f2(f(...args));
-    const { length } = functions;
-    if (length) {
-      let index = 0;
-      while (index < length) {
-        result = functions[index](result);
-        index++;
-      }
-    }
-    return result;
+		const { length } = functions;
+    switch (length) {
+			case 0  : return f2(f(...args));
+			case 1  : return functions[0](f2(f(...args)));
+			default : {				
+				let index  = 0;
+				let result = f2(f(...args));
+				while (index < length) {
+					result = functions[index](result);
+					index++;
+				}
+				return result;
+			}
+		}
   };
 }
 
