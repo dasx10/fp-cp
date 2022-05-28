@@ -1,13 +1,10 @@
 // core
-import _curry2 from "../../../function/curry/2/_/index";
-import arrayLikeMinimumRightCore from "./core/index";
+import arrayLikeMinimumRightDef from "./contract/index";
+import arrayLikeMinimumRightLib from "./lib/index";
 
 // interfaces
-import type { ArrayLikeMinimumRightDef } from "./index.D";
+import type { ArrayLikeMinimumRightMain } from './index.D';
 
-const arrayLikeMinimumRightDef: ArrayLikeMinimumRightDef = _curry2(arrayLikeMinimumRightCore);
-const arrayLikeMinimumRight = Object.assign(arrayLikeMinimumRightDef, {
-	core: arrayLikeMinimumRightCore,
-});
+const arrayLikeMinimumRight: ArrayLikeMinimumRightMain = Object.assign(arrayLikeMinimumRightDef, arrayLikeMinimumRightLib);
 
 export default arrayLikeMinimumRight;

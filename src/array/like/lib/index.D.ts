@@ -1,7 +1,5 @@
 import arrayLikeIs      from "../is/index";
 import arrayLikeJoin    from "../join/index";
-import arrayLikeMaximum from "../maximum/index";
-import arrayLikeMinimum from "../minimum/index";
 
 import type { ArrayLikeAtMain }      from "../at/index.D";
 import type { ArrayLikeAverageMain } from "../average/index.D";
@@ -19,6 +17,8 @@ import type { ArrayLikeReduceMain }  from "../reduce/index.D";
 import type { ArrayLikeSomeMain }    from "../some/index.D";
 import type { ArrayLikeGroupMain }   from "../group/index.D";
 import type { ArrayLikeSumLikeMain } from "../sum/index.D";
+import type { ArrayLikeMaximumMain } from './../maximum/index.D';
+import type { ArrayLikeMinimumMain } from './../minimum/index.D';
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>,
@@ -39,8 +39,8 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
   readonly sum     : ArrayLikeSumLikeMain <Type>,
   readonly count   : ArrayLikeCountMain   <Type>,
   readonly average : ArrayLikeAverageMain <Type>,
-  readonly maximum : typeof arrayLikeMaximum,
-  readonly minimum : typeof arrayLikeMinimum,
+  readonly maximum : ArrayLikeMaximumMain <Type>,
+  readonly minimum : ArrayLikeMinimumMain <Type>,
 
 	readonly join    : typeof arrayLikeJoin,
 

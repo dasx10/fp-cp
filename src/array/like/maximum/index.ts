@@ -1,18 +1,10 @@
 // core
-import _curry2              from "../../function/curry/2/_/index";
-import arrayLikeMaximumCore from "./core/index";
+import arrayLikeMaximumLib from "./lib/index";
+import arrayLIkeMaximumDef from "./contract/index";
 
 // interfaces
-import type { ArrayLikeMaximumDef } from "./index.D";
+import type { ArrayLikeMaximumMain } from './index.D';
 
-// dependencies
-import arrayLikeMaximumRight from "./right/index";
-import arrayLikeMaximumOf    from "./of/index";
-
-const arrayLikeMaximumDef: ArrayLikeMaximumDef = _curry2(arrayLikeMaximumCore);
-const arrayLikeMaximum = Object.assign(arrayLikeMaximumDef, {
-	of    : arrayLikeMaximumOf,
-  right : arrayLikeMaximumRight,
-});
+const arrayLikeMaximum: ArrayLikeMaximumMain = Object.assign(arrayLIkeMaximumDef, arrayLikeMaximumLib);
 
 export default arrayLikeMaximum;

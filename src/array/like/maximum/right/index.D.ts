@@ -1,4 +1,3 @@
-import type { ArrayLikeEachCurryDef } from "../../index.D";
-import type { ArrayLikeMaximumRightCore } from "./core/index.D";
-
-export type ArrayLikeMaximumRightDef = ArrayLikeMaximumRightCore & ArrayLikeEachCurryDef<number, number>;
+import type { ArrayLikeMaximumRightLib } from './lib/index.D';
+import type { ArrayLikeMaximumRightDef } from './contract/index.D';
+export type ArrayLikeMaximumRightMain<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeMaximumRightDef<Type> & ArrayLikeMaximumRightLib<Type>;

@@ -1,20 +1,25 @@
-import type { ArrayLikeIterator, ArrayLikeValue } from '../../index.D';
-import type { ArrayLikeMaximumCore } from './index.D';
+import type { ArrayLikeIndex, ArrayLikeValue } from '../../index.D';
+import type { ArrayLikeMaximumCore }           from './index.D';
 
-const arrayLikeMaximumCore: ArrayLikeMaximumCore = <X extends ArrayLike<unknown>>(def: ArrayLikeIterator<ArrayLikeValue<X>, number>, x: X) => {
+const arrayLikeMaximumCore: ArrayLikeMaximumCore = <
+	X extends ArrayLike<unknown>
+>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => number, x: X): number => {
   const { length } = x;
-  if (length > 0) {
-    let flag = def(x[0], 0, x);
-    let index = 1;
-    while (index < length) {
-      const value = def(x[index], index, x);
-      if (value > flag) flag = value;
-      index++;
-    }
-    return flag;
-  }
-
-  return -Infinity;
+  switch (length) {
+		case 0  : return -Infinity;
+		case 1  : return def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x);
+		default : {
+			let value = def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x);
+			let flag  = value;
+			let index = 1 as ArrayLikeIndex<X>;
+			while (index < length) {
+				value = def(<ArrayLikeValue<X>>x[index], index, x);
+				if (value > flag) flag = value;
+				index++;
+			}
+			return flag;
+		}
+	}
 }
 
 export default arrayLikeMaximumCore;

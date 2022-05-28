@@ -1,18 +1,25 @@
-import type { ArrayLikeValue } from '../../index.D';
+import type { ArrayLikeIndex, ArrayLikeValue } from '../../index.D';
+import type { ArrayLikeMinimumCore } from './index.D';
 
-const arrayLikeMinimumCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: number, x: X) => number, x: X) => {
+const arrayLikeMinimumCore: ArrayLikeMinimumCore = <
+	X extends ArrayLike<unknown>
+>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => number, x: X): number => {
   const { length } = x;
-  if (length > 0) {
-    let flag = def(<ArrayLikeValue<X>>x[0], 0, x);
-    let index = 1;
-    while (index < length) {
-      const value = def(<ArrayLikeValue<X>>x[index], index, x);
-      if (value < flag) flag = value;
-      index++;
-    }
-  }
-
-  return Infinity;
+	switch (length) {
+		case 0  : return Infinity;
+		case 1  : return def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x);
+		default : {
+			let index = 1 as ArrayLikeIndex<X>;
+			let value = def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x);
+			let flag  = value;
+			while (index < length) {
+				value = def(<ArrayLikeValue<X>>x[index], index, x);
+				if (value < flag) flag = value;
+				index++;
+			}
+			return flag;
+		}
+	}
 }
 
 export default arrayLikeMinimumCore;

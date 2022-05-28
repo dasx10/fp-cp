@@ -1,3 +1,5 @@
-import type { ArrayLikeIterator, ArrayLikeValue } from "../../../index.D";
+import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
 
-export type ArrayLikeMaximumRightCore = <X extends ArrayLike<unknown>>(def: ArrayLikeIterator<ArrayLikeValue<X>, number>, x: X) => number;
+export type ArrayLikeMaximumRightCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <
+	X extends Type
+>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => number, x: X) => number;

@@ -1,4 +1,4 @@
-import type { ArrayLikeEachCurryDef } from "../index.D";
-import type { ArrayLikeMinimumCore } from "./core/index.D";
+import type { ArrayLikeMinimumLib } from './lib/index.D';
+import type { ArrayLikeMinimumDef } from './contract/index.D';
 
-export type ArrayLikeMinimumDef = ArrayLikeMinimumCore & ArrayLikeEachCurryDef<number, number>;
+export type ArrayLikeMinimumMain<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeMinimumDef<Type> & ArrayLikeMinimumLib<Type>;

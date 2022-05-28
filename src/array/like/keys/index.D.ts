@@ -1,4 +1,4 @@
-import type { Chars } from './../../string/chars/index.D';
+import type { Chars } from './../../../string/chars/index.D';
 
 export type TupleKeys     <X extends readonly unknown[]> = X extends readonly [unknown, ...infer Next] 
 	? [...TupleKeys<Next>, `${Next['length']}`]
