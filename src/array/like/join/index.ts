@@ -1,17 +1,10 @@
 // core
-import _curry2 from "../../function/curry/2/_/index";
-import arrayLikeJoinCore   from "./core/index";
-
-// dependencies
-import arrayLikeJoinUp from "./up/index";
+import arrayLikeJoinDef from "./contract/index";
+import arrayLikeJoinLib from "./lib/index";
 
 // interfaces
-import { ArrayLikeJoinDef } from "./index.D";
+import { ArrayLikeJoinMain } from "./index.D";
 
-const arrayLikeJoinDef = _curry2(arrayLikeJoinCore) as ArrayLikeJoinDef;
-const arrayLikeJoin = Object.assign(arrayLikeJoinDef, {
-	core : arrayLikeJoinCore,
-	up   : arrayLikeJoinUp
-});
+const arrayLikeJoin: ArrayLikeJoinMain = Object.assign(arrayLikeJoinDef, arrayLikeJoinLib);
 
 export default arrayLikeJoin;

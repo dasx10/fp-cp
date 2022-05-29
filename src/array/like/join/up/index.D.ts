@@ -1,2 +1,2 @@
-import type { ArrayLikeValue } from "../../index.D";
-export type ArrayLikeJoinUpCore = <X extends ArrayLike<unknown>>(array: X) => '' | `${ArrayLikeValue<X>}` | `${ArrayLikeValue<X>}${string}`; 
+import type { ArrayLikeJoin } from './../core/index.D';
+export type ArrayLikeJoinUpCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(array: X) => ArrayLikeJoin<X>; 

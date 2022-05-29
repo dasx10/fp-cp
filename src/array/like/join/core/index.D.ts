@@ -1,6 +1,15 @@
-import { AcceptString, ToString } from "../../../string/index.D";
-import { ArrayLikeValue } from "../../index.D";
+import type { AcceptString }   from "../../../../string/index.D";
 
+export type ArrayLikeJoinSeparatorResult <
+	SEPARATOR extends AcceptString = ''
+> = '' | string | `${string}${SEPARATOR}${string}`;
 
-export type ArrayLikeJoin <X extends ArrayLike<unknown>, SEPARATOR extends AcceptString = ''> = '' | `${ArrayLikeValue<X>}` | `${ArrayLikeValue<X>}${SEPARATOR}${ArrayLikeValue<X>}${string}`;
-export type ArrayLikeJoinCore = <SEPARATOR extends AcceptString, X extends ArrayLike<unknown>>(separator: SEPARATOR, array: X) => ArrayLikeJoin<X, SEPARATOR>
+export type ArrayLikeJoin <
+	X         extends ArrayLike<unknown>,
+	SEPARATOR extends AcceptString = ''
+> = ArrayLikeJoinSeparatorResult;
+
+export type ArrayLikeJoinCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <
+	SEPARATOR extends AcceptString,
+	X         extends Type
+>(separator: SEPARATOR, array: X) => ArrayLikeJoin<X, SEPARATOR>;
