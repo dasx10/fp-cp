@@ -19,30 +19,33 @@ import type { ArrayLikeMaximumMain } from "../maximum/index.D";
 import type { ArrayLikeMinimumMain } from "../minimum/index.D";
 import type { ArrayLikeJoinMain }    from "../join/index.D";
 import type { ArrayLikeIsMain }      from "../is/index.D";
+import type { ArrayLikeUniqMain } from "../uniq/index.D";
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
-	readonly at      : ArrayLikeAtMain      <Type>,
-	readonly size    : ArrayLikeSizeCore    <Type>,
-  readonly first   : ArrayLikeAtFirstMain <Type>,
-  readonly last    : ArrayLikeLastMain    <Type>,
-	readonly keys    : ArrayLikeKeysCore    <Type>,
-  readonly index   : ArrayLikeIndexMain   <Type>,
-  readonly indexes : ArrayLikeIndexesMain <Type>,
+	readonly at      : ArrayLikeAtMain      <Type>;
+	readonly size    : ArrayLikeSizeCore    <Type>;
+  readonly first   : ArrayLikeAtFirstMain <Type>;
+  readonly last    : ArrayLikeLastMain    <Type>;
+	readonly keys    : ArrayLikeKeysCore    <Type>;
+  readonly index   : ArrayLikeIndexMain   <Type>;
+  readonly indexes : ArrayLikeIndexesMain <Type>;
 	
-  readonly find    : ArrayLikeFindMain    <Type>,
-  readonly some    : ArrayLikeSomeMain    <Type>,
-  readonly every   : ArrayLikeEveryMain   <Type>,
-	readonly group   : ArrayLikeGroupMain   <Type>,
-  readonly reduce  : ArrayLikeReduceMain  <Type>,
-  readonly forEach : ArrayLikeForEachMain <Type>,
+  readonly find    : ArrayLikeFindMain    <Type>;
+  readonly some    : ArrayLikeSomeMain    <Type>;
+  readonly every   : ArrayLikeEveryMain   <Type>;
+	readonly group   : ArrayLikeGroupMain   <Type>;
+  readonly reduce  : ArrayLikeReduceMain  <Type>;
+  readonly forEach : ArrayLikeForEachMain <Type>;
 	
-  readonly sum     : ArrayLikeSumLikeMain <Type>,
-  readonly count   : ArrayLikeCountMain   <Type>,
-  readonly average : ArrayLikeAverageMain <Type>,
-  readonly maximum : ArrayLikeMaximumMain <Type>,
-  readonly minimum : ArrayLikeMinimumMain <Type>,
+  readonly sum     : ArrayLikeSumLikeMain <Type>;
+  readonly count   : ArrayLikeCountMain   <Type>;
+  readonly average : ArrayLikeAverageMain <Type>;
+  readonly maximum : ArrayLikeMaximumMain <Type>;
+  readonly minimum : ArrayLikeMinimumMain <Type>;
 
-	readonly join    : ArrayLikeJoinMain    <Type>,
+	readonly uniq    : ArrayLikeUniqMain    <Type>;
 
-  readonly is      : ArrayLikeIsMain,
+	readonly join    : ArrayLikeJoinMain    <Type>;
+
+  readonly is      : ArrayLikeIsMain;
 }

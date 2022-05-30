@@ -1,3 +1,4 @@
+import type { ArrayLikeValue } from './../../like/index.D';
 import type { ArrayValue, ArrayIndex } from './../../index.D';
 
 export type ArrayFilterCore <Type = unknown> = <X extends readonly Type[]>(def: (value: ArrayValue<X>, index: ArrayIndex<X>, array: X) => unknown, array: X) => ArrayFilter<X> 
@@ -11,8 +12,8 @@ export type TupleFilter     <X extends readonly unknown[]> = X extends readonly 
 	: [];
 
 export type ArrayFilterEver <X extends readonly unknown[]> = X extends readonly [infer Value, ...infer Next]
-	? [Value] | [Value, ...TupleFilterEver<Next>] | TupleFilterEver<Next>
-	: X;
+	?      [Value] | [Value, ...TupleFilterEver<Next>] | TupleFilterEver<Next>
+	: [ArrayLikeValue<X>, ...X] | [ArrayLikeValue<X>];
 
 export type ArrayFilter     <X extends readonly unknown[]> = X extends readonly [infer Value, ...infer Next]
 	? [] | [Value] | [Value, ...TupleFilterEver<Next>] | TupleFilterEver<Next>

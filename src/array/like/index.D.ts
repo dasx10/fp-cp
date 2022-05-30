@@ -1,21 +1,16 @@
-import type { Chars } from './../../string/chars/index.D';
-import type { ArrayValue, ArrayIndex, TupleIndex } from '../index.D';
+import type { Chars }                  from './../../string/chars/index.D';
+import type { ArrayIndex, TupleIndex } from '../index.D';
 import type { ToIndexInvert }          from './index/index.D';
-
+import type { Char }                   from '../../string/char/index.D';
 
 export type ArrayLikeIterator <X, Return = unknown> = (value: X, index: ToIndexInvert<number>, arrayLike: ArrayLike<X>) => Return;
 
-export type ArrayLikeEachDef<Result, X = unknown, Return = unknown> = <IX extends X>(def: ArrayLikeIterator<IX, Return>, x: ArrayLike<X>) => Result;
+export type DirectiveValue <X extends Record<number, unknown>> = X extends Record<number, infer T> 
+	? T
+	: never;
 
-export type ArrayLikeEachCurryDef<Result, Return = unknown> = {
-	<X>(def: ArrayLikeIterator<X, Return>, x: ArrayLike<X>): Result;
-  <X>(def: ArrayLikeIterator<X, Return>): (x: ArrayLike<X>) => Result;
-}
-
-
-export type DirectiveValue <X extends Record<number, unknown>> = X extends Record<number, infer T> ? T : never;
 export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends string 
-	? ArrayValue<Chars<X>>
+	? Char<X>
 	: X extends ArrayLike<infer T> ? T : never;
 
 export type ArrayLikeIndex <X extends Record<number, unknown>> = X extends readonly [unknown, ...infer Next] 

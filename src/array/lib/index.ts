@@ -5,10 +5,9 @@ import arrayLikeLib from '../like/lib/index';
 import arrayFilter  from '../filter/index';
 
 // interfaces
-import type { ArrayLikeLib } from '../like/lib/index.D';
-import type { ArrayLib }     from "./index.D";
+import type { ArrayLib } from "./index.D";
 
-const arrayLib: ArrayLib = Object.assign(arrayLikeLib as ArrayLikeLib<readonly unknown[]>, {
+const arrayLib: ArrayLib = Object.assign(arrayLikeLib, {
 	like   : arrayLikeLib,
 	filter : arrayFilter,
 });

@@ -1,4 +1,4 @@
-import type { Chars }          from './../../../../backup/_string/chars/index.D';
+import type { Chars }          from './../../../../string/chars/index.D';
 import type { ToIndexDirect }  from './../../index/index.D';
 import type { ArrayLikeIndex } from '../../index.D';
 

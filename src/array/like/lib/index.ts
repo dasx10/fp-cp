@@ -18,6 +18,7 @@ import arrayLikeReduce  from "../reduce/index";
 import arrayLikeSize    from "../size/index";
 import arrayLikeSome    from "../some/index";
 import arrayLikeSum     from "../sum/index";
+import arrayLikeUniq    from "../uniq/index";
 
 import type { ArrayLikeLib } from "./index.D";
 
@@ -43,6 +44,8 @@ const arrayLikeLib: ArrayLikeLib = {
   average : arrayLikeAverage,
   maximum : arrayLikeMaximum,
   minimum : arrayLikeMinimum,
+
+	uniq    : arrayLikeUniq,
 
 	join    : arrayLikeJoin,
 
