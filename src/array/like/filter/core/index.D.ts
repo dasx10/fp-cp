@@ -30,24 +30,24 @@ export type ArrayLikeFilter <X extends ArrayLike<unknown>> = X extends readonly 
 
 export type TupleFilterPredicate <X extends readonly unknown[], Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
-		? [Value] | [Value, ...TupleFilterPredicate<Next, Predicate>]
+		? [Value, ...TupleFilterPredicate<Next, Predicate>]
 		: TupleFilterPredicate<Next, Predicate>
 	: [];
 
 export type ArrayFilterPredicate <X extends readonly unknown[], Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
-		? [Value] | [Value, ...TupleFilterPredicate<Next, Predicate>]
+		? [Value, ...TupleFilterPredicate<Next, Predicate>]
 		: TupleFilterPredicate<Next, Predicate>
-	: [] | Predicate[];
+	: (Predicate & ArrayLikeValue<X>)[];
 
 export type ArrayLikeFilterPredicate <X extends ArrayLike<unknown>, Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
-		? [Value] | [Value, ...TupleFilterPredicate<Next, Predicate>]
+		? [Value, ...TupleFilterPredicate<Next, Predicate>]
 		: TupleFilterPredicate<Next, Predicate>
 	: (X & Predicate) extends string
 	  // @ts-ignore
 		? ArrayFilterPredicate<Chars<X>, Predicate>
-		: [] | Predicate[];
+		: (ArrayLikeValue<X> & Predicate)[];
 
 
 // Core

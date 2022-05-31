@@ -1,11 +1,10 @@
-import type { __ }              from './../../../../index';
-import type { ArrayLikeIndex }  from './../../index.D';
+import type { __ }                                        from './../../../../index';
+import type { ArrayLikeIndex }                            from './../../index.D';
+import type { ArrayFilterCore }                           from "../core/index.D";
+import type { ArrayLikeValue }                            from '../../index.D';
 import type { ArrayLikeFilter, ArrayLikeFilterPredicate } from './../core/index.D';
-import type { ArrayFilterCore } from "../core/index.D";
-import type { ArrayLikeValue }  from '../../index.D';
 
 export type ArrayLikeFilterDef <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayFilterCore<Type> & {
-
 	<
 		Value             extends ArrayLikeValue<Type>,
 		WaitArrayLikeType extends Type & ArrayLike<Value | Predicate>,
