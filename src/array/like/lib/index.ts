@@ -3,6 +3,7 @@ import arrayLikeAt      from "../at/index";
 import arrayLikeAverage from "../average/index";
 import arrayLikeCount   from "../count/index";
 import arrayLikeEvery   from "../every/index";
+import arrayLikeFilter  from "../filter/index";
 import arrayLikeFind    from "../find/index";
 import arrayLikeForEach from "../forEach/index";
 import arrayLikeGroup   from "../group/index";
@@ -46,6 +47,7 @@ const arrayLikeLib: ArrayLikeLib = {
   minimum : arrayLikeMinimum,
 
 	uniq    : arrayLikeUniq,
+	filter  : arrayLikeFilter,
 
 	join    : arrayLikeJoin,
 

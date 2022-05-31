@@ -20,6 +20,7 @@ import type { ArrayLikeMinimumMain } from "../minimum/index.D";
 import type { ArrayLikeJoinMain }    from "../join/index.D";
 import type { ArrayLikeIsMain }      from "../is/index.D";
 import type { ArrayLikeUniqMain } from "../uniq/index.D";
+import type { ArrayLikeFilterMain } from './../filter/index.D';
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>;
@@ -44,6 +45,7 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
   readonly minimum : ArrayLikeMinimumMain <Type>;
 
 	readonly uniq    : ArrayLikeUniqMain    <Type>;
+	readonly filter  : ArrayLikeFilterMain  <Type>;
 
 	readonly join    : ArrayLikeJoinMain    <Type>;
 

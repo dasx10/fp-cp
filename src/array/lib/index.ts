@@ -9,7 +9,7 @@ import type { ArrayLib } from "./index.D";
 
 const arrayLib: ArrayLib = Object.assign(arrayLikeLib, {
 	like   : arrayLikeLib,
-	filter : arrayFilter,
+	// filter : arrayFilter,
 });
 
 export default arrayLib;
