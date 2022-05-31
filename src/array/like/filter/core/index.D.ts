@@ -31,23 +31,32 @@ export type ArrayLikeFilter <X extends ArrayLike<unknown>> = X extends readonly 
 export type TupleFilterPredicate <X extends readonly unknown[], Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
 		? [Value, ...TupleFilterPredicate<Next, Predicate>]
-		: TupleFilterPredicate<Next, Predicate>
+		: Predicate extends Value 
+			? [Predicate] | [Predicate, ...TupleFilterPredicate<Next, Predicate>] | TupleFilterPredicate<Next, Predicate>
+			: TupleFilterPredicate<Next, Predicate>
 	: [];
 
 export type ArrayFilterPredicate <X extends readonly unknown[], Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
 		? [Value, ...TupleFilterPredicate<Next, Predicate>]
-		: TupleFilterPredicate<Next, Predicate>
-	: (Predicate & ArrayLikeValue<X>)[];
+		: Predicate extends Value
+			? [Predicate] | [Predicate, ...TupleFilterPredicate<Next, Predicate>] | TupleFilterPredicate<Next, Predicate> 
+			: TupleFilterPredicate<Next, Predicate>
+		: X extends readonly []
+			? []
+			: (Predicate & ArrayLikeValue<X>)[]
 
 export type ArrayLikeFilterPredicate <X extends ArrayLike<unknown>, Predicate> = X extends readonly [infer Value, ...infer Next]
 	? Value extends Predicate 
 		? [Value, ...TupleFilterPredicate<Next, Predicate>]
-		: TupleFilterPredicate<Next, Predicate>
-	: (X & Predicate) extends string
-	  // @ts-ignore
-		? ArrayFilterPredicate<Chars<X>, Predicate>
-		: (ArrayLikeValue<X> & Predicate)[];
+		: Predicate extends Value
+			? [Predicate] | [Predicate, ...TupleFilterPredicate<Next, Predicate>] | TupleFilterPredicate<Next, Predicate> 
+			: TupleFilterPredicate<Next, Predicate>
+		: X extends readonly []
+			? []
+			: X extends string
+				? ArrayFilterPredicate<Chars<X>, Predicate>
+				: (Predicate & ArrayLikeValue<X>)[];
 
 
 // Core
@@ -57,7 +66,7 @@ export type ArrayFilterCore <
 > = {
 	<X extends Type, Predicate>
 	  // @ts-ignore 
-		(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => value is Predicate, x: X) : ArrayLikeFilterPredicate<X, Predicate & ArrayLikeValue<X>>;
+		(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => value is Predicate, x: X) : ArrayLikeFilterPredicate<X, Predicate>;
 
 	<X extends Type>                              
 		(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => unknown, x: X)    : ArrayLikeFilter<X>;

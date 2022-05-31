@@ -4,8 +4,8 @@ import type { ArrayFilterCore, ArrayLikeFilter } from './index.D';
 const arrayLikeFilterCore: ArrayFilterCore = <
 	X extends ArrayLike<unknown>
 > (
-	def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => unknown,
-	array: X
+	def   : (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => unknown,
+	array : X
 ): ArrayLikeFilter<X> => {
 	const { length } = array;
 	switch (length) {

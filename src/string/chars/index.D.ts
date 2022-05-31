@@ -1,7 +1,11 @@
 export type Chars <StringValue extends string> = string extends StringValue
   ? string[] | []
-  : StringValue extends `${infer Char}${infer NextChars}`
-    ? NextChars extends ''
-      ? [Char]
+  : StringValue extends ''
+		? []
+		: StringValue extends `${infer Char}${infer NextChars}`
+      ? NextChars extends ''
+        ? Char extends ''
+					? []
+					: [Char]
       : [Char, ...Chars<NextChars>]
     : [StringValue];
