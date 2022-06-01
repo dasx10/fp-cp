@@ -1,9 +1,2 @@
-import { DefAny } from '../index.D';
-
-function apply <Executor extends DefAny>(executor: Executor) {
-  return function useApply(args: Parameters<Executor>) {
-    return executor(...args);
-  };
-}
-
+const apply = <T, Args extends unknown[], Return>(instance: T, args: Args, def: (this: T, ...args: Args) => Return) => def.apply(instance, args);
 export default apply;

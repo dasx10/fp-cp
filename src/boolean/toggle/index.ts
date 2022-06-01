@@ -1,7 +1,3 @@
-import { TOGGLE } from "./index.D";
-
-function toggle <X>(x: X): TOGGLE<X> {
-  return !x as TOGGLE<X>;
-}
-
+import type { TOGGLE } from "./index.D";
+const toggle = <X>(x: X) => !x as TOGGLE<X>;
 export default toggle;

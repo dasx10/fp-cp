@@ -1,6 +1,6 @@
 import wrap from './wrap/index';
 
-import apply     from './apply/index';
+import rest      from './rest/index';
 import compose   from './compose/index';
 import constanta from './const/index';
 import curry     from './curry/index';
@@ -10,7 +10,7 @@ import partial   from './partial/index';
 import pipe      from './pipe/index';
 
 const def = Object.assign(wrap, {
-  apply,
+  rest,
   compose,
   constanta,
   curry,

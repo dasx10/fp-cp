@@ -1,3 +1,4 @@
+import config from './config/index';
 import def from './function/index';
 import lib from './lib/index';
 
@@ -12,10 +13,6 @@ export const ___:___ = Symbol.for('ƒ(…, ') as ___;
  */
 export type __ = typeof _;
 
-const _ = Object.assign(def, {
-  [Symbol.iterator]: function* PlaceholderIterator(): Generator<___, void, void> {
-    yield ___;
-  },
-}, lib);
+const _ = Object.assign(def, config, lib);
 
 export default _;
