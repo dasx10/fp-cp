@@ -1,6 +1,10 @@
+// core
 import arrayLikeFilterEntriesCore from "../core/index";
 
-const arrayLikeFilterEntriesLib = {
+// interfaces
+import type { ArrayLikeFilterEntriesLib } from "./index.D";
+
+const arrayLikeFilterEntriesLib: ArrayLikeFilterEntriesLib = {
 	core: arrayLikeFilterEntriesCore
 }
 
