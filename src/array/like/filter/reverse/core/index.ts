@@ -1,5 +1,5 @@
 import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
-import type { ArrayFilterReverseCore }         from "./index.D";
+import type { ArrayLikeFilterReverseCore }         from "./index.D";
 
 const arrayLikeFilterReverseCore = (<X extends ArrayLike<unknown> = ArrayLike<unknown>>(
 	def : (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => unknown,
@@ -24,6 +24,6 @@ const arrayLikeFilterReverseCore = (<X extends ArrayLike<unknown> = ArrayLike<un
 			return filtered;
 		};
 	};
-}) as ArrayFilterReverseCore;
+}) as ArrayLikeFilterReverseCore;
 
 export default arrayLikeFilterReverseCore;

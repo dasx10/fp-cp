@@ -1,4 +1,4 @@
-import type { ArrayLikeValue, ArrayLikeIndex } from './../../index.D';
+import type { ArrayLikeValue, ArrayLikeIndex }   from './../../index.D';
 import type { ArrayFilterCore, ArrayLikeFilter } from './index.D';
 
 const arrayLikeFilterCore: ArrayFilterCore = <
