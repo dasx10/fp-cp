@@ -1,6 +1,7 @@
 import type { ArrayLikeValue, ArrayLikeIndex } from './../../../index.D';
+import type { ArrayLikeFilterEntriesCore }     from './index.D';
 
-const arrayLikeFilterEntriesCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => unknown, x: X) => {
+const arrayLikeFilterEntriesCore = (<X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => unknown, x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return [];
@@ -20,6 +21,6 @@ const arrayLikeFilterEntriesCore = <X extends ArrayLike<unknown>>(def: (value: A
 			return filtered;
 		};
 	};
-};
+}) as ArrayLikeFilterEntriesCore;
 
 export default arrayLikeFilterEntriesCore;
