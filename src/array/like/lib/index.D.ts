@@ -19,8 +19,9 @@ import type { ArrayLikeMaximumMain } from "../maximum/index.D";
 import type { ArrayLikeMinimumMain } from "../minimum/index.D";
 import type { ArrayLikeJoinMain }    from "../join/index.D";
 import type { ArrayLikeIsMain }      from "../is/index.D";
-import type { ArrayLikeUniqMain } from "../uniq/index.D";
-import type { ArrayLikeFilterMain } from './../filter/index.D';
+import type { ArrayLikeUniqMain }    from "../uniq/index.D";
+import type { ArrayLikeFilterMain }  from './../filter/index.D';
+import type { ArrayLikeRejectMain }  from "../reject/index.D";
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>;
@@ -46,6 +47,7 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 
 	readonly uniq    : ArrayLikeUniqMain    <Type>;
 	readonly filter  : ArrayLikeFilterMain  <Type>;
+	readonly reject  : ArrayLikeRejectMain  <Type>;
 
 	readonly join    : ArrayLikeJoinMain    <Type>;
 

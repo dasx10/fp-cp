@@ -1,7 +1,7 @@
 import arrayLikeFilterCore    from "../core/index";
 import arrayLikeFilterEntries from "../entries/index";
 import arrayLikeFilterIndexes from "../indexes/index";
-import arrayLikeFilterReverse from "../reverse/index";
+import arrayLikeFilterRevers from "../revers/index";
 import arrayLikeFilterRight   from "../right/index";
 
 // interfaces
@@ -12,7 +12,7 @@ const arrayLikeFilterLib: ArrayLikeFilterLib = {
 	right   : arrayLikeFilterRight,
 	indexes : arrayLikeFilterIndexes,
 	entries : arrayLikeFilterEntries,
-	reverse : arrayLikeFilterReverse,
+	revers  : arrayLikeFilterRevers,
 }
 
 export default arrayLikeFilterLib;
