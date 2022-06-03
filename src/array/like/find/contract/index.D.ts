@@ -22,8 +22,8 @@ export type ArrayLikeFindDef <Type extends ArrayLike<unknown> = ArrayLike<unknow
 	
 	<X extends Type>(_:__, x: X): {
 		// @ts-ignore
-		<Predicate>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => value is Predicate): ArrayLikeFindPredicate<X, Predicate & ArrayLikeValue<X>>;
-		           (def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown): ArrayLikeFind<X>;
+		<Predicate>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => value is Predicate) : ArrayLikeFindPredicate<X, Predicate & ArrayLikeValue<X>>;
+		           (def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown)            : ArrayLikeFind<X>;
 	}
 }
 
