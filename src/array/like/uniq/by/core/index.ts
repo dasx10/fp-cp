@@ -15,17 +15,20 @@ const arrayLikeUniqByCore: ArrayLikeUniqByCore
 			: [x[0]];
 
 		default: {
-			const check  = new Set([def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x)]);
+			let value    = x[0] as ArrayLikeValue<X>;
+			let key      = def(value, <ArrayLikeIndex<X>>0, x);
+			const check  = new Set([key]);
 			const unique = [x[0]];
-			let index    = 1;
+			let index    = 1 as ArrayLikeIndex<X>;
 			while (index < length) {
-				const key = def(<ArrayLikeValue<X>>x[index], <ArrayLikeIndex<X>>index, x);
+				value = x[index] as ArrayLikeValue<X>;
+				key = def(value, index, x);
 				if (check.has(key)) {
 					index++;
 					continue;
 				}
 				check.add(key);
-				unique.push(x[index]);
+				unique.push(value);
 				index++;
 			}
 			return unique;
