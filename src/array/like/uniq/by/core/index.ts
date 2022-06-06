@@ -18,7 +18,7 @@ const arrayLikeUniqByCore: ArrayLikeUniqByCore
 			let value    = x[0] as ArrayLikeValue<X>;
 			let key      = def(value, <ArrayLikeIndex<X>>0, x);
 			const check  = new Set([key]);
-			const unique = [x[0]];
+			const unique = [value];
 			let index    = 1 as ArrayLikeIndex<X>;
 			while (index < length) {
 				value = x[index] as ArrayLikeValue<X>;
