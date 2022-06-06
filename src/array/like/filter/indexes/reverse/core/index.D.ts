@@ -1,4 +1,5 @@
-import { ArrayLikeIndex } from './../../../../index.D';
+import { ArrayValue } from './../../../../../index.D';
+import { ArrayLikeIndex, ArrayLikeValue } from './../../../../index.D';
 import { Chars } from './../../../../../../../backup/_string/chars/index.D';
 
 export type TupleIndexesRevers     <X extends readonly unknown[]> = X extends readonly [unknown, ...infer Next]
