@@ -1,5 +1,5 @@
-import { ArrayValue } from './../../../../../../backup/array/index.D';
-import type { Chars } from './../../../../../string/chars/index.D';
+import type { ArrayValue }                     from './../../../../../../backup/array/index.D';
+import type { Chars }                          from './../../../../../string/chars/index.D';
 import type { ArrayLikeIndex, ArrayLikeValue } from "../../../index.D";
 
 export type TupleIndexes           <X extends readonly unknown[]> = X extends readonly [unknown, ...infer Next]
