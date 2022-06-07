@@ -1,6 +1,6 @@
 import type { ArrayLikeIndexLib } from './lib/index.D';
-import type { ExcludeFloat, ExcludeNegative, ExcludePositive } from "../../number/index.D";
 import type { ArrayLikeAtLastIndexCore } from "../at/last/index/index.D";
+import type { ExcludeFloat, ExcludeNegative, ExcludePositive } from '../../../number/index.D';
 
 export type KeyIndex = number | `${number}`;
 

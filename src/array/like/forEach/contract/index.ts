@@ -1,4 +1,4 @@
-import _curry2              from "../../../function/curry/2/_/index";
+import _curry2 from "../../../../function/curry/2/_/index";
 import arrayLikeForEachCore from "../core/index";
 
 import type { ArrayLikeForEachDef } from "./index.D";

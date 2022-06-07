@@ -17,7 +17,7 @@ function _arrayLimitLeft <Finish extends number, X extends readonly unknown[]>(f
       const filtered = new Array<ArrayValue<X>>(stop);
       let index = 0;
       while (index < stop) {
-        filtered[index] = array[index];
+        filtered[index] = array[index] as ArrayValue<X>;
         index++;
       }
   

@@ -5,9 +5,9 @@ import arrayLikeIndexHasInvertCore   from '../invert/core/index';
 import arrayLikeIndexHasDirectCore   from '../direct/core/index';
 
 // interfaces
-import type { ArrayLikeIndexHasDef } from './../index.D';
+import type { __ } from './../../../../../index';
+import type { ArrayLikeIndexHasDef } from './index.D';
 import type { ToIndex }              from './../../index.D';
-import type { __ }                   from '../../../../index';
 
 const arrayLikeIndexHasDef = function <Index extends number, X extends ArrayLike<unknown>>(index:ToIndex<Index>|__, x?: X | ToIndex<Index>) {
 	switch (arguments.length) {

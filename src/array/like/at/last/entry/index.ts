@@ -4,7 +4,7 @@ const arrayLikeAtLastEntry: ArrayLikeAtLastEntryCore = <X extends ArrayLike<unkn
 	const { length } = x;
 	if (length > 0) {
 		const lastIndex = length - 1;
-		return [lastIndex, x[lastIndex]];
+		return [lastIndex, x[lastIndex]] as ArrayLikeAtLastEntry<X>;
 	}
 }
 

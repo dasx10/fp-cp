@@ -1,5 +1,6 @@
-import { ArrayConsistent, ArrayConsistentEvery } from "../../backup/array/index.D";
-import { TupleReverse } from "../../backup/array/reverse/index.D";
+import type { ArrayConsistent, ArrayConsistentEvery } from '../array/index.D';
+import type { TupleReverse }                          from '../array/reverse/index.D';
+
 
 
 export type ParametersConsistent            <Def extends DefAny> = ArrayConsistent<Parameters<Def>>;

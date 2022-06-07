@@ -1,4 +1,4 @@
-import type { ArrayIndex } from "../../backup/array/index.D";
+import type { ArrayIndex } from "../array/index.D";
 import type { Char }  from "./char/index.D";
 import type { Chars } from "./chars/index.D";
 import type { StringCore } from "./core/index.D";
@@ -11,4 +11,4 @@ export type StrIterate <X extends string = string, R = unknown>  = (char: Char<X
 export type ToString   <X>                                       = X extends AcceptString ? `${X}` : string;
 
 
-export type StringMain = StringCore & StringLib;
+export type StringMain = StringCore;

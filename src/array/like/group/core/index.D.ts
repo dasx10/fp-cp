@@ -1,6 +1,5 @@
 import type { Chars }                             from './../../../../string/chars/index.D';
-import type { ArrayFilterEver }                   from './../../../filter/core/index.D';
-import type { TupleFilterEver }                   from "../../filter/core/index.D";
+import type { ArrayFilterEver, TupleFilterEver }  from "../../filter/core/index.D";
 import type { ArrayLikeExecutor, ArrayLikeValue } from "../../index.D"
 
 export type ArrayLikeGroup <Key extends PropertyKey, X extends ArrayLike<unknown>> = Record<

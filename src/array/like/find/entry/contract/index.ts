@@ -1,5 +1,5 @@
 // core
-import _curry2                from "../../../../function/curry/2/_/index";
+import _curry2 from "../../../../../function/curry/2/_/index";
 import arrayLikeFindEntryCore from "../core/index";
 
 // interface

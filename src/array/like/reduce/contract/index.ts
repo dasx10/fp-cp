@@ -1,4 +1,4 @@
-import _curry3                     from "../../../function/curry/3/_/index";
+import _curry3                     from "../../../../function/curry/3/_/index";
 import arrayLikeReduceCore         from "../core/index";
 
 // interfaces

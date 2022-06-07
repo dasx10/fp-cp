@@ -1,6 +1,6 @@
-import { __ } from './../../../index';
-import { ArrayLikeGroup } from './../core/index.D';
-import { ArrayLikeIndex, ArrayLikeValue } from "../../index.D";
+import type { __ } from './../../../../index';
+import type { ArrayLikeGroup } from './../core/index.D';
+import type { ArrayLikeIndex, ArrayLikeValue } from "../../index.D";
 import type { ArrayLikeGroupCore } from "../core/index.D";
 
 export type ArrayLikeGroupDef<Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeGroupCore<Type> & {

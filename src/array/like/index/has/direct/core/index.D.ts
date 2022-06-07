@@ -1,4 +1,4 @@
-import type { ArrayIndex }     from './../../../../../array/index.D';
+import type { ArrayIndex }     from "../../../../../index.D";
 import type { ArrayLikeIndex } from "../../../../index.D";
 import type { ToIndexDirect }  from "../../../index.D";
 

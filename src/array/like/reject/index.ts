@@ -5,5 +5,5 @@ import arrayLikeRejectLib from "./lib/index";
 // interfaces
 import { ArrayLikeRejectMain } from "./index.D";
 
-const arrayLikeRejected: ArrayLikeRejectMain = Object.assign(arrayLikeRejectDef, arrayLikeRejectLib);
-export default arrayLikeRejected;
+const arrayLikeReject: ArrayLikeRejectMain = Object.assign(arrayLikeRejectDef, arrayLikeRejectLib);
+export default arrayLikeReject;

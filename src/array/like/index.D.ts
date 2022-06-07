@@ -9,7 +9,9 @@ export type DirectiveValue <X extends Record<number, unknown>> = X extends Recor
 	? T
 	: never;
 
-export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends string 
+export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends readonly [] 
+	? never
+	: X extends string 
 	? Char<X>
 	: X extends ArrayLike<infer T> ? T : never;
 

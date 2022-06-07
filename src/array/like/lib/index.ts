@@ -20,6 +20,7 @@ import arrayLikeSize    from "../size/index";
 import arrayLikeSome    from "../some/index";
 import arrayLikeSum     from "../sum/index";
 import arrayLikeUniq    from "../uniq/index";
+import arrayLikeReject  from '../reject/index';
 
 import type { ArrayLikeLib } from "./index.D";
 
@@ -48,6 +49,7 @@ const arrayLikeLib: ArrayLikeLib = {
 
 	uniq    : arrayLikeUniq,
 	filter  : arrayLikeFilter,
+	reject  : arrayLikeReject,
 
 	join    : arrayLikeJoin,
 

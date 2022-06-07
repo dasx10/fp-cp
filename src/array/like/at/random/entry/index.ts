@@ -5,10 +5,10 @@ const arrayLikeAtRandomEntryCore: ArrayLikeAtRandomEntryCore = <X extends ArrayL
 	const { length } = x;
 	switch (length) {
 		case 0  : return;
-		case 1  : return [0, x[0]];
+		case 1  : return [0, x[0]] as [ArrayLikeIndex<X>, ArrayLikeValue<X>];
 		default : {
 			const index = ~~(Math.random() * length)
-			return [index, x[index]];
+			return [index, x[index]] as [ArrayLikeIndex<X>, ArrayLikeValue<X>];
 		}
 	}
 }

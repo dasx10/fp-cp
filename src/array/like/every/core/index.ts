@@ -1,15 +1,18 @@
-import type { ArrayLikeExecutor } from "../../index.D";
-import type { ArrayLikeEveryCore } from "./index.D";
+import type { ArrayLikeValue, ArrayLikeIndex } from './../../index.D';
+import type { ArrayLikeEveryCore }             from "./index.D";
 
-const arrayLikeEveryCore: ArrayLikeEveryCore = <X extends ArrayLike<unknown>>(def: ArrayLikeExecutor<X>, x: X): boolean => {
+const arrayLikeEveryCore: ArrayLikeEveryCore = <X extends ArrayLike<unknown>>(
+	def : (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => unknown,
+	x   : X
+): boolean => {
   const { length } = x;
 	switch (length) {
 		case 0  : return false;
-		case 1  : return Boolean(def(x[0], 0, x));
+		case 1  : return Boolean(def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x));
 		default : {
-			let index = 0;
+			let index = 0 as ArrayLikeIndex<X>;
 			while (index < length) {
-				if (def(x[index], index, x)) {
+				if (def(<ArrayLikeValue<X>>x[index], index, x)) {
 					index++;
 					continue;
 				}

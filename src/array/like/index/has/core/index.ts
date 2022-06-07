@@ -9,9 +9,10 @@ const arrayLikeIndexHasCore: ArrayLikeIndexHasCore = <
 	X extends ArrayLike<unknown>
 >(
 	index: ToIndex<Index>,
-	x : X
+	x    : X
 ): boolean => index < 0 
 		? arrayLikeIndexHasInvertCore(<ToIndexInvert<Index>>index, x)
+		// @ts-ignore
 		: arrayLikeIndexHasDirectCore(<ToIndexDirect<Index>>index, x);
 
 export default arrayLikeIndexHasCore;

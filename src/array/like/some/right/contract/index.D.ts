@@ -1,5 +1,5 @@
 
-import type { __ }                             from '../../../../index';
+import type { __ } from '../../../../../index';
 import type { ArrayLikeIndex, ArrayLikeValue } from '../../../index.D';
 import type { ArrayLikeSomeRightCore }         from './../core/index.D';
 

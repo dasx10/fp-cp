@@ -1,14 +1,14 @@
 // core
 import _arrayLimitLeft  from "./left/_/index";
 import _arrayLimitRight from "./right/_/index";
-import _arrayLimit      from "./_/index";
 
 // dependencies
 import arrayLimitLeft   from "./left/index";
 import arrayLimitRight  from "./right/index";
+import { ArrayLimit } from "./core/index.D";
+import _arrayLimit from "./core/index";
 
 // interfaces 
-import type { ArrayLimit } from "./_/index.D";
 
 function arrayLimitDef <Finish extends number, X extends readonly unknown[]>(finish: Finish, array: X): ArrayLimit<Finish, X>;
 function arrayLimitDef <Finish extends number>(finish: Finish): <X extends readonly unknown[]>(array: X) => ArrayLimit<Finish, X>

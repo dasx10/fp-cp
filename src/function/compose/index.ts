@@ -1,17 +1,18 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { DefAny } from '../index.D';
-
 function compose <
-    FirstFunction extends DefAny,
-    SecondFunction extends DefAny<ReturnType<FirstFunction>>,
-    // @ts-ignore
-    Functions extends [...(DefAny)[], SecondFunction, FirstFunction],
->(...executors: Functions) {
-  return function useCompose(...lastExecutorArguments: Parameters<FirstFunction>) {
-    let result = (executors.pop() as FirstFunction)(...lastExecutorArguments);
+	R0,
+	Result,
+	Args extends readonly unknown[],
+>(
+	...executors: [
+		(x: R0) => Result,
+		...((x: unknown) => unknown)[],
+		(...args: Args) => unknown
+]) {
+  return function (...lastExecutorArguments: Args) {
+    let result = (executors.pop() as (...args: Args) => unknown)(...lastExecutorArguments);
     // @ts-ignore
     while (executors.length) result = executors.pop()(result);
-    return result;
+    return result as Result;
   };
 }
 

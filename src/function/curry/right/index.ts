@@ -1,6 +1,6 @@
 // const reverse = require("../../../array/reverse");
 
-import arrayReverse from "../../../../backup/array/reverse/index";
+import arrayReverseCore from "../../../array/reverse/core/index";
 import { ParametersConsistentReverse } from "../../index.D";
 import { NextConsistentParametersReverse, ReturnTypeCurryRight } from "./index.D";
 
@@ -13,7 +13,7 @@ function curryRight <
 		// @ts-ignore
 		return <NextParameters extends NextConsistentParametersReverse<Def, StartArguments>>(...nextArguments: NextParameters) => curryRight(def, ...startArguments, ...nextArguments);
 	// @ts-ignore
-	return def(...arrayReverse(startArguments));
+	return def(...arrayReverseCore(startArguments));
 }
 
 export default curryRight;

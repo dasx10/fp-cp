@@ -1,9 +1,9 @@
 // core
-import _curry2                     from "../../../../../function/curry/2/_/index";
+import _curry2 from "../../../../../../function/curry/2/_/index";
 import arrayLikeIndexHasDirectCore from "../core/index";
 
 // interfaces
 import type { ArrayLikeIndexHasDirectDef } from "./index.D";
 
-const arrayLikeIndexHasDirectDef: ArrayLikeIndexHasDirectDef = _curry2(arrayLikeIndexHasDirectCore);
+const arrayLikeIndexHasDirectDef = _curry2(arrayLikeIndexHasDirectCore) as ArrayLikeIndexHasDirectDef;
 export default arrayLikeIndexHasDirectDef;

@@ -5,7 +5,7 @@ const arrayLikeForEachRightCore: ArrayLikeForEachRightCore = <X extends ArrayLik
 	def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown,
 	x: X
 ): void => {
-  let index = x.length;
+  let index = x.length as ArrayLikeIndex<X>;
   while (--index > -1) def(<ArrayLikeValue<X>>x[index], index, x);
 };
 

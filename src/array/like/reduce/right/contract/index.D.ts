@@ -1,6 +1,6 @@
 import type { ArrayLikeReduceRightCore } from './../core/index.D';
-import type { __ } from './../../../../index';
 import type { ArrayLikeValue, ArrayLikeIndex } from './../../../index.D';
+import type { __ } from '../../../../../index';
 
 
 export type ArrayLikeReduceRightDef <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = ArrayLikeReduceRightCore<Type> & {

@@ -5,7 +5,7 @@ const arrayLikeAverageCore: ArrayLikeAverageCore = <X extends ArrayLike<unknown>
   const { length } = x;
   switch (length) {
 		case 0  : return 0;
-		case 1  : return def(<ArrayLikeValue<X>>x[0], 0, x);
+		case 1  : return def(<ArrayLikeValue<X>>x[0], <ArrayLikeIndex<X>>0, x);
 		default : {
 			let index = 0 as ArrayLikeIndex<X>;
 			let sum   = 0;

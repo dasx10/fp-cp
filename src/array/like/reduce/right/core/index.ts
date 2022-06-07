@@ -9,7 +9,7 @@ const arrayLikeReduceRightCore: ArrayLikeReduceRightCore = <INITIAL_VALUE, X ext
   const { length } = x;
   if (length > 0) {
     let currentValue = initialValue;
-    let index = length;
+    let index = length as ArrayLikeIndex<X>;
     while (--index > -1) currentValue = def(currentValue, <ArrayLikeValue<X>>x[index], index, x);
     return currentValue;
   }

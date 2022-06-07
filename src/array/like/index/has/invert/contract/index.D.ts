@@ -1,4 +1,4 @@
-import type { __ }                          from '../../../../../index';
+import type { __ } from './../../../../../../index';
 import type { ToIndexInvert }               from './../../../index.D';
 import type { ArrayLikeIndexHasInvertCore } from './../core/index.D';
 

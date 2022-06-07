@@ -1,7 +1,7 @@
-import queryJson from "./query/json/index";
+// import queryJson from "./query/json/index";
 
-class Url extends URL {
-  public static readonly queryJson = queryJson;
-}
+// class Url extends URL {
+//   public static readonly queryJson = queryJson;
+// }
 
-export default Url;
+// export default Url;

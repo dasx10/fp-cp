@@ -1,5 +1,5 @@
-import { TupleDifference } from "../../../backup/array/index.D";
-import { DefAny, ParametersConsistentEver } from "../index.D";
+import type { TupleDifference } from "../../array/index.D";
+import type { DefAny, ParametersConsistentEver } from "../index.D";
 
 function partial <
     Executor       extends DefAny,

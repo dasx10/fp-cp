@@ -1,4 +1,4 @@
-import type { __ }                    from '../../../../index';
+import type { __ } from './../../../../../index';
 import type { ToIndex }               from '../../index.D';
 import type { ArrayLikeIndexHasCore } from './../core/index.D';
 

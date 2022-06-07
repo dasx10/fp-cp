@@ -1,6 +1,6 @@
 // dependencies
+import _curry2 from "../../../../../function/curry/2/_/index";
 import arrayLikeSumRightCore from "../core/index";
-import _curry2               from "../../../../function/curry/2/_/index";
 
 // interfaces
 import type { ArrayLikeSumRightDef } from './index.D';

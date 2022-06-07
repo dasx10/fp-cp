@@ -5,5 +5,5 @@ import arrayLikeAtRightCore from "../core/index";
 // interfaces
 import type { ArrayLikeAtRightDef } from "./index.D";
 
-const arrayLikeAtRightDef: ArrayLikeAtRightDef = _curry2(arrayLikeAtRightCore);
+const arrayLikeAtRightDef = _curry2(arrayLikeAtRightCore) as ArrayLikeAtRightDef;
 export default arrayLikeAtRightDef;

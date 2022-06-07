@@ -1,4 +1,4 @@
-import type { Chars } from "../../string/chars/index.D"
+import type { Chars } from "../../../string/chars/index.D";
 
 export type ArrayLikeSize <X extends ArrayLike<unknown>> = 
 	X extends string

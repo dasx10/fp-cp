@@ -1,5 +1,5 @@
-import type { BreakArrayRight, TupleConsistentEvery } from "../../../../backup/array/index.D";
-import type { DefAny, ParametersConsistentReverse, ParametersReverse } from "../../index.D";
+import type { BreakArrayRight, TupleConsistentEvery } from "../../../array/index.D";
+import type { ParametersConsistentReverse, ParametersReverse } from "../../index.D";
 
 export type ReturnTypeCurryRight <
 	Def            extends (y: unknown, x: unknown, ...next: unknown[]) => unknown,
