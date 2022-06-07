@@ -10,7 +10,7 @@ export type ArrayIndexesRevers     <X extends readonly unknown[]> = X extends re
 	? [] | [Next['length']] | [Next['length'], ...TupleIndexesRevers<Next>] | TupleIndexesRevers<Next>
 	: [] | number[];
 
-export type ArrayLikeFilterIndexes <X extends ArrayLike<unknown>> = X extends readonly [unknown, ...infer Next]
+export type ArrayLikeFilterIndexesRevers <X extends ArrayLike<unknown>> = X extends readonly [unknown, ...infer Next]
 	? [] | [Next['length']] | [Next['length'], ...TupleIndexesRevers<Next>] | TupleIndexesRevers<Next>
 	: X extends string
 		? ArrayIndexesRevers<Chars<X>>
@@ -19,24 +19,24 @@ export type ArrayLikeFilterIndexes <X extends ArrayLike<unknown>> = X extends re
 
 // Predicate
 
-export type TupleFilterIndexesPredicate <X extends readonly unknown[], Predicate> =
+export type TupleFilterIndexesReversPredicate <X extends readonly unknown[], Predicate> =
 	X extends readonly [] ? [] : Predicate & ArrayValue<X> extends never ? []
 		: X extends readonly [infer Value, ...infer Next]
 			? Value extends Predicate
-				? [...TupleFilterIndexesPredicate<Next, Predicate & ArrayValue<Next>>, Next['length']]
+				? [Next['length'], ...TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>]
 				: Predicate & Value extends never
-					? TupleFilterIndexesPredicate<Next, Predicate & ArrayValue<Next>>
+					? TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>
 					: Predicate & Value extends Value
-						? [...TupleFilterIndexesPredicate<Next, Predicate & ArrayValue<Next>>, Next['length']] | TupleFilterIndexesPredicate<Next, Predicate & ArrayValue<Next>>
-						: TupleFilterIndexesPredicate<Next, Predicate & ArrayValue<Next>>
+						? [Next['length'], ...TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>] | TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>
+						: TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>
 	: never;
 
 export type ArrayFilterIndexesPredicate <X extends readonly unknown[], Predicate> =
 	X extends readonly [] ? [] : X extends readonly [unknown, ...unknown[]]
-		? TupleFilterIndexesPredicate<X, Predicate>
+		? TupleFilterIndexesReversPredicate<X, Predicate>
 		: (Predicate & ArrayValue<X>)[]
 
-export type ArrayLikeFilterIndexesPredicate <X extends ArrayLike<unknown>, Predicate> = 
+export type ArrayLikeFilterIndexesReversPredicate <X extends ArrayLike<unknown>, Predicate> = 
 	X extends readonly unknown[]
 		? ArrayFilterIndexesPredicate<X, Predicate>
 		: X extends string
@@ -45,13 +45,13 @@ export type ArrayLikeFilterIndexesPredicate <X extends ArrayLike<unknown>, Predi
 
 // core
 
-export type ArrayLikeFilterIndexesCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = {
+export type ArrayLikeFilterIndexesReversCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = {
 	<X extends Type, Predicate>
 	// @ts-ignore 
-	(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => value is Predicate, x: X) : ArrayLikeFilterIndexesPredicate<X, Predicate>;
+	(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => value is Predicate, x: X) : ArrayLikeFilterIndexesReversPredicate<X, Predicate>;
 	
 	<X extends Type> (
 		def : (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => unknown,
 		x   : X
-	): ArrayLikeFilterIndexes<X>
+	): ArrayLikeFilterIndexesRevers<X>
 }
