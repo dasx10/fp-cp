@@ -21,7 +21,7 @@ export type ArrayLikeFilterIndexesRevers <X extends ArrayLike<unknown>> = X exte
 
 export type TupleFilterIndexesReversPredicate <X extends readonly unknown[], Predicate> =
 	X extends readonly [] ? [] : Predicate & ArrayValue<X> extends never ? []
-		: X extends readonly [infer Value, ...infer Next]
+		: X extends readonly [...infer Next, infer Value]
 			? Value extends Predicate
 				? [Next['length'], ...TupleFilterIndexesReversPredicate<Next, Predicate & ArrayValue<Next>>]
 				: Predicate & Value extends never
