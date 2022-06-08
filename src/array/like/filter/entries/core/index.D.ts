@@ -1,7 +1,7 @@
-import { ArrayValue } from './../../../../index.D';
+import type { ArrayIndex, ArrayValue }                     from './../../../../index.D';
 import type { Chars }                          from './../../../../../string/chars/index.D';
 import type { ArrayLikeValue, ArrayLikeIndex } from './../../../index.D';
-import { Char } from '../../../../../string/char/index.D';
+import type { Char }                           from '../../../../../string/char/index.D';
 
 
 // Filter
@@ -17,17 +17,17 @@ export type TupleFilterEntriesEver <X extends readonly unknown[]> = X extends re
 
 export type ArrayFilterEntriesEver <X extends readonly unknown[]> = X extends readonly [...infer Next, infer Value]
 	?      TupleFilterResult<Next, Value>
-	: X;
+	:      [ArrayIndex<X>, ArrayValue<X>][];;
 
 export type ArrayFilterEntries     <X extends readonly unknown[]> = X extends readonly [...infer Next, infer Value]
 	? [] | TupleFilterResult<Next, Value>
-	: [] | X;
+	: [] | [ArrayIndex<X>, ArrayValue<X>][];
 
 export type ArrayLikeFilterEntries <X extends ArrayLike<unknown>> = X extends readonly [...infer Next, infer Value]
 	? [] | TupleFilterResult<Next, Value>
 	: X extends string
 		? ArrayFilterEntries<Chars<X>>
-		: [] | ArrayLikeValue<X>[];
+		: [] | [ArrayLikeIndex<X>, ArrayLikeValue<X>][];
 
 // Predicate
 
@@ -46,14 +46,14 @@ export type TupleFilterEntriesPredicate <X extends readonly unknown[], Predicate
 export type ArrayFilterEntriesPredicate <X extends readonly unknown[], Predicate> =
 	X extends readonly [] ? [] : X extends readonly [unknown, ...unknown[]]
 		? TupleFilterEntriesPredicate<X, Predicate & ArrayValue<X>>
-		: (Predicate & ArrayValue<X>)[]
+		: [ArrayIndex<X>, (Predicate & ArrayValue<X>)][] | [];
 
 export type ArrayLikeFilterEntriesPredicate <X extends ArrayLike<unknown>, Predicate> = 
 	X extends readonly unknown[]
 		? ArrayFilterEntriesPredicate<X, Predicate & ArrayValue<X>>
 		: X extends string
 			? ArrayFilterEntriesPredicate<Chars<X>, Predicate & Char<X>>
-			: (Predicate & ArrayLikeValue<X>)[];
+			: [ArrayLikeIndex<X>, (Predicate & ArrayLikeValue<X>)][] | [];;
 
 // Core
 export type ArrayLikeFilterEntriesCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = {
