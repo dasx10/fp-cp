@@ -12,9 +12,10 @@ const arrayLikeRejectCore = (<X extends ArrayLike<unknown>>(def: (value: ArrayLi
 		default : {
 			let value = x[0] as ArrayLikeValue<X>;
 			const rejected = def(value, <ArrayLikeIndex<X>>0, x) ? [] : [value];
-			let index = 0;
+			let index = 1;
 			while (index < length) {
-				if (def(value, <ArrayLikeIndex<X>>0, x)) {
+				value = x[index] as ArrayLikeValue<X>;
+				if (def(value, <ArrayLikeIndex<X>>index, x)) {
 					index++;
 					continue;
 				}
@@ -24,6 +25,6 @@ const arrayLikeRejectCore = (<X extends ArrayLike<unknown>>(def: (value: ArrayLi
 			return rejected;
 		}
 	}
-}) as ArrayLikeRejectCore
+}) as ArrayLikeRejectCore;
 
 export default arrayLikeRejectCore;

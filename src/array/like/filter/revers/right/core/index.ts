@@ -14,8 +14,8 @@ const arrayLikeFilterReversRightCore = (<X extends ArrayLike<unknown> = ArrayLik
 		};
 		default: {
 			let index = length - 1 as ArrayLikeIndex<X>;
-			let value = x[index]       as ArrayLikeValue<X>;
-			const filtered = def(value, <ArrayLikeIndex<X>>0, x) ? [value] : [];
+			let value = x[index]   as ArrayLikeValue<X>;
+			const filtered = def(value, index, x) ? [value] : [];
 			while (--index > -1) {
 				value = x[index] as ArrayLikeValue<X>;
 				if (def(value, index, x)) filtered.push(value);

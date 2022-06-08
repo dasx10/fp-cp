@@ -1,6 +1,6 @@
-import { ArrayLikeFilterPredicate } from './../../filter/core/index.D';
-import { ArrayLikeValue, ArrayLikeIndex } from './../../index.D';
-import { Chars }          from './../../../../string/chars/index.D';
+import type { ArrayLikeFilterPredicate }       from './../../filter/core/index.D';
+import type { ArrayLikeValue, ArrayLikeIndex } from './../../index.D';
+import type { Chars }                          from './../../../../string/chars/index.D';
 
 // Filter
 export type TupleRejectEver <X extends readonly unknown[]> = X extends readonly [infer Value, ...infer Next]
@@ -30,7 +30,7 @@ export type	ArrayLikeRejectPredicate <X extends ArrayLike<unknown>, Predicate> =
 
 export type ArrayLikeRejectCore <
 	Type extends ArrayLike<unknown> = ArrayLike<unknown>
-	> = {
+> = {
 	<X extends Type, Predicate>
 		// @ts-ignore 
 		(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, array: X) => value is Predicate, x: X) : ArrayLikeRejectPredicate<X, Predicate>;
