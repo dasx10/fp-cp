@@ -1,8 +1,5 @@
-import { Chars } from './index.D';
+import charsCore from "./core/index";
+import charsLib from "./lib/index";
 
-function chars <X extends string>(x: X): Chars<X>;
-function chars (...args: string[]): string[] {
-  return args;
-}
-
+const chars = Object.assign(charsCore, charsLib);
 export default chars;
