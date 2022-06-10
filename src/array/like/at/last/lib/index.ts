@@ -1,9 +1,9 @@
-import arrayLikeAtLastEntry from "../entry/index";
-import arrayLikeAtLastIndex from "../index/index";
+import arrayLikeAtLastEntryCore from "../entry/index";
+import arrayLikeAtLastIndexCore from "../index/index";
 
 const arrayLikeAtLastLib = {
-	entry: arrayLikeAtLastEntry,
-	index: arrayLikeAtLastIndex,
+	entry: arrayLikeAtLastEntryCore,
+	index: arrayLikeAtLastIndexCore,
 }
 
 export default arrayLikeAtLastLib;

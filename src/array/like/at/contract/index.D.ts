@@ -1,4 +1,4 @@
-import type { __ }                  from "../../../../index";
+import type { __ }                           from "../../../../index";
 import type { ToIndex }                      from "../../index/index.D";
 import type { ArrayLikeAt, ArrayLikeAtCore } from "../core/index.D";
 

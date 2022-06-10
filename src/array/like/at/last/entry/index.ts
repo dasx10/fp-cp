@@ -1,11 +1,11 @@
-import type { ArrayLikeAtLastEntry, ArrayLikeAtLastEntryCore } from "./index.D";
+import type { ArrayLikeAtLastEntryCore } from "./index.D";
 
-const arrayLikeAtLastEntry: ArrayLikeAtLastEntryCore = <X extends ArrayLike<unknown>>(x: X): ArrayLikeAtLastEntry<X> => {
+const arrayLikeAtLastEntryCore = (<X extends ArrayLike<unknown>>(x: X) => {
 	const { length } = x;
 	if (length > 0) {
 		const lastIndex = length - 1;
-		return [lastIndex, x[lastIndex]] as ArrayLikeAtLastEntry<X>;
+		return [lastIndex, x[lastIndex]];
 	}
-}
+}) as ArrayLikeAtLastEntryCore;
 
-export default arrayLikeAtLastEntry;
+export default arrayLikeAtLastEntryCore;
