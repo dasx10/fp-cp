@@ -1,6 +1,6 @@
-import type { ArrayValue }     from './../../../../../../backup/array/index.D';
 import type { ArrayLikeValue } from "../../../index.D";
 import type { Chars }          from '../../../../../string/chars/index.D';
+import type { ArrayValue } from "../../../../index.D";
 
 export type ArrayLikeAtRandomResult <X extends ArrayLike<unknown>> = ArrayLikeValue<X> | void;
 export type ArrayLikeAtRandom <X extends ArrayLike<unknown>> = X extends readonly [unknown, ...unknown[]]

@@ -1,4 +1,4 @@
-import type { ToIndexDirect } from "../../src/arrayLike/index/index.D";
+import type { ToIndexDirect } from "../../src/array/like/index/index.D";
 
 export type ArrayValue <X extends readonly any[]> = X extends readonly (infer T)[] ? T : never;
 
