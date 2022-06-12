@@ -1,2 +1,1 @@
-import type { All } from './../../is/index.D';
-export type ArrayCore = <Values extends (unknown | All)[]>(...args: Values) => Values;
+export type ArrayCore <Type extends unknown = unknown> = <Values extends readonly Type[]>(...args: Values) => Values;

@@ -1,7 +1,7 @@
 import type { ArrayLikeIndex, ArrayLikeValue } from "../../index.D";
 import type { ArrayLikeCountCore }             from "./index.D";
 
-const arrayLikeCountCore: ArrayLikeCountCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown, x: X) => {
+const arrayLikeCountCore = (<X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, arrayLike: X) => unknown, x: X) => {
   const { length } = x;
   switch (length) {
 		case 0  : return 0;
@@ -17,6 +17,6 @@ const arrayLikeCountCore: ArrayLikeCountCore = <X extends ArrayLike<unknown>>(de
 			return count;
 		}
 	}
-}
+}) as ArrayLikeCountCore;
 
 export default arrayLikeCountCore;

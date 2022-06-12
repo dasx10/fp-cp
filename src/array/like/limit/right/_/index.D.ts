@@ -1,4 +1,4 @@
-import type { ArrayConsistent, ArrayValue } from "../../../index.D";
+import type { ArrayConsistent, ArrayValue } from "../../../../index.D";
 
 export type TupleLimitLeft <Finish extends number, Tuple extends readonly unknown[], Break = Tuple> = 
 	`-${Tuple['length']}` extends `${Finish}`

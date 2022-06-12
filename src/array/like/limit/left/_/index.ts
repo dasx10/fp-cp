@@ -1,4 +1,4 @@
-import type { ArrayValue }       from "../../../index.D";
+import type { ArrayValue }       from "../../../../index.D";
 import type { ArrayLimitLeft } from "./index.D";
 
 /**

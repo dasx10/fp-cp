@@ -1,5 +1,5 @@
 // helpers
-import arrayReverseCore from "../../../array/reverse/core/index";
+import arrayReverseCore from "../../../array/like/revers/core/index";
 
 // interfaces
 import type { DefAny } from "../../index.D";

@@ -1,4 +1,4 @@
-import { OnlyNegative } from "../../../number/index.D";
+import { OnlyNegative } from "../../../../number/index.D";
 import { ArrayLimitRight } from "./_/index.D";
 
 export type ArrayLimitRightDef = {

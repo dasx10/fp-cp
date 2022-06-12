@@ -1,11 +1,11 @@
 import curry from "../curry/index";
 import type { TupleConsistent } from "../../array/index.D";
 import type { ArrayLikeAtLast } from "../../array/like/at/last/core/index.D";
-import type { ArrayReverse }    from "../../array/reverse/index.D";
 import type { DefAny }          from "../index.D";
+import type { ArrayRevers }     from "../../array/like/revers/core/index.D";
 
-type LastOmit<Tuple extends unknown[]> = ArrayReverse<Tuple> extends [infer F, ...infer P]
-  ? ArrayReverse<P> : Tuple;
+type LastOmit<Tuple extends unknown[]> = ArrayRevers<Tuple> extends [infer F, ...infer P]
+  ? ArrayRevers<P> : Tuple;
 
 function wrap <
   Result = unknown,

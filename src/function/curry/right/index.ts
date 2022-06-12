@@ -1,6 +1,6 @@
 // const reverse = require("../../../array/reverse");
 
-import arrayReverseCore from "../../../array/reverse/core/index";
+import arrayReverseCore from "../../../array/like/revers/core/index";
 import { ParametersConsistentReverse } from "../../index.D";
 import { NextConsistentParametersReverse, ReturnTypeCurryRight } from "./index.D";
 

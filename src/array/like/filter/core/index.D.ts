@@ -19,13 +19,17 @@ export type ArrayFilterEver <X extends readonly unknown[]> = X extends readonly 
 
 export type ArrayFilter     <X extends readonly unknown[]> = X extends readonly [infer Value, ...infer Next]
 	? [] | [Value] | [Value, ...TupleFilterEver<Next>] | TupleFilterEver<Next>
-	: [] | X;
+	: X extends readonly []
+		? []
+		: [] | X;
 
 export type ArrayLikeFilter <X extends ArrayLike<unknown>> = X extends readonly [infer Value, ...infer Next]
 	? [] | [Value] | [Value, ...TupleFilterEver<Next>] | TupleFilterEver<Next>
 	: X extends string
 		? ArrayFilter<Chars<X>>
-		: [] | ArrayLikeValue<X>[];
+		: X extends readonly []
+			? []
+			: [] | ArrayLikeValue<X>[];
 
 // Predicate
 

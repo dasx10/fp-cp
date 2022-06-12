@@ -1,4 +1,4 @@
-import type { TupleLimitLeft } from "../../../array/limit/left/_/index.D";
+import type { TupleLimitLeft } from "../../../array/like/limit/left/_/index.D";
 import type { ParametersConsistent }                           from "../../index.D";
 import type { MaybeReturnTypeCurry, NextConsistentParameters } from '../index.D';
 

@@ -1,5 +1,5 @@
 import type { ArrayConsistent, ArrayConsistentEvery } from '../array/index.D';
-import type { TupleReverse }                          from '../array/reverse/index.D';
+import type { TupleRevers }                           from '../array/like/revers/core/index.D';
 
 
 
@@ -8,7 +8,7 @@ export type ParametersConsistentEver        <Def extends DefAny> = ArrayConsiste
 export type ParametersConsistentReverse     <Def extends DefAny> = ArrayConsistent<ParametersReverse<Def>>;
 export type ParametersConsistentReversEvery <Def extends DefAny> = ArrayConsistentEvery<ParametersReverse<Def>>;
 
-export type ParametersReverse<Def extends DefAny> = TupleReverse<Parameters<Def>>;
+export type ParametersReverse<Def extends DefAny> = TupleRevers<Parameters<Def>>;
 
 export type FirstParameter <Executor extends DefAny> = Executor extends (x: infer X, ...arg: unknown[]) => unknown ? X : never;
 export type SecondParameter<Executor extends DefAny> = Executor extends (y: unknown, x: infer X, ...args: unknown[]) => unknown ? X : never;

@@ -1,3 +1,5 @@
+import type { ArrayCore } from "./core/index.D";
+import type { ArrayLib } from "./lib/index.D";
 
 export type ArrayValue <X extends readonly unknown[]> = X extends readonly (infer T)[] ? T : never;
 
@@ -43,3 +45,6 @@ export type BreakArrayRight <Tuple extends readonly unknown[], Break extends rea
 	: Tuple extends readonly [unknown, ...infer Next]
 		? Break extends readonly [unknown, ...infer NextBreak] ? BreakArrayRight<Next, NextBreak> : Next
 		: [];
+
+
+export type ArrayMain <Type extends unknown = unknown> = ArrayCore<Type> & ArrayLib<Type>;
