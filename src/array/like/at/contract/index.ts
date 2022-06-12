@@ -1,5 +1,4 @@
 // core
-import _                     from "../../../../index";
 import arrayLikeAtCore       from "../core/index";
 import arrayLikeAtDirectCore from "../direct/core/index";
 import arrayLikeAtInvertCore from "../invert/core/index";
@@ -37,7 +36,8 @@ const arrayLikeAtDef = (function arrayLikeAtDef <Index extends number, X extends
     return (x: ArrayLike<unknown>) => arrayLikeAt(<number>index, <X>x);
   }
 
-  else if (index === _) return <Index extends number>(index: ToIndex<Index>) => arrayLikeAtCore(index, <X>x);
+	// @ts-ignore
+  else if (index[Symbol.for('placeholder')]) return <Index extends number>(index: ToIndex<Index>) => arrayLikeAtCore(index, <X>x);
   else return arrayLikeAtCore(<ToIndex<Index>>index, <X>x);
 }) as ArrayLikeAtDef;
 

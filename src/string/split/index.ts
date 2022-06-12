@@ -2,7 +2,6 @@ import _curry2 from "../../function/curry/2/_/index";
 import _split  from "./_/index";
 import type { __ } from "../../index";
 import type { Split } from "./_/index.D";
-import _ from "../../index";
 
 // @ts-ignore
 const split: {

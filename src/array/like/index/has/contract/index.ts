@@ -1,5 +1,4 @@
 // core
-import _                             from '../../../../index';
 import arrayLikeIndexHasCore         from '../core/index';
 import arrayLikeIndexHasInvertCore   from '../invert/core/index';
 import arrayLikeIndexHasDirectCore   from '../direct/core/index';
@@ -17,7 +16,7 @@ const arrayLikeIndexHasDef = function <Index extends number, X extends ArrayLike
 			return <X extends ArrayLike<unknown>>(x: X) => executor(index, x)
 		}
 		default: {
-			if (arguments[0] === _) return <Index extends number>(index: ToIndex<Index>) => arrayLikeIndexHasCore(index, <ArrayLike<unknown>>x);
+			if (arguments[0][Symbol.for('placeholder')]) return <Index extends number>(index: ToIndex<Index>) => arrayLikeIndexHasCore(index, <ArrayLike<unknown>>x);
 			return arrayLikeIndexHasCore(<never>index, <ArrayLike<unknown>>x);
 		}
 	}
