@@ -5,12 +5,15 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "f": "npm run build & node index.js",
-    "test": "jest",
-    "test:array": "jest ./src/array",
-    "test:function": "jest ./src/function",
-    "build": "webpack --env production && npm run docs",
-    "docs": "jsdoc2md --template ./README.hbs --files ./lib/*.ts --configure ./jsdoc2md.json > ./README.md"
+    "f"                        : "npm run build & node index.js",
+    "build"                    : "webpack --env production && npm run docs",
+    "docs"                     : "jsdoc2md --template ./README.hbs --files ./lib/*.ts --configure ./jsdoc2md.json > ./README.md",
+    "test"                     : "jest",
+    "test:array"               : "jest ./src/array",
+    "test:array-like"          : "jest ./src/array/like",
+    "test:array-like__at"      : "jest ./src/array/like/at",
+    "test:array-like__average" : "jest ./src/array/like/average",
+    "test:function"            : "jest ./src/function"
   },
   "repository": {
     "type": "git",

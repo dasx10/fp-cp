@@ -12,8 +12,10 @@ export type DirectiveValue <X extends Record<number, unknown>> = X extends Recor
 export type ArrayLikeValue <X extends ArrayLike<unknown>>      = X extends readonly [] 
 	? never
 	: X extends string 
-	? Char<X>
-	: X extends ArrayLike<infer T> ? T : never;
+		? X extends ''
+			? never 
+			: Char<X>
+		: X extends ArrayLike<infer T> ? T : never;
 
 export type ArrayLikeIndex <X extends Record<number, unknown>> = X extends readonly [unknown, ...infer Next] 
 	? Next['length'] | TupleIndex<Next>
