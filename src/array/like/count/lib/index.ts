@@ -1,7 +1,8 @@
 // dependencies
 import arrayLikeCountCore  from "../core/index";
 import arrayLikeCountRight from "../right/index";
-import arrayLikeCountValue from "../value/index";
+import arrayLikeCountOf    from "../of/index";
+import arrayLikeCountSome  from "../some/index";
 
 // interfaces
 import type { ArrayLikeCountLib } from './index.D';
@@ -10,7 +11,8 @@ import type { ArrayLikeCountLib } from './index.D';
 const arrayLikeCountLib: ArrayLikeCountLib = {
 	core  : arrayLikeCountCore,
 	right : arrayLikeCountRight,
-	value : arrayLikeCountValue,
+	some  : arrayLikeCountSome,
+	of    : arrayLikeCountOf,
 }
 
 export default arrayLikeCountLib;

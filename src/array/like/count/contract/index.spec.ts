@@ -16,53 +16,59 @@ describe('arrayLike at direct', () => {
 	describe('direct', () => {
 		describe('array', () => {
 			test('has', () => {
-				const average = arrayLikeCountDef((value) => value % 2 === 0, testArray);
-				expect(average).toBeDefined();
-				expect(average).toBe(5);
+				const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, testArray);
+				expect(count).toBeDefined();
+				expect(count).toBe(5);
 			});
 
 			test('one rejected', () => {
-				const average = arrayLikeCountDef((value) => value % 2 === 0, [1] as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(0);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, [1] as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(0);
 			});
 
 			test('one accepted', () => {
-				const average = arrayLikeCountDef((value) => value % 2 === 0, [2] as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(1);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, [2] as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(1);
 			});
 
 			test('empty', () => {
-				const average = arrayLikeCountDef((value) => value % 2 === 0, [] as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(0);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, [] as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(0);
 			});
 		});
 
 		describe('chars', () => {
 			test(`has`, () => {
-				const average = arrayLikeCountDef((value) => +value % 2 === 0, testString);
-				expect(average).toBeDefined();
-				expect(average).toBe(5);
+				const count = arrayLikeCountDef((value): value is '0' | '2' | '4' | '6' | '8' => +value % 2 === 0, testString);
+				expect(count).toBeDefined();
+				expect(count).toBe(5);
 			});
 
 			test('one rejected', () => {
-				const average = arrayLikeCountDef((value) => +value % 2 === 0, '1' as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(0);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is '0' | '2' | '4' | '6' | '8' => +value % 2 === 0, '1' as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(0);
 			});
 
 			test('one accepted', () => {
-				const average = arrayLikeCountDef((value) => +value % 2 === 0, '2' as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(1);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is '0' | '2' | '4' | '6' | '8' => +value % 2 === 0, '2' as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(1);
 			});
 
 			test('empty', () => {
-				const average = arrayLikeCountDef((value) => +value % 2 === 0, '' as const);
-				expect(average).toBeDefined();
-				expect(average).toBe(0);
+				// @ts-ignore
+				const count = arrayLikeCountDef((value): value is '0' | '2' | '4' | '6' | '8' => +value % 2 === 0, '' as const);
+				expect(count).toBeDefined();
+				expect(count).toBe(0);
 			});
 		});
 
@@ -70,27 +76,27 @@ describe('arrayLike at direct', () => {
 			describe(instance.name, () => {
 				const testTypedArray = new instance(testArray);
 				test('has', () => {
-					const average = arrayLikeCountDef((value) => value % 2 === 0, testTypedArray);
-					expect(average).toBeDefined();
-					expect(average).toBe(5);
+					const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, testTypedArray);
+					expect(count).toBeDefined();
+					expect(count).toBe(5);
 				});
 	
 				test('one rejected', () => {
-					const average = arrayLikeCountDef((value) => value % 2 === 0, new instance([1]));
-					expect(average).toBeDefined();
-					expect(average).toBe(0);
+					const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, new instance([1]));
+					expect(count).toBeDefined();
+					expect(count).toBe(0);
 				});
 
 				test('one accepted', () => {
-					const average = arrayLikeCountDef((value) => value % 2 === 0, new instance([2]));
-					expect(average).toBeDefined();
-					expect(average).toBe(1);
+					const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, new instance([2]));
+					expect(count).toBeDefined();
+					expect(count).toBe(1);
 				});
 	
 				test('empty', () => {
-					const average = arrayLikeCountDef((value) => value % 2 === 0, new instance);
-					expect(average).toBeDefined();
-					expect(average).toBe(0);
+					const count = arrayLikeCountDef((value): value is 0 | 2 | 4 | 6 | 8 => value % 2 === 0, new instance);
+					expect(count).toBeDefined();
+					expect(count).toBe(0);
 				});
 			});
 		});
