@@ -5,7 +5,7 @@ import type { Chars }          from '../../../../../string/chars/index.D';
 export type TupleFilterOf <X extends readonly unknown[], Predicate> =
 	X extends readonly [] ? [] : Predicate & ArrayValue<X> extends never ? []
 		: X extends readonly [infer Value, ...infer Next]
-			? Value extends Predicate
+			? Value & Predicate extends Predicate
 				? [Value & Predicate, ...TupleFilterOf<Next, Predicate & ArrayValue<Next>>] | TupleFilterOf<Next, Predicate & ArrayValue<Next>>
 				: Predicate & Value extends never
 					? TupleFilterOf<Next, Predicate & ArrayValue<Next>>

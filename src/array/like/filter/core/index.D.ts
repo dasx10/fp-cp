@@ -51,7 +51,9 @@ export type ArrayFilterPredicate <X extends readonly unknown[], Predicate> =
 
 export type ArrayLikeFilterPredicate <X extends ArrayLike<unknown>, Predicate> = 
 	X extends readonly (infer Type)[]
-		? ArrayFilterPredicate<X, Predicate & Type>
+		? Predicate & Type extends never
+			? []
+			: ArrayFilterPredicate<X, Predicate & Type>
 		: X extends string
 			? ArrayFilterPredicate<Chars<X>, Predicate>
 			: (Predicate & ArrayLikeValue<X>)[];
