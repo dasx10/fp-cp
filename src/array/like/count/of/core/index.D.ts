@@ -3,7 +3,7 @@ import type { ArrayLikeFilterOf } from '../../../filter/of/core/index.D';
 import { ArrayLikeFilterPredicate } from "../../../filter/core/index.D";
 
 
-export type ArrayLikeCountOf <FindValue, X extends ArrayLike<unknown>> = ArrayLikeFilterPredicate<X, FindValue & ArrayLikeValue<X>>['length'];
+export type ArrayLikeCountOf <FindValue, X extends ArrayLike<unknown>> = ArrayLikeFilterOf<FindValue & ArrayLikeValue<X>, X>['length'];
 
 
 export type ArrayLikeCountOfCore <

@@ -45,9 +45,13 @@ export type TupleFilterPredicate <X extends readonly unknown[], Predicate> =
 	: never;
 
 export type ArrayFilterPredicate <X extends readonly unknown[], Predicate> =
-	X extends readonly [] ? [] : X extends readonly [unknown, ...unknown[]]
-		? TupleFilterPredicate<X, Predicate>
-		: (Predicate & ArrayValue<X>)[]
+	X extends readonly [] 
+		? [] 
+		: X extends readonly [infer Value, ...infer Next]
+			? Predicate & (Value | ArrayValue<Next>) extends never
+				? []
+				: TupleFilterPredicate<X, Predicate>
+			: (Predicate & ArrayValue<X>)[]
 
 export type ArrayLikeFilterPredicate <X extends ArrayLike<unknown>, Predicate> = 
 	X extends readonly (infer Type)[]

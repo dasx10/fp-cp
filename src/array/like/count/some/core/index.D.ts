@@ -1,5 +1,5 @@
 import type { ArrayLikeValue } from '../../../index.D';
-import type { ArrayLikeCount } from './../../core/index.D';
+import type { ArrayLikeCount } from '../../core/index.D';
 
 export type ArrayLikeCountSome <
 	FindValues extends readonly unknown[],
