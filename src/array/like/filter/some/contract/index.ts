@@ -2,10 +2,11 @@ import type { __ }             from './../../../../../index';
 import type { ArrayLikeValue } from "../../../index.D";
 
 import arrayLikeFilterSomeCore from '../core/index';
+import { ArrayLikeFilterSomeDef } from './index.D';
 
 const symbolPlaceholder = Symbol.for('placeholder');
 
-const arrayLikeFilterSomeDef = function <
+const arrayLikeFilterSomeDef = (function <
 	FindValues extends readonly [ArrayLikeValue<X>, ArrayLikeValue<X>, ...ArrayLikeValue<X>[]],
 	X extends ArrayLike<unknown>
 > (findValues: FindValues|__, x?:X) {
@@ -44,6 +45,6 @@ const arrayLikeFilterSomeDef = function <
 			return arrayLikeFilterSomeCore(<FindValues>findValues, <X>x);
 		}
 	}
-}
+}) as ArrayLikeFilterSomeDef;
 
 export default arrayLikeFilterSomeDef;

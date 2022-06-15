@@ -1,6 +1,7 @@
 import type { ArrayLikeValue } from "../../../index.D";
+import type { ArrayLikeFilterSomeCore } from "./index.D";
 
-const arrayLikeFilterSomeCore = <FindValues extends readonly [ArrayLikeValue<X>, ArrayLikeValue<X>, ...ArrayLikeValue<X>[]], X extends ArrayLike<unknown>>(findValues: FindValues, x: X) => {
+const arrayLikeFilterSomeCore = (<FindValues extends readonly [ArrayLikeValue<X>, ArrayLikeValue<X>, ...ArrayLikeValue<X>[]], X extends ArrayLike<unknown>>(findValues: FindValues, x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0: return [];
@@ -27,6 +28,6 @@ const arrayLikeFilterSomeCore = <FindValues extends readonly [ArrayLikeValue<X>,
 			return filtered;
 		}
 	}
-}
+}) as ArrayLikeFilterSomeCore;
 
 export default arrayLikeFilterSomeCore;

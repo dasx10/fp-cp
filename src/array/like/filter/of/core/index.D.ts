@@ -31,4 +31,5 @@ export type ArrayLikeFilterOf <Predicate, X extends ArrayLike<unknown>> =
 					? ArrayFilterOf<X, Predicate & Type>
 					: X extends string
 			? ArrayFilterOf<Chars<X>, Predicate>
-			: (Predicate & ArrayLikeValue<X>)[];
+			: (Predicate & ArrayLikeValue<X>)[]
+		: (Predicate & ArrayLikeValue<X>)[]
