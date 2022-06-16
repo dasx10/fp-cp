@@ -1,4 +1,6 @@
-const arrayLikeFilterOf = <Condition, X extends ArrayLike<unknown>>(condition: Condition, x: X) => {
+import type { ArrayLikeFilterOfCore } from "./index.D";
+
+const arrayLikeFilterOfCore = (<Condition, X extends ArrayLike<unknown>>(condition: Condition, x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return [];
@@ -13,6 +15,6 @@ const arrayLikeFilterOf = <Condition, X extends ArrayLike<unknown>>(condition: C
 			return filtered;
 		};
 	};
-};
+}) as ArrayLikeFilterOfCore;
 
-export default arrayLikeFilterOf;
+export default arrayLikeFilterOfCore;
