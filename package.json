@@ -16,6 +16,7 @@
     "test:array/like/count"       : "jest ./src/array/like/count",
     "test:array/like/count/some"  : "jest ./src/array/like/count/some",
     "test:array/like/filter/some" : "jest ./src/array/like/filter/some",
+    "test:array/like/order"       : "jest ./src/array/like/order",
     "test:function"               : "jest ./src/function"
   },
   "repository": {
