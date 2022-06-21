@@ -1,68 +1,16 @@
+import arrayLikeConcatCore from "../../concat/core/index";
 import type { ArrayLikeValue } from "../../index.D";
+import sortType        from "../helper/sortByType";
+import advancedTypeMap, { objectSchema, objectSchemaLength } from "../helper/type.schema";
 
-const unmultiplyTypeSwitch = {
-	string   : (a: string,    b: string)    => a.localeCompare(b),
-	number   : (a: number,    b: number)    => a - b,
-	bigint   : (a: bigint,    b: bigint)    => a - b,
-	boolean  : (a: boolean,   b: boolean)   => +a - +b,
-	date     : (a: Date,      b: Date)      => +a - +b,
-	array    : (a: unknown[], b: unknown[]) => a.length - b.length,
-	function : (a: Function,  b: Function)  => a.length - b.length,
-	symbol   : (a: symbol,    b: symbol)    => a === b ? 1 : 0,
-	object   : (a: object,    b: object)    => {
-		if (a) {
-			if (b) return Object.keys(a).length - Object.keys(a).length;
-			return 1;
-		}
-		if (b) return -1;
-		return 0;
-	},
-};
-
-const typeSchema = {
-	undefined: 10,
-	null     : 9,
-	boolean  : 8,
-	number   : 7,
-	bigint   : 6,
-	string   : 5,
-	symbol   : 4,
-	date     : 3,
-	object   : 2,
-	map      : 1,
-	set      : 0,
-	array    : -1,
-	function : -2,
-}
-
-type keySchema = keyof typeof typeSchema;
-
-const swapByType = (a: keySchema, b: keySchema) => {
-	return typeSchema[a] - typeSchema[b];
-}
 
 const advancedType = (x: unknown) => {
 	const type = typeof x;
 	if (type === 'object') {
-		if (Array.isArray(x))  return 'array';
-		if (x instanceof Date) return 'date';
+		if (x) return (<Record<string, any>>x).constructor.name;
+		return 'null';
 	}
 	return type;
-}
-
-const checkTypeObjectEver = (element: unknown) => {
-	if (element instanceof Date)    return 'date';
-	if (Array.isArray(element))     return 'array';
-	if (element instanceof Set)     return 'set';
-	if (element instanceof Map)     return 'map';
-	if (element instanceof String)  return 'string';
-	if (element instanceof Number)  return 'number';
-	if (element instanceof Boolean) return 'boolean';
-}
-
-const checkTypeObject = (element: unknown) => {
-	if (element) return checkTypeObjectEver(element) || 'object';
-	return 'null';
 }
 
 const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>) => unknown, x: X) => {
@@ -86,53 +34,184 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLike
 			return [x[0], x[1]];
 		}
 		default : {
-			const sorted                = new Array(length);
-			let index                   = 0;
-			let nextIndex               = index + 1;
-			let firstStep               = def(<ArrayLikeValue<X>>x[index]);
-			let nextStep                = def(<ArrayLikeValue<X>>x[nextIndex]);
-			let firstStepType           = typeof(firstStep);
-			let nextStepType: keySchema = typeof(nextStep);
-			let isAcceptedType = firstStepType === nextStepType;
-			if (isAcceptedType) {
-				if (nextStepType === 'object') {
-
-
-				} else {
-					// @ts-ignore 
-					if (unmultiplyTypeSwitch[firstStepType](firstStep, nextStep) < 0) {
-						sorted[index]     = x[index];
-						sorted[nextIndex] = x[nextIndex];
-					} else {
-						sorted[index]     = x[nextIndex];
-						sorted[nextIndex] = x[index];
+			let index         = 0;
+			let value         = <ArrayLikeValue<X>>x[index];
+			let result        = def(value);
+			let type          = advancedType(result);
+			const collections: Record<string, ArrayLikeValue<X>[]> = {
+				[type]: [value]
+			};
+			while (++index < length) {
+				value  = <ArrayLikeValue<X>>x[index];
+				result = def(value);
+				type   = advancedType(result);
+				switch (type) {
+					case "undefined":
+					case "null":
+					{
+						if (collections[type]) collections[type].push(value);
+						else collections[type] = [value];
+						break;
 					}
+					default: {
+						if (collections[type]) {
+							if (sortType(type)(collections[type][0], value) < 0) collections[type].push(value);
+							else collections[type].unshift(value);
+						} else collections[type] = [value];
+						break;
+					}
+				}
+			}
 
-					while ((index += 2, nextIndex += 2) < length) { 
-						if (isAcceptedType = firstStepType === (nextStepType = typeof(nextStep = def(<ArrayLikeValue<X>>x[nextIndex])))) {
-							// @ts-ignore 
-							if (nextStepType === 'object') {
-								
-							} else {
-								// @ts-ignore 
-								if (unmultiplyTypeSwitch[firstStepType](firstStep, nextStep) < 0) {
-									sorted[index]     = x[index];
-									sorted[nextIndex] = x[nextIndex];
-								} else {
-									sorted[index]     = x[nextIndex];
-									sorted[nextIndex] = x[index];
+			const precollection = Object.entries(collections);
+			const precollectionLength = precollection.length;
+			index = 0;
+			type = precollection[index][0];
+			let has = advancedTypeMap.has(type);
+			if (has) {
+				const defTypes = [[type, precollection[index][1]]];
+				const advTypes = [];
+				while (++index < precollectionLength) {
+					type = precollection[index][0];
+					if (advancedTypeMap.has(type)) {
+						if (advancedTypeMap.get(defTypes[0][0]) < advancedTypeMap.get(type)) defTypes.push([type, precollection[index][1]]);
+						else defTypes.unshift([type, precollection[index][1]]);
+					} else advTypes.push([type, precollection[index][1]]);
+				}
+				const defLength = defTypes.length;
+				if(defLength > 3) defTypes.sort((a, b) => advancedTypeMap.get(a[0]) - advancedTypeMap.get(b[0]));
+				switch (advTypes.length) {
+					case 0: {
+						switch (defLength) {
+							case 1: {
+								const element = defTypes[0];
+								const values = element[1];
+								// @ts-ignore
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
+								return values;
+							}
+							default: {
+								let element = defTypes[0];
+								// @ts-ignore
+								let values       = element[1] as ArrayLikeValue<X>[];
+								let lengthValues = values.length;
+								// @ts-ignore
+								if (lengthValues > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
+								index = 0;
+								const sorted = new Array(length);
+								while (index < lengthValues) {
+									sorted[index] = values[index];
+									index++;
 								}
+								let stepCalc = lengthValues;
+								let valuesIndex = 0;
+								index = 0;
+								while (++index < defLength) {
+									element = defTypes[index];
+									// @ts-ignore
+									values       = element[1] as ArrayLikeValue<X>[];
+									lengthValues = values.length;
+									// @ts-ignore
+									if (lengthValues > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)))
+									valuesIndex  = 0;
+									while (valuesIndex < lengthValues) {
+										sorted[stepCalc + valuesIndex] = values[valuesIndex];
+										valuesIndex++;
+									}
+									stepCalc += lengthValues;
+								}
+								return sorted;
 							}
 						}
 					}
-					if (index < length) sorted[index] = x[index]
+					case 1: {
+						switch (defLength) {
+							case 1: {
+								const element = defTypes[0];
+								const values = element[1];
+								// @ts-ignore
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
+								let instanceName = objectSchema[0];
+								const adv       = advTypes[0];
+								const advValues = adv[1];
+								if (advValues[0] instanceof globalThis[instanceName]) {
+									// @ts-ignore
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
+									return arrayLikeConcatCore(advValues, values);
+								}
+								let index = 1;
+								while (index < objectSchemaLength) {
+									if (advValues[0] instanceof globalThis[instanceName]) {
+										// @ts-ignore
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
+										return arrayLikeConcatCore(advValues, values);
+									};
+									index++;
+								}
+								// @ts-ignore
+								return arrayLikeConcatCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), values);
+							}
+							default: {
+								let element = defTypes[0];
+								// @ts-ignore
+								let values       = element[1] as ArrayLikeValue<X>[];
+								let lengthValues = values.length;
+								// @ts-ignore
+								if (lengthValues > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
+								index = 0;
+								let instanceName = objectSchema[0];
+								const adv        = advTypes[0];
+								const advValues  = adv[1];
+								const sorted = new Array(length - advValues.length);
+								while (index < lengthValues) {
+									sorted[index] = values[index];
+									index++;
+								}
+								let stepCalc = lengthValues;
+								let valuesIndex = 0;
+								index = 0;
+								while (++index < defLength) {
+									element = defTypes[index];
+									// @ts-ignore
+									values       = element[1] as ArrayLikeValue<X>[];
+									lengthValues = values.length;
+									// @ts-ignore
+									if (lengthValues > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)))
+									valuesIndex  = 0;
+									while (valuesIndex < lengthValues) {
+										sorted[stepCalc + valuesIndex] = values[valuesIndex];
+										valuesIndex++;
+									}
+									stepCalc += lengthValues;
+								}
+
+								if (advValues[0] instanceof globalThis[instanceName]) {
+									// @ts-ignore
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
+									return arrayLikeConcatCore(advValues, sorted);
+								}
+								index = 1;
+								while (index < objectSchemaLength) {
+									if (advValues[0] instanceof globalThis[instanceName]) {
+										// @ts-ignore
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
+										return arrayLikeConcatCore(advValues, sorted);
+									};
+									index++;
+								}
+								// @ts-ignore
+								return arrayLikeConcatCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), sorted);
+							}
+						}
+					}
+					default: {
+
+					}
 				}
 			} else {
-				
+				const advTypes = [[type, precollection[index][1]]];
+				const defTypes = [];
 			}
-			
-			// @ts-ignore
-			return sorted.sort(isAcceptedType ? unmultiplyTypeSwitch[firstStepType] : () => -1);
 		}
 	}
 }
