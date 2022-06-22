@@ -1,8 +1,8 @@
-import { ArrayValue } from './../../../../../backup/array/index.D';
-import arrayConcatMutationCore from "../../../concat/mutation/core/index";
-import type { ArrayLikeValue } from "../../index.D";
-import sortType        from "../helper/sortByType";
-import advancedTypeMap, { objectSchema, objectSchemaLength } from "../helper/type.schema";
+import arrayConcatMutationCore                               from "../../../../concat/mutation/core/index";
+import sortType                                              from "../../helper/sortByType";
+import advancedTypeMap, { objectSchema, objectSchemaLength } from "../../helper/type.schema";
+import type { ArrayLikeValue }                               from "../../../index.D";
+import type { ArrayValue }                                   from "../../../../index.D";
 
 
 const advancedType = (x: unknown) => {
@@ -14,24 +14,38 @@ const advancedType = (x: unknown) => {
 	return type;
 }
 
-const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
+const arrayLikeOrderByCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>) => unknown, x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return [];
 		case 1  : return [x[0]];
 		case 2  : {
+			const firstStep = def(<ArrayLikeValue<X>>x[0]);
+			if (firstStep) {
+				const nextStep  = def(<ArrayLikeValue<X>>x[1]);
+				if (nextStep) {
+					const type = advancedType(firstStep);
+					if (type === advancedType(nextStep)) {
+						// @ts-ignore
+						return unmultiplyTypeSwitch[type](firstStep, nextStep) < 0 ? [x[1], x[0]] : [x[0], x[1]];
+					}
+				}
+			}
+			if (def(<ArrayLikeValue<X>>x[1])) return [x[1], x[0]];
 			return [x[0], x[1]];
 		}
 		default : {
 			let index         = 0;
 			let value         = <ArrayLikeValue<X>>x[index];
-			let type          = advancedType(value);
+			let result        = def(value);
+			let type          = advancedType(result);
 			const collections: Record<string, ArrayLikeValue<X>[]> = {
 				[type]: [value]
 			};
 			while (++index < length) {
 				value  = <ArrayLikeValue<X>>x[index];
-				type   = advancedType(value);
+				result = def(value);
+				type   = advancedType(result);
 				switch (type) {
 					case "undefined":
 					case "null":
@@ -75,7 +89,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const element = defTypes[0];
 								const values = element[1];
 								// @ts-ignore
-								if (values.length > 3) values.sort((a, b) => sortType(element[0])(a, b));
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								return values;
 							}
 							default: {
@@ -84,7 +98,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								let values       = element[1] as ArrayLikeValue<X>[];
 								let lengthValues = values.length;
 								// @ts-ignore
-								values.sort((a, b) => sortType(element[0])(a, b));
+								values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								index = 0;
 								const sorted = new Array(length);
 								while (index < lengthValues) {
@@ -100,7 +114,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									values       = element[1] as ArrayLikeValue<X>[];
 									lengthValues = values.length;
 									// @ts-ignore
-									values.sort((a, b) => sortType(element[0])(a, b))
+									values.sort((a, b) => sortType(element[0])(def(a), def(b)))
 									valuesIndex  = 0;
 									while (valuesIndex < lengthValues) {
 										sorted[stepCalc + valuesIndex] = values[valuesIndex];
@@ -118,26 +132,26 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const element = defTypes[0];
 								const values  = element[1] as ArrayLikeValue<X>[];
 								// @ts-ignore
-								if (values.length > 3) values.sort((a, b) => sortType(element[0])(a, b));
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								let instanceName = objectSchema[0];
 								const adv       = advTypes[0];
 								const advValues = adv[1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 									return arrayConcatMutationCore(advValues, values);
 								}
 								let index = 1;
 								while (index < objectSchemaLength) {
 									if (advValues[0] instanceof globalThis[instanceName]) {
 										// @ts-ignore
-										advValues.sort((a, b) => sortType(instanceName)(a, b));
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										return arrayConcatMutationCore(advValues, values);
 									};
 									index++;
 								}
 								// @ts-ignore
-								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(a, b)), values);
+								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), values);
 							}
 							default: {
 								let element = defTypes[0];
@@ -145,7 +159,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								let values       = element[1] as ArrayLikeValue<X>[];
 								let lengthValues = values.length;
 								// @ts-ignore
-								values.sort((a, b) => sortType(element[0])(a, b));
+								values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								index = 0;
 								let instanceName: ArrayValue<typeof objectSchema> = objectSchema[0];
 								const adv        = advTypes[0];
@@ -164,7 +178,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									values       = element[1] as ArrayLikeValue<X>[];
 									lengthValues = values.length;
 									// @ts-ignore
-									values.sort((a, b) => sortType(element[0])(a, b))
+									values.sort((a, b) => sortType(element[0])(def(a), def(b)))
 									valuesIndex  = 0;
 									while (valuesIndex < lengthValues) {
 										sorted[stepCalc + valuesIndex] = values[valuesIndex];
@@ -174,7 +188,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								}
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 									return arrayConcatMutationCore(advValues, sorted);
 								}
 								index = 1;
@@ -183,13 +197,13 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									// @ts-ignore
 									if (advValues[0] instanceof globalThis[instanceName]) {
 										// @ts-ignore
-										advValues.sort((a, b) => sortType(instanceName)(a, b));
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										return arrayConcatMutationCore(advValues, sorted);
 									};
 									index++;
 								}
 								// @ts-ignore
-								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(a, b)), sorted);
+								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), sorted);
 							}
 						}
 					}
@@ -199,14 +213,14 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const element = defTypes[0];
 								const values  = element[1] as ArrayLikeValue<X>[];
 								// @ts-ignore
-								if (values.length > 3) values.sort((a, b) => sortType(element[0])(a, b));
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								let instanceName: ArrayValue<typeof objectSchema> = objectSchema[0];
 								// @ts-ignore
 								advTypes.sort((a, b) => a[0].localeCompare(b[0]));
 								const advValues  = advTypes[0][1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								} else {
 									index = 1;
 									while (index < objectSchemaLength) {
@@ -214,11 +228,11 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										// @ts-ignore
 										if (advValues[0] instanceof globalThis[instanceName]) {
 											// @ts-ignore
-											advValues.sort((a, b) => sortType(instanceName)(a, b));
+											advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										};
 										index++;
 									}
-									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(a, b));
+									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 								}
 
 								index = 1;
@@ -233,7 +247,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										if (nextAdvValues[0] instanceof globalThis[instanceName]) {
 											arrayConcatMutationCore(
 												// @ts-ignore
-												nextAdvValues.sort((a, b) => sortType(instanceName)(a, b)),
+												nextAdvValues.sort((a, b) => sortType(instanceName)(def(a), def(b))),
 												advValues,
 											);
 											break;
@@ -243,7 +257,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									if (objectSchemaLength === instanceIndex) {
 										arrayConcatMutationCore(
 											// @ts-ignore
-											nextAdvValues.sort((a, b) => sortType('Object')(a, b)),
+											nextAdvValues.sort((a, b) => sortType('Object')(def(a), def(b))),
 											advValues,
 										);
 									}
@@ -258,7 +272,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const values       = element[1] as ArrayLikeValue<X>[];
 								let lengthValues = values.length;
 								// @ts-ignore
-								values.sort((a, b) => sortType(element[0])(a, b));
+								values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								index = 0;
 								while (++index < defLength) {
 									element = defTypes[index];
@@ -266,7 +280,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									lengthValues = element[1];
 									arrayConcatMutationCore(
 										// @ts-ignore
-										element[1].sort((a, b) => sortType(element[0])(a, b)),
+										element[1].sort((a, b) => sortType(element[0])(def(a), def(b))),
 										values
 									);
 								}
@@ -276,7 +290,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const advValues  = advTypes[0][1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								} else {
 									index = 1;
 									while (index < objectSchemaLength) {
@@ -284,11 +298,11 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										// @ts-ignore
 										if (advValues[0] instanceof globalThis[instanceName]) {
 											// @ts-ignore
-											advValues.sort((a, b) => sortType(instanceName)(a, b));
+											advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										};
 										index++;
 									}
-									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(a, b));
+									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 								}
 
 								index = 1;
@@ -303,7 +317,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										if (nextAdvValues[0] instanceof globalThis[instanceName]) {
 											arrayConcatMutationCore(
 												// @ts-ignore
-												nextAdvValues.sort((a, b) => sortType(instanceName)(a, b)),
+												nextAdvValues.sort((a, b) => sortType(instanceName)(def(a), def(b))),
 												advValues,
 											);
 											break;
@@ -313,7 +327,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									if (objectSchemaLength === instanceIndex) {
 										arrayConcatMutationCore(
 											// @ts-ignore
-											nextAdvValues.sort((a, b) => sortType('Object')(a, b)),
+											nextAdvValues.sort((a, b) => sortType('Object')(def(a), def(b))),
 											advValues,
 										);
 									}
@@ -354,18 +368,18 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const advValues  = adv[1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									return advValues.sort((a, b) => sortType(instanceName)(a, b));
+									return advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								}
 								index = 1;
 								while (index < objectSchemaLength) {
 									if (advValues[0] instanceof globalThis[instanceName]) {
 										// @ts-ignore
-										return advValues.sort((a, b) => sortType(instanceName)(a, b));
+										return advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 									};
 									index++;
 								}
 								// @ts-ignore
-								return advValues.sort((a, b) => sortType('Object')(a, b));
+								return advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 							}
 							default: {
 								let instanceName: ArrayValue<typeof objectSchema> = objectSchema[0];
@@ -374,7 +388,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const advValues  = advTypes[0][1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								} else {
 									index = 1;
 									while (index < objectSchemaLength) {
@@ -382,11 +396,11 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										// @ts-ignore
 										if (advValues[0] instanceof globalThis[instanceName]) {
 											// @ts-ignore
-											advValues.sort((a, b) => sortType(instanceName)(a, b));
+											advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										};
 										index++;
 									}
-									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(a, b));
+									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 								}
 
 								index = 1;
@@ -401,7 +415,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										if (nextAdvValues[0] instanceof globalThis[instanceName]) {
 											arrayConcatMutationCore(
 												// @ts-ignore
-												nextAdvValues.sort((a, b) => sortType(instanceName)(a, b)),
+												nextAdvValues.sort((a, b) => sortType(instanceName)(def(a), def(b))),
 												advValues,
 											);
 											break;
@@ -411,7 +425,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									if (objectSchemaLength === instanceIndex) {
 										arrayConcatMutationCore(
 											// @ts-ignore
-											nextAdvValues.sort((a, b) => sortType('Object')(a, b)),
+											nextAdvValues.sort((a, b) => sortType('Object')(def(a), def(b))),
 											advValues,
 										);
 									}
@@ -428,39 +442,39 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const element = defTypes[0];
 								const values  = element[1] as ArrayLikeValue<X>[];
 								// @ts-ignore
-								if (values.length > 3) values.sort((a, b) => sortType(element[0])(a, b));
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								let instanceName = objectSchema[0];
 								const adv       = advTypes[0];
 								const advValues = adv[1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 									return arrayConcatMutationCore(advValues, values);
 								}
 								let index = 1;
 								while (index < objectSchemaLength) {
 									if (advValues[0] instanceof globalThis[instanceName]) {
 										// @ts-ignore
-										advValues.sort((a, b) => sortType(instanceName)(a, b));
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										return arrayConcatMutationCore(advValues, values);
 									};
 									index++;
 								}
 								// @ts-ignore
-								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(a, b)), values);
+								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), values);
 							}
 							default: {
 								const element = defTypes[0];
 								const values  = element[1] as ArrayLikeValue<X>[];
 								// @ts-ignore
-								if (values.length > 3) values.sort((a, b) => sortType(element[0])(a, b));
+								if (values.length > 3) values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								let instanceName: ArrayValue<typeof objectSchema> = objectSchema[0];
 								// @ts-ignore
 								advTypes.sort((a, b) => a[0].localeCompare(b[0]));
 								const advValues  = advTypes[0][1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								} else {
 									index = 1;
 									while (index < objectSchemaLength) {
@@ -468,11 +482,11 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										// @ts-ignore
 										if (advValues[0] instanceof globalThis[instanceName]) {
 											// @ts-ignore
-											advValues.sort((a, b) => sortType(instanceName)(a, b));
+											advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										};
 										index++;
 									}
-									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(a, b));
+									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 								}
 
 								index = 1;
@@ -487,7 +501,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										if (nextAdvValues[0] instanceof globalThis[instanceName]) {
 											arrayConcatMutationCore(
 												// @ts-ignore
-												nextAdvValues.sort((a, b) => sortType(instanceName)(a, b)),
+												nextAdvValues.sort((a, b) => sortType(instanceName)(def(a), def(b))),
 												advValues,
 											);
 											break;
@@ -497,7 +511,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									if (objectSchemaLength === instanceIndex) {
 										arrayConcatMutationCore(
 											// @ts-ignore
-											nextAdvValues.sort((a, b) => sortType('Object')(a, b)),
+											nextAdvValues.sort((a, b) => sortType('Object')(def(a), def(b))),
 											advValues,
 										);
 									}
@@ -516,7 +530,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								let values       = element[1] as ArrayLikeValue<X>[];
 								let lengthValues = values.length;
 								// @ts-ignore
-								values.sort((a, b) => sortType(element[0])(a, b));
+								values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								index = 0;
 								let instanceName: ArrayValue<typeof objectSchema> = objectSchema[0];
 								const adv        = advTypes[0];
@@ -535,7 +549,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									values       = element[1] as ArrayLikeValue<X>[];
 									lengthValues = values.length;
 									// @ts-ignore
-									values.sort((a, b) => sortType(element[0])(a, b))
+									values.sort((a, b) => sortType(element[0])(def(a), def(b)))
 									valuesIndex  = 0;
 									while (valuesIndex < lengthValues) {
 										sorted[stepCalc + valuesIndex] = values[valuesIndex];
@@ -545,7 +559,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								}
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 									return arrayConcatMutationCore(advValues, sorted);
 								}
 								index = 1;
@@ -554,25 +568,25 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									// @ts-ignore
 									if (advValues[0] instanceof globalThis[instanceName]) {
 										// @ts-ignore
-										advValues.sort((a, b) => sortType(instanceName)(a, b));
+										advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										return arrayConcatMutationCore(advValues, sorted);
 									};
 									index++;
 								}
 								// @ts-ignore
-								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(a, b)), sorted);
+								return arrayConcatMutationCore(advValues.sort((a, b) => sortType('Object')(def(a), def(b))), sorted);
 							}
 							default: {
 								let element = defTypes[0];
 								const values     = element[1] as ArrayLikeValue<X>[];
 								// @ts-ignore
-								values.sort((a, b) => sortType(element[0])(a, b));
+								values.sort((a, b) => sortType(element[0])(def(a), def(b)));
 								index = 0;
 								while (++index < defTypesLength) {
 									element = defTypes[index];
 									arrayConcatMutationCore(
 										// @ts-ignore
-										element[1].sort((a, b) => sortType(element[0])(a, b)),
+										element[1].sort((a, b) => sortType(element[0])(def(a), def(b))),
 										values
 									);
 								}
@@ -582,7 +596,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 								const advValues  = advTypes[0][1] as ArrayLikeValue<X>[];
 								if (advValues[0] instanceof globalThis[instanceName]) {
 									// @ts-ignore
-									advValues.sort((a, b) => sortType(instanceName)(a, b));
+									advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 								} else {
 									index = 1;
 									while (index < objectSchemaLength) {
@@ -590,11 +604,11 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										// @ts-ignore
 										if (advValues[0] instanceof globalThis[instanceName]) {
 											// @ts-ignore
-											advValues.sort((a, b) => sortType(instanceName)(a, b));
+											advValues.sort((a, b) => sortType(instanceName)(def(a), def(b)));
 										};
 										index++;
 									}
-									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(a, b));
+									if (objectSchemaLength === index) advValues.sort((a, b) => sortType('Object')(def(a), def(b)));
 								}
 
 								index = 1;
@@ -609,7 +623,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 										if (nextAdvValues[0] instanceof globalThis[instanceName]) {
 											arrayConcatMutationCore(
 												// @ts-ignore
-												nextAdvValues.sort((a, b) => sortType(instanceName)(a, b)),
+												nextAdvValues.sort((a, b) => sortType(instanceName)(def(a), def(b))),
 												advValues,
 											);
 											break;
@@ -619,7 +633,7 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 									if (objectSchemaLength === instanceIndex) {
 										arrayConcatMutationCore(
 											// @ts-ignore
-											nextAdvValues.sort((a, b) => sortType('Object')(a, b)),
+											nextAdvValues.sort((a, b) => sortType('Object')(def(a), def(b))),
 											advValues,
 										);
 									}
@@ -636,4 +650,4 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 	}
 }
 
-export default arrayLikeOrderCore;
+export default arrayLikeOrderByCore;
