@@ -21,6 +21,8 @@ import arrayLikeSome    from "../some/index";
 import arrayLikeSum     from "../sum/index";
 import arrayLikeUniq    from "../uniq/index";
 import arrayLikeReject  from '../reject/index';
+import arrayLikeMap     from "../map/index";
+import arrayLikeOrder   from "../order/index";
 
 import type { ArrayLikeLib } from "./index.D";
 
@@ -50,6 +52,8 @@ const arrayLikeLib: ArrayLikeLib = {
 	uniq    : arrayLikeUniq,
 	filter  : arrayLikeFilter,
 	reject  : arrayLikeReject,
+	map     : arrayLikeMap,
+	order   : arrayLikeOrder,
 
 	join    : arrayLikeJoin,
 

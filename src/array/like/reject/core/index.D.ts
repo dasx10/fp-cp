@@ -1,6 +1,7 @@
-import type { ArrayLikeFilterPredicate }       from './../../filter/core/index.D';
+import type { ArrayLikeFilterPredicate, TupleFilterPredicate }       from './../../filter/core/index.D';
 import type { ArrayLikeValue, ArrayLikeIndex } from './../../index.D';
 import type { Chars }                          from './../../../../string/chars/index.D';
+import type { ArrayValue } from '../../../index.D';
 
 // Filter
 export type TupleRejectEver <X extends readonly unknown[]> = X extends readonly [infer Value, ...infer Next]
@@ -26,6 +27,7 @@ export type ArrayLikeReject <X extends ArrayLike<unknown>> = X extends readonly 
 		: [] | ArrayLikeValue<X>[];
 
 // Predicate
+export type TupleRejectPredicate     <X extends readonly unknown[], Predicate> = TupleFilterPredicate    <X, Exclude<ArrayValue<X>, Predicate>>
 export type	ArrayLikeRejectPredicate <X extends ArrayLike<unknown>, Predicate> = ArrayLikeFilterPredicate<X, Exclude<ArrayLikeValue<X>, Predicate>>;
 
 export type ArrayLikeRejectCore <

@@ -1,8 +1,10 @@
-import { ArrayValue } from './../../../../../backup/array/index.D';
 import arrayConcatMutationCore from "../../../concat/mutation/core/index";
-import type { ArrayLikeValue } from "../../index.D";
-import sortType        from "../helper/sortByType";
+import sortType                from "../helper/sortByType";
 import advancedTypeMap, { objectSchema, objectSchemaLength } from "../helper/type.schema";
+
+import type { ArrayValue }         from './../../../../../backup/array/index.D';
+import type { ArrayLikeValue }     from "../../index.D";
+import type { ArrayLikeOrderCore } from './index.D';
 
 
 const advancedType = (x: unknown) => {
@@ -14,13 +16,63 @@ const advancedType = (x: unknown) => {
 	return type;
 }
 
-const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
+const arrayLikeOrderCore = (<X extends ArrayLike<unknown>>(x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return [];
 		case 1  : return [x[0]];
 		case 2  : {
-			return [x[0], x[1]];
+			const first          = x[0];
+			let type: string     = typeof(first);
+			const next           = x[1];
+			let nextType: string = typeof(next);
+			if (nextType === type) {
+				if (nextType === 'object') {
+					nextType = next  ? (<Record<string, any>>next).constructor.name  : 'null';
+					type     = first ? (<Record<string, any>>first).constructor.name : 'null';
+					if (type === nextType) {
+						if (type === 'null') return [first, next];
+						let index = 0;
+						while (index < objectSchemaLength) {
+							const instanceName: ArrayValue<typeof objectSchema> = objectSchema[index];
+							// @ts-ignore
+							if (first instanceof globalThis[instanceName]) {
+								// @ts-ignore
+								return sortType(instanceName)(first, next) < 0 ? [first, next] : [next, first];
+							};
+							index++;
+						}
+						return sortType('Object')(first, next) < 0 ? [first, next] : [next, first];
+					}
+					switch ('null') {
+						case type     : return [first, next];
+						case nextType : return [next, first];
+						default       : {
+							const firstResult = advancedTypeMap.get(type);
+							if (firstResult > 0) {
+								const nextResult = advancedTypeMap.get(nextType);
+								if (nextResult > 0) return firstResult - nextResult ? [first, next] : [next, first];
+								return [first, next]
+							}
+							const nextResult = advancedTypeMap.get(nextType);
+							if (nextResult > 0) return [next, first];
+							return type.localeCompare(nextType) < 0 ? [first, next] : [next, first]
+						}
+					}
+				}
+
+				return sortType('Object')(first, next) < 0 ? [first, next] : [next, first]; 
+			}
+
+			const firstResult = advancedTypeMap.get(type);
+			if (firstResult > 0) {
+				const nextResult = advancedTypeMap.get(nextType);
+				if (nextResult > 0) return firstResult - nextResult ? [first, next] : [next, first];
+				return [first, next]
+			}
+			const nextResult = advancedTypeMap.get(nextType);
+			if (nextResult > 0) return [next, first];
+			return type.localeCompare(nextType) < 0 ? [first, next] : [next, first]
 		}
 		default : {
 			let index         = 0;
@@ -50,20 +102,20 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 				}
 			}
 
-			const precollection = Object.entries(collections);
-			const precollectionLength = precollection.length;
+			const preCollection = Object.entries(collections);
+			const preCollectionLength = preCollection.length;
 			index = 0;
-			type = precollection[index][0];
+			type = preCollection[index][0];
 			let has = advancedTypeMap.has(type);
 			if (has) {
-				const defTypes = [[type, precollection[index][1]]];
+				const defTypes = [[type, preCollection[index][1]]];
 				const advTypes = [];
-				while (++index < precollectionLength) {
-					type = precollection[index][0];
+				while (++index < preCollectionLength) {
+					type = preCollection[index][0];
 					if (advancedTypeMap.has(type)) {
-						if (advancedTypeMap.get(defTypes[0][0]) < advancedTypeMap.get(type)) defTypes.push([type, precollection[index][1]]);
-						else defTypes.unshift([type, precollection[index][1]]);
-					} else advTypes.push([type, precollection[index][1]]);
+						if (advancedTypeMap.get(defTypes[0][0]) < advancedTypeMap.get(type)) defTypes.push([type, preCollection[index][1]]);
+						else defTypes.unshift([type, preCollection[index][1]]);
+					} else advTypes.push([type, preCollection[index][1]]);
 				}
 				const defLength = defTypes.length;
 				if(defLength > 3) defTypes.sort((a, b) => advancedTypeMap.get(a[0]) - advancedTypeMap.get(b[0]));
@@ -326,21 +378,21 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 					}
 				}
 			} else {
-				const advTypes = [[type, precollection[index][1]]];
+				const advTypes = [[type, preCollection[index][1]]];
 				const defTypes = [];
-				while (++index < precollectionLength) {
-					type = precollection[index][0];
+				while (++index < preCollectionLength) {
+					type = preCollection[index][0];
 					if (advancedTypeMap.has(type)) {
-						defTypes.push([type, precollection[index][1]]);
+						defTypes.push([type, preCollection[index][1]]);
 						break;
-					} else advTypes.push([type, precollection[index][1]]);
+					} else advTypes.push([type, preCollection[index][1]]);
 				}
-				while (++index < precollectionLength) {
-					type = precollection[index][0];
+				while (++index < preCollectionLength) {
+					type = preCollection[index][0];
 					if (advancedTypeMap.has(type)) {
-						if (advancedTypeMap.get(defTypes[0][0]) < advancedTypeMap.get(type)) defTypes.push([type, precollection[index][1]]);
-						else defTypes.unshift([type, precollection[index][1]]);
-					} else advTypes.push([type, precollection[index][1]]);
+						if (advancedTypeMap.get(defTypes[0][0]) < advancedTypeMap.get(type)) defTypes.push([type, preCollection[index][1]]);
+						else defTypes.unshift([type, preCollection[index][1]]);
+					} else advTypes.push([type, preCollection[index][1]]);
 				}
 				
 				const defTypesLength = defTypes.length;
@@ -634,6 +686,6 @@ const arrayLikeOrderCore = <X extends ArrayLike<unknown>>(x: X) => {
 			}
 		}
 	}
-}
+}) as ArrayLikeOrderCore
 
 export default arrayLikeOrderCore;

@@ -1,6 +1,9 @@
 import arrayLikeOrderBy from "../by/index";
 
-const arrayOrderLib = {
+// interfaces
+import type { ArrayLikeOrderLib } from "./index.D";
+
+const arrayOrderLib: ArrayLikeOrderLib = {
 	by: arrayLikeOrderBy
 };
 

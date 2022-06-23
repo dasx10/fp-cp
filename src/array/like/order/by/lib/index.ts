@@ -1,6 +1,7 @@
 import arrayLikeOrderByCore from "../core/index";
+import type { ArrayLikeOrderByLib } from "./index.D";
 
-const arrayLikeOrderByLib = {
+const arrayLikeOrderByLib: ArrayLikeOrderByLib = {
 	core: arrayLikeOrderByCore,
 }
 

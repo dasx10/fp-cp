@@ -3,6 +3,7 @@ import sortType                                              from "../../helper/
 import advancedTypeMap, { objectSchema, objectSchemaLength } from "../../helper/type.schema";
 import type { ArrayLikeValue }                               from "../../../index.D";
 import type { ArrayValue }                                   from "../../../../index.D";
+import type { ArrayLikeOrderByCore }                         from "./index.D";
 
 
 const advancedType = (x: unknown) => {
@@ -14,25 +15,65 @@ const advancedType = (x: unknown) => {
 	return type;
 }
 
-const arrayLikeOrderByCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>) => unknown, x: X) => {
+const arrayLikeOrderByCore = (<X extends ArrayLike<unknown>>(def: (value: ArrayLikeValue<X>) => unknown, x: X) => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return [];
 		case 1  : return [x[0]];
 		case 2  : {
-			const firstStep = def(<ArrayLikeValue<X>>x[0]);
-			if (firstStep) {
-				const nextStep  = def(<ArrayLikeValue<X>>x[1]);
-				if (nextStep) {
-					const type = advancedType(firstStep);
-					if (type === advancedType(nextStep)) {
-						// @ts-ignore
-						return unmultiplyTypeSwitch[type](firstStep, nextStep) < 0 ? [x[1], x[0]] : [x[0], x[1]];
+			const first          = x[0];
+			const firstStep      = def(<ArrayLikeValue<X>>first);
+			let type: string     = typeof(firstStep);
+			const next           = x[1];
+			const nextStep       = def(<ArrayLikeValue<X>>next);
+			let nextType: string = typeof(nextStep);
+			if (nextType === type) {
+				if (nextType === 'object') {
+					nextType = nextStep  ? (<Record<string, any>>nextStep).constructor.name  : 'null';
+					type     = firstStep ? (<Record<string, any>>firstStep).constructor.name : 'null';
+					if (type === nextType) {
+						if (type === 'null') return [first, next];
+						let index = 0;
+						while (index < objectSchemaLength) {
+							const instanceName: ArrayValue<typeof objectSchema> = objectSchema[index];
+							// @ts-ignore
+							if (firstStep instanceof globalThis[instanceName]) {
+								// @ts-ignore
+								return sortType(instanceName)(firstStep, nextStep) < 0 ? [first, next] : [next, first];
+							};
+							index++;
+						}
+						return sortType('Object')(firstStep, nextStep) < 0 ? [first, next] : [next, first];
+					}
+					switch ('null') {
+						case type     : return [first, next];
+						case nextType : return [next, first];
+						default       : {
+							const firstResult = advancedTypeMap.get(type);
+							if (firstResult > 0) {
+								const nextResult = advancedTypeMap.get(nextType);
+								if (nextResult > 0) return firstResult - nextResult ? [first, next] : [next, first];
+								return [first, next]
+							}
+							const nextResult = advancedTypeMap.get(nextType);
+							if (nextResult > 0) return [next, first];
+							return type.localeCompare(nextType) < 0 ? [first, next] : [next, first]
+						}
 					}
 				}
+
+				return sortType('Object')(firstStep, nextStep) < 0 ? [first, next] : [next, first]; 
 			}
-			if (def(<ArrayLikeValue<X>>x[1])) return [x[1], x[0]];
-			return [x[0], x[1]];
+
+			const firstResult = advancedTypeMap.get(type);
+			if (firstResult > 0) {
+				const nextResult = advancedTypeMap.get(nextType);
+				if (nextResult > 0) return firstResult - nextResult ? [first, next] : [next, first];
+				return [first, next]
+			}
+			const nextResult = advancedTypeMap.get(nextType);
+			if (nextResult > 0) return [next, first];
+			return type.localeCompare(nextType) < 0 ? [first, next] : [next, first]
 		}
 		default : {
 			let index         = 0;
@@ -648,6 +689,6 @@ const arrayLikeOrderByCore = <X extends ArrayLike<unknown>>(def: (value: ArrayLi
 			}
 		}
 	}
-}
+}) as ArrayLikeOrderByCore
 
 export default arrayLikeOrderByCore;

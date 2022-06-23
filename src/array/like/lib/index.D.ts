@@ -22,6 +22,8 @@ import type { ArrayLikeIsMain }      from "../is/index.D";
 import type { ArrayLikeUniqMain }    from "../uniq/index.D";
 import type { ArrayLikeFilterMain }  from './../filter/index.D';
 import type { ArrayLikeRejectMain }  from "../reject/index.D";
+import type { ArrayLikeMapMain } from "../map/index.D";
+import { ArrayLikeOrderMain } from "../order/index.D";
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>;
@@ -48,6 +50,8 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 	readonly uniq    : ArrayLikeUniqMain    <Type>;
 	readonly filter  : ArrayLikeFilterMain  <Type>;
 	readonly reject  : ArrayLikeRejectMain  <Type>;
+	readonly map     : ArrayLikeMapMain     <Type>;
+	readonly order   : ArrayLikeOrderMain   <Type>;
 
 	readonly join    : ArrayLikeJoinMain    <Type>;
 

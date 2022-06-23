@@ -42,7 +42,7 @@ export type TupleFilterPredicate <X extends readonly unknown[], Predicate> =
 					: Predicate & Value extends Value
 						? [Predicate & Value, ...TupleFilterPredicate<Next, Predicate & ArrayValue<Next>>] | TupleFilterPredicate<Next, Predicate & ArrayValue<Next>>
 						: TupleFilterPredicate<Next, Predicate & ArrayValue<Next>>
-	: never;
+	: [];
 
 export type ArrayFilterPredicate <X extends readonly unknown[], Predicate> =
 	X extends readonly [] 
