@@ -12,7 +12,7 @@ import arrayLikeIndexes from "../indexes/index";
 import arrayLikeIs      from "../is/index";
 import arrayLikeJoin    from "../join/index";
 import arrayLikeKeys    from "../keys/index";
-import arrayLikeLast    from "../last/index";
+import arrayLikeAtLast  from "../at/last/index";
 import arrayLikeMaximum from "../maximum/index";
 import arrayLikeMinimum from "../minimum/index";
 import arrayLikeReduce  from "../reduce/index";
@@ -34,7 +34,7 @@ const arrayLikeLib: ArrayLikeLib = {
 
   size    : arrayLikeSize,
   first   : arrayLikeAtFirst,
-  last    : arrayLikeLast,
+  last    : arrayLikeAtLast,
 	keys    : arrayLikeKeys,
   index   : arrayLikeIndex,
   indexes : arrayLikeIndexes,
