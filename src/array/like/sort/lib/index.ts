@@ -1,6 +1,9 @@
 import arrayLikeSortCore from "../core/index";
 
-const arrayLikeSortLib = {
+// interfaces
+import type { ArrayLikeSortLib } from "./index.D";
+
+const arrayLikeSortLib: ArrayLikeSortLib = {
 	core: arrayLikeSortCore,
 }
 

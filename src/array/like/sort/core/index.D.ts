@@ -9,4 +9,9 @@ export type ArrayLikeSort <X extends ArrayLike<unknown>> = X extends readonly []
 		? TupleMap<ArrayValue<X>, X>
 		: X extends string
 			? ArrayLikeSort<Chars<X>>
-			: ArrayLikeValue<X>[]
+			: ArrayLikeValue<X>[];
+
+export type ArrayLikeSortCore <Type extends ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(
+	def : (a: ArrayLikeValue<X>, b: ArrayLikeValue<X>) => unknown,
+	x   : X
+) => ArrayLikeSort<X>;

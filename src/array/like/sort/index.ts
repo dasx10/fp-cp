@@ -1,5 +1,9 @@
+// core
 import arrayLikeSortDef from "./contract/index";
 import arrayLikeSortLib from "./lib/index";
 
-const arrayLikeSort = Object.assign(arrayLikeSortDef, arrayLikeSortLib);
+// interfaces
+import { ArrayLikeSortMain } from "./index.D";
+
+const arrayLikeSort: ArrayLikeSortMain = Object.assign(arrayLikeSortDef, arrayLikeSortLib);
 export default arrayLikeSort;

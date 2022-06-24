@@ -1,18 +1,20 @@
-const arrayLikeConcatCore = <Y extends ArrayLike<unknown>, X extends ArrayLike<unknown>>(y: Y, x: X) => {
+import type { ArrayLikeConcatCore } from "./index.D";
+
+const arrayLikeConcatCore = (<Y extends ArrayLike<unknown>, X extends ArrayLike<unknown>>(y: Y, x: X) => {
 	const yLength = y.length;
 	const xLength = x.length;
-	const concated = new Array(yLength + xLength);
+	const result = new Array(yLength + xLength);
 	let index = 0;
 	while (index < xLength) {
-		concated[index] = x[index];
+		result[index] = x[index];
 		index++;
 	}
 	index = 0;
 	while (index < yLength) {
-		concated[index + xLength] = y[index];
+		result[index + xLength] = y[index];
 		index++;
 	}
-	return concated;
-}
+	return result;
+}) as ArrayLikeConcatCore
 
 export default arrayLikeConcatCore;

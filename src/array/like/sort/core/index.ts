@@ -1,6 +1,7 @@
-import type { ArrayLikeValue } from "../../index.D";
+import type { ArrayLikeValue }    from "../../index.D";
+import type { ArrayLikeSortCore } from "./index.D";
 
-const arrayLikeSortCore = <X extends ArrayLike<unknown>>(executor: (a: ArrayLikeValue<X>, b: ArrayLikeValue<X>) => any, array: X) => {
+const arrayLikeSortCore = (<X extends ArrayLike<unknown>>(executor: (a: ArrayLikeValue<X>, b: ArrayLikeValue<X>) => any, array: X) => {
 	const { length } = array;
 	switch (length) {
 		case 0: return [];
@@ -27,6 +28,6 @@ const arrayLikeSortCore = <X extends ArrayLike<unknown>>(executor: (a: ArrayLike
 			return sorted.sort(executor);
 		}
 	}
-}
+}) as ArrayLikeSortCore;
 
 export default arrayLikeSortCore;

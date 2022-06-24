@@ -1,4 +1,3 @@
-
 import type { ArrayLikeAtMain }      from "../at/index.D";
 import type { ArrayLikeAverageMain } from "../average/index.D";
 import type { ArrayLikeCountMain }   from "../count/index.D";
@@ -20,10 +19,13 @@ import type { ArrayLikeMinimumMain } from "../minimum/index.D";
 import type { ArrayLikeJoinMain }    from "../join/index.D";
 import type { ArrayLikeIsMain }      from "../is/index.D";
 import type { ArrayLikeUniqMain }    from "../uniq/index.D";
-import type { ArrayLikeFilterMain }  from './../filter/index.D';
+import type { ArrayLikeFilterMain }  from "../filter/index.D";
 import type { ArrayLikeRejectMain }  from "../reject/index.D";
-import type { ArrayLikeMapMain } from "../map/index.D";
-import { ArrayLikeOrderMain } from "../order/index.D";
+import type { ArrayLikeMapMain }     from "../map/index.D";
+import type { ArrayLikeOrderMain }   from "../order/index.D";
+import type { ArrayLikeReversMain }  from "../revers/index.D";
+import type { ArrayLikeConcatMain } from "../concat/index.D";
+import { ArrayLikeSortMain } from "../sort/index.D";
 
 export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unknown>> {
 	readonly at      : ArrayLikeAtMain      <Type>;
@@ -51,7 +53,10 @@ export interface ArrayLikeLib <Type extends ArrayLike<unknown> = ArrayLike<unkno
 	readonly filter  : ArrayLikeFilterMain  <Type>;
 	readonly reject  : ArrayLikeRejectMain  <Type>;
 	readonly map     : ArrayLikeMapMain     <Type>;
+	readonly sort    : ArrayLikeSortMain    <Type>;
 	readonly order   : ArrayLikeOrderMain   <Type>;
+	readonly revers  : ArrayLikeReversMain  <Type>;
+	readonly concat  : ArrayLikeConcatMain  <Type>;
 
 	readonly join    : ArrayLikeJoinMain    <Type>;
 

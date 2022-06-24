@@ -19,6 +19,7 @@
     "test:array/like/order"       : "jest ./src/array/like/order",
     "test:array/like/sort"        : "jest ./src/array/like/sort",
     "test:array/like/map"         : "jest ./src/array/like/map",
+    "test:array/like/map/revers"  : "jest ./src/array/like/map/revers",
     "test:function"               : "jest ./src/function"
   },
   "repository": {

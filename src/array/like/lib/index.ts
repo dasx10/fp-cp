@@ -23,6 +23,9 @@ import arrayLikeUniq    from "../uniq/index";
 import arrayLikeReject  from '../reject/index';
 import arrayLikeMap     from "../map/index";
 import arrayLikeOrder   from "../order/index";
+import arrayLikeRevers  from "../revers/index";
+import arrayLikeConcat  from "../concat/index";
+import arrayLikeSort    from "../sort/index";
 
 import type { ArrayLikeLib } from "./index.D";
 
@@ -53,7 +56,10 @@ const arrayLikeLib: ArrayLikeLib = {
 	filter  : arrayLikeFilter,
 	reject  : arrayLikeReject,
 	map     : arrayLikeMap,
+	sort    : arrayLikeSort,
 	order   : arrayLikeOrder,
+	revers  : arrayLikeRevers,
+	concat  : arrayLikeConcat,
 
 	join    : arrayLikeJoin,
 
