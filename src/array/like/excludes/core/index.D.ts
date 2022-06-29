@@ -6,4 +6,4 @@ export type ArrayLikeExcludes <X extends ArrayLike<unknown>> = X extends readonl
 		? false
 		: boolean;
 
-export type ArrayLikeExcludesCore = <X extends ArrayLike<unknown>>(value: ArrayLikeValue<X>, x: X) => ArrayLikeExcludes<X>;
+export type ArrayLikeExcludesCore <Type extends  ArrayLike<unknown> = ArrayLike<unknown>> = <X extends Type>(value: ArrayLikeValue<X>, x: X) => ArrayLikeExcludes<X>;

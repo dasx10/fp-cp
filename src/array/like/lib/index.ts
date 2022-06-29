@@ -28,42 +28,49 @@ import arrayLikeConcat  from "../concat/index";
 import arrayLikeSort    from "../sort/index";
 
 import type { ArrayLikeLib } from "./index.D";
+import arrayLikeExcludes from "../excludes/index";
+import arrayLikeIncludes from "../includes/index";
+import arrayLikeSelect from "../select/index";
 
 const arrayLikeLib: ArrayLikeLib = {
-	at      : arrayLikeAt,
+	at       : arrayLikeAt,
 
-  size    : arrayLikeSize,
-  first   : arrayLikeAtFirst,
-  last    : arrayLikeAtLast,
-	keys    : arrayLikeKeys,
-  index   : arrayLikeIndex,
-  indexes : arrayLikeIndexes,
+  size     : arrayLikeSize,
+  first    : arrayLikeAtFirst,
+  last     : arrayLikeAtLast,
+	keys     : arrayLikeKeys,
+  index    : arrayLikeIndex,
+  indexes  : arrayLikeIndexes,
 
-  find    : arrayLikeFind,
-  forEach : arrayLikeForEach,
-  reduce  : arrayLikeReduce,
-  every   : arrayLikeEvery,
-  some    : arrayLikeSome,
-	group   : arrayLikeGroup,
+  find     : arrayLikeFind,
+  forEach  : arrayLikeForEach,
+  reduce   : arrayLikeReduce,
+  every    : arrayLikeEvery,
+  some     : arrayLikeSome,
+	group    : arrayLikeGroup,
 
-  count   : arrayLikeCount,
-  sum     : arrayLikeSum,
-  average : arrayLikeAverage,
-  maximum : arrayLikeMaximum,
-  minimum : arrayLikeMinimum,
+  count    : arrayLikeCount,
+  sum      : arrayLikeSum,
+  average  : arrayLikeAverage,
+  maximum  : arrayLikeMaximum,
+  minimum  : arrayLikeMinimum,
 
-	uniq    : arrayLikeUniq,
-	filter  : arrayLikeFilter,
-	reject  : arrayLikeReject,
-	map     : arrayLikeMap,
-	sort    : arrayLikeSort,
-	order   : arrayLikeOrder,
-	revers  : arrayLikeRevers,
-	concat  : arrayLikeConcat,
+	uniq     : arrayLikeUniq,
+	filter   : arrayLikeFilter,
+	reject   : arrayLikeReject,
+	map      : arrayLikeMap,
+	sort     : arrayLikeSort,
+	order    : arrayLikeOrder,
+	revers   : arrayLikeRevers,
+	concat   : arrayLikeConcat,
+	select   : arrayLikeSelect,
 
-	join    : arrayLikeJoin,
+	excludes : arrayLikeExcludes,
+	includes : arrayLikeIncludes,
 
-  is      : arrayLikeIs,
+	join     : arrayLikeJoin,
+
+  is       : arrayLikeIs,
 }
 
 export default arrayLikeLib;

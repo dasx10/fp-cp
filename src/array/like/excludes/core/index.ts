@@ -1,7 +1,7 @@
 import type { ArrayLikeValue }        from "../../index.D";
 import type { ArrayLikeExcludesCore } from "./index.D";
 
-const arrayLikeExcludeCore = (<X extends ArrayLike<unknown>>(value: ArrayLikeValue<X>, x: X): boolean => {
+const arrayLikeExcludesCore = (<X extends ArrayLike<unknown>>(value: ArrayLikeValue<X>, x: X): boolean => {
 	const { length } = x;
 	switch (length) {
 		case 0  : return true;
@@ -17,4 +17,4 @@ const arrayLikeExcludeCore = (<X extends ArrayLike<unknown>>(value: ArrayLikeVal
 	}
 }) as ArrayLikeExcludesCore;
 
-export default arrayLikeExcludeCore;
+export default arrayLikeExcludesCore;

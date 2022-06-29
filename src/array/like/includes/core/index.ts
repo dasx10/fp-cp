@@ -1,5 +1,6 @@
+import type { ArrayLikeIncludesCore } from "./index.D";
 
-const arrayLikeIncludeCore = <Value>(value: Value, x: ArrayLike<Value>): boolean => {
+const arrayLikeIncludesCore = (<Value>(value: Value, x: ArrayLike<Value>): boolean => {
 	const { length } = x;
 	if (length > 0) {
 		let index = 0;
@@ -8,8 +9,7 @@ const arrayLikeIncludeCore = <Value>(value: Value, x: ArrayLike<Value>): boolean
 			index++;
 		}
 	}
-
 	return false;
-}
+}) as ArrayLikeIncludesCore;
 
-export default arrayLikeIncludeCore;
+export default arrayLikeIncludesCore;

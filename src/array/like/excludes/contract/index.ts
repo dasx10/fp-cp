@@ -1,5 +1,9 @@
+// core
 import _curry2 from "../../../../function/curry/2/_/index";
-import arrayLikeExcludeCore from "../core/index";
+import arrayLikeExcludesCore from "../core/index";
 
-const arrayLikeExcludesDef = _curry2(arrayLikeExcludeCore);
+// interfaces
+import type { ArrayLikeExcludesDef } from "./index.D";
+
+const arrayLikeExcludesDef = _curry2(arrayLikeExcludesCore) as ArrayLikeExcludesDef;
 export default arrayLikeExcludesDef;
