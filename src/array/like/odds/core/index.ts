@@ -1,6 +1,7 @@
 import { ArrayLikeIndex, ArrayLikeValue } from "../../index.D";
+import {ArrayLikeOddsCore} from "./index.D";
 
-const arrayLikeOdds = <
+const arrayLikeOddsCore = (<
 X extends ArrayLike<unknown>
 >(def: (value: ArrayLikeValue<X>, index: ArrayLikeIndex<X>, x: X) => number, x: X): number => {
 	const { length } = x;
@@ -18,6 +19,6 @@ X extends ArrayLike<unknown>
 		return maximum - minimum;
 	}
 	return 0;
-}
+}) as ArrayLikeOddsCore;
 
-export default arrayLikeOdds;
+export default arrayLikeOddsCore;
